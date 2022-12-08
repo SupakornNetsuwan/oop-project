@@ -18,7 +18,7 @@ public class Test extends JPanel{
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         GradientPaint ga = new GradientPaint(0, 0 ,Color.decode("#1CB5E0"), 0, getHeight(), Color.decode("000046"));
         g2.setPaint(ga);
-        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 0, 0);
     }
 //    public static void main(String[] args){
 //        Test t = new Test();

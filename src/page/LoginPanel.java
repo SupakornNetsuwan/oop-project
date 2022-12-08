@@ -143,9 +143,10 @@ public class LoginPanel extends javax.swing.JPanel {
         usernameField1.setFont(new java.awt.Font("Prompt", 0, 20)); // NOI18N
         usernameField1.setForeground(new java.awt.Color(153, 153, 153));
         usernameField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        usernameField1.setToolTipText("EARTH");
+        usernameField1.setToolTipText("Admin");
+        usernameField1.setActionCommand("<Not Set>");
         usernameField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Username", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 1, 18), new java.awt.Color(102, 102, 102))); // NOI18N
-        usernameField1.setMargin(new java.awt.Insets(10, 25, 10, 25));
+        usernameField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         usernameField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameField1ActionPerformed(evt);
@@ -154,6 +155,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
         paswordField1.setFont(new java.awt.Font("Prompt", 0, 20)); // NOI18N
         paswordField1.setForeground(new java.awt.Color(153, 153, 153));
+        paswordField1.setToolTipText("Password");
         paswordField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 1, 18), new java.awt.Color(102, 102, 102))); // NOI18N
         paswordField1.setMargin(new java.awt.Insets(10, 25, 10, 25));
         paswordField1.addActionListener(new java.awt.event.ActionListener() {
