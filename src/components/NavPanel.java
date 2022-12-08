@@ -1,4 +1,4 @@
-package page;
+package components;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -7,84 +7,16 @@ import javax.swing.JPanel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-
 /**
  *
  * @author windows
  */
 public class NavPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form HomePanel
-     */
     public NavPanel() {
         initComponents();
     }
 
-    public JPanel getBlankPanel() {
-        return blankPanel;
-    }
-
-    public void setBlankPanel(JPanel blankPanel) {
-        this.blankPanel = blankPanel;
-    }
-
-    public JButton getFacultyManageBtn() {
-        return facultyManageBtn;
-    }
-
-    public void setFacultyManageBtn(JButton facultyManageBtn) {
-        this.facultyManageBtn = facultyManageBtn;
-    }
-
-    public JButton getMainPageBtn() {
-        return mainPageBtn;
-    }
-
-    public void setMainPageBtn(JButton mainPageBtn) {
-        this.mainPageBtn = mainPageBtn;
-    }
-
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-
-    public void setMainPanel(JPanel mainPanel) {
-        this.mainPanel = mainPanel;
-    }
-
-    public JButton getProfessorManageBtn() {
-        return professorManageBtn;
-    }
-
-    public void setProfessorManageBtn(JButton professorManageBtn) {
-        this.professorManageBtn = professorManageBtn;
-    }
-
-    public JPanel getSidePanel() {
-        return sidePanel;
-    }
-
-    public void setSidePanel(JPanel sidePanel) {
-        this.sidePanel = sidePanel;
-    }
-
-    public JButton getStudentManageBtn() {
-        return studentManageBtn;
-    }
-
-    public void setStudentManageBtn(JButton studentManageBtn) {
-        this.studentManageBtn = studentManageBtn;
-    }
-
-    public JButton getSubjectManageBtn() {
-        return subjectManageBtn;
-    }
-
-    public void setSubjectManageBtn(JButton subjectManageBtn) {
-        this.subjectManageBtn = subjectManageBtn;
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,7 +58,7 @@ public class NavPanel extends javax.swing.JPanel {
             }
         });
 
-        facultyManageBtn.setBackground(new java.awt.Color(204, 204, 204));
+        facultyManageBtn.setBackground(new java.awt.Color(253, 249, 245));
         facultyManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         facultyManageBtn.setForeground(new java.awt.Color(255, 137, 47));
         facultyManageBtn.setText("จัดการคณะ/สาขา");
@@ -135,7 +67,7 @@ public class NavPanel extends javax.swing.JPanel {
         facultyManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         facultyManageBtn.setIconTextGap(10);
 
-        subjectManageBtn.setBackground(new java.awt.Color(204, 204, 204));
+        subjectManageBtn.setBackground(new java.awt.Color(253, 249, 245));
         subjectManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         subjectManageBtn.setForeground(new java.awt.Color(255, 137, 47));
         subjectManageBtn.setText("จัดการวิชาเรียน");
@@ -144,7 +76,7 @@ public class NavPanel extends javax.swing.JPanel {
         subjectManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         subjectManageBtn.setIconTextGap(10);
 
-        studentManageBtn.setBackground(new java.awt.Color(204, 204, 204));
+        studentManageBtn.setBackground(new java.awt.Color(253, 249, 245));
         studentManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         studentManageBtn.setForeground(new java.awt.Color(255, 137, 47));
         studentManageBtn.setText("จัดการนักศึกษา");
@@ -158,7 +90,7 @@ public class NavPanel extends javax.swing.JPanel {
             }
         });
 
-        professorManageBtn.setBackground(new java.awt.Color(204, 204, 204));
+        professorManageBtn.setBackground(new java.awt.Color(253, 249, 245));
         professorManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         professorManageBtn.setForeground(new java.awt.Color(255, 137, 47));
         professorManageBtn.setText("จัดการอาจารย์");
@@ -251,6 +183,70 @@ public class NavPanel extends javax.swing.JPanel {
     private void professorManageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorManageBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_professorManageBtnActionPerformed
+
+    public JPanel getBlankPanel() {
+        return blankPanel;
+    }
+
+    public void setBlankPanel(JPanel blankPanel) {
+        this.blankPanel = blankPanel;
+    }
+
+    public JButton getFacultyManageBtn() {
+        return facultyManageBtn;
+    }
+
+    public void setFacultyManageBtn(JButton facultyManageBtn) {
+        this.facultyManageBtn = facultyManageBtn;
+    }
+
+    public JButton getMainPageBtn() {
+        return mainPageBtn;
+    }
+
+    public void setMainPageBtn(JButton mainPageBtn) {
+        this.mainPageBtn = mainPageBtn;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public void setMainPanel(JPanel mainPanel) {
+        this.mainPanel = mainPanel;
+    }
+
+    public JButton getProfessorManageBtn() {
+        return professorManageBtn;
+    }
+
+    public void setProfessorManageBtn(JButton professorManageBtn) {
+        this.professorManageBtn = professorManageBtn;
+    }
+
+    public JPanel getSidePanel() {
+        return sidePanel;
+    }
+
+    public void setSidePanel(JPanel sidePanel) {
+        this.sidePanel = sidePanel;
+    }
+
+    public JButton getStudentManageBtn() {
+        return studentManageBtn;
+    }
+
+    public void setStudentManageBtn(JButton studentManageBtn) {
+        this.studentManageBtn = studentManageBtn;
+    }
+
+    public JButton getSubjectManageBtn() {
+        return subjectManageBtn;
+    }
+
+    public void setSubjectManageBtn(JButton subjectManageBtn) {
+        this.subjectManageBtn = subjectManageBtn;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

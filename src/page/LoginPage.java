@@ -16,12 +16,12 @@ import javax.swing.JTextField;
  *
  * @author windows
  */
-public class LoginPanel extends javax.swing.JPanel {
+public class LoginPage extends javax.swing.JPanel {
 
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel() {
+    public LoginPage() {
         initComponents();
     }
 
