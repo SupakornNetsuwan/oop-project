@@ -1,6 +1,6 @@
 package controllers;
 
-import components.NavPanel;
+import components.MainLayout;
 import java.awt.event.*;
 import java.awt.*;
 
@@ -15,9 +15,6 @@ public class MainController implements ActionListener {
     private AppController appController;
     /* Primary frame */
     private MainFrame mainFrame;
-    /* Pages & panels*/
-    private NavPanel navPanel;
-    private MainPanel mainPanel;
 
     public MainController() {
         mainFrame = new MainFrame();
@@ -32,22 +29,20 @@ public class MainController implements ActionListener {
     }
 
     public void redirectToMainApp() {
-        mainPanel = new MainPanel();
-        navPanel = new NavPanel(); // Create a home page.
-
-        loginController.getLoginPage().setVisible(false); // Disabled login page
-        mainFrame.add(navPanel);
-        navPanel.getBlankPanel().setLayout(new BorderLayout());
-        navPanel.getBlankPanel().add(mainPanel);
-
+        loginController.disablePage(); // Disabled login page
+        appController = new AppController();
+        mainFrame.add(appController.getMainLayout()); // Enable Main Page
         /* Navbar init */
-        navPanel.getMainPageBtn().addActionListener(this);
-        navPanel.getStudentManageBtn().addActionListener(this);
-        navPanel.getSubjectManageBtn().addActionListener(this);
+        appController.getMainLayout().getMainPageBtn().addActionListener(this);
+        appController.getMainLayout().getStudentManageBtn().addActionListener(this);
+        appController.getMainLayout().getSubjectManageBtn().addActionListener(this);
+        appController.getMainLayout().getProfessorManageBtn().addActionListener(this);
+        appController.getMainLayout().getFacultyManageBtn().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         /* --------------------   Login page   -------------------- */
         if (e.getSource().equals(loginController.getLoginBtn())) {
             if (loginController.checkIsAuthen()) {
@@ -57,14 +52,19 @@ public class MainController implements ActionListener {
                 loginController.handleLoginReject();
             }
         }
-        /* -------------------- Sidebar (Navbar) -------------------- */
 
-        if (e.getSource().equals(navPanel.getMainPageBtn())) {
+        /* -------------------- Sidebar (Navbar) -------------------- */
+        if (e.getSource().equals(appController.getMainLayout().getMainPageBtn())) {
             System.out.println("Main page");
-        } else if (e.getSource().equals(navPanel.getStudentManageBtn())) {
+        } else if (e.getSource().equals(appController.getMainLayout().getStudentManageBtn())) {
             System.out.println("Student page");
-        } else if (e.getSource().equals(navPanel.getSubjectManageBtn())) {
+        } else if (e.getSource().equals(appController.getMainLayout().getSubjectManageBtn())) {
             System.out.println("Subject page");
+        } else if (e.getSource().equals(appController.getMainLayout().getFacultyManageBtn())) {
+
+            appController.switchToFacultyManagePanel();
+        } else if (e.getSource().equals(appController.getMainLayout().getProfessorManageBtn())) {
+            System.out.println("Professor page");
         }
     }
 

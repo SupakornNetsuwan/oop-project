@@ -24,6 +24,10 @@ public class LoginController {
         //return false
     }
 
+    public void disablePage() {
+        this.getLoginPage().setVisible(false);
+    }
+
     public void handleLoginReject() {
         System.out.println("No permission");
     }

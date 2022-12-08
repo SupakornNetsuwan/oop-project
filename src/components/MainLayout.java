@@ -11,9 +11,9 @@ import javax.swing.JPanel;
  *
  * @author windows
  */
-public class NavPanel extends javax.swing.JPanel {
+public class MainLayout extends javax.swing.JPanel {
 
-    public NavPanel() {
+    public MainLayout() {
         initComponents();
     }
 
@@ -26,23 +26,23 @@ public class NavPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainPanel = new javax.swing.JPanel();
-        sidePanel = new javax.swing.JPanel();
+        mainLayout = new javax.swing.JPanel();
+        navPanel = new javax.swing.JPanel();
         mainPageBtn = new javax.swing.JButton();
         facultyManageBtn = new javax.swing.JButton();
         subjectManageBtn = new javax.swing.JButton();
         studentManageBtn = new javax.swing.JButton();
         professorManageBtn = new javax.swing.JButton();
-        blankPanel = new javax.swing.JPanel();
+        contentPanel = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        mainPanel.setBackground(new java.awt.Color(255, 137, 47));
-        mainPanel.setFont(mainPanel.getFont());
-        mainPanel.setPreferredSize(new java.awt.Dimension(1280, 720));
+        mainLayout.setBackground(new java.awt.Color(255, 137, 47));
+        mainLayout.setFont(mainLayout.getFont());
+        mainLayout.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        sidePanel.setBackground(new java.awt.Color(255, 137, 47));
-        sidePanel.setPreferredSize(new java.awt.Dimension(300, 324));
+        navPanel.setBackground(new java.awt.Color(255, 137, 47));
+        navPanel.setPreferredSize(new java.awt.Dimension(300, 324));
 
         mainPageBtn.setBackground(new java.awt.Color(228, 109, 18));
         mainPageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
@@ -104,19 +104,19 @@ public class NavPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
-        sidePanel.setLayout(sidePanelLayout);
-        sidePanelLayout.setHorizontalGroup(
-            sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout navPanelLayout = new javax.swing.GroupLayout(navPanel);
+        navPanel.setLayout(navPanelLayout);
+        navPanelLayout.setHorizontalGroup(
+            navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(mainPageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(facultyManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
             .addComponent(subjectManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(studentManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(professorManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        sidePanelLayout.setVerticalGroup(
-            sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidePanelLayout.createSequentialGroup()
+        navPanelLayout.setVerticalGroup(
+            navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navPanelLayout.createSequentialGroup()
                 .addComponent(mainPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(facultyManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,36 +126,38 @@ public class NavPanel extends javax.swing.JPanel {
                 .addComponent(studentManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(professorManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(416, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        blankPanel.setPreferredSize(new java.awt.Dimension(991, 720));
+        contentPanel.setPreferredSize(new java.awt.Dimension(991, 720));
 
-        javax.swing.GroupLayout blankPanelLayout = new javax.swing.GroupLayout(blankPanel);
-        blankPanel.setLayout(blankPanelLayout);
-        blankPanelLayout.setHorizontalGroup(
-            blankPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
+        contentPanel.setLayout(contentPanelLayout);
+        contentPanelLayout.setHorizontalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 991, Short.MAX_VALUE)
         );
-        blankPanelLayout.setVerticalGroup(
-            blankPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        contentPanelLayout.setVerticalGroup(
+            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
-        mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout mainLayoutLayout = new javax.swing.GroupLayout(mainLayout);
+        mainLayout.setLayout(mainLayoutLayout);
+        mainLayoutLayout.setHorizontalGroup(
+            mainLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainLayoutLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(navPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(blankPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        mainPanelLayout.setVerticalGroup(
-            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-            .addComponent(blankPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        mainLayoutLayout.setVerticalGroup(
+            mainLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainLayoutLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(navPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -163,12 +165,12 @@ public class NavPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mainLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -184,78 +186,47 @@ public class NavPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_professorManageBtnActionPerformed
 
-    public JPanel getBlankPanel() {
-        return blankPanel;
+    public JPanel getMainlayout() {
+        return mainLayout;
     }
 
-    public void setBlankPanel(JPanel blankPanel) {
-        this.blankPanel = blankPanel;
+    public JPanel getNavPanel() {
+        return navPanel;
+    }
+
+    public JPanel getContentPanel() {
+        return contentPanel;
+    }
+
+    /* Buttons */
+    public JButton getProfessorManageBtn() {
+        return professorManageBtn;
     }
 
     public JButton getFacultyManageBtn() {
         return facultyManageBtn;
     }
 
-    public void setFacultyManageBtn(JButton facultyManageBtn) {
-        this.facultyManageBtn = facultyManageBtn;
-    }
-
     public JButton getMainPageBtn() {
         return mainPageBtn;
-    }
-
-    public void setMainPageBtn(JButton mainPageBtn) {
-        this.mainPageBtn = mainPageBtn;
-    }
-
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-
-    public void setMainPanel(JPanel mainPanel) {
-        this.mainPanel = mainPanel;
-    }
-
-    public JButton getProfessorManageBtn() {
-        return professorManageBtn;
-    }
-
-    public void setProfessorManageBtn(JButton professorManageBtn) {
-        this.professorManageBtn = professorManageBtn;
-    }
-
-    public JPanel getSidePanel() {
-        return sidePanel;
-    }
-
-    public void setSidePanel(JPanel sidePanel) {
-        this.sidePanel = sidePanel;
     }
 
     public JButton getStudentManageBtn() {
         return studentManageBtn;
     }
 
-    public void setStudentManageBtn(JButton studentManageBtn) {
-        this.studentManageBtn = studentManageBtn;
-    }
-
     public JButton getSubjectManageBtn() {
         return subjectManageBtn;
     }
 
-    public void setSubjectManageBtn(JButton subjectManageBtn) {
-        this.subjectManageBtn = subjectManageBtn;
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel blankPanel;
+    private javax.swing.JPanel contentPanel;
     private javax.swing.JButton facultyManageBtn;
+    private javax.swing.JPanel mainLayout;
     private javax.swing.JButton mainPageBtn;
-    private javax.swing.JPanel mainPanel;
+    private javax.swing.JPanel navPanel;
     private javax.swing.JButton professorManageBtn;
-    private javax.swing.JPanel sidePanel;
     private javax.swing.JButton studentManageBtn;
     private javax.swing.JButton subjectManageBtn;
     // End of variables declaration//GEN-END:variables

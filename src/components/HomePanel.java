@@ -8,12 +8,12 @@ package components;
  *
  * @author windows
  */
-public class MainPanel extends javax.swing.JPanel {
+public class HomePanel extends javax.swing.JPanel {
 
     /**
      * Creates new form MainPanel2
      */
-    public MainPanel() {
+    public HomePanel() {
         initComponents();
     }
 
