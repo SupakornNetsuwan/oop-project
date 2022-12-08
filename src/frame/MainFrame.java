@@ -8,7 +8,7 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         initComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,9 +99,14 @@ public class MainFrame extends JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame().setVisible(true);
- 
             }
         });
+    }
+
+    public void config() {
+        this.setLayout(new BorderLayout());
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
