@@ -1,19 +1,19 @@
-package components;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+package components;
+
 /**
  *
  * @author windows
  */
-public class MainLayout extends javax.swing.JPanel {
+public class NavPanel extends javax.swing.JPanel {
 
-    public MainLayout() {
+    /**
+     * Creates new form NavPanel
+     */
+    public NavPanel() {
         initComponents();
     }
 
@@ -26,8 +26,6 @@ public class MainLayout extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainLayout = new javax.swing.JPanel();
-        navPanel = new javax.swing.JPanel();
         mainPageBtn = new javax.swing.JButton();
         facultyManageBtn = new javax.swing.JButton();
         subjectManageBtn = new javax.swing.JButton();
@@ -35,16 +33,9 @@ public class MainLayout extends javax.swing.JPanel {
         professorManageBtn = new javax.swing.JButton();
         appName = new javax.swing.JLabel();
         appDescription = new javax.swing.JLabel();
-        contentPanel = new javax.swing.JPanel();
 
-        setPreferredSize(new java.awt.Dimension(1280, 720));
-
-        mainLayout.setBackground(new java.awt.Color(255, 137, 47));
-        mainLayout.setFont(mainLayout.getFont());
-        mainLayout.setPreferredSize(new java.awt.Dimension(1280, 720));
-
-        navPanel.setBackground(new java.awt.Color(255, 137, 47));
-        navPanel.setPreferredSize(new java.awt.Dimension(300, 324));
+        setBackground(new java.awt.Color(255, 153, 0));
+        setPreferredSize(new java.awt.Dimension(286, 720));
 
         mainPageBtn.setBackground(new java.awt.Color(228, 109, 18));
         mainPageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
@@ -116,23 +107,23 @@ public class MainLayout extends javax.swing.JPanel {
         appDescription.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         appDescription.setText("ระบบจัดการบุคลากรและ นักศึกษา");
 
-        javax.swing.GroupLayout navPanelLayout = new javax.swing.GroupLayout(navPanel);
-        navPanel.setLayout(navPanelLayout);
-        navPanelLayout.setHorizontalGroup(
-            navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(facultyManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
             .addComponent(subjectManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(studentManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(professorManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(mainPageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(appName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(appDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        navPanelLayout.setVerticalGroup(
-            navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(navPanelLayout.createSequentialGroup()
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(appName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -149,48 +140,6 @@ public class MainLayout extends javax.swing.JPanel {
                 .addComponent(professorManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        contentPanel.setPreferredSize(new java.awt.Dimension(991, 720));
-
-        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
-        contentPanel.setLayout(contentPanelLayout);
-        contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 991, Short.MAX_VALUE)
-        );
-        contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout mainLayoutLayout = new javax.swing.GroupLayout(mainLayout);
-        mainLayout.setLayout(mainLayoutLayout);
-        mainLayoutLayout.setHorizontalGroup(
-            mainLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainLayoutLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(navPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        mainLayoutLayout.setVerticalGroup(
-            mainLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(navPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void mainPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainPageBtnActionPerformed
@@ -205,48 +154,12 @@ public class MainLayout extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_professorManageBtnActionPerformed
 
-    public JPanel getMainlayout() {
-        return mainLayout;
-    }
-
-    public JPanel getNavPanel() {
-        return navPanel;
-    }
-
-    public JPanel getContentPanel() {
-        return contentPanel;
-    }
-
-    /* Buttons */
-    public JButton getProfessorManageBtn() {
-        return professorManageBtn;
-    }
-
-    public JButton getFacultyManageBtn() {
-        return facultyManageBtn;
-    }
-
-    public JButton getMainPageBtn() {
-        return mainPageBtn;
-    }
-
-    public JButton getStudentManageBtn() {
-        return studentManageBtn;
-    }
-
-    public JButton getSubjectManageBtn() {
-        return subjectManageBtn;
-    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel appDescription;
     private javax.swing.JLabel appName;
-    private javax.swing.JPanel contentPanel;
     private javax.swing.JButton facultyManageBtn;
-    private javax.swing.JPanel mainLayout;
     private javax.swing.JButton mainPageBtn;
-    private javax.swing.JPanel navPanel;
     private javax.swing.JButton professorManageBtn;
     private javax.swing.JButton studentManageBtn;
     private javax.swing.JButton subjectManageBtn;

@@ -21,11 +21,11 @@ public class MainController implements ActionListener {
         loginController = new LoginController();
 
         /* ------------------ Login controller ------------------  */
-        loginController.start();
-        loginController.getLoginBtn().addActionListener(this);
+        loginController.start(); //Create Login Page
+        loginController.getLoginBtn().addActionListener(this); //Login Button Add ActionListener
         /* ------------------ Default frame config ------------------  */
-        mainFrame.config();
-        mainFrame.add(loginController.getLoginPage());
+        mainFrame.config(); //MainFrame Visible
+        mainFrame.add(loginController.getLoginPage()); //MainFrame Add Login Page
     }
 
     public void redirectToMainApp() {
@@ -56,15 +56,19 @@ public class MainController implements ActionListener {
         /* -------------------- Sidebar (Navbar) -------------------- */
         if (e.getSource().equals(appController.getMainLayout().getMainPageBtn())) {
             System.out.println("Main page");
+            appController.switchToMainPanel();
         } else if (e.getSource().equals(appController.getMainLayout().getStudentManageBtn())) {
             System.out.println("Student page");
+            appController.switchToStudentManagePanel();
         } else if (e.getSource().equals(appController.getMainLayout().getSubjectManageBtn())) {
             System.out.println("Subject page");
+            appController.switchToSubjectManagePanel();
         } else if (e.getSource().equals(appController.getMainLayout().getFacultyManageBtn())) {
-
+            System.out.println("Faculty page");
             appController.switchToFacultyManagePanel();
         } else if (e.getSource().equals(appController.getMainLayout().getProfessorManageBtn())) {
             System.out.println("Professor page");
+            appController.switchToProfessorManagePanel();
         }
     }
 

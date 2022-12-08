@@ -20,12 +20,13 @@ public class Test extends JPanel{
         g2.setPaint(ga);
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), 0, 0);
     }
-//    public static void main(String[] args){
-//        Test t = new Test();
-//        JFrame fr = new JFrame();
-//        fr.add(t);
-//        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        fr.setSize(300,300);
-//        fr.setVisible(true);
-//    }   
+    public static void main(String[] args){
+        Test t = new Test();
+        JFrame fr = new JFrame();
+        fr.add(t);
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setSize(300,300);
+        
+        fr.setVisible(true);
+    }   
 }
