@@ -1,12 +1,102 @@
-import java.awt.*;
-import javax.swing.*;
+package page;
 
-public class Login extends JFrame {
 
-    public Login() {
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+
+/**
+ *
+ * @author windows
+ */
+public class LoginPanel extends javax.swing.JPanel {
+
+    /**
+     * Creates new form LoginPanel
+     */
+    public LoginPanel() {
         initComponents();
     }
 
+    public JPanel getWrapper() {
+        return Wrapper;
+    }
+
+    public void setWrapper(JPanel Wrapper) {
+        this.Wrapper = Wrapper;
+    }
+
+    public JLabel getAppDescription() {
+        return appDescription;
+    }
+
+    public void setAppDescription(JLabel appDescription) {
+        this.appDescription = appDescription;
+    }
+
+    public JLabel getAppName() {
+        return appName;
+    }
+
+    public void setAppName(JLabel appName) {
+        this.appName = appName;
+    }
+
+    public JPanel getLeftPanel() {
+        return leftPanel;
+    }
+
+    public void setLeftPanel(JPanel leftPanel) {
+        this.leftPanel = leftPanel;
+    }
+
+    public JButton getLoginBtn() {
+        return loginBtn;
+    }
+
+    public void setLoginBtn(JButton loginBtn) {
+        this.loginBtn = loginBtn;
+    }
+
+    public JLabel getLoginLabel() {
+        return loginLabel;
+    }
+
+    public void setLoginLabel(JLabel loginLabel) {
+        this.loginLabel = loginLabel;
+    }
+
+    public JPasswordField getPaswordField1() {
+        return paswordField1;
+    }
+
+    public void setPaswordField1(JPasswordField paswordField1) {
+        this.paswordField1 = paswordField1;
+    }
+
+    public JPanel getRightPanel() {
+        return rightPanel;
+    }
+
+    public void setRightPanel(JPanel rightPanel) {
+        this.rightPanel = rightPanel;
+    }
+
+    public JTextField getUsernameField1() {
+        return usernameField1;
+    }
+
+    public void setUsernameField1(JTextField usernameField1) {
+        this.usernameField1 = usernameField1;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -16,8 +106,6 @@ public class Login extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        x = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         Wrapper = new javax.swing.JPanel();
         leftPanel = new javax.swing.JPanel();
         appName = new javax.swing.JLabel();
@@ -28,41 +116,11 @@ public class Login extends JFrame {
         loginBtn = new javax.swing.JButton();
         loginLabel = new javax.swing.JLabel();
 
-        x.setBackground(new java.awt.Color(255, 255, 255));
-        x.setPreferredSize(new java.awt.Dimension(733, 936));
-
-        jLabel2.setFont(new java.awt.Font("Prompt", 1, 96)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 102, 0));
-        jLabel2.setText("Login");
-
-        javax.swing.GroupLayout xLayout = new javax.swing.GroupLayout(x);
-        x.setLayout(xLayout);
-        xLayout.setHorizontalGroup(
-            xLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(xLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(172, 172, 172))
-        );
-        xLayout.setVerticalGroup(
-            xLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(xLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Waido KMITL");
-        setAlwaysOnTop(true);
-        setMaximumSize(new java.awt.Dimension(1200, 720));
-        setName("loginFrame"); // NOI18N
-        setResizable(false);
-        setSize(new java.awt.Dimension(1200, 720));
+        setPreferredSize(new java.awt.Dimension(1188, 708));
 
         Wrapper.setBackground(new java.awt.Color(255, 137, 47));
         Wrapper.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Wrapper.setPreferredSize(new java.awt.Dimension(1200, 720));
+        Wrapper.setPreferredSize(new java.awt.Dimension(1280, 720));
         Wrapper.setLayout(new java.awt.GridLayout(1, 2));
 
         leftPanel.setBackground(new java.awt.Color(255, 137, 47));
@@ -130,7 +188,7 @@ public class Login extends JFrame {
                     .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(paswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(usernameField1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,18 +201,18 @@ public class Login extends JFrame {
                 .addComponent(paswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(loginBtn)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Wrapper.add(rightPanel);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Wrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 1188, Short.MAX_VALUE)
+                .addComponent(Wrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 1268, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -164,8 +222,6 @@ public class Login extends JFrame {
                 .addComponent(Wrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameField1ActionPerformed
@@ -180,54 +236,16 @@ public class Login extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loginBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
- 
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Wrapper;
     private javax.swing.JLabel appDescription;
     private javax.swing.JLabel appName;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JButton loginBtn;
     private javax.swing.JLabel loginLabel;
     private javax.swing.JPasswordField paswordField1;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JTextField usernameField1;
-    private javax.swing.JPanel x;
     // End of variables declaration//GEN-END:variables
 }

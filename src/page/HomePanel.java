@@ -1,23 +1,21 @@
+package page;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 
 /**
  *
- * @author tanta
+ * @author windows
  */
-public class Home extends javax.swing.JFrame {
+public class HomePanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form NewJFrame
+     * Creates new form HomePanel
      */
-    public Home() {
+    public HomePanel() {
         initComponents();
-        
-        pack();
-        setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     /**
@@ -41,18 +39,13 @@ public class Home extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Waido KMITL");
-        setBackground(new java.awt.Color(0, 0, 0));
-        setFont(new java.awt.Font("Prompt", 0, 18)); // NOI18N
-        setResizable(false);
-        setSize(new java.awt.Dimension(1440, 1024));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         mainPanel.setBackground(new java.awt.Color(255, 137, 47));
         mainPanel.setFont(mainPanel.getFont());
-        mainPanel.setPreferredSize(new java.awt.Dimension(1440, 1024));
+        mainPanel.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel2.setBackground(new java.awt.Color(255, 137, 47));
         jPanel2.setPreferredSize(new java.awt.Dimension(300, 324));
@@ -60,7 +53,6 @@ public class Home extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(228, 109, 18));
         jButton1.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/house-door-fill.png"))); // NOI18N
         jButton1.setText("หน้าหลัก");
         jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -74,7 +66,6 @@ public class Home extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 137, 47));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bank2.png"))); // NOI18N
         jButton2.setText("จัดการคณะ/สาขา");
         jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -83,7 +74,6 @@ public class Home extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 137, 47));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book-half.png"))); // NOI18N
         jButton3.setText("จัดการวิชาเรียน");
         jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -92,7 +82,6 @@ public class Home extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 137, 47));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/mortarboard-fill.png"))); // NOI18N
         jButton4.setText("จัดการนักศึกษา");
         jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -106,7 +95,6 @@ public class Home extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 137, 47));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/person-fill.png"))); // NOI18N
         jButton5.setText("จัดการอาจารย์");
         jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -146,7 +134,6 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Prompt", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(93, 93, 93));
-        jLabel1.setLabelFor(jPanel3);
         jLabel1.setText("ยินดีต้อนรับ, Admin");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
@@ -163,24 +150,24 @@ public class Home extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGap(0, 382, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 183, Short.MAX_VALUE)
         );
 
-        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
-        jPanel5.setPreferredSize(new java.awt.Dimension(467, 185));
+        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
+        jPanel6.setPreferredSize(new java.awt.Dimension(467, 185));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 382, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 183, Short.MAX_VALUE)
         );
 
@@ -189,17 +176,18 @@ public class Home extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 681, Short.MAX_VALUE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -221,7 +209,7 @@ public class Home extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -240,72 +228,35 @@ public class Home extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(391, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Home().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -318,7 +269,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
