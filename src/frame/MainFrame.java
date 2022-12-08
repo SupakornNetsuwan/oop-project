@@ -49,6 +49,7 @@ public class MainFrame extends JFrame {
         setTitle("Waido KMITL");
         setAlwaysOnTop(true);
         setName("loginFrame"); // NOI18N
+        setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

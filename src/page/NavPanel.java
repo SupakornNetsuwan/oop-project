@@ -1,5 +1,8 @@
 package page;
 
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -9,15 +12,79 @@ package page;
  *
  * @author windows
  */
-public class HomePanel extends javax.swing.JPanel {
+public class NavPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form HomePanel
      */
-    public HomePanel() {
+    public NavPanel() {
         initComponents();
     }
 
+    public JPanel getBlankPanel() {
+        return blankPanel;
+    }
+
+    public void setBlankPanel(JPanel blankPanel) {
+        this.blankPanel = blankPanel;
+    }
+
+    public JButton getFacultyManageBtn() {
+        return facultyManageBtn;
+    }
+
+    public void setFacultyManageBtn(JButton facultyManageBtn) {
+        this.facultyManageBtn = facultyManageBtn;
+    }
+
+    public JButton getMainPageBtn() {
+        return mainPageBtn;
+    }
+
+    public void setMainPageBtn(JButton mainPageBtn) {
+        this.mainPageBtn = mainPageBtn;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public void setMainPanel(JPanel mainPanel) {
+        this.mainPanel = mainPanel;
+    }
+
+    public JButton getProfessorManageBtn() {
+        return professorManageBtn;
+    }
+
+    public void setProfessorManageBtn(JButton professorManageBtn) {
+        this.professorManageBtn = professorManageBtn;
+    }
+
+    public JPanel getSidePanel() {
+        return sidePanel;
+    }
+
+    public void setSidePanel(JPanel sidePanel) {
+        this.sidePanel = sidePanel;
+    }
+
+    public JButton getStudentManageBtn() {
+        return studentManageBtn;
+    }
+
+    public void setStudentManageBtn(JButton studentManageBtn) {
+        this.studentManageBtn = studentManageBtn;
+    }
+
+    public JButton getSubjectManageBtn() {
+        return subjectManageBtn;
+    }
+
+    public void setSubjectManageBtn(JButton subjectManageBtn) {
+        this.subjectManageBtn = subjectManageBtn;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,12 +101,7 @@ public class HomePanel extends javax.swing.JPanel {
         subjectManageBtn = new javax.swing.JButton();
         studentManageBtn = new javax.swing.JButton();
         professorManageBtn = new javax.swing.JButton();
-        contentPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        blankPanel = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
@@ -64,6 +126,7 @@ public class HomePanel extends javax.swing.JPanel {
             }
         });
 
+        facultyManageBtn.setBackground(new java.awt.Color(204, 204, 204));
         facultyManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         facultyManageBtn.setForeground(new java.awt.Color(255, 137, 47));
         facultyManageBtn.setText("จัดการคณะ/สาขา");
@@ -72,6 +135,7 @@ public class HomePanel extends javax.swing.JPanel {
         facultyManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         facultyManageBtn.setIconTextGap(10);
 
+        subjectManageBtn.setBackground(new java.awt.Color(204, 204, 204));
         subjectManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         subjectManageBtn.setForeground(new java.awt.Color(255, 137, 47));
         subjectManageBtn.setText("จัดการวิชาเรียน");
@@ -80,6 +144,7 @@ public class HomePanel extends javax.swing.JPanel {
         subjectManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         subjectManageBtn.setIconTextGap(10);
 
+        studentManageBtn.setBackground(new java.awt.Color(204, 204, 204));
         studentManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         studentManageBtn.setForeground(new java.awt.Color(255, 137, 47));
         studentManageBtn.setText("จัดการนักศึกษา");
@@ -93,6 +158,7 @@ public class HomePanel extends javax.swing.JPanel {
             }
         });
 
+        professorManageBtn.setBackground(new java.awt.Color(204, 204, 204));
         professorManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
         professorManageBtn.setForeground(new java.awt.Color(255, 137, 47));
         professorManageBtn.setText("จัดการอาจารย์");
@@ -127,89 +193,21 @@ public class HomePanel extends javax.swing.JPanel {
                 .addGap(1, 1, 1)
                 .addComponent(studentManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(professorManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(professorManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(416, Short.MAX_VALUE))
         );
 
-        contentPanel.setBackground(new java.awt.Color(255, 255, 255));
+        blankPanel.setPreferredSize(new java.awt.Dimension(991, 720));
 
-        jLabel1.setFont(new java.awt.Font("Prompt", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(93, 93, 93));
-        jLabel1.setText("ยินดีต้อนรับ, Admin");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        jSeparator1.setForeground(new java.awt.Color(193, 193, 193));
-        jSeparator1.setPreferredSize(new java.awt.Dimension(950, 2));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(951, 848));
-
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
-        jPanel4.setPreferredSize(new java.awt.Dimension(467, 185));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+        javax.swing.GroupLayout blankPanelLayout = new javax.swing.GroupLayout(blankPanel);
+        blankPanel.setLayout(blankPanelLayout);
+        blankPanelLayout.setHorizontalGroup(
+            blankPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 991, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
-        );
-
-        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
-        jPanel6.setPreferredSize(new java.awt.Dimension(467, 185));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(132, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
-        contentPanel.setLayout(contentPanelLayout);
-        contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(426, Short.MAX_VALUE))
-        );
-        contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentPanelLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
+        blankPanelLayout.setVerticalGroup(
+            blankPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -220,15 +218,12 @@ public class HomePanel extends javax.swing.JPanel {
                 .addGap(5, 5, 5)
                 .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(blankPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(391, Short.MAX_VALUE))
+            .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(blankPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -259,13 +254,8 @@ public class HomePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel contentPanel;
+    private javax.swing.JPanel blankPanel;
     private javax.swing.JButton facultyManageBtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton mainPageBtn;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JButton professorManageBtn;

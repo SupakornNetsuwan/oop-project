@@ -12,8 +12,8 @@ public class MainController implements ActionListener {
 
     private MainFrame mainFrame;
     private LoginPanel loginPanel; // login page
-    private HomePanel homePanel; // Home page
-    private Sidebar sidebar;
+    private NavPanel navPanel; // Home page
+    private MainPanel mainPanel;
 
 
     public MainController() {
@@ -32,10 +32,13 @@ public class MainController implements ActionListener {
     }
 
     public void changeToMainApp() {
-        sidebar = new Sidebar();
-        homePanel = new HomePanel(); // Create a home page.
+        mainPanel = new MainPanel();
+        navPanel = new NavPanel(); // Create a home page.
+        
         loginPanel.setVisible(false); // Disabled login page
-        mainFrame.add(homePanel);
+        mainFrame.add(navPanel);
+        navPanel.getBlankPanel().setLayout(new BorderLayout());
+        navPanel.getBlankPanel().add(mainPanel);
     }
 
     @Override
