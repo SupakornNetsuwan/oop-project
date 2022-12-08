@@ -28,13 +28,6 @@ public class MainLayout extends javax.swing.JPanel {
 
         mainLayout = new javax.swing.JPanel();
         navPanel = new javax.swing.JPanel();
-        mainPageBtn = new javax.swing.JButton();
-        facultyManageBtn = new javax.swing.JButton();
-        subjectManageBtn = new javax.swing.JButton();
-        studentManageBtn = new javax.swing.JButton();
-        professorManageBtn = new javax.swing.JButton();
-        appName = new javax.swing.JLabel();
-        appDescription = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -46,110 +39,18 @@ public class MainLayout extends javax.swing.JPanel {
         navPanel.setBackground(new java.awt.Color(255, 137, 47));
         navPanel.setPreferredSize(new java.awt.Dimension(300, 324));
 
-        mainPageBtn.setBackground(new java.awt.Color(228, 109, 18));
-        mainPageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
-        mainPageBtn.setForeground(new java.awt.Color(255, 255, 255));
-        mainPageBtn.setText("หน้าหลัก");
-        mainPageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        mainPageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        mainPageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        mainPageBtn.setIconTextGap(10);
-        mainPageBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mainPageBtnActionPerformed(evt);
-            }
-        });
-
-        facultyManageBtn.setBackground(new java.awt.Color(253, 249, 245));
-        facultyManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
-        facultyManageBtn.setForeground(new java.awt.Color(255, 137, 47));
-        facultyManageBtn.setText("จัดการคณะ/สาขา");
-        facultyManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        facultyManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        facultyManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        facultyManageBtn.setIconTextGap(10);
-
-        subjectManageBtn.setBackground(new java.awt.Color(253, 249, 245));
-        subjectManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
-        subjectManageBtn.setForeground(new java.awt.Color(255, 137, 47));
-        subjectManageBtn.setText("จัดการวิชาเรียน");
-        subjectManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        subjectManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        subjectManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        subjectManageBtn.setIconTextGap(10);
-
-        studentManageBtn.setBackground(new java.awt.Color(253, 249, 245));
-        studentManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
-        studentManageBtn.setForeground(new java.awt.Color(255, 137, 47));
-        studentManageBtn.setText("จัดการนักศึกษา");
-        studentManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        studentManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        studentManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        studentManageBtn.setIconTextGap(10);
-        studentManageBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentManageBtnActionPerformed(evt);
-            }
-        });
-
-        professorManageBtn.setBackground(new java.awt.Color(253, 249, 245));
-        professorManageBtn.setFont(new java.awt.Font("Prompt", 1, 20)); // NOI18N
-        professorManageBtn.setForeground(new java.awt.Color(255, 137, 47));
-        professorManageBtn.setText("จัดการอาจารย์");
-        professorManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        professorManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        professorManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        professorManageBtn.setIconTextGap(10);
-        professorManageBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                professorManageBtnActionPerformed(evt);
-            }
-        });
-
-        appName.setFont(new java.awt.Font("Prompt Semibold", 0, 24)); // NOI18N
-        appName.setForeground(new java.awt.Color(255, 255, 255));
-        appName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        appName.setText("WAIDO-KMITL");
-
-        appDescription.setFont(new java.awt.Font("Prompt Medium", 0, 18)); // NOI18N
-        appDescription.setForeground(new java.awt.Color(253, 215, 186));
-        appDescription.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        appDescription.setText("ระบบจัดการบุคลากรและ นักศึกษา");
-
         javax.swing.GroupLayout navPanelLayout = new javax.swing.GroupLayout(navPanel);
         navPanel.setLayout(navPanelLayout);
         navPanelLayout.setHorizontalGroup(
             navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(facultyManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-            .addComponent(subjectManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(studentManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(professorManageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(mainPageBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(appName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navPanelLayout.createSequentialGroup()
-                .addComponent(appDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 286, Short.MAX_VALUE)
         );
         navPanelLayout.setVerticalGroup(
             navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(navPanelLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(appName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(appDescription)
-                .addGap(18, 18, 18)
-                .addComponent(mainPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(facultyManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(subjectManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(studentManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(professorManageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 720, Short.MAX_VALUE)
         );
 
+        contentPanel.setBackground(new java.awt.Color(204, 204, 255));
         contentPanel.setPreferredSize(new java.awt.Dimension(991, 720));
 
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
@@ -193,18 +94,6 @@ public class MainLayout extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mainPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainPageBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mainPageBtnActionPerformed
-
-    private void studentManageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentManageBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_studentManageBtnActionPerformed
-
-    private void professorManageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorManageBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_professorManageBtnActionPerformed
-
     public JPanel getMainlayout() {
         return mainLayout;
     }
@@ -240,15 +129,8 @@ public class MainLayout extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel appDescription;
-    private javax.swing.JLabel appName;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JButton facultyManageBtn;
     private javax.swing.JPanel mainLayout;
-    private javax.swing.JButton mainPageBtn;
     private javax.swing.JPanel navPanel;
-    private javax.swing.JButton professorManageBtn;
-    private javax.swing.JButton studentManageBtn;
-    private javax.swing.JButton subjectManageBtn;
     // End of variables declaration//GEN-END:variables
 }
