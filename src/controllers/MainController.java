@@ -42,8 +42,8 @@ public class MainController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        /* --------------------   Login page   -------------------- */
+        try{
+            /* --------------------   Login page   -------------------- */
         if (e.getSource().equals(loginController.getLoginBtn())) {
             if (loginController.loginCheck(loginController.getLoginPage().getUsernameField1().getText(), loginController.getLoginPage().getPaswordField1().getText())) {
                 /* User is authened */
@@ -76,6 +76,10 @@ public class MainController implements ActionListener {
                 this.loginControllerInit();
             }
         }
+        } catch(NullPointerException ne){
+            System.out.println("Can't Open NavPanel");
+        }
+        
 
     }
 

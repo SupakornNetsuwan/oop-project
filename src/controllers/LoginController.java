@@ -54,12 +54,6 @@ public class LoginController {
         mainFrame.repaint();
     }
 
-    public boolean checkIsAuthen() {
-        return true;
-        //or
-        //return false
-    }
-
     public boolean loginCheck(String username, String password) {
         sql = "SELECT * FROM USER WHERE USERNAME=? AND PASSWORD=?";
 
@@ -78,6 +72,7 @@ public class LoginController {
                 return true;
             } else {
                 System.out.println("your username or password are wrong");
+                
                 return false;
             }
             
@@ -88,7 +83,14 @@ public class LoginController {
     }
 
     public void handleLoginReject() {
+        JOptionPane.showMessageDialog(mainFrame,"Your username or password is incorrect.", "Error!", JOptionPane.ERROR_MESSAGE);
+        clearLoginTextField();
         System.out.println("No permission");
+    }
+    
+    public void clearLoginTextField(){
+        loginPage.getUsernameField1().setText("");
+        loginPage.getPaswordField1().setText("");
     }
 
 
