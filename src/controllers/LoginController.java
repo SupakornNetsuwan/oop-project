@@ -21,7 +21,7 @@ public class LoginController {
     // SQL connection declaration goes here!
     private final Connection con = Connect.ConnectDB();
     private ResultSet result = null;
-    private PreparedStatement statement = null ;
+    private PreparedStatement statement = null;
     private String sql;
 
     public LoginPage getLoginPage() {
@@ -39,7 +39,7 @@ public class LoginController {
     public void openLogInPage() {
         mainFrame.getContentPane().removeAll(); //Clear Panel
         /* ------------------ Start Login Controller ------------------  */
-        this.start(); //Create Login Page
+        loginPage = new LoginPage(); //Create Login Page
         /* ------------------ Default frame config ------------------  */
         mainFrame.config(); //MainFrame Visible
         mainFrame.add(this.getLoginPage()); //MainFrame Add Login Page
@@ -59,10 +59,10 @@ public class LoginController {
         //or
         //return false
     }
-    
-     public boolean loginCheck(String username, String password) {
+
+    public boolean loginCheck(String username, String password) {
         sql = "SELECT * FROM USER WHERE USERNAME=? AND PASSWORD=?";
-        
+
         try {
             statement = con.prepareStatement(sql);
             statement.setString(1, username);
@@ -70,17 +70,17 @@ public class LoginController {
             result = statement.executeQuery();
             if (result != null && result.next()) {
                 System.out.println("login successful");
-                System.out.println("ID : "+result.getInt("ID"));
-                System.out.println("USERNAME : "+result.getString("USERNAME"));
-                System.out.println("Password : "+result.getString("Password"));
-                System.out.println("LEVEL : "+result.getInt("LEVEL"));
+                System.out.println("ID : " + result.getInt("ID"));
+                System.out.println("USERNAME : " + result.getString("USERNAME"));
+                System.out.println("Password : " + result.getString("Password"));
+                System.out.println("LEVEL : " + result.getInt("LEVEL"));
                 user = new UserModel(result.getInt("ID"), result.getString("USERNAME"), result.getString("Password"), result.getInt("LEVEL"));
                 return true;
-            }
-            else {
+            } else {
                 System.out.println("your username or password are wrong");
                 return false;
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -91,10 +91,6 @@ public class LoginController {
         System.out.println("No permission");
     }
 
-    public void start() {
-        /* start application function*/
-        loginPage = new LoginPage();
-        // SQL instance goes here!
-    }
+
 
 }
