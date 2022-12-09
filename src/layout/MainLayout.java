@@ -2,21 +2,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package components;
+package layout;
+
+import components.ContentPanel;
+import components.NavPanel;
+import javax.swing.JPanel;
 
 /**
  *
- * @author windows
+ * @author User
  */
-public class ContentPanel extends javax.swing.JPanel {
+public class MainLayout extends javax.swing.JPanel {
 
     /**
-     * Creates new form ContentPanel
+     * Creates new form MainLayout
      */
-    public ContentPanel() {
+    public MainLayout() {
         initComponents();
     }
-    
+
+    public ContentPanel getContentPanel() {
+        return contentPanel;
+    }
+
+    public NavPanel getNavPanel() {
+        return navPanel;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +38,18 @@ public class ContentPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        navPanel = new components.NavPanel();
+        contentPanel = new components.ContentPanel();
 
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setLayout(new java.awt.BorderLayout());
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("BLANK");
-        add(jLabel1, java.awt.BorderLayout.CENTER);
+        add(navPanel, java.awt.BorderLayout.LINE_START);
+        add(contentPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private components.ContentPanel contentPanel;
+    private components.NavPanel navPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,6 @@
 package controllers;
 
+import frame.MainFrame;
 import javax.swing.*;
 import java.awt.*;
 

@@ -1,12 +1,7 @@
 package controllers;
 
-import components.MainLayout;
 import java.awt.event.*;
-import java.awt.*;
-
-import page.*;
-import components.*;
-import frame.*;
+import frame.MainFrame;
 
 public class MainController implements ActionListener {
 
@@ -30,14 +25,16 @@ public class MainController implements ActionListener {
 
     public void redirectToMainApp() {
         loginController.disablePage(); // Disabled login page
-        appController = new AppController();
+        appController = new AppController(mainFrame);
         mainFrame.add(appController.getMainLayout()); // Enable Main Page
-        /* Navbar init */
-        appController.getMainLayout().getMainPageBtn().addActionListener(this);
-        appController.getMainLayout().getStudentManageBtn().addActionListener(this);
-        appController.getMainLayout().getSubjectManageBtn().addActionListener(this);
-        appController.getMainLayout().getProfessorManageBtn().addActionListener(this);
-        appController.getMainLayout().getFacultyManageBtn().addActionListener(this);
+
+        appController.switchToMainPanel(); // First, Switch to home page;
+        /* Navbar listener */
+        appController.getNavPanel().getMainPageBtn().addActionListener(this);
+        appController.getNavPanel().getStudentManageBtn().addActionListener(this);
+        appController.getNavPanel().getSubjectManageBtn().addActionListener(this);
+        appController.getNavPanel().getProfessorManageBtn().addActionListener(this);
+        appController.getNavPanel().getFacultyManageBtn().addActionListener(this);
     }
 
     @Override
@@ -54,20 +51,20 @@ public class MainController implements ActionListener {
         }
 
         /* -------------------- Sidebar (Navbar) -------------------- */
-        if (e.getSource().equals(appController.getMainLayout().getMainPageBtn())) {
-            System.out.println("Main page");
+        if (e.getSource().equals(appController.getNavPanel().getMainPageBtn())) {
+            
             appController.switchToMainPanel();
-        } else if (e.getSource().equals(appController.getMainLayout().getStudentManageBtn())) {
-            System.out.println("Student page");
+        } else if (e.getSource().equals(appController.getNavPanel().getStudentManageBtn())) {
+            
             appController.switchToStudentManagePanel();
-        } else if (e.getSource().equals(appController.getMainLayout().getSubjectManageBtn())) {
-            System.out.println("Subject page");
+        } else if (e.getSource().equals(appController.getNavPanel().getSubjectManageBtn())) {
+            
             appController.switchToSubjectManagePanel();
-        } else if (e.getSource().equals(appController.getMainLayout().getFacultyManageBtn())) {
-            System.out.println("Faculty page");
+        } else if (e.getSource().equals(appController.getNavPanel().getFacultyManageBtn())) {
+            
             appController.switchToFacultyManagePanel();
-        } else if (e.getSource().equals(appController.getMainLayout().getProfessorManageBtn())) {
-            System.out.println("Professor page");
+        } else if (e.getSource().equals(appController.getNavPanel().getProfessorManageBtn())) {
+            
             appController.switchToProfessorManagePanel();
         }
     }

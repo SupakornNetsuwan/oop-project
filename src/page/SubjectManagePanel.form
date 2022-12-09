@@ -53,7 +53,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="5d" green="5d" red="5d" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe08;&#xe31;&#xe14;&#xe01;&#xe32;&#xe23;&#xe04;&#xe13;&#xe30;/&#xe2a;&#xe32;&#xe02;&#xe32;"/>
+        <Property name="text" type="java.lang.String" value="&#xe08;&#xe31;&#xe14;&#xe01;&#xe32;&#xe23;&#xe27;&#xe34;&#xe0a;&#xe32;&#xe40;&#xe23;&#xe35;&#xe22;&#xe19;"/>
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>
     </Component>

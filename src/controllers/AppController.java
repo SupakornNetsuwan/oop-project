@@ -1,99 +1,102 @@
 package controllers;
+/* pages for MDI */
+import page.SubjectManagePanel;
+import page.HomePanel;
+import page.ProfessorManagePanel;
+import page.StudentManagePanel;
+import page.FacultyManagePanel;
 
+import layout.MainLayout;
 import components.*;
-import java.awt.*;
+import frame.MainFrame;
 import javax.swing.*;
 
 public class AppController {
-    private String pageName = "Home";
-    private boolean firstTimeAddHomePanel = true;
-    private boolean firstTimeAddFacultyManagePanel = true;
-    private boolean firstTimeAddStudentManagePanel = true;
-    private boolean firstTimeAddProfessorManagePanel = true;
 
     /* Pages & panels*/
     private MainLayout mainLayout;
-
-    /* Panels */
-    private HomePanel homePanel;
-    private FacultyManagePanel facultyManagePanel;
-
-    /* Panels in content panel */
-    public HomePanel getMainPanel() {
-        return this.homePanel;
-    }
-
-    public JPanel getContentPanel() { // get main blank jpanel
-        return mainLayout.getContentPanel();
-    }
+    private MainFrame mainFrame;
 
     public MainLayout getMainLayout() {
         return this.mainLayout;
     }
 
-    public AppController() {
-        /* ------------------ Nav Panel (It is primary page ------------------ */
-        mainLayout = new MainLayout(); // Create a home page.
-        this.getContentPanel().setLayout(new BorderLayout());
-        this.switchToMainPanel();
+    public ContentPanel getContentPanel() {
+        return mainLayout.getContentPanel();
+    }
+
+    public NavPanel getNavPanel() {
+        return mainLayout.getNavPanel();
+    }
+
+    /* Panels ------------------------------------------------------------------*/
+    private HomePanel homePanel;
+    private FacultyManagePanel facultyManagePanel;
+    private SubjectManagePanel subjectManagePanel;
+    private StudentManagePanel studentManagePanel;
+    private ProfessorManagePanel professorManagePanel;
+
+    /* Panels getter in content panel */
+    public HomePanel getHomePanel() {
+        return this.homePanel;
+    }
+
+    public FacultyManagePanel getFacultyManagePanel() {
+        return this.facultyManagePanel;
+    }
+
+    public SubjectManagePanel getSubjectManagePanel() {
+        return subjectManagePanel;
+    }
+
+    public StudentManagePanel getStudentManagePanel() {
+        return studentManagePanel;
+    }
+
+    public ProfessorManagePanel getProfessorManagePanel() {
+        return professorManagePanel;
+    }
+
+    /* -------------------------------------------------------------------------*/
+    public AppController(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
+        this.mainLayout = new MainLayout();
     }
 
     public void switchToMainPanel() {
+        System.out.println("Main page");
         homePanel = new HomePanel();
-        this.disablePage();
-        pageName = "Home";
-        if(firstTimeAddHomePanel){
-            this.getContentPanel().add(homePanel);
-        }
-        else{
-            homePanel.setVisible(true);
-        }
+        swtichTo(homePanel);
     }
 
     public void switchToFacultyManagePanel() {
+        System.out.println("Faculty page");
         facultyManagePanel = new FacultyManagePanel();
-        this.disablePage();
-        pageName = "Faculty";
-        if(firstTimeAddHomePanel){
-            this.getContentPanel().add(facultyManagePanel);
-        }
-        else{
-            facultyManagePanel.setVisible(true);
-        }
-//        this.getContentPanel().setLayout(new BorderLayout());
-        
+        swtichTo(facultyManagePanel);
     }
 
     public void switchToProfessorManagePanel() {
-
+        System.out.println("Professor page");
+        professorManagePanel = new ProfessorManagePanel();
+        swtichTo(professorManagePanel);
     }
 
     public void switchToStudentManagePanel() {
-
+        System.out.println("Student page");
+        studentManagePanel = new StudentManagePanel();
+        swtichTo(studentManagePanel);
     }
-    
+
     public void switchToSubjectManagePanel() {
-
+        System.out.println("Subject page");
+        subjectManagePanel = new SubjectManagePanel();
+        swtichTo(subjectManagePanel);
     }
 
-    public void switchToSubjectManageBtn() {
-
+    private void swtichTo(JPanel panelToSwitch) {
+        this.getContentPanel().removeAll();
+        this.getContentPanel().add(panelToSwitch);
+        mainFrame.revalidate();
+        mainFrame.repaint();
     }
-    public void disablePage(){
-        switch(pageName){
-            case "Home" -> {
-                homePanel.setVisible(false);
-            }
-            case "Faculty" -> {
-                facultyManagePanel.setVisible(false);
-            }
-            case "Student" -> {
-                facultyManagePanel.setVisible(false);
-            }
-            case "Professor" -> {
-                facultyManagePanel.setVisible(false);
-            }
-        }
-    }
-
 }

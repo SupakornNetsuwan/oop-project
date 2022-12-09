@@ -1,15 +1,15 @@
-package components;
+package page;
 
 /**
  *
  * @author windows
  */
-public class FacultyManagePanel extends javax.swing.JPanel {
+public class StudentManagePanel extends javax.swing.JPanel {
 
     /**
      * Creates new form MainPanel2
      */
-    public FacultyManagePanel() {
+    public StudentManagePanel() {
         initComponents();
     }
 
@@ -32,7 +32,7 @@ public class FacultyManagePanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Prompt", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(93, 93, 93));
-        jLabel1.setText("จัดการคณะ/สาขา");
+        jLabel1.setText("จัดการนักศึกษา");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jSeparator1.setForeground(new java.awt.Color(193, 193, 193));

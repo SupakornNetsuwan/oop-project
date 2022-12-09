@@ -1,19 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
-package components;
+package page;
 
 /**
  *
  * @author windows
  */
-public class HomePanel extends javax.swing.JPanel {
+public class ProfessorManagePanel extends javax.swing.JPanel {
 
     /**
      * Creates new form MainPanel2
      */
-    public HomePanel() {
+    public ProfessorManagePanel() {
         initComponents();
     }
 
@@ -36,7 +32,7 @@ public class HomePanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Prompt", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(93, 93, 93));
-        jLabel1.setText("ยินดีต้อนรับ, Admin");
+        jLabel1.setText("จัดการอาจารย์");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jSeparator1.setForeground(new java.awt.Color(193, 193, 193));
