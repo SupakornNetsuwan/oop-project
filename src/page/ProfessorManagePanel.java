@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
 package page;
 
 /**
@@ -22,172 +26,159 @@ public class ProfessorManagePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pageTitle = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        menuPanel = new javax.swing.JPanel();
-        searchBox = new javax.swing.JTextField();
-        iconSearch = new javax.swing.JLabel();
-        btnAdd = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel_Amount = new javax.swing.JLabel();
-        jLabel_Detail = new javax.swing.JLabel();
-        jLabel_Name = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
+        jTextField1 = new javax.swing.JTextField();
+        northPanel = new javax.swing.JPanel();
+        pageHeader = new javax.swing.JLabel();
+        headerSeparator = new javax.swing.JSeparator();
+        centerPanel = new javax.swing.JPanel();
+        actionWrapper = new javax.swing.JPanel();
+        buttonsWrapper = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollBar1 = new javax.swing.JScrollBar();
+
+        jTextField1.setColumns(30);
+        jTextField1.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField1.setText("คณะเทคโนโลยีสารสนเทศ");
+        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 0, 14))); // NOI18N
+        jTextField1.setFocusable(false);
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1021, 720));
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        setPreferredSize(new java.awt.Dimension(1000, 720));
+        setLayout(new java.awt.BorderLayout(0, 5));
 
-        jLabel1.setFont(new java.awt.Font("Prompt", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(93, 93, 93));
-        jLabel1.setText("จัดการอาจารย์");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        northPanel.setBackground(new java.awt.Color(255, 255, 255));
+        northPanel.setLayout(new javax.swing.BoxLayout(northPanel, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jSeparator1.setForeground(new java.awt.Color(193, 193, 193));
-        jSeparator1.setPreferredSize(new java.awt.Dimension(950, 2));
+        pageHeader.setFont(new java.awt.Font("Prompt", 1, 28)); // NOI18N
+        pageHeader.setForeground(new java.awt.Color(93, 93, 93));
+        pageHeader.setText("จัดการอาจารย์");
+        pageHeader.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        pageHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        northPanel.add(pageHeader);
 
-        menuPanel.setBackground(new java.awt.Color(255, 255, 255));
+        headerSeparator.setForeground(new java.awt.Color(193, 193, 193));
+        headerSeparator.setPreferredSize(new java.awt.Dimension(950, 2));
+        northPanel.add(headerSeparator);
 
-        searchBox.setFont(new java.awt.Font("Prompt", 0, 18)); // NOI18N
-        searchBox.setToolTipText("");
-        searchBox.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 0, 12))); // NOI18N
-        searchBox.setName(""); // NOI18N
-        searchBox.addActionListener(new java.awt.event.ActionListener() {
+        add(northPanel, java.awt.BorderLayout.PAGE_START);
+
+        centerPanel.setBackground(new java.awt.Color(249, 249, 249));
+
+        actionWrapper.setBackground(new java.awt.Color(249, 249, 249));
+        actionWrapper.setLayout(new java.awt.BorderLayout());
+
+        buttonsWrapper.setLayout(new java.awt.BorderLayout(5, 0));
+
+        jButton1.setBackground(new java.awt.Color(249, 249, 249));
+        jButton1.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(230, 63, 63));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        jButton1.setText("ลบอาจารย์ที่เลือก");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 63, 63), 2, true));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setMargin(new java.awt.Insets(2, 5, 3, 5));
+        jButton1.setPreferredSize(new java.awt.Dimension(150, 40));
+        jButton1.setRequestFocusEnabled(false);
+        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBoxActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
+        buttonsWrapper.add(jButton1, java.awt.BorderLayout.LINE_START);
 
-        iconSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
-        iconSearch.setText("jLabel2");
-
-        btnAdd.setBackground(new java.awt.Color(255, 137, 47));
-        btnAdd.setFont(new java.awt.Font("Prompt", 0, 16)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("เพิ่มคณะ");
-        btnAdd.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 137, 47), 2, true));
-
-        btnDelete.setFont(new java.awt.Font("Prompt", 0, 16)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 0, 0));
-        btnDelete.setText("ลบคณะที่เลือก");
-        btnDelete.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
-
-        jCheckBox1.setEnabled(false);
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setBackground(new java.awt.Color(255, 137, 47));
+        jButton3.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        jButton3.setText("เพิ่มอาจารย์");
+        jButton3.setBorder(null);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setMargin(new java.awt.Insets(2, 5, 3, 5));
+        jButton3.setPreferredSize(new java.awt.Dimension(120, 40));
+        jButton3.setRequestFocusEnabled(false);
+        jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
+        buttonsWrapper.add(jButton3, java.awt.BorderLayout.EAST);
 
-        jLabel_Amount.setFont(new java.awt.Font("Prompt", 1, 16)); // NOI18N
-        jLabel_Amount.setForeground(new java.awt.Color(255, 137, 47));
-        jLabel_Amount.setText("จำนวนสาขา");
+        actionWrapper.add(buttonsWrapper, java.awt.BorderLayout.EAST);
 
-        jLabel_Detail.setFont(new java.awt.Font("Prompt", 1, 16)); // NOI18N
-        jLabel_Detail.setForeground(new java.awt.Color(255, 137, 47));
-        jLabel_Detail.setText("ดูข้อมูล");
+        jTextField3.setColumns(20);
+        jTextField3.setFont(new java.awt.Font("Prompt", 1, 14)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(93, 93, 93));
+        jTextField3.setToolTipText("");
+        jTextField3.setActionCommand("<Not Set>");
+        jTextField3.setAutoscrolls(false);
+        jTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 0, 14), new java.awt.Color(149, 149, 149))); // NOI18N
+        jTextField3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextField3.setMargin(new java.awt.Insets(2, 24, 2, 24));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        actionWrapper.add(jTextField3, java.awt.BorderLayout.LINE_START);
 
-        jLabel_Name.setFont(new java.awt.Font("Prompt", 1, 16)); // NOI18N
-        jLabel_Name.setForeground(new java.awt.Color(255, 137, 47));
-        jLabel_Name.setText("ชื่อคณะ");
+        jScrollPane1.setBackground(new java.awt.Color(153, 153, 153));
+        jScrollPane1.setViewportView(jScrollBar1);
 
-        jSeparator2.setForeground(new java.awt.Color(193, 193, 193));
-        jSeparator2.setPreferredSize(new java.awt.Dimension(950, 2));
-
-        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
-        menuPanel.setLayout(menuPanelLayout);
-        menuPanelLayout.setHorizontalGroup(
-            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
+        centerPanel.setLayout(centerPanelLayout);
+        centerPanelLayout.setHorizontalGroup(
+            centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(centerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addComponent(iconSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_Name)
-                        .addGap(223, 223, 223)
-                        .addComponent(jLabel_Amount)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel_Detail)
-                        .addContainerGap())))
-            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(actionWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
-        menuPanelLayout.setVerticalGroup(
-            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanelLayout.createSequentialGroup()
-                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(searchBox)
-                        .addComponent(iconSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menuPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel_Detail)
-                        .addComponent(jLabel_Amount)
-                        .addComponent(jLabel_Name)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+        centerPanelLayout.setVerticalGroup(
+            centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(centerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(actionWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 907, Short.MAX_VALUE)
-                    .addComponent(pageTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 901, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(54, 54, 54))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pageTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(444, Short.MAX_VALUE))
-        );
+        add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBoxActionPerformed
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchBoxActionPerformed
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JLabel iconSearch;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel_Amount;
-    private javax.swing.JLabel jLabel_Detail;
-    private javax.swing.JLabel jLabel_Name;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JPanel menuPanel;
-    private javax.swing.JLabel pageTitle;
-    private javax.swing.JTextField searchBox;
+    private javax.swing.JPanel actionWrapper;
+    private javax.swing.JPanel buttonsWrapper;
+    private javax.swing.JPanel centerPanel;
+    private javax.swing.JSeparator headerSeparator;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JPanel northPanel;
+    private javax.swing.JLabel pageHeader;
     // End of variables declaration//GEN-END:variables
 }
