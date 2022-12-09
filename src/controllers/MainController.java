@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.*;
 import javax.swing.*;
 import frame.MainFrame;
+import model.UserModel;
 
 public class MainController implements ActionListener {
 
@@ -11,6 +12,7 @@ public class MainController implements ActionListener {
     private AppController appController;
     /* Primary frame */
     private MainFrame mainFrame;
+    private UserModel user;
 
     public MainController() {
         mainFrame = new MainFrame();
@@ -43,7 +45,7 @@ public class MainController implements ActionListener {
 
         /* --------------------   Login page   -------------------- */
         if (e.getSource().equals(loginController.getLoginBtn())) {
-            if (loginController.checkIsAuthen()) {
+            if (loginController.loginCheck(loginController.getLoginPage().getUsernameField1().getText(), loginController.getLoginPage().getPaswordField1().getText())) {
                 /* User is authened */
                 this.mainAppControllerInit();
             } else {

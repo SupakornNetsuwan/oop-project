@@ -18,8 +18,6 @@ public class User {
         this.level = level;
     }
 
-    
-    
     public int getId() {
         return id;
     }
