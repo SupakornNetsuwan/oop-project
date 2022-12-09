@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import page.*;
+import model.*;
 
 public class LoginController {
 
