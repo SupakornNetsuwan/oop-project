@@ -78,7 +78,7 @@ public class MainController implements ActionListener {
             System.out.println("Login Page");
             int x = JOptionPane.showConfirmDialog(mainFrame, "Confirm Logout", "Make sure you want to Logout?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png")));
             if (x == 0){
-                this.openLogInPage(); 
+                this.openLogInPage();
             }
                  
         }
