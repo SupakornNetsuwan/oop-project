@@ -70,12 +70,11 @@ public class MainController implements ActionListener {
 
             appController.switchToProfessorManagePanel();
         } else if (e.getSource().equals(appController.getNavPanel().getLogOutBtn())) {
-            System.out.println("Login Page");
+
             int x = JOptionPane.showConfirmDialog(mainFrame, "Confirm Logout", "Make sure you want to Logout?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/logout2.png")));
             if (x == 0) {
                 this.loginControllerInit();
             }
-
         }
 
     }

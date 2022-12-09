@@ -115,6 +115,7 @@ public class NavPanel extends javax.swing.JPanel {
         facultyManageBtn.setText("จัดการคณะ/สาขา");
         facultyManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         facultyManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        facultyManageBtn.setFocusPainted(false);
         facultyManageBtn.setFocusable(false);
         facultyManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         facultyManageBtn.setIconTextGap(10);
@@ -132,6 +133,7 @@ public class NavPanel extends javax.swing.JPanel {
         subjectManageBtn.setText("จัดการวิชาเรียน");
         subjectManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         subjectManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        subjectManageBtn.setFocusPainted(false);
         subjectManageBtn.setFocusable(false);
         subjectManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         subjectManageBtn.setIconTextGap(10);
@@ -149,6 +151,7 @@ public class NavPanel extends javax.swing.JPanel {
         studentManageBtn.setText("จัดการนักศึกษา");
         studentManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         studentManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        studentManageBtn.setFocusPainted(false);
         studentManageBtn.setFocusable(false);
         studentManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         studentManageBtn.setIconTextGap(10);
@@ -166,6 +169,7 @@ public class NavPanel extends javax.swing.JPanel {
         professorManageBtn.setText("จัดการอาจารย์");
         professorManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         professorManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        professorManageBtn.setFocusPainted(false);
         professorManageBtn.setFocusable(false);
         professorManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         professorManageBtn.setIconTextGap(10);
@@ -182,6 +186,7 @@ public class NavPanel extends javax.swing.JPanel {
         logOutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
         logOutBtn.setText(" Logout");
         logOutBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        logOutBtn.setFocusPainted(false);
         logOutBtn.setRequestFocusEnabled(false);
         logOutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

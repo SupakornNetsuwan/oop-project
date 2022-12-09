@@ -15,8 +15,9 @@ public class FacultyManagePanel extends javax.swing.JPanel {
      */
     public FacultyManagePanel() {
         initComponents();
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,17 +28,19 @@ public class FacultyManagePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        facultyTable = new javax.swing.JTable();
         northPanel = new javax.swing.JPanel();
         pageHeader = new javax.swing.JLabel();
         headerSeparator = new javax.swing.JSeparator();
         centerPanel = new javax.swing.JPanel();
         actionWrapper = new javax.swing.JPanel();
         buttonsWrapper = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jScrollBar1 = new javax.swing.JScrollBar();
+        deleteFaculty = new javax.swing.JButton();
+        addFaculty = new javax.swing.JButton();
+        findFaculty = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table1 = new components.Table();
 
         jTextField1.setColumns(30);
         jTextField1.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
@@ -45,6 +48,41 @@ public class FacultyManagePanel extends javax.swing.JPanel {
         jTextField1.setText("คณะเทคโนโลยีสารสนเทศ");
         jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 0, 14))); // NOI18N
         jTextField1.setFocusable(false);
+
+        jScrollPane1.setBorder(null);
+
+        facultyTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, "easrwer", "asfqf", "qwfq"},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, "qwf", null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, "qwf", null, null},
+                {null, null, "qwf", null, null, null},
+                {null, null, "qwf", null, null, null},
+                {null, null, null, "qwf", null, null},
+                {null, null, "qwf", null, null, null},
+                {null, null, null, "qwf", null, null},
+                {null, null, null, null, null, null},
+                {null, null, "wqf", null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, "wqf", null, null},
+                {null, null, "qwf", null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, "qwf", null, null},
+                {null, "qwfwq", "qwf", null, null, null},
+                {null, null, null, "qwf", null, null},
+                {"qwf", null, null, null, "qwf", "easrth"}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+            }
+        ));
+        facultyTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        facultyTable.setShowGrid(true);
+        jScrollPane1.setViewportView(facultyTable);
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -74,62 +112,86 @@ public class FacultyManagePanel extends javax.swing.JPanel {
 
         buttonsWrapper.setLayout(new java.awt.BorderLayout(5, 0));
 
-        jButton1.setBackground(new java.awt.Color(249, 249, 249));
-        jButton1.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(230, 63, 63));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
-        jButton1.setText("ลบคณะที่เลือก");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 63, 63), 2, true));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setMargin(new java.awt.Insets(2, 5, 3, 5));
-        jButton1.setPreferredSize(new java.awt.Dimension(140, 40));
-        jButton1.setRequestFocusEnabled(false);
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        deleteFaculty.setBackground(new java.awt.Color(249, 249, 249));
+        deleteFaculty.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
+        deleteFaculty.setForeground(new java.awt.Color(230, 63, 63));
+        deleteFaculty.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        deleteFaculty.setText("ลบคณะที่เลือก");
+        deleteFaculty.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 63, 63), 2, true));
+        deleteFaculty.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteFaculty.setMargin(new java.awt.Insets(2, 5, 3, 5));
+        deleteFaculty.setPreferredSize(new java.awt.Dimension(140, 40));
+        deleteFaculty.setRequestFocusEnabled(false);
+        deleteFaculty.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        deleteFaculty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                deleteFacultyActionPerformed(evt);
             }
         });
-        buttonsWrapper.add(jButton1, java.awt.BorderLayout.LINE_START);
+        buttonsWrapper.add(deleteFaculty, java.awt.BorderLayout.LINE_START);
 
-        jButton3.setBackground(new java.awt.Color(255, 137, 47));
-        jButton3.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
-        jButton3.setText("เพิ่มคณะ");
-        jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setMargin(new java.awt.Insets(2, 5, 3, 5));
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 40));
-        jButton3.setRequestFocusEnabled(false);
-        jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        addFaculty.setBackground(new java.awt.Color(255, 137, 47));
+        addFaculty.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
+        addFaculty.setForeground(new java.awt.Color(255, 255, 255));
+        addFaculty.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        addFaculty.setText("เพิ่มคณะ");
+        addFaculty.setBorder(null);
+        addFaculty.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addFaculty.setMargin(new java.awt.Insets(2, 5, 3, 5));
+        addFaculty.setPreferredSize(new java.awt.Dimension(100, 40));
+        addFaculty.setRequestFocusEnabled(false);
+        addFaculty.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        addFaculty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                addFacultyActionPerformed(evt);
             }
         });
-        buttonsWrapper.add(jButton3, java.awt.BorderLayout.EAST);
+        buttonsWrapper.add(addFaculty, java.awt.BorderLayout.EAST);
 
         actionWrapper.add(buttonsWrapper, java.awt.BorderLayout.EAST);
 
-        jTextField3.setColumns(20);
-        jTextField3.setFont(new java.awt.Font("Prompt", 1, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(93, 93, 93));
-        jTextField3.setToolTipText("");
-        jTextField3.setActionCommand("<Not Set>");
-        jTextField3.setAutoscrolls(false);
-        jTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 0, 14), new java.awt.Color(149, 149, 149))); // NOI18N
-        jTextField3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField3.setMargin(new java.awt.Insets(2, 24, 2, 24));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        findFaculty.setColumns(20);
+        findFaculty.setFont(new java.awt.Font("Prompt", 1, 14)); // NOI18N
+        findFaculty.setForeground(new java.awt.Color(93, 93, 93));
+        findFaculty.setToolTipText("");
+        findFaculty.setActionCommand("<Not Set>");
+        findFaculty.setAutoscrolls(false);
+        findFaculty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 0, 14), new java.awt.Color(149, 149, 149))); // NOI18N
+        findFaculty.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        findFaculty.setMargin(new java.awt.Insets(2, 24, 2, 24));
+        findFaculty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                findFacultyActionPerformed(evt);
             }
         });
-        actionWrapper.add(jTextField3, java.awt.BorderLayout.LINE_START);
+        actionWrapper.add(findFaculty, java.awt.BorderLayout.LINE_START);
 
-        jScrollPane1.setBackground(new java.awt.Color(153, 153, 153));
-        jScrollPane1.setViewportView(jScrollBar1);
+        jScrollPane2.setBorder(null);
+
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"tao", null, null, null},
+                {"earth", "a", null, null},
+                {"oat", null, null, null},
+                {"toa", null, null, null},
+                {"benz", null, "x", null},
+                {"neng", null, null, null},
+                {"earth-2", null, "x", null},
+                {"earthg", "x", "x", null}
+            },
+            new String [] {
+                "การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(table1);
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
         centerPanel.setLayout(centerPanelLayout);
@@ -137,48 +199,53 @@ public class FacultyManagePanel extends javax.swing.JPanel {
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(centerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(actionWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
+                .addGroup(centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(actionWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
-            .addComponent(jScrollPane1)
         );
         centerPanelLayout.setVerticalGroup(
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(centerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(actionWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void findFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findFacultyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_findFacultyActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void deleteFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteFacultyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_deleteFacultyActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void addFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFacultyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_addFacultyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel actionWrapper;
+    private javax.swing.JButton addFaculty;
     private javax.swing.JPanel buttonsWrapper;
     private javax.swing.JPanel centerPanel;
+    private javax.swing.JButton deleteFaculty;
+    private javax.swing.JTable facultyTable;
+    private javax.swing.JTextField findFaculty;
     private javax.swing.JSeparator headerSeparator;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel northPanel;
     private javax.swing.JLabel pageHeader;
+    private components.Table table1;
     // End of variables declaration//GEN-END:variables
 }

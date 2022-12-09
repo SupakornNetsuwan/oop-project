@@ -50,6 +50,8 @@ public class LoginController {
     public void closeLoginPage(MainFrame mainFrame) {
 //        this.getLoginPage().setVisible(false); <- deprecated
         mainFrame.getContentPane().removeAll();
+        mainFrame.revalidate();
+        mainFrame.repaint();
     }
 
     public boolean checkIsAuthen() {

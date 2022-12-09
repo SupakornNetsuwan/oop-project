@@ -76,6 +76,8 @@ public class AppController {
 
     public void closeMainApp() {
         mainFrame.getContentPane().removeAll(); //Clear Panel
+        mainFrame.revalidate();
+        mainFrame.repaint();
     }
 
     public void switchToMainPanel() {
