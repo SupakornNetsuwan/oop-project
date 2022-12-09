@@ -61,6 +61,7 @@ public class AppController {
     public AppController(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         this.mainLayout = new MainLayout();
+        
     }
 
     public void switchToMainPanel() {

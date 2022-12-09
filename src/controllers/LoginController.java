@@ -25,8 +25,9 @@ public class LoginController {
         //return false
     }
 
-    public void disablePage() {
-        this.getLoginPage().setVisible(false);
+    public void disablePage(MainFrame mainFrame) {
+//        this.getLoginPage().setVisible(false);
+        mainFrame.getContentPane().removeAll();
     }
 
     public void handleLoginReject() {

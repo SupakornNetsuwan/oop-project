@@ -1,6 +1,7 @@
 package controllers;
 
 import java.awt.event.*;
+import javax.swing.*;
 import frame.MainFrame;
 
 public class MainController implements ActionListener {
@@ -14,20 +15,14 @@ public class MainController implements ActionListener {
     public MainController() {
         mainFrame = new MainFrame();
         loginController = new LoginController();
-
-        /* ------------------ Login controller ------------------  */
-        loginController.start(); //Create Login Page
-        loginController.getLoginBtn().addActionListener(this); //Login Button Add ActionListener
-        /* ------------------ Default frame config ------------------  */
-        mainFrame.config(); //MainFrame Visible
-        mainFrame.add(loginController.getLoginPage()); //MainFrame Add Login Page
+        this.openLogInPage();
     }
 
     public void redirectToMainApp() {
-        loginController.disablePage(); // Disabled login page
+        loginController.disablePage(mainFrame); // Disabled login page
         appController = new AppController(mainFrame);
         mainFrame.add(appController.getMainLayout()); // Enable Main Page
-
+        
         appController.switchToMainPanel(); // First, Switch to home page;
         /* Navbar listener */
         appController.getNavPanel().getMainPageBtn().addActionListener(this);
@@ -35,7 +30,20 @@ public class MainController implements ActionListener {
         appController.getNavPanel().getSubjectManageBtn().addActionListener(this);
         appController.getNavPanel().getProfessorManageBtn().addActionListener(this);
         appController.getNavPanel().getFacultyManageBtn().addActionListener(this);
+        appController.getNavPanel().getLogOutBtn().addActionListener(this);
     }
+    
+    public void openLogInPage(){
+        mainFrame.getContentPane().removeAll(); //Clear Panel
+        /* ------------------ Start Login Controller ------------------  */
+        loginController.start(); //Create Login Page
+        loginController.getLoginBtn().addActionListener(this); //Login Button Add ActionListener
+        /* ------------------ Default frame config ------------------  */
+        mainFrame.config(); //MainFrame Visible
+        mainFrame.add(loginController.getLoginPage()); //MainFrame Add Login Page
+        mainFrame.revalidate();
+        mainFrame.repaint();
+    } 
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -66,7 +74,15 @@ public class MainController implements ActionListener {
         } else if (e.getSource().equals(appController.getNavPanel().getProfessorManageBtn())) {
             
             appController.switchToProfessorManagePanel();
+        } else if (e.getSource().equals(appController.getNavPanel().getLogOutBtn())) {
+            System.out.println("Login Page");
+            int x = JOptionPane.showConfirmDialog(mainFrame, "Confirm Logout", "Make sure you want to Logout?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png")));
+            if (x == 0){
+                this.openLogInPage(); 
+            }
+                 
         }
+        
     }
 
 }

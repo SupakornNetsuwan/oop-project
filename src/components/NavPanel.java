@@ -35,6 +35,11 @@ public class NavPanel extends javax.swing.JPanel {
         return subjectManageBtn;
     }
 
+    public JButton getLogOutBtn() {
+        return logOutBtn;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,6 +70,7 @@ public class NavPanel extends javax.swing.JPanel {
         subjectManageBtn = new javax.swing.JButton();
         studentManageBtn = new javax.swing.JButton();
         professorManageBtn = new javax.swing.JButton();
+        logOutBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 137, 47));
         setPreferredSize(new java.awt.Dimension(286, 720));
@@ -167,18 +173,34 @@ public class NavPanel extends javax.swing.JPanel {
         });
         buttonsWrapper.add(professorManageBtn);
 
+        logOutBtn.setBackground(new java.awt.Color(255, 102, 0));
+        logOutBtn.setFont(new java.awt.Font("Prompt", 1, 18)); // NOI18N
+        logOutBtn.setForeground(new java.awt.Color(253, 249, 245));
+        logOutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
+        logOutBtn.setText(" Logout");
+        logOutBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logOutBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(appDescription, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                    .addComponent(appDescription, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(appName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(buttonsWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(appName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(buttonsWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +211,9 @@ public class NavPanel extends javax.swing.JPanel {
                 .addComponent(appDescription)
                 .addGap(26, 26, 26)
                 .addComponent(buttonsWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -233,11 +257,16 @@ public class NavPanel extends javax.swing.JPanel {
         facultyManageBtn.setIcon(new ImageIcon(getClass().getResource("/icons/faculty-selected.png")));
     }//GEN-LAST:event_facultyManageBtnActionPerformed
 
+    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logOutBtnActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel appDescription;
     private javax.swing.JLabel appName;
     private javax.swing.JPanel buttonsWrapper;
     private javax.swing.JButton facultyManageBtn;
+    private javax.swing.JButton logOutBtn;
     private javax.swing.JButton mainPageBtn;
     private javax.swing.JButton professorManageBtn;
     private javax.swing.JButton studentManageBtn;
