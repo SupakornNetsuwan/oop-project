@@ -1,4 +1,5 @@
 package controllers;
+
 /* pages for MDI */
 import page.SubjectManagePanel;
 import page.HomePanel;
@@ -60,8 +61,21 @@ public class AppController {
     /* -------------------------------------------------------------------------*/
     public AppController(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
+    }
+
+    public void openMainApp() {
+        mainFrame.getContentPane().removeAll(); //Clear Panel
+        /* ------------------ Start Login Controller ------------------  */
         this.mainLayout = new MainLayout();
-        
+        /* ------------------ Default frame config ------------------  */
+        mainFrame.config(); //MainFrame Visible
+        mainFrame.add(this.getMainLayout()); // Mainframe add mainApp page
+        mainFrame.revalidate();
+        mainFrame.repaint();
+    }
+
+    public void closeMainApp() {
+        mainFrame.getContentPane().removeAll(); //Clear Panel
     }
 
     public void switchToMainPanel() {

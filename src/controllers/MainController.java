@@ -14,16 +14,21 @@ public class MainController implements ActionListener {
 
     public MainController() {
         mainFrame = new MainFrame();
-        loginController = new LoginController();
-        this.openLogInPage();
+        mainFrame.config(); //MainFrame Visible
+        loginControllerInit(); // start with login page
     }
 
-    public void redirectToMainApp() {
-        loginController.disablePage(mainFrame); // Disabled login page
-        appController = new AppController(mainFrame);
-        mainFrame.add(appController.getMainLayout()); // Enable Main Page
-        
-        appController.switchToMainPanel(); // First, Switch to home page;
+    private void loginControllerInit() {
+        loginController = new LoginController(mainFrame); // 1. - create controller
+        loginController.openLogInPage(); // 2. - call open page method
+        /* Login page listener */
+        loginController.getLoginBtn().addActionListener(this); //Login Button Add ActionListener
+    }
+
+    private void mainAppControllerInit() {
+        appController = new AppController(mainFrame); // 1. - create controller
+        appController.openMainApp(); // 2. - call open page method
+        appController.switchToMainPanel(); // 3. - Switch to first page
         /* Navbar listener */
         appController.getNavPanel().getMainPageBtn().addActionListener(this);
         appController.getNavPanel().getStudentManageBtn().addActionListener(this);
@@ -32,18 +37,6 @@ public class MainController implements ActionListener {
         appController.getNavPanel().getFacultyManageBtn().addActionListener(this);
         appController.getNavPanel().getLogOutBtn().addActionListener(this);
     }
-    
-    public void openLogInPage(){
-        mainFrame.getContentPane().removeAll(); //Clear Panel
-        /* ------------------ Start Login Controller ------------------  */
-        loginController.start(); //Create Login Page
-        loginController.getLoginBtn().addActionListener(this); //Login Button Add ActionListener
-        /* ------------------ Default frame config ------------------  */
-        mainFrame.config(); //MainFrame Visible
-        mainFrame.add(loginController.getLoginPage()); //MainFrame Add Login Page
-        mainFrame.revalidate();
-        mainFrame.repaint();
-    } 
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -52,7 +45,7 @@ public class MainController implements ActionListener {
         if (e.getSource().equals(loginController.getLoginBtn())) {
             if (loginController.checkIsAuthen()) {
                 /* User is authened */
-                this.redirectToMainApp();
+                this.mainAppControllerInit();
             } else {
                 loginController.handleLoginReject();
             }
@@ -60,29 +53,29 @@ public class MainController implements ActionListener {
 
         /* -------------------- Sidebar (Navbar) -------------------- */
         if (e.getSource().equals(appController.getNavPanel().getMainPageBtn())) {
-            
+
             appController.switchToMainPanel();
         } else if (e.getSource().equals(appController.getNavPanel().getStudentManageBtn())) {
-            
+
             appController.switchToStudentManagePanel();
         } else if (e.getSource().equals(appController.getNavPanel().getSubjectManageBtn())) {
-            
+
             appController.switchToSubjectManagePanel();
         } else if (e.getSource().equals(appController.getNavPanel().getFacultyManageBtn())) {
-            
+
             appController.switchToFacultyManagePanel();
         } else if (e.getSource().equals(appController.getNavPanel().getProfessorManageBtn())) {
-            
+
             appController.switchToProfessorManagePanel();
         } else if (e.getSource().equals(appController.getNavPanel().getLogOutBtn())) {
             System.out.println("Login Page");
             int x = JOptionPane.showConfirmDialog(mainFrame, "Confirm Logout", "Make sure you want to Logout?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png")));
-            if (x == 0){
-                this.openLogInPage();
+            if (x == 0) {
+                this.loginControllerInit();
             }
-                 
+
         }
-        
+
     }
 
 }

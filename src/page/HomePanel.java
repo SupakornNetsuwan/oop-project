@@ -36,7 +36,7 @@ public class HomePanel extends javax.swing.JPanel {
 
         pageHeader.setFont(new java.awt.Font("Prompt", 1, 28)); // NOI18N
         pageHeader.setForeground(new java.awt.Color(93, 93, 93));
-        pageHeader.setText("ยินดีต้อนรับ, Admin");
+        pageHeader.setText("ยินดีต้อนรับ");
         pageHeader.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         pageHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         add(pageHeader);

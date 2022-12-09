@@ -9,6 +9,7 @@ import page.*;
 public class LoginController {
 
     private LoginPage loginPage; // login page
+    private MainFrame mainFrame;
     // SQL connection declaration goes here!
 
     public LoginPage getLoginPage() {
@@ -19,15 +20,30 @@ public class LoginController {
         return loginPage.getLoginBtn();
     }
 
+    public LoginController(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
+    }
+
+    public void openLogInPage() {
+        mainFrame.getContentPane().removeAll(); //Clear Panel
+        /* ------------------ Start Login Controller ------------------  */
+        this.start(); //Create Login Page
+        /* ------------------ Default frame config ------------------  */
+        mainFrame.config(); //MainFrame Visible
+        mainFrame.add(this.getLoginPage()); //MainFrame Add Login Page
+        mainFrame.revalidate();
+        mainFrame.repaint();
+    }
+
+    public void closeLoginPage(MainFrame mainFrame) {
+//        this.getLoginPage().setVisible(false); <- deprecated
+        mainFrame.getContentPane().removeAll();
+    }
+
     public boolean checkIsAuthen() {
         return true;
         //or
         //return false
-    }
-
-    public void disablePage(MainFrame mainFrame) {
-//        this.getLoginPage().setVisible(false);
-        mainFrame.getContentPane().removeAll();
     }
 
     public void handleLoginReject() {
