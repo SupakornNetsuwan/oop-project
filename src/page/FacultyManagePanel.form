@@ -275,47 +275,11 @@
             <Component class="components.Table" name="facultyTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="8">
-                    <Column editable="true" title="&#xe01;&#xe32;&#xe23;&#xe40;&#xe25;&#xe37;&#xe2d;&#xe01;" type="java.lang.Boolean">
-                      <Data value="null"/>
-                      <Data value="false"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                    </Column>
-                    <Column editable="true" title="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe04;&#xe13;&#xe30;" type="java.lang.String">
-                      <Data value="tao"/>
-                      <Data value="earth"/>
-                      <Data value="oat"/>
-                      <Data value="toa"/>
-                      <Data value="benz"/>
-                      <Data value="neng"/>
-                      <Data value="earth-2"/>
-                      <Data value="earthg"/>
-                    </Column>
-                    <Column editable="true" title="&#xe08;&#xe33;&#xe19;&#xe27;&#xe19;&#xe2a;&#xe32;&#xe02;&#xe32;" type="java.lang.String">
-                      <Data value="eartrgh"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                    </Column>
-                    <Column editable="true" title="&#xe14;&#xe39;&#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;" type="java.lang.Object">
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="fasfasf"/>
-                      <Data value="asdas"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                      <Data value="null"/>
-                    </Column>
+                  <Table columnCount="4" rowCount="0">
+                    <Column editable="true" title="&#xe01;&#xe32;&#xe23;&#xe40;&#xe25;&#xe37;&#xe2d;&#xe01;" type="java.lang.Boolean"/>
+                    <Column editable="true" title="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe04;&#xe13;&#xe30;" type="java.lang.String"/>
+                    <Column editable="true" title="&#xe08;&#xe33;&#xe19;&#xe27;&#xe19;&#xe2a;&#xe32;&#xe02;&#xe32;" type="java.lang.String"/>
+                    <Column editable="true" title="&#xe14;&#xe39;&#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

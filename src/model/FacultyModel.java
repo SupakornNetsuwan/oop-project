@@ -64,6 +64,7 @@ public class FacultyModel {
             Object[] eachFaculty = {null, facultyList.get(i).getNameFaculty(), "", null};
             recordsForTableContent[i] = eachFaculty;
         }
+        facultyList.clear();
 
         return recordsForTableContent;
     }

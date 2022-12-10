@@ -143,14 +143,7 @@ public class FacultyManagePanel extends javax.swing.JPanel {
 
         facultyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, "tao", "eartrgh", null},
-                { new Boolean(false), "earth", null, null},
-                {null, "oat", null, "fasfasf"},
-                {null, "toa", null, "asdas"},
-                {null, "benz", null, null},
-                {null, "neng", null, null},
-                {null, "earth-2", null, null},
-                {null, "earthg", null, null}
+
             },
             new String [] {
                 "การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"

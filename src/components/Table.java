@@ -4,46 +4,52 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 public class Table extends JTable {
-    
-    public void setTable(Object[][] obj, String[] string) {
+
+    public void addRow(Object[] row) {
+        DefaultTableModel model = (DefaultTableModel) getModel();
+        model.addRow(row);
+    }
+
+    public void setRows(Object[][] body, String[] header) {
         this.setModel(new javax.swing.table.DefaultTableModel(
-                obj,
-                string
+                body,
+                header
         ) {
             Class[] types = new Class[]{
                 java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
-            
+
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
         });
     }
-    
+
     public void addTable() {
         // your job
     }
-    
+
     public Table() {
         setShowHorizontalLines(true);
         setGridColor(new Color(134, 134, 134));
         getTableHeader().setReorderingAllowed(false);
         setRowHeight(40);
-        
+
         getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 TableHeader tHeader = new TableHeader("" + value);
 //                if (column == 4) {}
                 tHeader.setHorizontalAlignment(JLabel.CENTER);
-                
+
                 return tHeader;
             }
-            
+
         });
-        
+
         setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -66,10 +72,10 @@ public class Table extends JTable {
 
 //                return new JLabel("" + value);
             }
-            
+
         });
     }
-    
+
     @Override
     public boolean isCellEditable(int row, int col) {
         if (col == 0) {
