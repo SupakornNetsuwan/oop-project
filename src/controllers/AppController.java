@@ -13,11 +13,14 @@ import frame.MainFrame;
 import java.awt.event.*;
 import javax.swing.*;
 
+import model.FacultyModel;
+
 public class AppController implements ActionListener {
 
     /* Pages & panels*/
     private MainLayout mainLayout;
     private MainFrame mainFrame;
+    private FacultyModel facultyModel = new FacultyModel();
 
     public MainLayout getMainLayout() {
         return this.mainLayout;
@@ -94,7 +97,7 @@ public class AppController implements ActionListener {
         ////////////////////////////////////////
         Table facultyTable = facultyManagePanel.getTable();
 
-        Object tableContent[][] = {{null, "EARTH", "SUPAKORN", null}, {null, "TLE", "OOP", null} , {null, "OAT", "OOP", null} , {null, "Benz", "OOP", null}};
+        Object tableContent[][] = facultyModel.getRecordsForTableContent();
         String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
         facultyTable.setTable(tableContent, tableHeader);
 

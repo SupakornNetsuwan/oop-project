@@ -1,6 +1,7 @@
 package model;
 
 public class Faculty {
+
     private boolean selected;
     private String nameFaculty;
     private String Major;
@@ -48,10 +49,5 @@ public class Faculty {
     public void setButton(Object button) {
         this.button = button;
     }
-    
-    
-    
-    
-    
-    
+
 }

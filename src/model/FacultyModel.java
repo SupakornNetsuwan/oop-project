@@ -8,25 +8,24 @@ import java.util.ArrayList;
 
 public class FacultyModel {
 
-    private Faculty Faculty ;
-    private ArrayList<Faculty> FacultyList;
+    private Faculty Faculty;
+    private ArrayList<Faculty> facultyList;
     private final Connection con = Connect.ConnectDB();
     private ResultSet result = null;
     private PreparedStatement statement = null;
     private String sql;
 
     public FacultyModel() {
-        FacultyList = new ArrayList<Faculty>();
-        readFaculty();
-         
+        facultyList = new ArrayList<Faculty>();
+
     }
 
     public ArrayList<Faculty> getFacultyList() {
-        return FacultyList;
+        return facultyList;
     }
 
     public void setFacultyList(ArrayList<Faculty> FacultyList) {
-        this.FacultyList = FacultyList;
+        this.facultyList = FacultyList;
     }
 
     public boolean insert(String nameFaculty) {
@@ -48,20 +47,28 @@ public class FacultyModel {
             statement = con.prepareStatement(sql);
             result = statement.executeQuery();
             while (result != null && result.next()) {
-                System.out.println(result.getString("nameFaculty"));
-//                Faculty = new Faculty();
-//                Faculty.setNameFaculty(result.getString("nameFaculty"));
-//                FacultyList.add(Faculty);
+                Faculty = new Faculty();
+                Faculty.setNameFaculty(result.getString("nameFaculty"));
+                facultyList.add(Faculty);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
+
+    public Object[][] getRecordsForTableContent() {
+        readFaculty();
+        Object[][] recordsForTableContent = new Object[facultyList.size()][4];
+
+        for (int i = 0; i < facultyList.size(); i++) {
+            Object[] eachFaculty = {null, facultyList.get(i).getNameFaculty(), "", null};
+            recordsForTableContent[i] = eachFaculty;
+        }
+
+        return recordsForTableContent;
+    }
+
     public static void main(String[] args) {
         new FacultyModel();
     }
-    
-
-
 }
