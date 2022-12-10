@@ -6,15 +6,17 @@ import page.HomePanel;
 import page.ProfessorManagePanel;
 import page.StudentManagePanel;
 import page.FacultyManagePanel;
+// popup
+import page.AddNewFacultyFrame;
 
 import layout.MainLayout;
 import components.*;
 import frame.MainFrame;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import javax.swing.*;
 
-public class AppController {
+
+public class AppController implements ActionListener {
 
     /* Pages & panels*/
     private MainLayout mainLayout;
@@ -99,6 +101,10 @@ public class AppController {
         String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
         facultyTable.setTable(tableContent, tableHeader);
 
+        ////////////////////////////////////////
+        facultyManagePanel.getAddFacultyBtn().addActionListener(this);
+        facultyManagePanel.getDeleteFacultyBtn().addActionListener(this);
+
         facultyTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -158,5 +164,15 @@ public class AppController {
         this.getContentPanel().add(panelToSwitch);
         mainFrame.revalidate();
         mainFrame.repaint();
+    }
+
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource().equals(facultyManagePanel.getAddFacultyBtn())) {
+            // Add a new faculty
+            AddNewFacultyFrame addNewFacultyFrame = new AddNewFacultyFrame();
+        } else if (event.getSource().equals(facultyManagePanel.getDeleteFacultyBtn())) {
+            // Delete a faculty
+        }
+
     }
 }

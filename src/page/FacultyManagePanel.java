@@ -1,6 +1,7 @@
 package page;
 
 import components.*;
+import javax.swing.*;
 
 public class FacultyManagePanel extends javax.swing.JPanel {
 
@@ -10,6 +11,14 @@ public class FacultyManagePanel extends javax.swing.JPanel {
 
     public Table getTable() {
         return this.facultyTable;
+    }
+
+    public JButton getAddFacultyBtn() {
+        return this.addFaculty;
+    }
+
+    public JButton getDeleteFacultyBtn() {
+        return this.deleteFaculty;
     }
 
     /**

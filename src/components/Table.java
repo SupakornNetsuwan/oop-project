@@ -67,40 +67,6 @@ public class Table extends JTable {
             }
 
         });
-
-//        this.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                // Obtain row and column indexes the user clicked.
-//                int row = rowAtPoint(e.getPoint());
-//                int col = columnAtPoint(e.getPoint());
-//
-//                if (col == 3) {
-//                    // Check if user clicks the cell that the JButton is located,
-//                    // then show the data of that row in JOptionPane.
-//                    System.out.println("Clicked a button. [" + row + ", " + col + "]");
-//                    String str = "isSelected: " + getModel().getValueAt(row, 0) + "\n"
-//                            + "name: " + getModel().getValueAt(row, 1) + "\n"
-//                            + "amount: " + getModel().getValueAt(row, 2);
-//                    JOptionPane.showMessageDialog(null, str);
-//                } else {
-//                    // When user ticks JCheckBox, print all row names that has
-//                    // JCheckBox ticked on console.
-//                    String toShow = "selected:";
-//                    for (int i = 0; i < getRowCount(); i++) {
-//                        Boolean selected = (Boolean) getModel().getValueAt(i, 0);
-//                        if (selected == null) {
-//                            selected = false;
-//                        }
-//                        String name = getModel().getValueAt(i, 1).toString();
-//                        if (selected) {
-//                            toShow += " " + name;
-//                        }
-//                    }
-//                    System.out.println(toShow);
-//                }
-//            }
-//        });
     }
 
     @Override

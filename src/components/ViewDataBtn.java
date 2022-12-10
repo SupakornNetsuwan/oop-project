@@ -10,5 +10,6 @@ public class ViewDataBtn extends JButton {
         setFont(new Font("Prompt", Font.BOLD, 14));
         setBackground(new Color(255, 137, 47));
         setForeground(Color.white);
+        this.setBorderPainted(false);
     }
 }
