@@ -1,9 +1,12 @@
 package page;
 
+import frame.AddNewFacultyFrame;
 import components.*;
 import javax.swing.*;
 
 public class FacultyManagePanel extends javax.swing.JPanel {
+
+    private AddNewFacultyFrame addNewFacultyFrame;
 
     public FacultyManagePanel() {
         initComponents();
@@ -19,6 +22,18 @@ public class FacultyManagePanel extends javax.swing.JPanel {
 
     public JButton getDeleteFacultyBtn() {
         return this.deleteFaculty;
+    }
+
+    public AddNewFacultyFrame getAddNewFacultyFrame() {
+        return this.addNewFacultyFrame;
+    }
+
+    public void createAddNewFacultyFrame() {
+        this.addNewFacultyFrame = new AddNewFacultyFrame();
+    }
+
+    public void configAddNewFacultyFrame() {
+        this.addNewFacultyFrame.config();
     }
 
     /**

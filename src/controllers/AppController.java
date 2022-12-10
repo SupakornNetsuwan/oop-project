@@ -6,15 +6,12 @@ import page.HomePanel;
 import page.ProfessorManagePanel;
 import page.StudentManagePanel;
 import page.FacultyManagePanel;
-// popup
-import page.AddNewFacultyFrame;
 
 import layout.MainLayout;
 import components.*;
 import frame.MainFrame;
 import java.awt.event.*;
 import javax.swing.*;
-
 
 public class AppController implements ActionListener {
 
@@ -97,7 +94,7 @@ public class AppController implements ActionListener {
         ////////////////////////////////////////
         Table facultyTable = facultyManagePanel.getTable();
 
-        Object tableContent[][] = {{null, "EARTH", "SUPAKORN", null}, {null, "TLE", "OOP", null}};
+        Object tableContent[][] = {{null, "EARTH", "SUPAKORN", null}, {null, "TLE", "OOP", null} , {null, "OAT", "OOP", null} , {null, "Benz", "OOP", null}};
         String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
         facultyTable.setTable(tableContent, tableHeader);
 
@@ -168,8 +165,9 @@ public class AppController implements ActionListener {
 
     public void actionPerformed(ActionEvent event) {
         if (event.getSource().equals(facultyManagePanel.getAddFacultyBtn())) {
-            // Add a new faculty
-            AddNewFacultyFrame addNewFacultyFrame = new AddNewFacultyFrame();
+            // Add a new faculty frame
+            facultyManagePanel.createAddNewFacultyFrame();
+            facultyManagePanel.configAddNewFacultyFrame();
         } else if (event.getSource().equals(facultyManagePanel.getDeleteFacultyBtn())) {
             // Delete a faculty
         }

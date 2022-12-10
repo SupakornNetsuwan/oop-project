@@ -97,7 +97,7 @@ public class NavPanel extends javax.swing.JPanel {
         mainPageBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home-selected.png"))); // NOI18N
         mainPageBtn.setText("หน้าหลัก");
         mainPageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        mainPageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        mainPageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mainPageBtn.setFocusable(false);
         mainPageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         mainPageBtn.setIconTextGap(10);
@@ -114,7 +114,7 @@ public class NavPanel extends javax.swing.JPanel {
         facultyManageBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/faculty.png"))); // NOI18N
         facultyManageBtn.setText("จัดการคณะ/สาขา");
         facultyManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        facultyManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        facultyManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         facultyManageBtn.setFocusPainted(false);
         facultyManageBtn.setFocusable(false);
         facultyManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -132,7 +132,7 @@ public class NavPanel extends javax.swing.JPanel {
         subjectManageBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book.png"))); // NOI18N
         subjectManageBtn.setText("จัดการวิชาเรียน");
         subjectManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        subjectManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        subjectManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         subjectManageBtn.setFocusPainted(false);
         subjectManageBtn.setFocusable(false);
         subjectManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -150,7 +150,7 @@ public class NavPanel extends javax.swing.JPanel {
         studentManageBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/student.png"))); // NOI18N
         studentManageBtn.setText("จัดการนักศึกษา");
         studentManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        studentManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        studentManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         studentManageBtn.setFocusPainted(false);
         studentManageBtn.setFocusable(false);
         studentManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -168,7 +168,7 @@ public class NavPanel extends javax.swing.JPanel {
         professorManageBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/professor.png"))); // NOI18N
         professorManageBtn.setText("จัดการอาจารย์");
         professorManageBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        professorManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        professorManageBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         professorManageBtn.setFocusPainted(false);
         professorManageBtn.setFocusable(false);
         professorManageBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
