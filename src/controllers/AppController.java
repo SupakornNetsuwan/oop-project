@@ -10,6 +10,8 @@ import page.FacultyManagePanel;
 import layout.MainLayout;
 import components.*;
 import frame.MainFrame;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class AppController {
@@ -90,6 +92,47 @@ public class AppController {
         System.out.println("Faculty page");
         facultyManagePanel = new FacultyManagePanel();
         swtichTo(facultyManagePanel);
+        ////////////////////////////////////////
+        Table facultyTable = facultyManagePanel.getTable();
+
+        Object tableContent[][] = {{null, "EARTH", "SUPAKORN", null}, {null, "TLE", "OOP", null}};
+        String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
+        facultyTable.setTable(tableContent, tableHeader);
+
+        facultyTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Obtain row and column indexes the user clicked.
+                int row = facultyTable.rowAtPoint(e.getPoint());
+                int col = facultyTable.columnAtPoint(e.getPoint());
+
+                if (col == 3) {
+                    // Check if user clicks the cell that the JButton is located,
+                    // then show the data of that row in JOptionPane.
+                    System.out.println("Clicked a button. [" + row + ", " + col + "]");
+                    String str = "isSelected: " + facultyTable.getModel().getValueAt(row, 0) + "\n"
+                            + "name: " + facultyTable.getModel().getValueAt(row, 1) + "\n"
+                            + "amount: " + facultyTable.getModel().getValueAt(row, 2);
+                    JOptionPane.showMessageDialog(null, str);
+                } else {
+                    // When user ticks JCheckBox, print all row names that has
+                    // JCheckBox ticked on console.
+                    String toShow = "selected:";
+                    for (int i = 0; i < facultyTable.getRowCount(); i++) {
+                        Boolean selected = (Boolean) facultyTable.getModel().getValueAt(i, 0);
+                        if (selected == null) {
+                            selected = false;
+                        }
+                        String name = facultyTable.getModel().getValueAt(i, 1).toString();
+                        if (selected) {
+                            toShow += " " + name;
+                        }
+                    }
+                    System.out.println(toShow);
+                }
+            }
+        });
+
     }
 
     public void switchToProfessorManagePanel() {

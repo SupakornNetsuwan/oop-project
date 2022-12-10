@@ -47,7 +47,6 @@ public class MainFrame extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Waido KMITL");
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 137, 47));
         setName("loginFrame"); // NOI18N
         setResizable(false);

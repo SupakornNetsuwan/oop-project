@@ -18,6 +18,9 @@ public class MainController implements ActionListener {
         mainFrame = new MainFrame();
         mainFrame.config(); //MainFrame Visible
         loginControllerInit(); // start with login page
+
+        // Dev enviroment method !! do not use on production
+        this.mainAppControllerInit();
     }
 
     private void loginControllerInit() {
@@ -42,44 +45,43 @@ public class MainController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        try{
+        try {
             /* --------------------   Login page   -------------------- */
-        if (e.getSource().equals(loginController.getLoginBtn())) {
-            if (loginController.loginCheck(loginController.getLoginPage().getUsernameField1().getText(), loginController.getLoginPage().getPaswordField1().getText())) {
-                /* User is authened */
-                this.mainAppControllerInit();
-            } else {
-                loginController.handleLoginReject();
+            if (e.getSource().equals(loginController.getLoginBtn())) {
+                if (loginController.loginCheck(loginController.getLoginPage().getUsernameField1().getText(), loginController.getLoginPage().getPaswordField1().getText())) {
+                    /* User is authened */
+                    this.mainAppControllerInit();
+                } else {
+                    loginController.handleLoginReject();
+                }
             }
-        }
 
-        /* -------------------- Sidebar (Navbar) -------------------- */
-        if (e.getSource().equals(appController.getNavPanel().getMainPageBtn())) {
+            /* -------------------- Sidebar (Navbar) -------------------- */
+            if (e.getSource().equals(appController.getNavPanel().getMainPageBtn())) {
 
-            appController.switchToMainPanel();
-        } else if (e.getSource().equals(appController.getNavPanel().getStudentManageBtn())) {
+                appController.switchToMainPanel();
+            } else if (e.getSource().equals(appController.getNavPanel().getStudentManageBtn())) {
 
-            appController.switchToStudentManagePanel();
-        } else if (e.getSource().equals(appController.getNavPanel().getSubjectManageBtn())) {
+                appController.switchToStudentManagePanel();
+            } else if (e.getSource().equals(appController.getNavPanel().getSubjectManageBtn())) {
 
-            appController.switchToSubjectManagePanel();
-        } else if (e.getSource().equals(appController.getNavPanel().getFacultyManageBtn())) {
+                appController.switchToSubjectManagePanel();
+            } else if (e.getSource().equals(appController.getNavPanel().getFacultyManageBtn())) {
 
-            appController.switchToFacultyManagePanel();
-        } else if (e.getSource().equals(appController.getNavPanel().getProfessorManageBtn())) {
+                appController.switchToFacultyManagePanel();
+            } else if (e.getSource().equals(appController.getNavPanel().getProfessorManageBtn())) {
 
-            appController.switchToProfessorManagePanel();
-        } else if (e.getSource().equals(appController.getNavPanel().getLogOutBtn())) {
+                appController.switchToProfessorManagePanel();
+            } else if (e.getSource().equals(appController.getNavPanel().getLogOutBtn())) {
 
-            int x = JOptionPane.showConfirmDialog(mainFrame, "Confirm Logout", "Make sure you want to Logout?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/logout2.png")));
-            if (x == 0) {
-                this.loginControllerInit();
+                int x = JOptionPane.showConfirmDialog(mainFrame, "Confirm Logout", "Make sure you want to Logout?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/logout2.png")));
+                if (x == 0) {
+                    this.loginControllerInit();
+                }
             }
-        }
-        } catch(NullPointerException ne){
+        } catch (NullPointerException ne) {
             System.out.println("Can't Open NavPanel");
         }
-        
 
     }
 

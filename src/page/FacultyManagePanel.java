@@ -1,23 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package page;
 
-/**
- *
- * @author windows
- */
+import components.*;
+
 public class FacultyManagePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MainPanel2
-     */
     public FacultyManagePanel() {
         initComponents();
-        
     }
-    
+
+    public Table getTable() {
+        return this.facultyTable;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,9 +21,6 @@ public class FacultyManagePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        facultyTable = new javax.swing.JTable();
         northPanel = new javax.swing.JPanel();
         pageHeader = new javax.swing.JLabel();
         headerSeparator = new javax.swing.JSeparator();
@@ -39,50 +30,8 @@ public class FacultyManagePanel extends javax.swing.JPanel {
         deleteFaculty = new javax.swing.JButton();
         addFaculty = new javax.swing.JButton();
         findFaculty = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        table1 = new components.Table();
-
-        jTextField1.setColumns(30);
-        jTextField1.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("คณะเทคโนโลยีสารสนเทศ");
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 0, 14))); // NOI18N
-        jTextField1.setFocusable(false);
-
-        jScrollPane1.setBorder(null);
-
-        facultyTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, "easrwer", "asfqf", "qwfq"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, "qwf", null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, "qwf", null, null},
-                {null, null, "qwf", null, null, null},
-                {null, null, "qwf", null, null, null},
-                {null, null, null, "qwf", null, null},
-                {null, null, "qwf", null, null, null},
-                {null, null, null, "qwf", null, null},
-                {null, null, null, null, null, null},
-                {null, null, "wqf", null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, "wqf", null, null},
-                {null, null, "qwf", null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, "qwf", null, null},
-                {null, "qwfwq", "qwf", null, null, null},
-                {null, null, null, "qwf", null, null},
-                {"qwf", null, null, null, "qwf", "easrth"}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
-            }
-        ));
-        facultyTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        facultyTable.setShowGrid(true);
-        jScrollPane1.setViewportView(facultyTable);
+        tableScrollPane = new javax.swing.JScrollPane();
+        facultyTable = new components.Table();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -166,14 +115,14 @@ public class FacultyManagePanel extends javax.swing.JPanel {
         });
         actionWrapper.add(findFaculty, java.awt.BorderLayout.LINE_START);
 
-        jScrollPane2.setBorder(null);
+        tableScrollPane.setBorder(null);
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        facultyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, "tao", null, null},
-                {null, "earth", null, null},
-                {null, "oat", null, null},
-                {null, "toa", null, null},
+                {null, "tao", "eartrgh", null},
+                { new Boolean(false), "earth", null, null},
+                {null, "oat", null, "fasfasf"},
+                {null, "toa", null, "asdas"},
                 {null, "benz", null, null},
                 {null, "neng", null, null},
                 {null, "earth-2", null, null},
@@ -191,14 +140,14 @@ public class FacultyManagePanel extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(table1);
-        if (table1.getColumnModel().getColumnCount() > 0) {
-            table1.getColumnModel().getColumn(0).setMinWidth(80);
-            table1.getColumnModel().getColumn(0).setPreferredWidth(80);
-            table1.getColumnModel().getColumn(0).setMaxWidth(80);
-            table1.getColumnModel().getColumn(3).setMinWidth(100);
-            table1.getColumnModel().getColumn(3).setPreferredWidth(100);
-            table1.getColumnModel().getColumn(3).setMaxWidth(100);
+        tableScrollPane.setViewportView(facultyTable);
+        if (facultyTable.getColumnModel().getColumnCount() > 0) {
+            facultyTable.getColumnModel().getColumn(0).setMinWidth(80);
+            facultyTable.getColumnModel().getColumn(0).setPreferredWidth(80);
+            facultyTable.getColumnModel().getColumn(0).setMaxWidth(80);
+            facultyTable.getColumnModel().getColumn(3).setMinWidth(100);
+            facultyTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+            facultyTable.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
@@ -209,7 +158,7 @@ public class FacultyManagePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(actionWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                    .addComponent(tableScrollPane))
                 .addContainerGap())
         );
         centerPanelLayout.setVerticalGroup(
@@ -218,8 +167,8 @@ public class FacultyManagePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(actionWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         add(centerPanel, java.awt.BorderLayout.CENTER);
@@ -244,14 +193,11 @@ public class FacultyManagePanel extends javax.swing.JPanel {
     private javax.swing.JPanel buttonsWrapper;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JButton deleteFaculty;
-    private javax.swing.JTable facultyTable;
+    private components.Table facultyTable;
     private javax.swing.JTextField findFaculty;
     private javax.swing.JSeparator headerSeparator;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel northPanel;
     private javax.swing.JLabel pageHeader;
-    private components.Table table1;
+    private javax.swing.JScrollPane tableScrollPane;
     // End of variables declaration//GEN-END:variables
 }

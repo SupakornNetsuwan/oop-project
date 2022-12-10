@@ -48,10 +48,14 @@ public class LoginController {
     }
 
     public void closeLoginPage(MainFrame mainFrame) {
-//        this.getLoginPage().setVisible(false); <- deprecated
         mainFrame.getContentPane().removeAll();
         mainFrame.revalidate();
         mainFrame.repaint();
+    }
+
+    // Dev enviroment method !! Do not use on production
+    public boolean loginBypassDevMode() {
+        return loginCheck("Admin", "password");
     }
 
     public boolean loginCheck(String username, String password) {
@@ -72,10 +76,10 @@ public class LoginController {
                 return true;
             } else {
                 System.out.println("your username or password are wrong");
-                
+
                 return false;
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -83,16 +87,14 @@ public class LoginController {
     }
 
     public void handleLoginReject() {
-        JOptionPane.showMessageDialog(mainFrame,"Your username or password is incorrect.", "Error!", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(mainFrame, "Your username or password is incorrect.", "Error!", JOptionPane.ERROR_MESSAGE);
         clearLoginTextField();
         System.out.println("No permission");
     }
-    
-    public void clearLoginTextField(){
+
+    public void clearLoginTextField() {
         loginPage.getUsernameField1().setText("");
         loginPage.getPaswordField1().setText("");
     }
-
-
 
 }
