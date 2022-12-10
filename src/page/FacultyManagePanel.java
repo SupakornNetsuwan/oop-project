@@ -170,21 +170,21 @@ public class FacultyManagePanel extends javax.swing.JPanel {
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"tao", null, null, null},
-                {"earth", "a", null, null},
-                {"oat", null, null, null},
-                {"toa", null, null, null},
-                {"benz", null, "x", null},
-                {"neng", null, null, null},
-                {"earth-2", null, "x", null},
-                {"earthg", "x", "x", null}
+                {null, "tao", null, null},
+                {null, "earth", null, null},
+                {null, "oat", null, null},
+                {null, "toa", null, null},
+                {null, "benz", null, null},
+                {null, "neng", null, null},
+                {null, "earth-2", null, null},
+                {null, "earthg", null, null}
             },
             new String [] {
                 "การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -192,6 +192,14 @@ public class FacultyManagePanel extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(table1);
+        if (table1.getColumnModel().getColumnCount() > 0) {
+            table1.getColumnModel().getColumn(0).setMinWidth(80);
+            table1.getColumnModel().getColumn(0).setPreferredWidth(80);
+            table1.getColumnModel().getColumn(0).setMaxWidth(80);
+            table1.getColumnModel().getColumn(3).setMinWidth(100);
+            table1.getColumnModel().getColumn(3).setPreferredWidth(100);
+            table1.getColumnModel().getColumn(3).setMaxWidth(100);
+        }
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
         centerPanel.setLayout(centerPanelLayout);
@@ -239,8 +247,6 @@ public class FacultyManagePanel extends javax.swing.JPanel {
     private javax.swing.JTable facultyTable;
     private javax.swing.JTextField findFaculty;
     private javax.swing.JSeparator headerSeparator;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
