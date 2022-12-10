@@ -99,10 +99,11 @@ public class AppController implements ActionListener {
         Object tableRows[][] = facultyModel.getRecordsForTableContent();
         //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
 
-        for (int i = 0; i < tableRows.length; i++) facultyTable.addRow(tableRows[i]);
-        
+        for (int i = 0; i < tableRows.length; i++) {
+            facultyTable.addRow(tableRows[i]);
+        }
 
-        ////////////////////////////////////////
+         /* Faculty Panel listener */
         facultyManagePanel.getAddFacultyBtn().addActionListener(this);
         facultyManagePanel.getDeleteFacultyBtn().addActionListener(this);
 

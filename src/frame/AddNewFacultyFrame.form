@@ -51,7 +51,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="addFaculty" min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="addFacultyBtn" min="-2" pref="122" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="facultyLabel" min="-2" pref="583" max="-2" attributes="0"/>
                           <Component id="facultyNameTextField" min="-2" pref="623" max="-2" attributes="0"/>
@@ -68,7 +68,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="facultyNameTextField" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace pref="92" max="32767" attributes="0"/>
-                  <Component id="addFaculty" min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="addFacultyBtn" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -99,7 +99,7 @@
             <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe04;&#xe13;&#xe30;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="addFaculty">
+        <Component class="javax.swing.JButton" name="addFacultyBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="2f" green="89" red="ff" type="rgb"/>
@@ -117,7 +117,7 @@
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addFacultyActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addFacultyBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

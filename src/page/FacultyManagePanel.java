@@ -2,9 +2,10 @@ package page;
 
 import frame.AddNewFacultyFrame;
 import components.*;
+import java.awt.event.*;
 import javax.swing.*;
 
-public class FacultyManagePanel extends javax.swing.JPanel {
+public class FacultyManagePanel extends JPanel implements ActionListener {
 
     private AddNewFacultyFrame addNewFacultyFrame;
 
@@ -30,10 +31,18 @@ public class FacultyManagePanel extends javax.swing.JPanel {
 
     public void createAddNewFacultyFrame() {
         this.addNewFacultyFrame = new AddNewFacultyFrame();
+        addNewFacultyFrame.getAddFacultyBtn().addActionListener(this);
     }
 
     public void configAddNewFacultyFrame() {
         this.addNewFacultyFrame.config();
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent event){
+        if(event.getSource().equals(addNewFacultyFrame.getAddFacultyBtn())){
+            System.out.println("Creating a new faculty...");
+        }
     }
 
     /**

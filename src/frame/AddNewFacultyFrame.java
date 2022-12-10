@@ -12,6 +12,10 @@ public class AddNewFacultyFrame extends JFrame {
     public void init() {
 
     }
+    
+    public JButton getAddFacultyBtn(){
+        return this.addFacultyBtn;
+    }
 
     public void config() {
         this.setLayout(new BorderLayout());
@@ -32,7 +36,7 @@ public class AddNewFacultyFrame extends JFrame {
         wrapper = new javax.swing.JPanel();
         facultyNameTextField = new javax.swing.JTextField();
         facultyLabel = new javax.swing.JLabel();
-        addFaculty = new javax.swing.JButton();
+        addFacultyBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -51,15 +55,15 @@ public class AddNewFacultyFrame extends JFrame {
         facultyLabel.setForeground(new java.awt.Color(255, 137, 47));
         facultyLabel.setText("ชื่อคณะ");
 
-        addFaculty.setBackground(new java.awt.Color(255, 137, 47));
-        addFaculty.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
-        addFaculty.setForeground(new java.awt.Color(255, 255, 255));
-        addFaculty.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
-        addFaculty.setText("เพิ่มคณะ");
-        addFaculty.setFocusPainted(false);
-        addFaculty.addActionListener(new java.awt.event.ActionListener() {
+        addFacultyBtn.setBackground(new java.awt.Color(255, 137, 47));
+        addFacultyBtn.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
+        addFacultyBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addFacultyBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        addFacultyBtn.setText("เพิ่มคณะ");
+        addFacultyBtn.setFocusPainted(false);
+        addFacultyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addFacultyActionPerformed(evt);
+                addFacultyBtnActionPerformed(evt);
             }
         });
 
@@ -69,7 +73,7 @@ public class AddNewFacultyFrame extends JFrame {
             wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapperLayout.createSequentialGroup()
                 .addGroup(wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addFacultyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(facultyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(facultyNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -82,7 +86,7 @@ public class AddNewFacultyFrame extends JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(facultyNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                .addComponent(addFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addFacultyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -91,12 +95,12 @@ public class AddNewFacultyFrame extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFacultyActionPerformed
+    private void addFacultyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFacultyBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addFacultyActionPerformed
+    }//GEN-LAST:event_addFacultyBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addFaculty;
+    private javax.swing.JButton addFacultyBtn;
     private javax.swing.JLabel facultyLabel;
     private javax.swing.JTextField facultyNameTextField;
     private javax.swing.JPanel wrapper;
