@@ -40,6 +40,19 @@ public class FacultyModel {
             return false;
         }
     }
+    
+    public boolean delete(String nameFaculty) {
+        sql = "DELETE  FROM Faculty WHERE nameFaculty = ?";
+        try {
+            statement = con.prepareStatement(sql);
+            statement.setString(1, nameFaculty);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public void readFaculty() {
         sql = "SELECT * FROM Faculty";

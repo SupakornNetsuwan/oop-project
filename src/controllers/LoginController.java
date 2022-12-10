@@ -59,7 +59,7 @@ public class LoginController {
     }
 
     public boolean loginCheck(String username, String password) {
-        sql = "SELECT * FROM USER WHERE USERNAME=? AND PASSWORD=?";
+        sql = "SELECT * FROM User WHERE Username=? AND Password=?";
 
         try {
             statement = con.prepareStatement(sql);
@@ -68,11 +68,10 @@ public class LoginController {
             result = statement.executeQuery();
             if (result != null && result.next()) {
                 System.out.println("login successful");
-                System.out.println("ID : " + result.getInt("ID"));
-                System.out.println("USERNAME : " + result.getString("USERNAME"));
+                System.out.println("USERNAME : " + result.getString("Username"));
                 System.out.println("Password : " + result.getString("Password"));
-                System.out.println("LEVEL : " + result.getInt("LEVEL"));
-                user = new UserModel(result.getInt("ID"), result.getString("USERNAME"), result.getString("Password"), result.getInt("LEVEL"));
+                System.out.println("LEVEL : " + result.getInt("Level"));
+                user = new UserModel( result.getString("Username"), result.getString("Password"), result.getInt("Level"));
                 return true;
             } else {
                 System.out.println("your username or password are wrong");

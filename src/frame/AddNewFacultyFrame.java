@@ -17,6 +17,10 @@ public class AddNewFacultyFrame extends JFrame {
         return this.addFacultyBtn;
     }
 
+    public JTextField getFacultyNameTextField() {
+        return facultyNameTextField;
+    }
+    
     public void config() {
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

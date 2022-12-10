@@ -1,29 +1,18 @@
 package model;
 
 public class User {
-
-    private int id;
     private String username;
     private String password;
     private int level;
 
     public User() {
-        this(0, "", "",0);
+        this("", "",0);
     }
 
-    public User(int id, String username, String password, int level) {
-        this.id = id;
+    public User(String username, String password, int level) {
         this.username = username;
         this.password = password;
         this.level = level;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getUsername() {

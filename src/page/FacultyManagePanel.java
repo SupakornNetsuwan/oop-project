@@ -4,10 +4,12 @@ import frame.AddNewFacultyFrame;
 import components.*;
 import java.awt.event.*;
 import javax.swing.*;
+import model.FacultyModel;
 
 public class FacultyManagePanel extends JPanel implements ActionListener {
 
     private AddNewFacultyFrame addNewFacultyFrame;
+    private FacultyModel facultyModel = new FacultyModel();
 
     public FacultyManagePanel() {
         initComponents();
@@ -41,7 +43,7 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event){
         if(event.getSource().equals(addNewFacultyFrame.getAddFacultyBtn())){
-            System.out.println("Creating a new faculty...");
+            facultyModel.insert(addNewFacultyFrame.getFacultyNameTextField().getText());
         }
     }
 
