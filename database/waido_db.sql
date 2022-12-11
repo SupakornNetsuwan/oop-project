@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2022 at 04:03 PM
+-- Generation Time: Dec 11, 2022 at 05:49 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -38,6 +38,7 @@ CREATE TABLE `branch` (
 
 INSERT INTO `branch` (`name`, `in_faculty`) VALUES
 ('BUSIM', 'Business Management '),
+('xxxxxxxxxxxx', 'Business Management '),
 ('BIT', 'Information Technology'),
 ('DSBA', 'Information Technology'),
 ('IT', 'Information Technology');
@@ -59,6 +60,29 @@ CREATE TABLE `faculty` (
 INSERT INTO `faculty` (`name`) VALUES
 ('Business Management '),
 ('Information Technology');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
+  `fullname` varchar(50) NOT NULL,
+  `age` int(50) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `faculty` varchar(50) NOT NULL,
+  `branch` varchar(50) NOT NULL,
+  `student_id` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`fullname`, `age`, `gender`, `phone`, `faculty`, `branch`, `student_id`) VALUES
+('ำฟห', 15, 'ฟหำ', 'ฟหก', '-', '-', 'ำฟห');
 
 -- --------------------------------------------------------
 
@@ -95,6 +119,12 @@ ALTER TABLE `branch`
 --
 ALTER TABLE `faculty`
   ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`student_id`);
 
 --
 -- Indexes for table `user`
