@@ -12,6 +12,28 @@ public class AddNewSubjectFrame extends JFrame {
     public void init() {
 
     }
+    
+    public JButton getAddSubjectBtn(){
+        return this.addSubjectBtn;
+    }
+
+    public JTextArea getSubjectDetailTextArea() {
+        return subjectDetailTextArea;
+    }
+
+    public JTextField getSubjectIDTextField() {
+        return subjectIDTextField;
+    }
+
+    public JTextField getSubjectNameTextField() {
+        return subjectNameTextField;
+    }
+
+    public JComboBox<String> getSubjectProfComboBox() {
+        return subjectProfComboBox;
+    }
+    
+    
 
     public void config() {
         this.setLayout(new BorderLayout());
@@ -39,7 +61,7 @@ public class AddNewSubjectFrame extends JFrame {
         subjectDetail = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         subjectDetailTextArea = new javax.swing.JTextArea();
-        addSubject = new javax.swing.JButton();
+        addSubjectBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -85,15 +107,15 @@ public class AddNewSubjectFrame extends JFrame {
         subjectDetailTextArea.setRows(5);
         jScrollPane1.setViewportView(subjectDetailTextArea);
 
-        addSubject.setBackground(new java.awt.Color(255, 137, 47));
-        addSubject.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
-        addSubject.setForeground(new java.awt.Color(255, 255, 255));
-        addSubject.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
-        addSubject.setText("เพิ่มวิชา");
-        addSubject.setFocusPainted(false);
-        addSubject.addActionListener(new java.awt.event.ActionListener() {
+        addSubjectBtn.setBackground(new java.awt.Color(255, 137, 47));
+        addSubjectBtn.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
+        addSubjectBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addSubjectBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        addSubjectBtn.setText("เพิ่มวิชา");
+        addSubjectBtn.setFocusPainted(false);
+        addSubjectBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addSubjectActionPerformed(evt);
+                addSubjectBtnActionPerformed(evt);
             }
         });
 
@@ -105,7 +127,7 @@ public class AddNewSubjectFrame extends JFrame {
                 .addGroup(wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1)
                     .addComponent(subjectProfComboBox, 0, 623, Short.MAX_VALUE)
-                    .addComponent(addSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addSubjectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(subjectLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(subjectNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
                     .addComponent(subjectID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,7 +155,7 @@ public class AddNewSubjectFrame extends JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(addSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addSubjectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -142,12 +164,12 @@ public class AddNewSubjectFrame extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSubjectActionPerformed
+    private void addSubjectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSubjectBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addSubjectActionPerformed
+    }//GEN-LAST:event_addSubjectBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addSubject;
+    private javax.swing.JButton addSubjectBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel subjectDetail;
     private javax.swing.JTextArea subjectDetailTextArea;

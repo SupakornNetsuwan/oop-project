@@ -119,6 +119,16 @@ public class AppController implements ActionListener {
         System.out.println("Subject page");
         subjectManagePanel = new SubjectManagePanel();
         swtichTo(subjectManagePanel);
+        ////////////////////////////////////////
+        
+        subjectManagePanel.getAddSubjectBtn().addActionListener(this);
+        subjectManagePanel.getDeleteSubjectBtn().addActionListener(this);
+        subjectManagePanel.getSubjectTable().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // switchToEachSubjectPanel;
+            }
+        });
     }
 
     public void switchToBranchManagePanel() {
@@ -148,21 +158,32 @@ public class AppController implements ActionListener {
     /* Action methods */
     @Override
     public void actionPerformed(ActionEvent event) {
+
         if (event.getSource().equals(facultyManagePanel.getAddFacultyBtn())) {
+            /* --------------------   Facult page   -------------------- */
             // Add a new faculty frame
             facultyManagePanel.createAddNewFacultyFrame();
             facultyManagePanel.configAddNewFacultyFrame();
-            return;
+           
         } else if (event.getSource().equals(facultyManagePanel.getDeleteFacultyBtn())) {
             // Delete a faculty
-            return;
-        }
-
-        if (event.getSource().equals(branchManagePanel.getAddBranchBtn())) {
+          
+        }else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getAddBranchBtn())) {
+            /* --------------------   Faculty -> Branch page   -------------------- */
             branchManagePanel.createAddNewBranchFrame();
             branchManagePanel.configAddNewBranchFrame();
-        } else if (event.getSource().equals(branchManagePanel.getDeleteBranchBtn())) {
+          
+        } else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getDeleteBranchBtn())) {
             // Delete a branch
+            
+        } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getAddSubjectBtn())) {
+             /* --------------------   Subject page   -------------------- */
+            subjectManagePanel.createAddNewSubjectFrame();
+            subjectManagePanel.configAddNewSubjectFrame();
+           
+        } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getDeleteSubjectBtn())) {
+            // Delete a subject
+            
         }
     }
 
