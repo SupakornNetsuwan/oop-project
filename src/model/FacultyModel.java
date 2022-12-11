@@ -57,7 +57,7 @@ public class FacultyModel {
     }
 
     public boolean delete(String nameFaculty) {
-        sql = "DELETE  FROM faculty WHERE name = ?";
+        sql = "DELETE FROM faculty WHERE name = ?";
         try {
             statement = con.prepareStatement(sql);
             statement.setString(1, nameFaculty);

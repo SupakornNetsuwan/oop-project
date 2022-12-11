@@ -4,12 +4,12 @@ import frame.AddNewStudentFrame;
 import components.*;
 import java.awt.event.*;
 import javax.swing.*;
-// import model.StudentModel;
+import model.StudentModel;
 
 public class StudentManagePanel extends JPanel implements ActionListener {
 
     private AddNewStudentFrame addNewStudentFrame; // Internal frame
-    //private StudentModel xxxxx = new StudentModel(); <- Change to subject model
+    private StudentModel studentModel = new StudentModel();
 
     public StudentManagePanel() {
         initComponents();
@@ -24,8 +24,6 @@ public class StudentManagePanel extends JPanel implements ActionListener {
 //        for (Object[] tableRow : tableRows) {
 //            this.getSubjectTable().addRow(tableRow);
 //        }
-
-
         // Loop from database and insert subject list
     }
 
@@ -59,7 +57,20 @@ public class StudentManagePanel extends JPanel implements ActionListener {
         if (event.getSource().equals(addNewStudentFrame.getAddStudentBtn())) {
             // Clicked on add new student btn
             // check in DB
-            System.out.println("ADDING Student");
+            String studentName = addNewStudentFrame.getStudentNameTextField().getText();
+            String studentId = addNewStudentFrame.getStudentIDTextField().getText();
+            String studentGender = addNewStudentFrame.getStudentGenderTextField().getText();
+            String studentAge = addNewStudentFrame.getStudentAgeTextField().getText();
+            String studentPhone = addNewStudentFrame.getStudentPhoneTextField().getText();
+
+            if (!studentName.isBlank() && !studentId.isBlank() && !studentGender.isBlank() && !studentAge.isBlank() && !studentPhone.isBlank()) {
+                if(studentModel.addStudent(studentName, studentId, studentGender, studentAge, studentPhone)){
+                    System.out.println("Done");
+                }else{
+                    System.out.println("ERR");
+                }
+            }
+
             this.initTable();
         }
     }

@@ -14,5 +14,4 @@ public class UserModel {
     public void setUser(User user) {
         this.user = user;
     }
-
 }
