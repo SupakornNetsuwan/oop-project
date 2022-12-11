@@ -6,12 +6,12 @@ import java.awt.event.*;
 import javax.swing.*;
 import model.BranchModel;
 
-public class BranchXManagePanel extends JPanel implements ActionListener {
+public class BranchManagePanel extends JPanel implements ActionListener {
     private int pornhub = 0;
     private AddNewBranchFrame addNewBranchFrame;
     private BranchModel branchModel = new BranchModel();
 
-    public BranchXManagePanel() {
+    public BranchManagePanel() {
         initComponents();
         initTable();
     }
