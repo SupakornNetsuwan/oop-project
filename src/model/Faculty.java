@@ -2,28 +2,17 @@ package model;
 
 public class Faculty {
 
-    private boolean selected;
     private String nameFaculty;
-    private String Major;
-    private Object button;
+    private int quantity;
 
     public Faculty() {
-        this(false, "", "", null);
+        this("",0);
     }
-
-    public Faculty(boolean selected, String nameFaculty, String Major, Object button) {
-        this.selected = false;
+    
+    
+    public Faculty(String nameFaculty, int quantity) {
         this.nameFaculty = nameFaculty;
-        this.Major = Major;
-        this.button = null;
-    }
-
-    public boolean isSelected() {
-        return selected;
-    }
-
-    public void setSelected(boolean selected) {
-        this.selected = selected;
+        this.quantity = quantity;
     }
 
     public String getNameFaculty() {
@@ -34,20 +23,14 @@ public class Faculty {
         this.nameFaculty = nameFaculty;
     }
 
-    public String getMajor() {
-        return Major;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setMajor(String Major) {
-        this.Major = Major;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public Object getButton() {
-        return button;
-    }
-
-    public void setButton(Object button) {
-        this.button = button;
-    }
+    
 
 }

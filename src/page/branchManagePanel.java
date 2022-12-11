@@ -4,15 +4,26 @@ import frame.AddNewBranchFrame;
 import components.*;
 import java.awt.event.*;
 import javax.swing.*;
-import model.FacultyModel;
+import model.BranchModel;
 
 public class BranchManagePanel extends JPanel implements ActionListener {
 
     private AddNewBranchFrame addNewBranchFrame;
-//    private FacultyModel facultyModel = new FacultyModel();
+    private BranchModel branchModel = new BranchModel();
 
     public BranchManagePanel() {
         initComponents();
+        initTable();
+    }
+    
+    public void initTable() {
+        Object tableRows[][] = branchModel.getRecordsForTableContent();
+        //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
+
+        this.getTable().clearTable();
+        for (Object[] tableRow : tableRows) {
+            this.getTable().addRow(tableRow);
+        }
     }
 
     public Table getTable() {
@@ -47,8 +58,15 @@ public class BranchManagePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource().equals(addNewBranchFrame.getAddBranchBtn())) {
+            
+            if (!branchModel.insert(addNewBranchFrame.getBranchNameTextField().getText(),"")) {
+                JOptionPane.showMessageDialog(addNewBranchFrame, "Error, Duplicated name or don't have Faculty", "Error!", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            this.initTable();
 
-//            facultyModel.insert(addNewBranchFrame.getFacultyNameTextField().getText());
+//            branchModel.insert(addNewBranchFrame.getFacultyNameTextField().getText());
         }
     }
 

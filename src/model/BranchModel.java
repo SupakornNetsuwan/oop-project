@@ -6,32 +6,33 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class FacultyModel {
+public class BranchModel {
 
-    private Faculty Faculty;
-    private ArrayList<Faculty> facultyList;
+    private Branch Branch;
+    private ArrayList<Branch> BranchList;
     private final Connection con = Connect.ConnectDB();
     private ResultSet result = null;
     private PreparedStatement statement = null;
     private String sql;
 
-    public FacultyModel() {
-        facultyList = new ArrayList<Faculty>();
+    public BranchModel() {
+        BranchList = new ArrayList<Branch>();
     }
 
-    public ArrayList<Faculty> getFacultyList() {
-        return facultyList;
+    public ArrayList<Branch> getBranchList() {
+        return BranchList;
     }
 
-    public void setFacultyList(ArrayList<Faculty> FacultyList) {
-        this.facultyList = FacultyList;
+    public void setBranchList(ArrayList<Branch> BranchList) {
+        this.BranchList = BranchList;
     }
 
-    public boolean insert(String nameFaculty) {
-        sql = "INSERT INTO Faculty (nameFaculty) VALUES (?)";
+    public boolean insert(String nameBranch, String inFaculty) {
+        sql = "INSERT INTO Branch (nameBranch, inFaculty) VALUES (?, ?)";
         try {
             statement = con.prepareStatement(sql);
-            statement.setString(1, nameFaculty);
+            statement.setString(1, nameBranch);
+            statement.setString(2, inFaculty);
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -41,11 +42,11 @@ public class FacultyModel {
         }
     }
 
-    public boolean delete(String nameFaculty) {
-        sql = "DELETE  FROM Faculty WHERE nameFaculty = ?";
+    public boolean delete(String nameBranch) {
+        sql = "DELETE  FROM Branch WHERE nameBranch = ?";
         try {
             statement = con.prepareStatement(sql);
-            statement.setString(1, nameFaculty);
+            statement.setString(1, nameBranch);
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -55,15 +56,15 @@ public class FacultyModel {
         }
     }
 
-    public void readFaculty() {
-        sql = "SELECT * FROM Faculty";
+    public void readBranch() {
+        sql = "SELECT * FROM Branch";
         try {
             statement = con.prepareStatement(sql);
             result = statement.executeQuery();
             while (result != null && result.next()) {
-                Faculty = new Faculty();
-                Faculty.setNameFaculty(result.getString("nameFaculty"));
-                facultyList.add(Faculty);
+                Branch = new Branch();
+                Branch.setNameBranch(result.getString("nameBranch"));
+                BranchList.add(Branch);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,16 +72,19 @@ public class FacultyModel {
     }
 
     public Object[][] getRecordsForTableContent() {
-        readFaculty();
-        Object[][] recordsForTableContent = new Object[facultyList.size()][4];
+        readBranch();
+        Object[][] recordsForTableContent = new Object[BranchList.size()][4];
 
-        for (int i = 0; i < facultyList.size(); i++) {
-            Object[] eachFaculty = {null, facultyList.get(i).getNameFaculty(), facultyList.get(i).getQuantity(), null};
-            recordsForTableContent[i] = eachFaculty;
+        for (int i = 0; i < BranchList.size(); i++) {
+            Object[] eachBranch = {null, BranchList.get(i).getNameBranch(), BranchList.get(i).getQuantity(), null};
+            recordsForTableContent[i] = eachBranch;
         }
-        facultyList.clear();
+        BranchList.clear();
 
         return recordsForTableContent;
     }
 
 }
+
+   
+
