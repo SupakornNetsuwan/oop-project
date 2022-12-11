@@ -8,7 +8,7 @@ import model.FacultyModel;
 
 public class FacultyManagePanel extends JPanel implements ActionListener {
 
-    private AddNewFacultyFrame addNewFacultyFrame;
+    private AddNewFacultyFrame addNewFacultyFrame; // Internal frame
     private FacultyModel facultyModel = new FacultyModel();
 
     public FacultyManagePanel() {
@@ -32,6 +32,7 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
     }
 
     public void createAddNewFacultyFrame() {
+
         this.addNewFacultyFrame = new AddNewFacultyFrame();
         addNewFacultyFrame.getAddFacultyBtn().addActionListener(this);
     }
@@ -39,10 +40,11 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
     public void configAddNewFacultyFrame() {
         this.addNewFacultyFrame.config();
     }
-    
+
     @Override
-    public void actionPerformed(ActionEvent event){
-        if(event.getSource().equals(addNewFacultyFrame.getAddFacultyBtn())){
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource().equals(addNewFacultyFrame.getAddFacultyBtn())) {
+            // Clicked on add new faculty btn
             facultyModel.insert(addNewFacultyFrame.getFacultyNameTextField().getText());
         }
     }
@@ -140,7 +142,7 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
         findFaculty.setToolTipText("");
         findFaculty.setActionCommand("<Not Set>");
         findFaculty.setAutoscrolls(false);
-        findFaculty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 0, 14), new java.awt.Color(149, 149, 149))); // NOI18N
+        findFaculty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Prompt", 0, 12), new java.awt.Color(149, 149, 149))); // NOI18N
         findFaculty.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         findFaculty.setMargin(new java.awt.Insets(2, 24, 2, 24));
         findFaculty.addActionListener(new java.awt.event.ActionListener() {
@@ -185,18 +187,18 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
             .addGroup(centerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(actionWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
-                    .addComponent(tableScrollPane))
+                    .addComponent(actionWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE))
                 .addContainerGap())
         );
         centerPanelLayout.setVerticalGroup(
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(centerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(actionWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actionWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         add(centerPanel, java.awt.BorderLayout.CENTER);

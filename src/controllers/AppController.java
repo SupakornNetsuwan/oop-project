@@ -14,6 +14,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import model.FacultyModel;
+import page.BranchManagePanel;
 
 public class AppController implements ActionListener {
 
@@ -40,6 +41,8 @@ public class AppController implements ActionListener {
     private SubjectManagePanel subjectManagePanel;
     private StudentManagePanel studentManagePanel;
     private ProfessorManagePanel professorManagePanel;
+    /* Drill down internal panels*/
+    private BranchManagePanel branchManagePanel;
 
     /* Panels getter in content panel */
     public HomePanel getHomePanel() {
@@ -95,6 +98,7 @@ public class AppController implements ActionListener {
         facultyManagePanel = new FacultyManagePanel();
         swtichTo(facultyManagePanel);
         ////////////////////////////////////////
+
         Table facultyTable = facultyManagePanel.getTable();
         Object tableRows[][] = facultyModel.getRecordsForTableContent();
         //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
@@ -103,7 +107,7 @@ public class AppController implements ActionListener {
             facultyTable.addRow(tableRows[i]);
         }
 
-         /* Faculty Panel listener */
+        /* Faculty Panel listener */
         facultyManagePanel.getAddFacultyBtn().addActionListener(this);
         facultyManagePanel.getDeleteFacultyBtn().addActionListener(this);
 
@@ -117,11 +121,15 @@ public class AppController implements ActionListener {
                 if (col == 3) {
                     // Check if user clicks the cell that the JButton is located,
                     // then show the data of that row in JOptionPane.
-                    System.out.println("Clicked a button. [" + row + ", " + col + "]");
-                    String str = "isSelected: " + facultyTable.getModel().getValueAt(row, 0) + "\n"
-                            + "name: " + facultyTable.getModel().getValueAt(row, 1) + "\n"
-                            + "amount: " + facultyTable.getModel().getValueAt(row, 2);
-                    JOptionPane.showMessageDialog(null, str);
+
+                    /*
+                            System.out.println("Clicked a button. [" + row + ", " + col + "]");
+                            String str = "isSelected: " + facultyTable.getModel().getValueAt(row, 0) + "\n"
+                                    + "name: " + facultyTable.getModel().getValueAt(row, 1) + "\n"
+                                    + "amount: " + facultyTable.getModel().getValueAt(row, 2);
+                            JOptionPane.showMessageDialog(null, str);
+                     */
+                    switchToBranchManagePanel();
                 } else {
                     // When user ticks JCheckBox, print all row names that has
                     // JCheckBox ticked on console.
@@ -161,6 +169,23 @@ public class AppController implements ActionListener {
         swtichTo(subjectManagePanel);
     }
 
+    public void switchToBranchManagePanel() {
+        System.out.println("Branch page");
+        branchManagePanel = new BranchManagePanel();
+        swtichTo(branchManagePanel);
+        ////////////////////////////////////////
+
+        /* Branch Panel listener */
+        branchManagePanel.getAddBranchBtn().addActionListener(this);
+        branchManagePanel.getDeleteBranchBtn().addActionListener(this);
+        branchManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("Go back!");
+            }
+        });
+    }
+
     private void swtichTo(JPanel panelToSwitch) {
         this.getContentPanel().removeAll();
         this.getContentPanel().add(panelToSwitch);
@@ -168,6 +193,7 @@ public class AppController implements ActionListener {
         mainFrame.repaint();
     }
 
+    @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource().equals(facultyManagePanel.getAddFacultyBtn())) {
             // Add a new faculty frame
@@ -177,5 +203,13 @@ public class AppController implements ActionListener {
             // Delete a faculty
         }
 
+        if (event.getSource().equals(branchManagePanel.getAddBranchBtn())) {
+            branchManagePanel.createAddNewBranchFrame();
+            branchManagePanel.configAddNewBranchFrame();
+        } else if (event.getSource().equals(branchManagePanel.getDeleteBranchBtn())) {
+            // Delete a branch
+        }
     }
+    
+    // TODO: fix mouse listener inline function issue *
 }
