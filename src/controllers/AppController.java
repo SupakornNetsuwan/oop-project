@@ -226,11 +226,8 @@ public class AppController implements ActionListener {
                     switchToBranchManagePanel();
                     branchManagePanel.setNameFaculty((String)facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 1));
                     System.out.println(branchManagePanel.getNameFaculty());
-                    facultyManagePanel.getFacultyModel().setInFaculty((String)facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 1));
-                    facultyManagePanel.getFacultyModel().setQuantityBranch(branchManagePanel.getBranchModel().getBranchList().size());
                     
-                    
-                    
+
                 } else {
                     // When user ticks JCheckBox, print all row names that has
                     // JCheckBox ticked on console.

@@ -15,7 +15,6 @@ public class FacultyModel {
     private PreparedStatement statement = null;
     private PreparedStatement statement2 = null;
     private String sql;
-    private String inFaculty = "";
     private int QuantityBranch = 0;
 
     public FacultyModel() {
@@ -30,14 +29,6 @@ public class FacultyModel {
         this.facultyList = FacultyList;
     }
 
-    public String getInFaculty() {
-        return inFaculty;
-    }
-
-    public void setInFaculty(String inFaculty) {
-        this.inFaculty = inFaculty;
-    }
-
     public int getQuantityBranch() {
         return QuantityBranch;
     }
@@ -47,6 +38,7 @@ public class FacultyModel {
     }
 
     public boolean insert(String nameFaculty) {
+        if (!nameFaculty.isBlank()){
         sql = "INSERT INTO faculty (name) VALUES (?)";
         try {
             statement = con.prepareStatement(sql);
@@ -58,20 +50,11 @@ public class FacultyModel {
             System.out.println(e.getMessage());
             return false;
         }
+        }
+        else{
+            return false;
+        }
     }
-//    public boolean update(String nameFaculty,int QuantityBranch) {
-//        sql = "UPDATE Faculty SET QuantityBranch = ? WHERE nameFaculty = ?;";
-//        try {
-//            statement = con.prepareStatement(sql);
-//            statement.setString(1, String.valueOf(QuantityBranch));
-//            statement.setString(2, nameFaculty);
-//            statement.executeUpdate();
-//            return true;
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//            return false;
-//        }
-//    }
 
     public boolean delete(String nameFaculty) {
         sql = "DELETE  FROM faculty WHERE name = ?";
