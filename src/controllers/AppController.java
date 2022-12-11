@@ -137,9 +137,9 @@ public class AppController implements ActionListener {
         });
     }
 
-    public void switchToBranchManagePanel() {
+    public void switchToBranchManagePanel(String facultyName) {
         System.out.println("Branch page");
-        branchManagePanel = new BranchManagePanel();
+        branchManagePanel = new BranchManagePanel(facultyName);
         swtichTo(branchManagePanel);
         ////////////////////////////////////////
         
@@ -238,8 +238,8 @@ public class AppController implements ActionListener {
 //                            JOptionPane.showMessageDialog(null, str);
 
                     
-                    switchToBranchManagePanel();
-                    branchManagePanel.setNameFaculty((String)facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 1));
+                    switchToBranchManagePanel((String)facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 1));
+//                    branchManagePanel.setNameFaculty();
                     System.out.println(branchManagePanel.getNameFaculty());
                     
 

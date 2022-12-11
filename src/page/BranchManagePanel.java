@@ -14,7 +14,8 @@ public class BranchManagePanel extends JPanel implements ActionListener {
     private FacultyManagePanel facultyManagePanel;
     private String nameFaculty = "";
 
-    public BranchManagePanel() {
+    public BranchManagePanel(String facultyName) {
+        this.nameFaculty = facultyName;
         initComponents();
         initTable();
     }
