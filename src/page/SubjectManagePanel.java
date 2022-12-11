@@ -9,7 +9,7 @@ import model.FacultyModel;
 public class SubjectManagePanel extends JPanel implements ActionListener {
 
     private AddNewSubjectFrame addNewSubjectFrame; // Internal frame
-    //private FacultyModel facultyModel = new FacultyModel(); <- Change to subject model
+    //private SubjectModel xxxxx = new SubjectModel(); <- Change to subject model
 
     public SubjectManagePanel() {
         initComponents();
@@ -17,7 +17,7 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
     }
 
     public void initTable() {
-//        Object tableRows[][] = facultyModel.getRecordsForTableContent();
+//        Object tableRows[][] = xxxxx.getRecordsForTableContent();
         //String tableHeader[] = {"header-1","header-2","header-3","header-4","header-5","header-6"};
 
 //        this.getSubjectTable().clearTable();
@@ -59,6 +59,7 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
         if (event.getSource().equals(addNewSubjectFrame.getAddSubjectBtn())) {
             // Clicked on add new subject btn
             // check in DB
+            System.out.println("ADDING SUBJECT");
             this.initTable();
         }
     }

@@ -26,11 +26,9 @@ public class AppController implements ActionListener {
     public MainLayout getMainLayout() {
         return this.mainLayout;
     }
-
     public ContentPanel getContentPanel() {
         return mainLayout.getContentPanel();
     }
-
     public NavPanel getNavPanel() {
         return mainLayout.getNavPanel();
     }
@@ -49,7 +47,6 @@ public class AppController implements ActionListener {
     public HomePanel getHomePanel() {
         return this.homePanel;
     }
-
     public FacultyManagePanel getFacultyManagePanel() {
         return this.facultyManagePanel;
     }
@@ -78,7 +75,6 @@ public class AppController implements ActionListener {
         mainFrame.revalidate();
         mainFrame.repaint();
     }
-
     public void closeMainApp() {
         mainFrame.getContentPane().removeAll(); //Clear Panel
         mainFrame.revalidate();
@@ -126,7 +122,7 @@ public class AppController implements ActionListener {
         subjectManagePanel.getSubjectTable().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // switchToEachSubjectPanel;
+                // Drill down to -> switchToEachSubjectPanel;
             }
         });
     }
