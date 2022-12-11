@@ -25,6 +25,7 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
             this.getFacultyTable().addRow(tableRow);
         }
     }
+    
 
     public Table getFacultyTable() {
         return this.facultyTable;

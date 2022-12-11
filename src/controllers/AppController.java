@@ -213,16 +213,22 @@ public class AppController implements ActionListener {
                 if (col == 3) {
                     // Check if user clicks the cell that the JButton is located,
                     // then show the data of that row in JOptionPane.
+                    
+                    
 
-                    /*
-                            System.out.println("Clicked a button. [" + row + ", " + col + "]");
-                            String str = "isSelected: " + facultyTable.getModel().getValueAt(row, 0) + "\n"
-                                    + "name: " + facultyTable.getModel().getValueAt(row, 1) + "\n"
-                                    + "amount: " + facultyTable.getModel().getValueAt(row, 2);
-                            JOptionPane.showMessageDialog(null, str);
-                     */
+//                            System.out.println("Clicked a button. [" + row + ", " + col + "]");
+//                            String str = "isSelected: " + facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 0) + "\n"
+//                                    + "name: " + facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 1) + "\n"
+//                                    + "amount: " + facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 2);
+//                            JOptionPane.showMessageDialog(null, str);
+
                     
                     switchToBranchManagePanel();
+                    branchManagePanel.setNameFaculty((String)facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 1));
+                    System.out.println(branchManagePanel.getNameFaculty());
+                    
+                    
+                    
                 } else {
                     // When user ticks JCheckBox, print all row names that has
                     // JCheckBox ticked on console.

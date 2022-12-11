@@ -14,6 +14,8 @@ public class BranchModel {
     private ResultSet result = null;
     private PreparedStatement statement = null;
     private String sql;
+    private String inFaculty = "";
+    private int quantity = 0;
 
     public BranchModel() {
         BranchList = new ArrayList<Branch>();
@@ -22,6 +24,15 @@ public class BranchModel {
     public ArrayList<Branch> getBranchList() {
         return BranchList;
     }
+
+    public String getInFaculty() {
+        return inFaculty;
+    }
+
+    public void setInFaculty(String inFaculty) {
+        this.inFaculty = inFaculty;
+    }
+    
 
     public void setBranchList(ArrayList<Branch> BranchList) {
         this.BranchList = BranchList;
@@ -56,15 +67,17 @@ public class BranchModel {
         }
     }
 
-    public void readBranch() {
-        sql = "SELECT * FROM Branch";
+    public void readBranch(String inFaculty) {
+        sql = "SELECT * FROM Branch WHERE inFaculty = ?";
         try {
             statement = con.prepareStatement(sql);
+            statement.setString(1, inFaculty);
             result = statement.executeQuery();
             while (result != null && result.next()) {
                 Branch = new Branch();
                 Branch.setNameBranch(result.getString("nameBranch"));
                 BranchList.add(Branch);
+                
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,7 +85,7 @@ public class BranchModel {
     }
 
     public Object[][] getRecordsForTableContent() {
-        readBranch();
+        readBranch(inFaculty);
         Object[][] recordsForTableContent = new Object[BranchList.size()][4];
 
         for (int i = 0; i < BranchList.size(); i++) {

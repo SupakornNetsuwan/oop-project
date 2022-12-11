@@ -14,6 +14,7 @@ public class FacultyModel {
     private ResultSet result = null;
     private PreparedStatement statement = null;
     private String sql;
+    private String inFaculty = "";
 
     public FacultyModel() {
         facultyList = new ArrayList<Faculty>();
@@ -32,6 +33,20 @@ public class FacultyModel {
         try {
             statement = con.prepareStatement(sql);
             statement.setString(1, nameFaculty);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    public boolean update(String nameFaculty,int QuantityBranch) {
+        sql = "UPDATE Faculty SET QuantityBranch = ? WHERE nameFaculty = ?;";
+        try {
+            statement = con.prepareStatement(sql);
+            statement.setString(1, String.valueOf(QuantityBranch));
+            statement.setString(2, nameFaculty);
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {

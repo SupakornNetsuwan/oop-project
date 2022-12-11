@@ -2,31 +2,45 @@ package page;
 
 import frame.AddNewBranchFrame;
 import components.*;
+import controllers.AppController;
 import java.awt.event.*;
 import javax.swing.*;
 import model.BranchModel;
 
 public class BranchManagePanel extends JPanel implements ActionListener {
-    private int pornhub = 0;
+    
     private AddNewBranchFrame addNewBranchFrame;
     private BranchModel branchModel = new BranchModel();
+    private FacultyManagePanel facultyManagePanel;
+    private String nameFaculty = "";
 
     public BranchManagePanel() {
         initComponents();
         initTable();
     }
     
+    
     public void initTable() {
+        branchModel.setInFaculty(nameFaculty);
         Object tableRows[][] = branchModel.getRecordsForTableContent();
+        
         //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
 
-        this.getTable().clearTable();
+        this.getBranchTable().clearTable();
         for (Object[] tableRow : tableRows) {
-            this.getTable().addRow(tableRow);
+            this.getBranchTable().addRow(tableRow);
         }
     }
 
-    public Table getTable() {
+    public String getNameFaculty() {
+        return nameFaculty;
+    }
+
+    public void setNameFaculty(String nameFaculty) {
+        this.nameFaculty = nameFaculty;
+    }
+
+    public Table getBranchTable() {
         return this.branchTable;
     }
 
@@ -58,15 +72,14 @@ public class BranchManagePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource().equals(addNewBranchFrame.getAddBranchBtn())) {
-            
-            if (!branchModel.insert(addNewBranchFrame.getBranchNameTextField().getText(),"")) {
+                     
+            if (!branchModel.insert(addNewBranchFrame.getBranchNameTextField().getText(),this.getNameFaculty())) {
                 JOptionPane.showMessageDialog(addNewBranchFrame, "Error, Duplicated name or don't have Faculty", "Error!", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             
             this.initTable();
 
-//            branchModel.insert(addNewBranchFrame.getFacultyNameTextField().getText());
         }
     }
 
