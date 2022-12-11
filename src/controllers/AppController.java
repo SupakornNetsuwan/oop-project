@@ -173,7 +173,6 @@ public class AppController implements ActionListener {
            
         } else if (event.getSource().equals(facultyManagePanel.getDeleteFacultyBtn())) {
             // Delete a faculty
-                    String toShow = "selected:";
                     for (int i = 0; i < facultyManagePanel.getFacultyTable().getRowCount(); i++) {
                         Boolean selected = (Boolean) facultyManagePanel.getFacultyTable().getModel().getValueAt(i, 0);
                         if (selected == null) {
@@ -187,7 +186,6 @@ public class AppController implements ActionListener {
                             facultyManagePanel.getFacultyModel().delete(name);
                         }
                     }
-                    System.out.println(toShow);
           
         }else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getAddBranchBtn())) {
             /* --------------------   Faculty -> Branch page   -------------------- */
@@ -196,7 +194,17 @@ public class AppController implements ActionListener {
           
         } else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getDeleteBranchBtn())) {
             // Delete a branch
-            
+                    for (int i = 0; i < branchManagePanel.getBranchTable().getRowCount(); i++) {
+                        Boolean selected = (Boolean) branchManagePanel.getBranchTable().getModel().getValueAt(i, 0);
+                        if (selected == null) {
+                            selected = false;
+                        }
+                        String name = branchManagePanel.getBranchTable().getModel().getValueAt(i, 1).toString();
+                        if (selected) {
+                            branchManagePanel.getBranchModel().delete(name);
+                        }
+                    }
+                    
         } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getAddSubjectBtn())) {
              /* --------------------   Subject page   -------------------- */
             subjectManagePanel.createAddNewSubjectFrame();
