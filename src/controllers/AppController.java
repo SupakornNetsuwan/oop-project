@@ -14,7 +14,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import model.FacultyModel;
-import page.BranchManagePanel;
+import page.BranchXManagePanel;
 
 public class AppController implements ActionListener {
 
@@ -41,7 +41,7 @@ public class AppController implements ActionListener {
     private ProfessorManagePanel professorManagePanel;
 
     /* Drill down internal panels*/
-    private BranchManagePanel branchManagePanel;
+    private BranchXManagePanel branchManagePanel;
 
     /* Panels getter in content panel */
     public HomePanel getHomePanel() {
@@ -139,7 +139,7 @@ public class AppController implements ActionListener {
 
     public void switchToBranchManagePanel() {
         System.out.println("Branch page");
-        branchManagePanel = new BranchManagePanel();
+        branchManagePanel = new BranchXManagePanel();
         swtichTo(branchManagePanel);
         ////////////////////////////////////////
         
