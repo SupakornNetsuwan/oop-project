@@ -66,6 +66,20 @@ public class BranchModel {
             return false;
         }
     }
+    
+    public boolean deleteAllInFaculty(String in_faculty) {
+        sql = "DELETE  FROM branch WHERE in_faculty = ?";
+        try {
+            statement = con.prepareStatement(sql);
+            statement.setString(1, in_faculty);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 
     public void readBranch(String inFaculty) {
         sql = "SELECT * FROM branch WHERE in_faculty = ?";

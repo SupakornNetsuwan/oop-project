@@ -173,6 +173,21 @@ public class AppController implements ActionListener {
            
         } else if (event.getSource().equals(facultyManagePanel.getDeleteFacultyBtn())) {
             // Delete a faculty
+                    String toShow = "selected:";
+                    for (int i = 0; i < facultyManagePanel.getFacultyTable().getRowCount(); i++) {
+                        Boolean selected = (Boolean) facultyManagePanel.getFacultyTable().getModel().getValueAt(i, 0);
+                        if (selected == null) {
+                            selected = false;
+                        }
+                        String name = facultyManagePanel.getFacultyTable().getModel().getValueAt(i, 1).toString();
+                        if (selected) {
+                            if(Integer.parseInt(facultyManagePanel.getFacultyTable().getModel().getValueAt(i, 2).toString())> 0){
+                                branchManagePanel.getBranchModel().deleteAllInFaculty(name);
+                            }    
+                            facultyManagePanel.getFacultyModel().delete(name);
+                        }
+                    }
+                    System.out.println(toShow);
           
         }else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getAddBranchBtn())) {
             /* --------------------   Faculty -> Branch page   -------------------- */
