@@ -41,6 +41,7 @@ public class AppController implements ActionListener {
     private SubjectManagePanel subjectManagePanel;
     private StudentManagePanel studentManagePanel;
     private ProfessorManagePanel professorManagePanel;
+
     /* Drill down internal panels*/
     private BranchManagePanel branchManagePanel;
 
@@ -52,15 +53,12 @@ public class AppController implements ActionListener {
     public FacultyManagePanel getFacultyManagePanel() {
         return this.facultyManagePanel;
     }
-
     public SubjectManagePanel getSubjectManagePanel() {
         return subjectManagePanel;
     }
-
     public StudentManagePanel getStudentManagePanel() {
         return studentManagePanel;
     }
-
     public ProfessorManagePanel getProfessorManagePanel() {
         return professorManagePanel;
     }
@@ -99,56 +97,10 @@ public class AppController implements ActionListener {
         swtichTo(facultyManagePanel);
         ////////////////////////////////////////
 
-        Table facultyTable = facultyManagePanel.getTable();
-        Object tableRows[][] = facultyModel.getRecordsForTableContent();
-        //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
-
-        for (int i = 0; i < tableRows.length; i++) {
-            facultyTable.addRow(tableRows[i]);
-        }
-
         /* Faculty Panel listener */
         facultyManagePanel.getAddFacultyBtn().addActionListener(this);
         facultyManagePanel.getDeleteFacultyBtn().addActionListener(this);
-
-        facultyTable.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // Obtain row and column indexes the user clicked.
-                int row = facultyTable.rowAtPoint(e.getPoint());
-                int col = facultyTable.columnAtPoint(e.getPoint());
-
-                if (col == 3) {
-                    // Check if user clicks the cell that the JButton is located,
-                    // then show the data of that row in JOptionPane.
-
-                    /*
-                            System.out.println("Clicked a button. [" + row + ", " + col + "]");
-                            String str = "isSelected: " + facultyTable.getModel().getValueAt(row, 0) + "\n"
-                                    + "name: " + facultyTable.getModel().getValueAt(row, 1) + "\n"
-                                    + "amount: " + facultyTable.getModel().getValueAt(row, 2);
-                            JOptionPane.showMessageDialog(null, str);
-                     */
-                    switchToBranchManagePanel();
-                } else {
-                    // When user ticks JCheckBox, print all row names that has
-                    // JCheckBox ticked on console.
-                    String toShow = "selected:";
-                    for (int i = 0; i < facultyTable.getRowCount(); i++) {
-                        Boolean selected = (Boolean) facultyTable.getModel().getValueAt(i, 0);
-                        if (selected == null) {
-                            selected = false;
-                        }
-                        String name = facultyTable.getModel().getValueAt(i, 1).toString();
-                        if (selected) {
-                            toShow += " " + name;
-                        }
-                    }
-                    System.out.println(toShow);
-                }
-            }
-        });
-
+        facultyManagePanel.getFacultyTable().addMouseListener(new MouseHandler());
     }
 
     public void switchToProfessorManagePanel() {
@@ -174,14 +126,14 @@ public class AppController implements ActionListener {
         branchManagePanel = new BranchManagePanel();
         swtichTo(branchManagePanel);
         ////////////////////////////////////////
-
+        
         /* Branch Panel listener */
         branchManagePanel.getAddBranchBtn().addActionListener(this);
         branchManagePanel.getDeleteBranchBtn().addActionListener(this);
         branchManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Go back!");
+                switchToFacultyManagePanel();
             }
         });
     }
@@ -193,14 +145,17 @@ public class AppController implements ActionListener {
         mainFrame.repaint();
     }
 
+    /* Action methods */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource().equals(facultyManagePanel.getAddFacultyBtn())) {
             // Add a new faculty frame
             facultyManagePanel.createAddNewFacultyFrame();
             facultyManagePanel.configAddNewFacultyFrame();
+            return;
         } else if (event.getSource().equals(facultyManagePanel.getDeleteFacultyBtn())) {
             // Delete a faculty
+            return;
         }
 
         if (event.getSource().equals(branchManagePanel.getAddBranchBtn())) {
@@ -210,6 +165,46 @@ public class AppController implements ActionListener {
             // Delete a branch
         }
     }
-    
-    // TODO: fix mouse listener inline function issue *
+
+    class MouseHandler extends MouseAdapter {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (e.getSource().equals(facultyManagePanel.getFacultyTable())) {
+                // Obtain row and column indexes the user clicked.
+                int row = facultyManagePanel.getFacultyTable().rowAtPoint(e.getPoint());
+                int col = facultyManagePanel.getFacultyTable().columnAtPoint(e.getPoint());
+
+                if (col == 3) {
+                    // Check if user clicks the cell that the JButton is located,
+                    // then show the data of that row in JOptionPane.
+
+                    /*
+                            System.out.println("Clicked a button. [" + row + ", " + col + "]");
+                            String str = "isSelected: " + facultyTable.getModel().getValueAt(row, 0) + "\n"
+                                    + "name: " + facultyTable.getModel().getValueAt(row, 1) + "\n"
+                                    + "amount: " + facultyTable.getModel().getValueAt(row, 2);
+                            JOptionPane.showMessageDialog(null, str);
+                     */
+                    
+                    switchToBranchManagePanel();
+                } else {
+                    // When user ticks JCheckBox, print all row names that has
+                    // JCheckBox ticked on console.
+                    String toShow = "selected:";
+                    for (int i = 0; i < facultyManagePanel.getFacultyTable().getRowCount(); i++) {
+                        Boolean selected = (Boolean) facultyManagePanel.getFacultyTable().getModel().getValueAt(i, 0);
+                        if (selected == null) {
+                            selected = false;
+                        }
+                        String name = facultyManagePanel.getFacultyTable().getModel().getValueAt(i, 1).toString();
+                        if (selected) {
+                            toShow += " " + name;
+                        }
+                    }
+                    System.out.println(toShow);
+                }
+            }
+        }
+    }
 }

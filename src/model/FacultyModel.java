@@ -17,7 +17,6 @@ public class FacultyModel {
 
     public FacultyModel() {
         facultyList = new ArrayList<Faculty>();
-
     }
 
     public ArrayList<Faculty> getFacultyList() {
@@ -36,11 +35,12 @@ public class FacultyModel {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
             return false;
         }
     }
-    
+
     public boolean delete(String nameFaculty) {
         sql = "DELETE  FROM Faculty WHERE nameFaculty = ?";
         try {
@@ -49,7 +49,8 @@ public class FacultyModel {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println(e.getMessage());
             return false;
         }
     }

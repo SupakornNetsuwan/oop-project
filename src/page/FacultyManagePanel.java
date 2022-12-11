@@ -13,9 +13,20 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
 
     public FacultyManagePanel() {
         initComponents();
+        initTable();
     }
 
-    public Table getTable() {
+    public void initTable() {
+        Object tableRows[][] = facultyModel.getRecordsForTableContent();
+        //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
+
+        this.getFacultyTable().clearTable();
+        for (Object[] tableRow : tableRows) {
+            this.getFacultyTable().addRow(tableRow);
+        }
+    }
+
+    public Table getFacultyTable() {
         return this.facultyTable;
     }
 
@@ -32,7 +43,6 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
     }
 
     public void createAddNewFacultyFrame() {
-
         this.addNewFacultyFrame = new AddNewFacultyFrame();
         addNewFacultyFrame.getAddFacultyBtn().addActionListener(this);
     }
@@ -45,7 +55,13 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource().equals(addNewFacultyFrame.getAddFacultyBtn())) {
             // Clicked on add new faculty btn
-            facultyModel.insert(addNewFacultyFrame.getFacultyNameTextField().getText());
+
+            if (!facultyModel.insert(addNewFacultyFrame.getFacultyNameTextField().getText())) {
+                JOptionPane.showMessageDialog(addNewFacultyFrame, "Error, Duplicated name", "Error!", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            this.initTable();
         }
     }
 

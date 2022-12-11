@@ -28,8 +28,9 @@ public class Table extends JTable {
         });
     }
 
-    public void addTable() {
-        // your job
+    public void clearTable() {
+        DefaultTableModel model = (DefaultTableModel) getModel();
+        model.setRowCount(0);
     }
 
     public Table() {
