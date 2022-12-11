@@ -29,7 +29,6 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
     public FacultyModel getFacultyModel() {
         return facultyModel;
     }
-    
 
     public Table getFacultyTable() {
         return this.facultyTable;
@@ -65,7 +64,7 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
                 JOptionPane.showMessageDialog(addNewFacultyFrame, "Error, Duplicated name", "Error!", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            
+
             this.initTable();
         }
     }

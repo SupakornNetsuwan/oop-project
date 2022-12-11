@@ -39,7 +39,7 @@ public class BranchModel {
     }
 
     public boolean insert(String nameBranch, String inFaculty) {
-        sql = "INSERT INTO Branch (nameBranch, inFaculty) VALUES (?, ?)";
+        sql = "INSERT INTO branch (name, in_faculty) VALUES (?, ?)";
         try {
             statement = con.prepareStatement(sql);
             statement.setString(1, nameBranch);
@@ -54,7 +54,7 @@ public class BranchModel {
     }
 
     public boolean delete(String nameBranch) {
-        sql = "DELETE  FROM Branch WHERE nameBranch = ?";
+        sql = "DELETE  FROM branch WHERE name = ?";
         try {
             statement = con.prepareStatement(sql);
             statement.setString(1, nameBranch);
@@ -68,14 +68,14 @@ public class BranchModel {
     }
 
     public void readBranch(String inFaculty) {
-        sql = "SELECT * FROM Branch WHERE inFaculty = ?";
+        sql = "SELECT * FROM branch WHERE in_faculty = ?";
         try {
             statement = con.prepareStatement(sql);
             statement.setString(1, inFaculty);
             result = statement.executeQuery();
             while (result != null && result.next()) {
                 Branch = new Branch();
-                Branch.setNameBranch(result.getString("nameBranch"));
+                Branch.setNameBranch(result.getString("name"));
                 BranchList.add(Branch);
                 
             }

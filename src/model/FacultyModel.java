@@ -46,9 +46,8 @@ public class FacultyModel {
         this.QuantityBranch = QuantityBranch;
     }
 
-   
     public boolean insert(String nameFaculty) {
-        sql = "INSERT INTO Faculty (nameFaculty) VALUES (?)";
+        sql = "INSERT INTO faculty (name) VALUES (?)";
         try {
             statement = con.prepareStatement(sql);
             statement.setString(1, nameFaculty);
@@ -75,7 +74,7 @@ public class FacultyModel {
 //    }
 
     public boolean delete(String nameFaculty) {
-        sql = "DELETE  FROM Faculty WHERE nameFaculty = ?";
+        sql = "DELETE  FROM faculty WHERE name = ?";
         try {
             statement = con.prepareStatement(sql);
             statement.setString(1, nameFaculty);
@@ -89,21 +88,21 @@ public class FacultyModel {
     }
 
     public void readFaculty() {
-        sql = "SELECT * FROM Faculty";
+        sql = "SELECT * FROM faculty";
         try {
             statement = con.prepareStatement(sql);
             result = statement.executeQuery();
             while (result != null && result.next()) {
                 QuantityBranch = 0;
                 Faculty = new Faculty();
-                Faculty.setNameFaculty(result.getString("nameFaculty"));
-                String sql2 = "SELECT * FROM Branch WHERE inFaculty = ?";
-                    statement2 = con.prepareStatement(sql2);
-                    statement2.setString(1, result.getString("nameFaculty"));
-                    ResultSet result2 = statement2.executeQuery();
-                    while (result2 != null && result2.next()) {
-                        QuantityBranch++;
-                    }
+                Faculty.setNameFaculty(result.getString("name"));
+                String sql2 = "SELECT * FROM branch WHERE in_faculty = ?";
+                statement2 = con.prepareStatement(sql2);
+                statement2.setString(1, result.getString("name"));
+                ResultSet result2 = statement2.executeQuery();
+                while (result2 != null && result2.next()) {
+                    QuantityBranch++;
+                }
                 Faculty.setQuantity(QuantityBranch);
                 facultyList.add(Faculty);
             }
