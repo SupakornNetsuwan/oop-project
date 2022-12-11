@@ -109,6 +109,16 @@ public class AppController implements ActionListener {
         System.out.println("Student page");
         studentManagePanel = new StudentManagePanel();
         swtichTo(studentManagePanel);
+        ////////////////////////////////////////
+        
+        studentManagePanel.getAddStudentBtn().addActionListener(this);
+        studentManagePanel.getDeleteStudentBtn().addActionListener(this);
+        studentManagePanel.getStudentTable().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Drill down to -> switchToEachStudentPanel;
+            }
+        });
     }
 
     public void switchToSubjectManagePanel() {
@@ -178,6 +188,14 @@ public class AppController implements ActionListener {
             subjectManagePanel.configAddNewSubjectFrame();
            
         } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getDeleteSubjectBtn())) {
+            // Delete a subject
+            
+        } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getAddStudentBtn())) {
+             /* --------------------   Subject page   -------------------- */
+            studentManagePanel.createAddNewSubjectFrame();
+            studentManagePanel.configAddNewSubjectFrame();
+           
+        } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getDeleteStudentBtn())) {
             // Delete a subject
             
         }

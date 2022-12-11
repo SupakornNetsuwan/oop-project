@@ -51,7 +51,6 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="addStudent" min="-2" pref="122" max="-2" attributes="0"/>
                       <Component id="studentNameTextField" alignment="1" pref="623" max="32767" attributes="0"/>
                       <Component id="studentIDTextField" alignment="1" pref="623" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -69,6 +68,7 @@
                       <Component id="studentID" alignment="0" max="32767" attributes="0"/>
                       <Component id="studentName" alignment="0" max="32767" attributes="0"/>
                       <Component id="studentPhone" alignment="0" max="32767" attributes="0"/>
+                      <Component id="addStudentBtn" alignment="1" min="-2" pref="136" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -99,7 +99,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="studentPhoneTextField" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace pref="32" max="32767" attributes="0"/>
-                  <Component id="addStudent" min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="addStudentBtn" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -114,7 +114,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="2f" green="89" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe2d; &#xe19;&#xe32;&#xe21;&#xe2a;&#xe01;&#xe38;&#xe25;"/>
+            <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe2d;-&#xe19;&#xe32;&#xe21;&#xe2a;&#xe01;&#xe38;&#xe25;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="studentNameTextField">
@@ -226,7 +226,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="addStudent">
+        <Component class="javax.swing.JButton" name="addStudentBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="2f" green="89" red="ff" type="rgb"/>
@@ -240,11 +240,11 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icons/add.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#xe40;&#xe1e;&#xe34;&#xe48;&#xe21;&#xe19;&#xe31;&#xe01;&#xe40;&#xe23;&#xe35;&#xe22;&#xe19;"/>
+            <Property name="text" type="java.lang.String" value="&#xe40;&#xe1e;&#xe34;&#xe48;&#xe21;&#xe19;&#xe31;&#xe01;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;"/>
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addStudentActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addStudentBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

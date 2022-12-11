@@ -9,6 +9,30 @@ public class AddNewStudentFrame extends JFrame {
         initComponents();
     }
 
+    public JButton getAddStudentBtn() {
+        return addStudentBtn;
+    }
+
+    public JTextField getStudentAgeTextField() {
+        return studentAgeTextField;
+    }
+
+    public JTextField getStudentGenderTextField() {
+        return studentGenderTextField;
+    }
+
+    public JTextField getStudentIDTextField() {
+        return studentIDTextField;
+    }
+
+    public JTextField getStudentNameTextField() {
+        return studentNameTextField;
+    }
+
+    public JTextField getStudentPhoneTextField() {
+        return studentPhoneTextField;
+    }
+   
     public void init() {
 
     }
@@ -40,7 +64,7 @@ public class AddNewStudentFrame extends JFrame {
         studentGenderTextField = new javax.swing.JTextField();
         studentPhone = new javax.swing.JLabel();
         studentPhoneTextField = new javax.swing.JTextField();
-        addStudent = new javax.swing.JButton();
+        addStudentBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -53,7 +77,7 @@ public class AddNewStudentFrame extends JFrame {
 
         studentName.setFont(new java.awt.Font("Prompt Medium", 0, 20)); // NOI18N
         studentName.setForeground(new java.awt.Color(255, 137, 47));
-        studentName.setText("ชื่อ นามสกุล");
+        studentName.setText("ชื่อ-นามสกุล");
 
         studentNameTextField.setFont(new java.awt.Font("Prompt", 0, 18)); // NOI18N
         studentNameTextField.setForeground(new java.awt.Color(154, 154, 154));
@@ -91,15 +115,15 @@ public class AddNewStudentFrame extends JFrame {
         studentPhoneTextField.setForeground(new java.awt.Color(154, 154, 154));
         studentPhoneTextField.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
-        addStudent.setBackground(new java.awt.Color(255, 137, 47));
-        addStudent.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
-        addStudent.setForeground(new java.awt.Color(255, 255, 255));
-        addStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
-        addStudent.setText("เพิ่มนักเรียน");
-        addStudent.setFocusPainted(false);
-        addStudent.addActionListener(new java.awt.event.ActionListener() {
+        addStudentBtn.setBackground(new java.awt.Color(255, 137, 47));
+        addStudentBtn.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
+        addStudentBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addStudentBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        addStudentBtn.setText("เพิ่มนักศึกษา");
+        addStudentBtn.setFocusPainted(false);
+        addStudentBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStudentActionPerformed(evt);
+                addStudentBtnActionPerformed(evt);
             }
         });
 
@@ -109,7 +133,6 @@ public class AddNewStudentFrame extends JFrame {
             wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapperLayout.createSequentialGroup()
                 .addGroup(wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(addStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
                     .addComponent(studentIDTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, wrapperLayout.createSequentialGroup()
@@ -123,7 +146,8 @@ public class AddNewStudentFrame extends JFrame {
                     .addComponent(studentPhoneTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
                     .addComponent(studentID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(studentName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(studentPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(studentPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addStudentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         wrapperLayout.setVerticalGroup(
@@ -149,7 +173,7 @@ public class AddNewStudentFrame extends JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(studentPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(addStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addStudentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -158,12 +182,12 @@ public class AddNewStudentFrame extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentActionPerformed
+    private void addStudentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addStudentActionPerformed
+    }//GEN-LAST:event_addStudentBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addStudent;
+    private javax.swing.JButton addStudentBtn;
     private javax.swing.JLabel studentAge;
     private javax.swing.JTextField studentAgeTextField;
     private javax.swing.JLabel studentGender;

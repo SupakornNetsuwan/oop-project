@@ -1,16 +1,67 @@
 package page;
 
-/**
- *
- * @author windows
- */
-public class StudentManagePanel extends javax.swing.JPanel {
+import frame.AddNewStudentFrame;
+import components.*;
+import java.awt.event.*;
+import javax.swing.*;
+// import model.StudentModel;
 
-    /**
-     * Creates new form MainPanel2
-     */
+public class StudentManagePanel extends JPanel implements ActionListener {
+
+    private AddNewStudentFrame addNewStudentFrame; // Internal frame
+    //private StudentModel xxxxx = new StudentModel(); <- Change to subject model
+
     public StudentManagePanel() {
         initComponents();
+        initTable();
+    }
+
+    public void initTable() {
+//        Object tableRows[][] = xxxxx.getRecordsForTableContent();
+        //String tableHeader[] = {"header-1","header-2","header-3","header-4","header-5","header-6"};
+
+//        this.getSubjectTable().clearTable();
+//        for (Object[] tableRow : tableRows) {
+//            this.getSubjectTable().addRow(tableRow);
+//        }
+
+
+        // Loop from database and insert subject list
+    }
+
+    public Table getStudentTable() {
+        return this.studentTable;
+    }
+
+    public JButton getAddStudentBtn() {
+        return this.addStudent;
+    }
+
+    public JButton getDeleteStudentBtn() {
+        return this.deleteStudent;
+    }
+
+    public AddNewStudentFrame getAddNewStudentFrame() {
+        return this.addNewStudentFrame;
+    }
+
+    public void createAddNewSubjectFrame() {
+        this.addNewStudentFrame = new AddNewStudentFrame();
+        addNewStudentFrame.getAddStudentBtn().addActionListener(this);
+    }
+
+    public void configAddNewSubjectFrame() {
+        this.addNewStudentFrame.config();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource().equals(addNewStudentFrame.getAddStudentBtn())) {
+            // Clicked on add new student btn
+            // check in DB
+            System.out.println("ADDING Student");
+            this.initTable();
+        }
     }
 
     /**
@@ -22,101 +73,176 @@ public class StudentManagePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        northPanel = new javax.swing.JPanel();
+        pageHeader = new javax.swing.JLabel();
+        headerSeparator = new javax.swing.JSeparator();
+        centerPanel = new javax.swing.JPanel();
+        actionWrapper = new javax.swing.JPanel();
+        buttonsWrapper = new javax.swing.JPanel();
+        deleteStudent = new javax.swing.JButton();
+        addStudent = new javax.swing.JButton();
+        findStudent = new javax.swing.JTextField();
+        tableScrollPane = new javax.swing.JScrollPane();
+        studentTable = new components.Table();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        setPreferredSize(new java.awt.Dimension(1000, 720));
+        setLayout(new java.awt.BorderLayout(0, 5));
 
-        jLabel1.setFont(new java.awt.Font("Prompt", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(93, 93, 93));
-        jLabel1.setText("จัดการนักศึกษา");
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        northPanel.setBackground(new java.awt.Color(255, 255, 255));
+        northPanel.setLayout(new javax.swing.BoxLayout(northPanel, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jSeparator1.setForeground(new java.awt.Color(193, 193, 193));
-        jSeparator1.setPreferredSize(new java.awt.Dimension(950, 2));
+        pageHeader.setFont(new java.awt.Font("Prompt", 1, 28)); // NOI18N
+        pageHeader.setForeground(new java.awt.Color(93, 93, 93));
+        pageHeader.setText("จัดการนักศึกษา");
+        pageHeader.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        pageHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        northPanel.add(pageHeader);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(951, 848));
+        headerSeparator.setForeground(new java.awt.Color(193, 193, 193));
+        headerSeparator.setPreferredSize(new java.awt.Dimension(950, 2));
+        northPanel.add(headerSeparator);
 
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
-        jPanel4.setPreferredSize(new java.awt.Dimension(467, 185));
+        add(northPanel, java.awt.BorderLayout.PAGE_START);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+        centerPanel.setBackground(new java.awt.Color(249, 249, 249));
+
+        actionWrapper.setBackground(new java.awt.Color(249, 249, 249));
+        actionWrapper.setLayout(new java.awt.BorderLayout());
+
+        buttonsWrapper.setLayout(new java.awt.BorderLayout(5, 0));
+
+        deleteStudent.setBackground(new java.awt.Color(249, 249, 249));
+        deleteStudent.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
+        deleteStudent.setForeground(new java.awt.Color(230, 63, 63));
+        deleteStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        deleteStudent.setText("ลบนักศึกษาออก");
+        deleteStudent.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 63, 63), 2, true));
+        deleteStudent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteStudent.setMargin(new java.awt.Insets(2, 5, 3, 5));
+        deleteStudent.setPreferredSize(new java.awt.Dimension(140, 40));
+        deleteStudent.setRequestFocusEnabled(false);
+        deleteStudent.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        deleteStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteStudentActionPerformed(evt);
+            }
+        });
+        buttonsWrapper.add(deleteStudent, java.awt.BorderLayout.LINE_START);
+
+        addStudent.setBackground(new java.awt.Color(255, 137, 47));
+        addStudent.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
+        addStudent.setForeground(new java.awt.Color(255, 255, 255));
+        addStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        addStudent.setText("เพิ่มนักศึกษา");
+        addStudent.setBorder(null);
+        addStudent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addStudent.setMargin(new java.awt.Insets(2, 5, 3, 5));
+        addStudent.setPreferredSize(new java.awt.Dimension(120, 40));
+        addStudent.setRequestFocusEnabled(false);
+        addStudent.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        addStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStudentActionPerformed(evt);
+            }
+        });
+        buttonsWrapper.add(addStudent, java.awt.BorderLayout.EAST);
+
+        actionWrapper.add(buttonsWrapper, java.awt.BorderLayout.EAST);
+
+        findStudent.setColumns(20);
+        findStudent.setFont(new java.awt.Font("Prompt", 1, 14)); // NOI18N
+        findStudent.setForeground(new java.awt.Color(93, 93, 93));
+        findStudent.setToolTipText("");
+        findStudent.setActionCommand("<Not Set>");
+        findStudent.setAutoscrolls(false);
+        findStudent.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหานักศึกษา", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Prompt", 0, 12), new java.awt.Color(149, 149, 149))); // NOI18N
+        findStudent.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        findStudent.setMargin(new java.awt.Insets(2, 24, 2, 24));
+        findStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findStudentActionPerformed(evt);
+            }
+        });
+        actionWrapper.add(findStudent, java.awt.BorderLayout.LINE_START);
+
+        tableScrollPane.setBorder(null);
+
+        studentTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "การเลือก", "ชื่อจริง-นามสกุล", "รหัสนักศึกษา", "คณะ/สาขา", "ดูข้อมูล"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableScrollPane.setViewportView(studentTable);
+        if (studentTable.getColumnModel().getColumnCount() > 0) {
+            studentTable.getColumnModel().getColumn(0).setMinWidth(80);
+            studentTable.getColumnModel().getColumn(0).setPreferredWidth(80);
+            studentTable.getColumnModel().getColumn(0).setMaxWidth(80);
+            studentTable.getColumnModel().getColumn(3).setMinWidth(100);
+            studentTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+            studentTable.getColumnModel().getColumn(3).setMaxWidth(100);
+        }
+
+        javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
+        centerPanel.setLayout(centerPanelLayout);
+        centerPanelLayout.setHorizontalGroup(
+            centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(centerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(actionWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
+        centerPanelLayout.setVerticalGroup(
+            centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(centerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(actionWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
-        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
-        jPanel6.setPreferredSize(new java.awt.Dimension(467, 185));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 380, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 889, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
-        );
+        add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void findStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findStudentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findStudentActionPerformed
+
+    private void deleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteStudentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteStudentActionPerformed
+
+    private void addStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addStudentActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel actionWrapper;
+    private javax.swing.JButton addStudent;
+    private javax.swing.JPanel buttonsWrapper;
+    private javax.swing.JPanel centerPanel;
+    private javax.swing.JButton deleteStudent;
+    private javax.swing.JTextField findStudent;
+    private javax.swing.JSeparator headerSeparator;
+    private javax.swing.JPanel northPanel;
+    private javax.swing.JLabel pageHeader;
+    private components.Table studentTable;
+    private javax.swing.JScrollPane tableScrollPane;
     // End of variables declaration//GEN-END:variables
 }
