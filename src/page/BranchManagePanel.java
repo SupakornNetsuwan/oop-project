@@ -32,6 +32,10 @@ public class BranchManagePanel extends JPanel implements ActionListener {
         }
     }
 
+    public BranchModel getBranchModel() {
+        return branchModel;
+    }
+    
     public String getNameFaculty() {
         return nameFaculty;
     }
