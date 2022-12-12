@@ -5,6 +5,8 @@ import components.*;
 import java.awt.event.*;
 import javax.swing.*;
 import model.StudentModel;
+import model.Student;
+import java.util.*;
 
 public class StudentManagePanel extends JPanel implements ActionListener {
 
@@ -17,14 +19,15 @@ public class StudentManagePanel extends JPanel implements ActionListener {
     }
 
     public void initTable() {
-//        Object tableRows[][] = xxxxx.getRecordsForTableContent();
-        //String tableHeader[] = {"header-1","header-2","header-3","header-4","header-5","header-6"};
+        ArrayList<Student> students = studentModel.getStudents();
 
-//        this.getSubjectTable().clearTable();
-//        for (Object[] tableRow : tableRows) {
-//            this.getSubjectTable().addRow(tableRow);
-//        }
-        // Loop from database and insert subject list
+        this.getStudentTable().clearTable();
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            System.out.println(student.toString());
+            Object[] object = {null, student.getFullname(), student.getStudent_id(), student.getFaculty() + "/" + student.getBranch(), null};
+            this.getStudentTable().addRow(object);
+        }
     }
 
     public Table getStudentTable() {
@@ -64,9 +67,9 @@ public class StudentManagePanel extends JPanel implements ActionListener {
             String studentPhone = addNewStudentFrame.getStudentPhoneTextField().getText();
 
             if (!studentName.isBlank() && !studentId.isBlank() && !studentGender.isBlank() && !studentAge.isBlank() && !studentPhone.isBlank()) {
-                if(studentModel.addStudent(studentName, studentId, studentGender, studentAge, studentPhone)){
+                if (studentModel.addStudent(studentName, studentId, studentGender, studentAge, studentPhone)) {
                     System.out.println("Done");
-                }else{
+                } else {
                     System.out.println("ERR");
                 }
             }

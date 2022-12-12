@@ -5,6 +5,7 @@ import components.*;
 import java.awt.event.*;
 import javax.swing.*;
 import model.FacultyModel;
+import model.BranchModel;
 
 public class FacultyManagePanel extends JPanel implements ActionListener {
 
@@ -53,6 +54,23 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
 
     public void configAddNewFacultyFrame() {
         this.addNewFacultyFrame.config();
+    }
+
+    public void deleteFaculty() {
+        for (int i = 0; i < this.getFacultyTable().getRowCount(); i++) {
+            Boolean selected = (Boolean) this.getFacultyTable().getModel().getValueAt(i, 0);
+            if (selected == null) {
+                selected = false;
+            }
+            String name = this.getFacultyTable().getModel().getValueAt(i, 1).toString();
+            if (selected) {
+                if (Integer.parseInt(this.getFacultyTable().getModel().getValueAt(i, 2).toString()) > 0) {
+                    new BranchModel().deleteAllInFaculty(name);
+                }
+                this.getFacultyModel().delete(name);
+            }
+        }
+        this.initTable();
     }
 
     @Override

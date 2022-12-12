@@ -3,6 +3,7 @@ package components;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import static javax.swing.SwingConstants.CENTER;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,6 +12,33 @@ public class Table extends JTable {
     public void addRow(Object[] row) {
         DefaultTableModel model = (DefaultTableModel) getModel();
         model.addRow(row);
+    }
+
+    public void setViewDatBtnColumn(int column) {
+        setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                if (column == column) { // <- buton location
+                    ViewDataBtn viewBtn = new ViewDataBtn("ดูข้อมูล");
+                    return viewBtn;
+                } else {
+                    Component com = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+                    this.setHorizontalAlignment(CENTER);
+                    setBorder(noFocusBorder);
+                    if (isSelected) {
+                        com.setBackground(new Color(255, 234, 218));
+                        com.setForeground(new Color(255, 137, 47));
+                    } else {
+                        com.setBackground(Color.WHITE);
+                        com.setForeground(new Color(102, 102, 102));
+                    }
+                    return com;
+                }
+
+//                return new JLabel("" + value);
+            }
+
+        });
     }
 
     public void setRows(Object[][] body, String[] header) {

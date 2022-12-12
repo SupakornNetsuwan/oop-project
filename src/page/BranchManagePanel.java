@@ -8,7 +8,7 @@ import javax.swing.*;
 import model.BranchModel;
 
 public class BranchManagePanel extends JPanel implements ActionListener {
-    
+
     private AddNewBranchFrame addNewBranchFrame;
     private BranchModel branchModel = new BranchModel();
     private FacultyManagePanel facultyManagePanel;
@@ -19,14 +19,12 @@ public class BranchManagePanel extends JPanel implements ActionListener {
         initComponents();
         initTable();
     }
-    
-    
+
     public void initTable() {
         branchModel.setInFaculty(nameFaculty);
         Object tableRows[][] = branchModel.getRecordsForTableContent();
-        
-        //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
 
+        //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
         this.getBranchTable().clearTable();
         for (Object[] tableRow : tableRows) {
             this.getBranchTable().addRow(tableRow);
@@ -36,7 +34,7 @@ public class BranchManagePanel extends JPanel implements ActionListener {
     public BranchModel getBranchModel() {
         return branchModel;
     }
-    
+
     public String getNameFaculty() {
         return nameFaculty;
     }
@@ -74,15 +72,29 @@ public class BranchManagePanel extends JPanel implements ActionListener {
         this.addNewBranchFrame.config();
     }
 
+    public void deleteBranch() {
+        for (int i = 0; i < this.getBranchTable().getRowCount(); i++) {
+            Boolean selected = (Boolean) this.getBranchTable().getModel().getValueAt(i, 0);
+            if (selected == null) {
+                selected = false;
+            }
+            String name = this.getBranchTable().getModel().getValueAt(i, 1).toString();
+            if (selected) {
+                this.getBranchModel().delete(name);
+            }
+        }
+        this.initTable();
+    }
+
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource().equals(addNewBranchFrame.getAddBranchBtn())) {
-                     
-            if (!branchModel.insert(addNewBranchFrame.getBranchNameTextField().getText(),this.getNameFaculty())) {
+
+            if (!branchModel.insert(addNewBranchFrame.getBranchNameTextField().getText(), this.getNameFaculty())) {
                 JOptionPane.showMessageDialog(addNewBranchFrame, "Error, Duplicated name or don't have Faculty", "Error!", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            
+
             this.initTable();
 
         }

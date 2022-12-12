@@ -1,18 +1,40 @@
 package model;
 
 import java.sql.*;
+import java.util.*;
 
 public class StudentModel {
 
-    private Student student;
     private final Connection con = Connect.ConnectDB();
     private PreparedStatement statement = null;
 
-    public void getStudents() {
+    public ArrayList<Student> getStudents() {
+        ArrayList<Student> students = new ArrayList();
+        try {
+            statement = con.prepareStatement("SELECT * FROM student");
+            ResultSet result = statement.executeQuery();
 
+            while (result != null && result.next()) {
+                Student student = new Student(
+                        result.getString("fullname"),
+                        result.getString("student_id"),
+                        result.getString("age"),
+                        result.getString("gender"),
+                        result.getString("phone"),
+                        result.getString("faculty"),
+                        result.getString("branch")
+                );
+
+                students.add(student);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return students;
     }
 
-    public void getStudent() {
+    public void getStudent(String studentId) {
 
     }
 
@@ -36,8 +58,12 @@ public class StudentModel {
         }
     }
 
-    public void deleteStudent() {
+    public void deleteStudent(String studentId) {
 
     }
-
 }
+
+//    public static void main(String args[]) {
+//        StudentModel studentModel = new StudentModel();
+//        System.out.println(studentModel.getStudents().size());
+//    }
