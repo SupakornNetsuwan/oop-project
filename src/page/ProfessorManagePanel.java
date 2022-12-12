@@ -1,20 +1,97 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package page;
 
-/**
- *
- * @author windows
- */
-public class ProfessorManagePanel extends javax.swing.JPanel {
+import frame.AddNewProfessorFrame;
+import components.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.*;
+import model.ProfessorModel;
+import model.Professor;
 
-    /**
-     * Creates new form MainPanel2
-     */
+public class ProfessorManagePanel extends JPanel implements ActionListener {
+
+    private AddNewProfessorFrame addNewProfessorFrame; // Internal frame
+    private ProfessorModel professorModel = new ProfessorModel();
+
     public ProfessorManagePanel() {
         initComponents();
+        initTable();
+    }
+
+    public void initTable() {
+        this.getProfessorTable().setViewDatBtnColumn(4);
+        ArrayList<Professor> professors = professorModel.getProfessors();
+        getProfessorTable().setViewDatBtnColumn(4);
+
+        this.getProfessorTable().clearTable();
+        for (int i = 0; i < professors.size(); i++) {
+            Professor professor = professors.get(i);
+            Object[] object = {null, professor.getFullname(), professor.getDegree(), professor.getOwnSubject(), null};
+            this.getProfessorTable().addRow(object);
+        }
+    }
+
+    public Table getProfessorTable() {
+        return this.professorTable;
+    }
+
+    public JButton getAddProfessorBtn() {
+        return this.addProfessor;
+    }
+
+    public JButton getDeleteProfessorBtn() {
+        return this.deleteProfessor;
+    }
+
+    public AddNewProfessorFrame getAddNewProfessorFrame() {
+        return this.addNewProfessorFrame;
+    }
+
+    public void createAddNewProfessorFrame() {
+        this.addNewProfessorFrame = new AddNewProfessorFrame();
+        addNewProfessorFrame.getAddProfessor().addActionListener(this);
+    }
+
+    public void configAddNewProfessorFrame() {
+        this.addNewProfessorFrame.config();
+    }
+
+    public void deleteProfessor() {
+
+        for (int i = 0; i < this.getProfessorTable().getRowCount(); i++) {
+            Boolean selected = (Boolean) this.getProfessorTable().getModel().getValueAt(i, 0);
+            if (selected == null) {
+                selected = false;
+            }
+
+            String professorFullname = this.getProfessorTable().getModel().getValueAt(i, 1).toString();
+            if (selected) {
+                this.professorModel.deleteProfessor(professorFullname);
+            }
+        }
+
+        this.initTable();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource().equals(addNewProfessorFrame.getAddProfessor())) {
+            // Clicked on add new professor btn
+            String professorFullName = addNewProfessorFrame.getProfessorFullnameTextField().getText();
+            String professorGender = addNewProfessorFrame.getProfessorGenderTextField().getText();
+            String professorAge = addNewProfessorFrame.getProfessorAgeTextField().getText();
+            String professorPhone = addNewProfessorFrame.getProfessorPhoneTextField().getText();
+            String professorDegree = addNewProfessorFrame.getProfessorDegreeTextFIeld().getText();
+
+            if (!professorFullName.isBlank() && !professorGender.isBlank() && !professorAge.isBlank() && !professorPhone.isBlank() && !professorDegree.isBlank()) {
+                if (!professorModel.addProfessor(professorFullName, professorDegree, "-", professorGender, professorAge, professorPhone)) {
+                    JOptionPane.showMessageDialog(addNewProfessorFrame, "Error, make sure your inserted data is correctly and no duplicated professor's name", "Error!", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+
+            this.initTable();
+        }
     }
 
     /**
@@ -26,25 +103,17 @@ public class ProfessorManagePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         northPanel = new javax.swing.JPanel();
         pageHeader = new javax.swing.JLabel();
         headerSeparator = new javax.swing.JSeparator();
         centerPanel = new javax.swing.JPanel();
         actionWrapper = new javax.swing.JPanel();
         buttonsWrapper = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jScrollBar1 = new javax.swing.JScrollBar();
-
-        jTextField1.setColumns(30);
-        jTextField1.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("คณะเทคโนโลยีสารสนเทศ");
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 0, 14))); // NOI18N
-        jTextField1.setFocusable(false);
+        deleteProfessor = new javax.swing.JButton();
+        addProfessor = new javax.swing.JButton();
+        findProfessor = new javax.swing.JTextField();
+        tableScrollPane = new javax.swing.JScrollPane();
+        professorTable = new components.Table();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -74,62 +143,87 @@ public class ProfessorManagePanel extends javax.swing.JPanel {
 
         buttonsWrapper.setLayout(new java.awt.BorderLayout(5, 0));
 
-        jButton1.setBackground(new java.awt.Color(249, 249, 249));
-        jButton1.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(230, 63, 63));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
-        jButton1.setText("ลบอาจารย์ที่เลือก");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 63, 63), 2, true));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setMargin(new java.awt.Insets(2, 5, 3, 5));
-        jButton1.setPreferredSize(new java.awt.Dimension(150, 40));
-        jButton1.setRequestFocusEnabled(false);
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        deleteProfessor.setBackground(new java.awt.Color(249, 249, 249));
+        deleteProfessor.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
+        deleteProfessor.setForeground(new java.awt.Color(230, 63, 63));
+        deleteProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        deleteProfessor.setText("ลบอาจารย์ออก");
+        deleteProfessor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 63, 63), 2, true));
+        deleteProfessor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteProfessor.setMargin(new java.awt.Insets(2, 5, 3, 5));
+        deleteProfessor.setPreferredSize(new java.awt.Dimension(140, 40));
+        deleteProfessor.setRequestFocusEnabled(false);
+        deleteProfessor.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        deleteProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                deleteProfessorActionPerformed(evt);
             }
         });
-        buttonsWrapper.add(jButton1, java.awt.BorderLayout.LINE_START);
+        buttonsWrapper.add(deleteProfessor, java.awt.BorderLayout.LINE_START);
 
-        jButton3.setBackground(new java.awt.Color(255, 137, 47));
-        jButton3.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
-        jButton3.setText("เพิ่มอาจารย์");
-        jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setMargin(new java.awt.Insets(2, 5, 3, 5));
-        jButton3.setPreferredSize(new java.awt.Dimension(120, 40));
-        jButton3.setRequestFocusEnabled(false);
-        jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        addProfessor.setBackground(new java.awt.Color(255, 137, 47));
+        addProfessor.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
+        addProfessor.setForeground(new java.awt.Color(255, 255, 255));
+        addProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        addProfessor.setText("เพิ่มอาจารย์ใหม่");
+        addProfessor.setBorder(null);
+        addProfessor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addProfessor.setMargin(new java.awt.Insets(2, 5, 3, 5));
+        addProfessor.setPreferredSize(new java.awt.Dimension(130, 40));
+        addProfessor.setRequestFocusEnabled(false);
+        addProfessor.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bin.png"))); // NOI18N
+        addProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                addProfessorActionPerformed(evt);
             }
         });
-        buttonsWrapper.add(jButton3, java.awt.BorderLayout.EAST);
+        buttonsWrapper.add(addProfessor, java.awt.BorderLayout.EAST);
 
         actionWrapper.add(buttonsWrapper, java.awt.BorderLayout.EAST);
 
-        jTextField3.setColumns(20);
-        jTextField3.setFont(new java.awt.Font("Prompt", 1, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(93, 93, 93));
-        jTextField3.setToolTipText("");
-        jTextField3.setActionCommand("<Not Set>");
-        jTextField3.setAutoscrolls(false);
-        jTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 0, 14), new java.awt.Color(149, 149, 149))); // NOI18N
-        jTextField3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField3.setMargin(new java.awt.Insets(2, 24, 2, 24));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        findProfessor.setColumns(20);
+        findProfessor.setFont(new java.awt.Font("Prompt", 1, 14)); // NOI18N
+        findProfessor.setForeground(new java.awt.Color(93, 93, 93));
+        findProfessor.setToolTipText("");
+        findProfessor.setActionCommand("<Not Set>");
+        findProfessor.setAutoscrolls(false);
+        findProfessor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาอาจารย์", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Prompt", 0, 12), new java.awt.Color(149, 149, 149))); // NOI18N
+        findProfessor.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        findProfessor.setMargin(new java.awt.Insets(2, 24, 2, 24));
+        findProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                findProfessorActionPerformed(evt);
             }
         });
-        actionWrapper.add(jTextField3, java.awt.BorderLayout.LINE_START);
+        actionWrapper.add(findProfessor, java.awt.BorderLayout.LINE_START);
 
-        jScrollPane1.setBackground(new java.awt.Color(153, 153, 153));
-        jScrollPane1.setViewportView(jScrollBar1);
+        tableScrollPane.setBorder(null);
+
+        professorTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "การเลือก", "ชื่อจริง-นามสกุล", "ระดับการศึกษา", "ประจำวิชา", "ดูข้อมูล"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableScrollPane.setViewportView(professorTable);
+        if (professorTable.getColumnModel().getColumnCount() > 0) {
+            professorTable.getColumnModel().getColumn(0).setMinWidth(80);
+            professorTable.getColumnModel().getColumn(0).setPreferredWidth(80);
+            professorTable.getColumnModel().getColumn(0).setMaxWidth(80);
+            professorTable.getColumnModel().getColumn(3).setMinWidth(100);
+            professorTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+            professorTable.getColumnModel().getColumn(3).setMaxWidth(100);
+        }
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
         centerPanel.setLayout(centerPanelLayout);
@@ -137,48 +231,48 @@ public class ProfessorManagePanel extends javax.swing.JPanel {
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(centerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(actionWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
+                .addGroup(centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(actionWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jScrollPane1)
         );
         centerPanelLayout.setVerticalGroup(
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(centerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(actionWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(actionWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void findProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findProfessorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_findProfessorActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void deleteProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteProfessorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_deleteProfessorActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void addProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfessorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_addProfessorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel actionWrapper;
+    private javax.swing.JButton addProfessor;
     private javax.swing.JPanel buttonsWrapper;
     private javax.swing.JPanel centerPanel;
+    private javax.swing.JButton deleteProfessor;
+    private javax.swing.JTextField findProfessor;
     private javax.swing.JSeparator headerSeparator;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel northPanel;
     private javax.swing.JLabel pageHeader;
+    private components.Table professorTable;
+    private javax.swing.JScrollPane tableScrollPane;
     // End of variables declaration//GEN-END:variables
 }

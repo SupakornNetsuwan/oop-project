@@ -51,9 +51,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="addStudent" min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="professorNameTextField" alignment="1" pref="623" max="32767" attributes="0"/>
-                      <Component id="professorEducationTextFIeld" alignment="1" pref="623" max="32767" attributes="0"/>
+                      <Component id="addProfessor" min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="professorFullnameTextField" alignment="1" pref="623" max="32767" attributes="0"/>
+                      <Component id="professorDegreeTextField" alignment="1" pref="623" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="professorAge" alignment="0" pref="296" max="32767" attributes="0"/>
@@ -66,8 +66,8 @@
                           </Group>
                       </Group>
                       <Component id="professorPhoneTextField" alignment="0" pref="623" max="32767" attributes="0"/>
-                      <Component id="professorEducation" alignment="0" max="32767" attributes="0"/>
-                      <Component id="professorName" alignment="0" max="32767" attributes="0"/>
+                      <Component id="professorDegree" alignment="0" max="32767" attributes="0"/>
+                      <Component id="professorFullname" alignment="0" max="32767" attributes="0"/>
                       <Component id="professorPhone" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -77,36 +77,36 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="professorName" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="professorNameTextField" min="-2" pref="44" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="professorEducation" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="professorEducationTextFIeld" min="-2" pref="44" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="professorFullname" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="professorFullnameTextField" min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="professorDegree" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="professorDegreeTextField" min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="professorAge" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="professorGender" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="professorAgeTextField" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="professorGenderTextField" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="professorGenderTextField" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="professorAgeTextField" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="professorPhone" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="professorPhoneTextField" min="-2" pref="44" max="-2" attributes="0"/>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
-                  <Component id="addStudent" min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <Component id="addProfessor" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="professorName">
+        <Component class="javax.swing.JLabel" name="professorFullname">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Prompt Medium" size="20" style="0"/>
@@ -117,7 +117,7 @@
             <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe2d; &#xe19;&#xe32;&#xe21;&#xe2a;&#xe01;&#xe38;&#xe25;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="professorNameTextField">
+        <Component class="javax.swing.JTextField" name="professorFullnameTextField">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Prompt" size="18" style="0"/>
@@ -130,7 +130,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="professorEducation">
+        <Component class="javax.swing.JLabel" name="professorDegree">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Prompt Medium" size="20" style="0"/>
@@ -141,7 +141,7 @@
             <Property name="text" type="java.lang.String" value="&#xe23;&#xe30;&#xe14;&#xe31;&#xe1a;&#xe01;&#xe32;&#xe23;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="professorEducationTextFIeld">
+        <Component class="javax.swing.JTextField" name="professorDegreeTextField">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Prompt" size="18" style="0"/>
@@ -226,7 +226,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="addStudent">
+        <Component class="javax.swing.JButton" name="addProfessor">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="2f" green="89" red="ff" type="rgb"/>
@@ -244,7 +244,7 @@
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addStudentActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addProfessorActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

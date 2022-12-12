@@ -20,6 +20,32 @@ public class AddNewProfessorFrame extends JFrame {
         this.setVisible(true);
     }
 
+    public JButton getAddProfessor() {
+        return addProfessor;
+    }
+
+    public JTextField getProfessorAgeTextField() {
+        return professorAgeTextField;
+    }
+
+    public JTextField getProfessorDegreeTextFIeld() {
+        return professorDegreeTextField;
+    }
+
+    public JTextField getProfessorGenderTextField() {
+        return professorGenderTextField;
+    }
+
+    public JTextField getProfessorFullnameTextField() {
+        return professorFullnameTextField;
+    }
+
+    public JTextField getProfessorPhoneTextField() {
+        return professorPhoneTextField;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,17 +56,17 @@ public class AddNewProfessorFrame extends JFrame {
     private void initComponents() {
 
         wrapper = new javax.swing.JPanel();
-        professorName = new javax.swing.JLabel();
-        professorNameTextField = new javax.swing.JTextField();
-        professorEducation = new javax.swing.JLabel();
-        professorEducationTextFIeld = new javax.swing.JTextField();
+        professorFullname = new javax.swing.JLabel();
+        professorFullnameTextField = new javax.swing.JTextField();
+        professorDegree = new javax.swing.JLabel();
+        professorDegreeTextField = new javax.swing.JTextField();
         professorAge = new javax.swing.JLabel();
         professorAgeTextField = new javax.swing.JTextField();
         professorGender = new javax.swing.JLabel();
         professorGenderTextField = new javax.swing.JTextField();
         professorPhone = new javax.swing.JLabel();
         professorPhoneTextField = new javax.swing.JTextField();
-        addStudent = new javax.swing.JButton();
+        addProfessor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -51,21 +77,21 @@ public class AddNewProfessorFrame extends JFrame {
         wrapper.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         wrapper.setDoubleBuffered(false);
 
-        professorName.setFont(new java.awt.Font("Prompt Medium", 0, 20)); // NOI18N
-        professorName.setForeground(new java.awt.Color(255, 137, 47));
-        professorName.setText("ชื่อ นามสกุล");
+        professorFullname.setFont(new java.awt.Font("Prompt Medium", 0, 20)); // NOI18N
+        professorFullname.setForeground(new java.awt.Color(255, 137, 47));
+        professorFullname.setText("ชื่อ นามสกุล");
 
-        professorNameTextField.setFont(new java.awt.Font("Prompt", 0, 18)); // NOI18N
-        professorNameTextField.setForeground(new java.awt.Color(154, 154, 154));
-        professorNameTextField.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        professorFullnameTextField.setFont(new java.awt.Font("Prompt", 0, 18)); // NOI18N
+        professorFullnameTextField.setForeground(new java.awt.Color(154, 154, 154));
+        professorFullnameTextField.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
-        professorEducation.setFont(new java.awt.Font("Prompt Medium", 0, 20)); // NOI18N
-        professorEducation.setForeground(new java.awt.Color(255, 137, 47));
-        professorEducation.setText("ระดับการศึกษา");
+        professorDegree.setFont(new java.awt.Font("Prompt Medium", 0, 20)); // NOI18N
+        professorDegree.setForeground(new java.awt.Color(255, 137, 47));
+        professorDegree.setText("ระดับการศึกษา");
 
-        professorEducationTextFIeld.setFont(new java.awt.Font("Prompt", 0, 18)); // NOI18N
-        professorEducationTextFIeld.setForeground(new java.awt.Color(154, 154, 154));
-        professorEducationTextFIeld.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        professorDegreeTextField.setFont(new java.awt.Font("Prompt", 0, 18)); // NOI18N
+        professorDegreeTextField.setForeground(new java.awt.Color(154, 154, 154));
+        professorDegreeTextField.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
         professorAge.setFont(new java.awt.Font("Prompt Medium", 0, 20)); // NOI18N
         professorAge.setForeground(new java.awt.Color(255, 137, 47));
@@ -91,15 +117,15 @@ public class AddNewProfessorFrame extends JFrame {
         professorPhoneTextField.setForeground(new java.awt.Color(154, 154, 154));
         professorPhoneTextField.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
-        addStudent.setBackground(new java.awt.Color(255, 137, 47));
-        addStudent.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
-        addStudent.setForeground(new java.awt.Color(255, 255, 255));
-        addStudent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
-        addStudent.setText("เพิ่มอาจารย์");
-        addStudent.setFocusPainted(false);
-        addStudent.addActionListener(new java.awt.event.ActionListener() {
+        addProfessor.setBackground(new java.awt.Color(255, 137, 47));
+        addProfessor.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
+        addProfessor.setForeground(new java.awt.Color(255, 255, 255));
+        addProfessor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        addProfessor.setText("เพิ่มอาจารย์");
+        addProfessor.setFocusPainted(false);
+        addProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStudentActionPerformed(evt);
+                addProfessorActionPerformed(evt);
             }
         });
 
@@ -109,9 +135,9 @@ public class AddNewProfessorFrame extends JFrame {
             wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapperLayout.createSequentialGroup()
                 .addGroup(wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(addStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(professorNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
-                    .addComponent(professorEducationTextFIeld, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
+                    .addComponent(addProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(professorFullnameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
+                    .addComponent(professorDegreeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, wrapperLayout.createSequentialGroup()
                         .addGroup(wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(professorAge, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
@@ -121,35 +147,35 @@ public class AddNewProfessorFrame extends JFrame {
                             .addComponent(professorGenderTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                             .addComponent(professorGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(professorPhoneTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
-                    .addComponent(professorEducation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(professorName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(professorDegree, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(professorFullname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(professorPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         wrapperLayout.setVerticalGroup(
             wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapperLayout.createSequentialGroup()
-                .addComponent(professorName)
-                .addGap(18, 18, 18)
-                .addComponent(professorNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(professorEducation)
-                .addGap(18, 18, 18)
-                .addComponent(professorEducationTextFIeld, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(professorFullname)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(professorFullnameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(professorDegree)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(professorDegreeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addGroup(wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(professorAge)
                     .addComponent(professorGender))
-                .addGap(18, 18, 18)
-                .addGroup(wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(professorAgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(professorGenderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(wrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(professorGenderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(professorAgeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(professorPhone)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(professorPhoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(addStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(addProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -158,20 +184,20 @@ public class AddNewProfessorFrame extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentActionPerformed
+    private void addProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfessorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addStudentActionPerformed
+    }//GEN-LAST:event_addProfessorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addStudent;
+    private javax.swing.JButton addProfessor;
     private javax.swing.JLabel professorAge;
     private javax.swing.JTextField professorAgeTextField;
-    private javax.swing.JLabel professorEducation;
-    private javax.swing.JTextField professorEducationTextFIeld;
+    private javax.swing.JLabel professorDegree;
+    private javax.swing.JTextField professorDegreeTextField;
+    private javax.swing.JLabel professorFullname;
+    private javax.swing.JTextField professorFullnameTextField;
     private javax.swing.JLabel professorGender;
     private javax.swing.JTextField professorGenderTextField;
-    private javax.swing.JLabel professorName;
-    private javax.swing.JTextField professorNameTextField;
     private javax.swing.JLabel professorPhone;
     private javax.swing.JTextField professorPhoneTextField;
     private javax.swing.JPanel wrapper;

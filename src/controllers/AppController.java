@@ -7,6 +7,7 @@ import page.ProfessorManagePanel;
 import page.StudentManagePanel;
 import page.EachStudentManagePanel;
 import page.FacultyManagePanel;
+import page.EachProfessorManagePanel;
 
 import layout.MainLayout;
 import components.*;
@@ -116,6 +117,23 @@ public class AppController implements ActionListener {
         System.out.println("Professor page");
         professorManagePanel = new ProfessorManagePanel();
         swtichTo(professorManagePanel);
+        ////////////////////////////////////////
+        professorManagePanel.getAddProfessorBtn().addActionListener(this);
+        professorManagePanel.getDeleteProfessorBtn().addActionListener(this);
+        professorManagePanel.getProfessorTable().addMouseListener(new MouseHandler());
+    }
+
+    public void switchToEachProfessorManagePanel(String professorFullName) {
+        System.out.println("Each professor page");
+        EachProfessorManagePanel eachProfessorManagePanel = new EachProfessorManagePanel(professorFullName);
+        swtichTo(eachProfessorManagePanel);
+        ////////////////////////////////////////
+        eachProfessorManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                switchToProfessorManagePanel();
+            }
+        });
     }
 
     public void switchToStudentManagePanel() {
@@ -220,6 +238,13 @@ public class AppController implements ActionListener {
         } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getDeleteStudentBtn())) {
             // Delete a subject
             studentManagePanel.deleteStudent();
+        } else if (professorManagePanel != null && event.getSource().equals(professorManagePanel.getAddProfessorBtn())) {
+            /* --------------------   Professor page   -------------------- */
+            professorManagePanel.createAddNewProfessorFrame();
+            professorManagePanel.configAddNewProfessorFrame();
+        } else if (professorManagePanel != null && event.getSource().equals(professorManagePanel.getDeleteProfessorBtn())) {
+            // Delete a professor
+            professorManagePanel.deleteProfessor();
         }
     }
 
@@ -266,10 +291,13 @@ public class AppController implements ActionListener {
                 int col = studentManagePanel.getStudentTable().columnAtPoint(e.getPoint());
                 if (col == 4) {
                     switchToEachStudentManagePanel((String) studentManagePanel.getStudentTable().getModel().getValueAt(row, 2));
-                } else {
-                        
                 }
-
+            } else if (professorManagePanel != null && e.getSource().equals(professorManagePanel.getProfessorTable())) {
+                int row = professorManagePanel.getProfessorTable().rowAtPoint(e.getPoint());
+                int col = professorManagePanel.getProfessorTable().columnAtPoint(e.getPoint());
+                if (col == 4) {
+                    switchToEachProfessorManagePanel((String) professorManagePanel.getProfessorTable().getModel().getValueAt(row, 1));
+                }
             }
         }
     }

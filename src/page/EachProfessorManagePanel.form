@@ -97,7 +97,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="studentHeader">
+            <Component class="javax.swing.JLabel" name="professorHeader">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Prompt" size="28" style="1"/>
@@ -106,7 +106,7 @@
                   <Color blue="5d" green="5d" red="5d" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="&#xe08;&#xe31;&#xe14;&#xe01;&#xe32;&#xe23;&#xe19;&#xe31;&#xe01;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32; (&#xe19;&#xe32;&#xe22;&#xe28;&#xe38;&#xe20;&#xe01;&#xe23; &#xe40;&#xe19;&#xe15;&#xe23;&#xe2a;&#xe38;&#xe27;&#xe23;&#xe23;&#xe13;)"/>
+                <Property name="text" type="java.lang.String" value="&#xe08;&#xe31;&#xe14;&#xe01;&#xe32;&#xe23;&#xe2d;&#xe32;&#xe08;&#xe32;&#xe23;&#xe22;&#xe4c; (&#xe14;&#xe23;.&#xe2d;&#xe32;&#xe17;&#xe34;&#xe40;&#xe0a;&#xe29; &#xe28;&#xe23;&#xe35;&#xe1b;&#xe31;&#xe0d;&#xe0d;&#xe32;)"/>
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -158,7 +158,6 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
                       <Component id="studentDetailWrapper" alignment="1" pref="968" max="32767" attributes="0"/>
                       <Component id="studentSubjectsWrapper" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -171,9 +170,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="studentDetailWrapper" min="-2" pref="235" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jSeparator1" min="-2" pref="15" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="studentSubjectsWrapper" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -220,7 +217,7 @@
                 <Property name="text" type="java.lang.String" value="&#xe19;&#xe32;&#xe22;&#xe28;&#xe38;&#xe20;&#xe01;&#xe23; &#xe40;&#xe19;&#xe15;&#xe23;&#xe2a;&#xe38;&#xe27;&#xe23;&#xe23;&#xe13;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="studentidLabel">
+            <Component class="javax.swing.JLabel" name="degreeLabel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -228,10 +225,10 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Prompt Medium" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#xe23;&#xe2b;&#xe31;&#xe2a;&#xe19;&#xe31;&#xe01;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;"/>
+                <Property name="text" type="java.lang.String" value="&#xe23;&#xe30;&#xe14;&#xe31;&#xe1a;&#xe01;&#xe32;&#xe23;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="studentId">
+            <Component class="javax.swing.JLabel" name="degree">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -242,7 +239,32 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="86" green="86" red="86" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="64070108"/>
+                <Property name="text" type="java.lang.String" value="&#xe1b;&#xe23;&#xe34;&#xe0d;&#xe0d;&#xe32;&#xe40;&#xe2d;&#xe01;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ownSubjectLabel">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Prompt Medium" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#xe1c;&#xe39;&#xe49;&#xe2a;&#xe2d;&#xe19;&#xe1b;&#xe23;&#xe30;&#xe08;&#xe33;&#xe27;&#xe34;&#xe0a;&#xe32;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ownSubject">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Prompt" size="14" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="86" green="86" red="86" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="MIS"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="genderLabel">
@@ -320,68 +342,8 @@
                 <Property name="text" type="java.lang.String" value="0959259515"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="facultyLabel">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Prompt Medium" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="&#xe04;&#xe13;&#xe30;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="faculty">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Prompt" size="14" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="86" red="86" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="&#xe04;&#xe13;&#xe30;&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;&#xe2a;&#xe32;&#xe23;&#xe2a;&#xe19;&#xe40;&#xe17;&#xe28;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="branchLabel">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Prompt Medium" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="&#xe2a;&#xe32;&#xe02;&#xe32;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="branch">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Prompt" size="14" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="86" green="86" red="86" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="&#xe2a;&#xe32;&#xe02;&#xe32; IT"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JSeparator" name="jSeparator1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c1" green="c1" red="c1" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c1" green="c1" red="c1" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
         <Container class="javax.swing.JPanel" name="studentSubjectsWrapper">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -392,76 +354,15 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="subjectsLabel" min="-2" pref="115" max="-2" attributes="0"/>
-                      <EmptySpace pref="364" max="32767" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="483" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="0" pref="968" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                          <Component id="subjectsLabel" min="-2" pref="37" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="140" max="32767" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="0" pref="340" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="subjectsLabel">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Prompt Medium" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="&#xe27;&#xe34;&#xe0a;&#xe32;&#xe17;&#xe35;&#xe48;&#xe40;&#xe23;&#xe35;&#xe22;&#xe19;"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="subjectList">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Prompt" size="14" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="86" green="86" red="86" type="rgb"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="&#xe27;&#xe34;&#xe0a;&#xe32; xxx-1"/>
-                        <StringItem index="1" value="&#xe27;&#xe34;&#xe0a;&#xe32; xxx-2"/>
-                        <StringItem index="2" value="&#xe27;&#xe34;&#xe0a;&#xe32;  yyyy-1"/>
-                        <StringItem index="3" value="&#xe27;&#xe34;&#xe0a;&#xe32;  yyzz-2"/>
-                      </StringArray>
-                    </Property>
-                    <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="2f" green="89" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="selectionForeground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

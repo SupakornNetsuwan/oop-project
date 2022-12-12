@@ -1,12 +1,8 @@
 package model;
 
-public class Student {
+public class Student extends Human {
 
-    private String fullname;
     private String studentId;
-    private String age;
-    private String gender;
-    private String phone;
     private String faculty;
     private String branch;
 
@@ -18,11 +14,9 @@ public class Student {
             String phone,
             String faculty,
             String branch) {
-        this.fullname = fullname;
+
+        super(fullname, age, gender, phone);
         this.studentId = studentId;
-        this.age = age;
-        this.gender = gender;
-        this.phone = phone;
         this.faculty = faculty;
         this.branch = branch;
     }
@@ -38,44 +32,12 @@ public class Student {
                 + "Branch : " + this.branch) + "\n";
     }
 
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
     public String getStudentId() {
         return studentId;
     }
 
     public void setStudentId(String student_id) {
         this.studentId = student_id;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public String getFaculty() {
