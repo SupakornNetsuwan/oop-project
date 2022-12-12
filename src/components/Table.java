@@ -35,7 +35,6 @@ public class Table extends JTable {
                     return com;
                 }
             }
-
         });
     }
 

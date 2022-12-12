@@ -87,7 +87,6 @@ public class ProfessorModel {
             System.out.println(err.getMessage());
             return false;
         }
-
     }
     
     public String[] getRecordsForComboBox() {

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2022 at 11:34 AM
+-- Generation Time: Dec 12, 2022 at 08:02 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -90,6 +90,7 @@ CREATE TABLE `professor` (
 
 INSERT INTO `professor` (`fullname`, `degree`, `own_subject`, `gender`, `age`, `phone`) VALUES
 ('Ajarn\' Bank', 'Ph.D.', 'OOP', 'Male', 31, '0959259515'),
+('lnwza', 'ป.2', '-', 'lnwza', 5, '9999966666'),
 ('อาจารย์เอิร์ท', 'ปริญญาประถม', '-', 'ชาย', 20, '0959259515');
 
 -- --------------------------------------------------------
@@ -103,8 +104,8 @@ CREATE TABLE `student` (
   `age` int(50) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `phone` varchar(50) NOT NULL,
-  `faculty` varchar(50) NOT NULL,
-  `branch` varchar(50) NOT NULL,
+  `faculty` varchar(50) DEFAULT NULL,
+  `branch` varchar(50) DEFAULT NULL,
   `student_id` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -113,8 +114,32 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`fullname`, `age`, `gender`, `phone`, `faculty`, `branch`, `student_id`) VALUES
-('ศศิธร ศรีจันทร์', 20, 'หญิง', '0857122912xx', '-', '-', '64070106'),
+('นายวชิรพล กลิ่นเกษร', 20, 'ชาย', '0909xxxxx', '-', '-', '64070096'),
+('ศศิธร ศรีจันทร์', 20, 'หญิง', '0857122912', '-', '-', '64070106'),
 ('นายศุภกร เนตรสุวรรณ', 20, 'ชาย', '0959259515', '-', '-', '64070108');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_in_subject`
+--
+
+CREATE TABLE `student_in_subject` (
+  `id` int(11) NOT NULL,
+  `subject` int(11) NOT NULL,
+  `student` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ตารางนักเรียนที่เรียนในแต่ละวิชา';
+
+--
+-- Dumping data for table `student_in_subject`
+--
+
+INSERT INTO `student_in_subject` (`id`, `subject`, `student`) VALUES
+(6, 1, '64070108'),
+(7, 1, '64070106'),
+(8, 7, '64070096'),
+(9, 7, '64070108'),
+(10, 8, '64070096');
 
 -- --------------------------------------------------------
 
@@ -123,19 +148,21 @@ INSERT INTO `student` (`fullname`, `age`, `gender`, `phone`, `faculty`, `branch`
 --
 
 CREATE TABLE `subject` (
-  `name` varchar(50) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `professor_fullname` varchar(50) NOT NULL,
-  `student_id` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `name` varchar(50) NOT NULL COMMENT 'ชื่อวิชา',
+  `subject_id` varchar(20) NOT NULL COMMENT 'รหัสวิชา',
+  `professor_fullname` varchar(50) NOT NULL COMMENT 'ชื่ออาจารย์',
+  `details` varchar(300) DEFAULT NULL COMMENT 'รายละเอียดวิชา',
+  `id` int(11) NOT NULL COMMENT 'ID Database'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ตารางวิชา';
 
 --
 -- Dumping data for table `subject`
 --
 
-INSERT INTO `subject` (`name`, `subject_id`, `professor_fullname`, `student_id`) VALUES
-('Object Oriented Programming', 15, 'Ajarn\' Bank', '64070108'),
-('Object Oriented Programming', 15, 'Ajarn\' Bank', '64070106');
+INSERT INTO `subject` (`name`, `subject_id`, `professor_fullname`, `details`, `id`) VALUES
+('OOP', '15', 'Ajarn\' Bank', 'GG', 1),
+('Project', '55500', 'อาจารย์เอิร์ท', '', 7),
+('Waido', '100', 'lnwza', '', 8);
 
 -- --------------------------------------------------------
 
@@ -186,17 +213,41 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`student_id`);
 
 --
+-- Indexes for table `student_in_subject`
+--
+ALTER TABLE `student_in_subject`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `map_student_id` (`student`),
+  ADD KEY `map_subject_id` (`subject`);
+
+--
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
-  ADD KEY `subject_map_student` (`student_id`),
-  ADD KEY `professor_map_professor` (`professor_fullname`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `subject_map_professor` (`professor_fullname`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`Username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `student_in_subject`
+--
+ALTER TABLE `student_in_subject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `subject`
+--
+ALTER TABLE `subject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Database', AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -209,11 +260,17 @@ ALTER TABLE `branch`
   ADD CONSTRAINT `map_faculty` FOREIGN KEY (`in_faculty`) REFERENCES `faculty` (`name`);
 
 --
+-- Constraints for table `student_in_subject`
+--
+ALTER TABLE `student_in_subject`
+  ADD CONSTRAINT `map_student_id` FOREIGN KEY (`student`) REFERENCES `student` (`student_id`),
+  ADD CONSTRAINT `map_subject_id` FOREIGN KEY (`subject`) REFERENCES `subject` (`id`);
+
+--
 -- Constraints for table `subject`
 --
 ALTER TABLE `subject`
-  ADD CONSTRAINT `professor_map_professor` FOREIGN KEY (`professor_fullname`) REFERENCES `professor` (`fullname`),
-  ADD CONSTRAINT `subject_map_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`);
+  ADD CONSTRAINT `subject_map_professor` FOREIGN KEY (`professor_fullname`) REFERENCES `professor` (`fullname`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

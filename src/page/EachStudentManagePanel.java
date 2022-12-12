@@ -14,8 +14,13 @@ public class EachStudentManagePanel extends JPanel {
         initComponents();
         this.setStudent(studentModel.getStudent(studentId));
         this.studentDetailInit();
+        this.getSubjectList().setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = studentModel.studySubjectList(studentId);
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
     }
-
+    
     public void studentDetailInit() {
         this.getStudentHeaderLabel().setText("จัดการนักศึกษา (" + student.getFullname() + ")");
         this.getFullnameLabel().setText(student.getFullname());

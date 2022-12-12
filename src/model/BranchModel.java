@@ -103,7 +103,7 @@ public class BranchModel {
         Object[][] recordsForTableContent = new Object[BranchList.size()][4];
 
         for (int i = 0; i < BranchList.size(); i++) {
-            Object[] eachBranch = {null, BranchList.get(i).getNameBranch(), BranchList.get(i).getQuantity(), null};
+            Object[] eachBranch = {false, BranchList.get(i).getNameBranch(), BranchList.get(i).getQuantity(), null};
             recordsForTableContent[i] = eachBranch;
         }
         BranchList.clear();

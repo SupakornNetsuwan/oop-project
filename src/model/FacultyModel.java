@@ -98,7 +98,7 @@ public class FacultyModel {
         readFaculty();
         Object[][] recordsForTableContent = new Object[facultyList.size()][4];
         for (int i = 0; i < facultyList.size(); i++) {
-            Object[] eachFaculty = {null, facultyList.get(i).getNameFaculty(), facultyList.get(i).getQuantity(), null};
+            Object[] eachFaculty = {false, facultyList.get(i).getNameFaculty(), facultyList.get(i).getQuantity(), null};
             recordsForTableContent[i] = eachFaculty;
         }
         facultyList.clear();

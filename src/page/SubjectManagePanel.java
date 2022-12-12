@@ -3,13 +3,14 @@ package page;
 import frame.AddNewSubjectFrame;
 import components.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
-import model.FacultyModel;
+import model.SubjectModel;
 
 public class SubjectManagePanel extends JPanel implements ActionListener {
 
     private AddNewSubjectFrame addNewSubjectFrame; // Internal frame
-    //private SubjectModel xxxxx = new SubjectModel(); <- Change to subject model
+    private SubjectModel subjectModel = new SubjectModel();
 
     public SubjectManagePanel() {
         initComponents();
@@ -17,17 +18,39 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
     }
 
     public void initTable() {
-//        Object tableRows[][] = xxxxx.getRecordsForTableContent();
-        //String tableHeader[] = {"header-1","header-2","header-3","header-4","header-5","header-6"};
-
-//        this.getSubjectTable().clearTable();
-//        for (Object[] tableRow : tableRows) {
-//            this.getSubjectTable().addRow(tableRow);
-//        }
+        Object tableRows[][] = subjectModel.getRecordsForTableContent();
+        this.getSubjectTable().setViewDatBtnColumn(5);
+        this.getSubjectTable().clearTable();
+        for (Object[] tableRow : tableRows) {
+            this.getSubjectTable().addRow(tableRow);
+        }
+        
 
 
         // Loop from database and insert subject list
     }
+//    
+//    public void initTable() {
+//        Object tableRows[][] = facultyModel.getRecordsForTableContent();
+//        //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
+//
+//        this.getFacultyTable().clearTable();
+//        for (Object[] tableRow : tableRows) {
+//            this.getFacultyTable().addRow(tableRow);
+//        }
+//    }
+//    
+//    public void initTable() {
+//        ArrayList<Student> students = studentModel.getStudents();
+//        getStudentTable().setViewDatBtnColumn(4);
+//
+//        this.getStudentTable().clearTable();
+//        for (int i = 0; i < students.size(); i++) {
+//            Student student = students.get(i);
+//            Object[] object = {false, student.getFullname(), student.getStudentId(), student.getFaculty() + "/" + student.getBranch(), null};
+//            this.getStudentTable().addRow(object);
+//        }
+//    }
 
     public Table getSubjectTable() {
         return this.subjectTable;
@@ -59,6 +82,16 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
         if (event.getSource().equals(addNewSubjectFrame.getAddSubjectBtn())) {
             // Clicked on add new subject btn
             // check in DB
+            String subjectName = addNewSubjectFrame.getSubjectNameTextField().getText();
+            String subjectID = addNewSubjectFrame.getSubjectIDTextField().getText();
+            String professorName = addNewSubjectFrame.getSubjectProfComboBox().getSelectedItem().toString();
+            String detail = addNewSubjectFrame.getSubjectDetailTextArea().getText();
+            if (!subjectName.isBlank() && !subjectID.isBlank() && !professorName.isBlank()) {
+                if (!subjectModel.addSubject(subjectName, subjectID, professorName, detail)) {
+                    JOptionPane.showMessageDialog(addNewSubjectFrame, "Error, make sure your inserted data is correctly", "Error!", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
             System.out.println("ADDING SUBJECT");
             this.initTable();
         }
@@ -178,7 +211,7 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
