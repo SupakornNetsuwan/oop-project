@@ -5,6 +5,7 @@ import page.SubjectManagePanel;
 import page.HomePanel;
 import page.ProfessorManagePanel;
 import page.StudentManagePanel;
+import page.EachStudentManagePanel;
 import page.FacultyManagePanel;
 
 import layout.MainLayout;
@@ -41,6 +42,7 @@ public class AppController implements ActionListener {
     private SubjectManagePanel subjectManagePanel;
     private StudentManagePanel studentManagePanel;
     private ProfessorManagePanel professorManagePanel;
+    private EachStudentManagePanel eachStudentManagePanel;
 
     /* Drill down internal panels*/
     private BranchManagePanel branchManagePanel;
@@ -60,6 +62,10 @@ public class AppController implements ActionListener {
 
     public StudentManagePanel getStudentManagePanel() {
         return studentManagePanel;
+    }
+
+    public EachStudentManagePanel getEachStudentManagePanel() {
+        return eachStudentManagePanel;
     }
 
     public ProfessorManagePanel getProfessorManagePanel() {
@@ -120,10 +126,18 @@ public class AppController implements ActionListener {
 
         studentManagePanel.getAddStudentBtn().addActionListener(this);
         studentManagePanel.getDeleteStudentBtn().addActionListener(this);
-        studentManagePanel.getStudentTable().addMouseListener(new MouseAdapter() {
+        studentManagePanel.getStudentTable().addMouseListener(new MouseHandler());
+    }
+
+    public void switchToEachStudentManagePanel(String student_id) {
+        System.out.println("Each student page");
+        eachStudentManagePanel = new EachStudentManagePanel(student_id);
+        swtichTo(eachStudentManagePanel);
+        ////////////////////////////////////////
+        eachStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Drill down to -> switchToEachStudentPanel;
+                switchToStudentManagePanel();
             }
         });
     }
@@ -172,13 +186,13 @@ public class AppController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
 
-        if (event.getSource().equals(facultyManagePanel.getAddFacultyBtn())) {
+        if (facultyManagePanel != null && event.getSource().equals(facultyManagePanel.getAddFacultyBtn())) {
             /* --------------------   Facult page   -------------------- */
             // Add a new faculty frame
             facultyManagePanel.createAddNewFacultyFrame();
             facultyManagePanel.configAddNewFacultyFrame();
 
-        } else if (event.getSource().equals(facultyManagePanel.getDeleteFacultyBtn())) {
+        } else if (facultyManagePanel != null && event.getSource().equals(facultyManagePanel.getDeleteFacultyBtn())) {
             // Delete a faculty
             facultyManagePanel.deleteFaculty();
         } else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getAddBranchBtn())) {
@@ -200,12 +214,12 @@ public class AppController implements ActionListener {
 
         } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getAddStudentBtn())) {
             /* --------------------   Subject page   -------------------- */
-            studentManagePanel.createAddNewSubjectFrame();
-            studentManagePanel.configAddNewSubjectFrame();
+            studentManagePanel.createAddNewStudentFrame();
+            studentManagePanel.configAddNewStudentFrame();
 
         } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getDeleteStudentBtn())) {
             // Delete a subject
-
+            studentManagePanel.deleteStudent();
         }
     }
 
@@ -213,7 +227,7 @@ public class AppController implements ActionListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (e.getSource().equals(facultyManagePanel.getFacultyTable())) {
+            if (facultyManagePanel != null && e.getSource().equals(facultyManagePanel.getFacultyTable())) {
                 // Obtain row and column indexes the user clicked.
                 int row = facultyManagePanel.getFacultyTable().rowAtPoint(e.getPoint());
                 int col = facultyManagePanel.getFacultyTable().columnAtPoint(e.getPoint());
@@ -247,6 +261,15 @@ public class AppController implements ActionListener {
                     }
                     System.out.println(toShow);
                 }
+            } else if (studentManagePanel != null && e.getSource().equals(studentManagePanel.getStudentTable())) {
+                int row = studentManagePanel.getStudentTable().rowAtPoint(e.getPoint());
+                int col = studentManagePanel.getStudentTable().columnAtPoint(e.getPoint());
+                if (col == 4) {
+                    switchToEachStudentManagePanel((String) studentManagePanel.getStudentTable().getModel().getValueAt(row, 2));
+                } else {
+                        
+                }
+
             }
         }
     }

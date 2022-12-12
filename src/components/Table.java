@@ -14,11 +14,11 @@ public class Table extends JTable {
         model.addRow(row);
     }
 
-    public void setViewDatBtnColumn(int column) {
+    public void setViewDatBtnColumn(int newVuewDataBtnColumn) {
         setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                if (column == column) { // <- buton location
+                if (column == newVuewDataBtnColumn) { // <- buton location
                     ViewDataBtn viewBtn = new ViewDataBtn("ดูข้อมูล");
                     return viewBtn;
                 } else {
@@ -34,8 +34,6 @@ public class Table extends JTable {
                     }
                     return com;
                 }
-
-//                return new JLabel("" + value);
             }
 
         });
@@ -66,6 +64,7 @@ public class Table extends JTable {
         setGridColor(new Color(134, 134, 134));
         getTableHeader().setReorderingAllowed(false);
         setRowHeight(40);
+        setFont(new Font("prompt", 0, 14));
 
         getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
             @Override
@@ -78,31 +77,7 @@ public class Table extends JTable {
             }
 
         });
-
-        setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                if (column == 3) { // <- buton location
-                    ViewDataBtn viewBtn = new ViewDataBtn("ดูข้อมูล");
-                    return viewBtn;
-                } else {
-                    Component com = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-                    this.setHorizontalAlignment(CENTER);
-                    setBorder(noFocusBorder);
-                    if (isSelected) {
-                        com.setBackground(new Color(255, 234, 218));
-                        com.setForeground(new Color(255, 137, 47));
-                    } else {
-                        com.setBackground(Color.WHITE);
-                        com.setForeground(new Color(102, 102, 102));
-                    }
-                    return com;
-                }
-
-//                return new JLabel("" + value);
-            }
-
-        });
+        this.setViewDatBtnColumn(3);
     }
 
     @Override

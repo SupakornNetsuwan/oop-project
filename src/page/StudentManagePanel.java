@@ -20,12 +20,12 @@ public class StudentManagePanel extends JPanel implements ActionListener {
 
     public void initTable() {
         ArrayList<Student> students = studentModel.getStudents();
+        getStudentTable().setViewDatBtnColumn(4);
 
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
-            System.out.println(student.toString());
-            Object[] object = {null, student.getFullname(), student.getStudent_id(), student.getFaculty() + "/" + student.getBranch(), null};
+            Object[] object = {null, student.getFullname(), student.getStudentId(), student.getFaculty() + "/" + student.getBranch(), null};
             this.getStudentTable().addRow(object);
         }
     }
@@ -46,13 +46,29 @@ public class StudentManagePanel extends JPanel implements ActionListener {
         return this.addNewStudentFrame;
     }
 
-    public void createAddNewSubjectFrame() {
+    public void createAddNewStudentFrame() {
         this.addNewStudentFrame = new AddNewStudentFrame();
         addNewStudentFrame.getAddStudentBtn().addActionListener(this);
     }
 
-    public void configAddNewSubjectFrame() {
+    public void configAddNewStudentFrame() {
         this.addNewStudentFrame.config();
+    }
+
+    public void deleteStudent() {
+        for (int i = 0; i < this.getStudentTable().getRowCount(); i++) {
+            Boolean selected = (Boolean) this.getStudentTable().getModel().getValueAt(i, 0);
+            if (selected == null) {
+                selected = false;
+            }
+
+            String studentId = this.getStudentTable().getModel().getValueAt(i, 2).toString();
+            if (selected) {
+                this.studentModel.deleteStudent(studentId);
+            }
+        }
+
+        this.initTable();
     }
 
     @Override
@@ -67,13 +83,11 @@ public class StudentManagePanel extends JPanel implements ActionListener {
             String studentPhone = addNewStudentFrame.getStudentPhoneTextField().getText();
 
             if (!studentName.isBlank() && !studentId.isBlank() && !studentGender.isBlank() && !studentAge.isBlank() && !studentPhone.isBlank()) {
-                if (studentModel.addStudent(studentName, studentId, studentGender, studentAge, studentPhone)) {
-                    System.out.println("Done");
-                } else {
-                    System.out.println("ERR");
+                if (!studentModel.addStudent(studentName, studentId, studentGender, studentAge, studentPhone)) {
+                    JOptionPane.showMessageDialog(addNewStudentFrame, "Error, make sure your inserted data is correctly and no duplicated ID", "Error!", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
             }
-
             this.initTable();
         }
     }

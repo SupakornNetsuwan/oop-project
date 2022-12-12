@@ -27,22 +27,43 @@ public class StudentModel {
 
                 students.add(student);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException err) {
+            err.printStackTrace();
+            System.out.println(err.getMessage());
         }
 
         return students;
     }
 
-    public void getStudent(String studentId) {
+    public Student getStudent(String studentId) {
+        Student student = null;
 
+        try {
+            statement = con.prepareStatement("SELECT * FROM student WHERE student_id = (?)");
+            statement.setString(1, studentId);
+            ResultSet result = statement.executeQuery();
+            while (result != null && result.next()) {
+                student = new Student(
+                        result.getString("fullname"),
+                        result.getString("student_id"),
+                        result.getString("age"),
+                        result.getString("gender"),
+                        result.getString("phone"),
+                        result.getString("faculty"),
+                        result.getString("branch")
+                );
+            }
+        } catch (SQLException err) {
+            err.printStackTrace();
+            System.out.println(err.getMessage());
+        }
+
+        return student;
     }
 
     public boolean addStudent(String studentName, String studentId, String studentGender, String studentAge, String studentPhone) {
-        String sql = "INSERT INTO student (fullname, age, gender, phone, faculty, branch, student_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
         try {
-            statement = con.prepareStatement(sql);
+            statement = con.prepareStatement("INSERT INTO student (fullname, age, gender, phone, faculty, branch, student_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, studentName);
             statement.setString(2, studentAge);
             statement.setString(3, studentGender);
@@ -52,14 +73,23 @@ public class StudentModel {
             statement.setString(7, studentId);
             statement.executeUpdate();
             return true;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException err) {
+            err.printStackTrace();
+            System.out.println(err.getMessage());
             return false;
         }
     }
 
-    public void deleteStudent(String studentId) {
-
+    public boolean deleteStudent(String studentId) {
+        try {
+            statement = con.prepareStatement("DELETE FROM student WHERE student_id = (?)");
+            statement.setString(1, studentId);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+            return false;
+        }
     }
 }
 

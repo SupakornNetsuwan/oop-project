@@ -3,7 +3,7 @@ package model;
 public class Student {
 
     private String fullname;
-    private String student_id;
+    private String studentId;
     private String age;
     private String gender;
     private String phone;
@@ -12,14 +12,14 @@ public class Student {
 
     public Student(
             String fullname,
-            String student_id,
+            String studentId,
             String age,
             String gender,
             String phone,
             String faculty,
             String branch) {
         this.fullname = fullname;
-        this.student_id = student_id;
+        this.studentId = studentId;
         this.age = age;
         this.gender = gender;
         this.phone = phone;
@@ -30,7 +30,7 @@ public class Student {
     @Override
     public String toString() {
         return ("Fullnmae : " + this.fullname + "\n"
-                + "Student ID: " + this.student_id + "\n"
+                + "Student ID: " + this.studentId + "\n"
                 + "Age : " + this.age + "\n"
                 + "Gender : " + this.gender + "\n"
                 + "Phone : " + this.phone + "\n"
@@ -46,12 +46,12 @@ public class Student {
         this.fullname = fullname;
     }
 
-    public String getStudent_id() {
-        return student_id;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(String student_id) {
-        this.student_id = student_id;
+    public void setStudentId(String student_id) {
+        this.studentId = student_id;
     }
 
     public String getAge() {

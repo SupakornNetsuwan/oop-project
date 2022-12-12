@@ -11,13 +11,14 @@ public class BranchManagePanel extends JPanel implements ActionListener {
 
     private AddNewBranchFrame addNewBranchFrame;
     private BranchModel branchModel = new BranchModel();
-    private FacultyManagePanel facultyManagePanel;
+//    private FacultyManagePanel facultyManagePanel;
     private String nameFaculty = "";
 
     public BranchManagePanel(String facultyName) {
         this.nameFaculty = facultyName;
         initComponents();
         initTable();
+        this.branchNameHeader.setText(facultyName);
     }
 
     public void initTable() {
