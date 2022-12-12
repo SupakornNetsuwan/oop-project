@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2022 at 05:49 PM
+-- Generation Time: Dec 12, 2022 at 07:12 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -38,7 +38,10 @@ CREATE TABLE `branch` (
 
 INSERT INTO `branch` (`name`, `in_faculty`) VALUES
 ('BUSIM', 'Business Management '),
-('xxxxxxxxxxxx', 'Business Management '),
+('x', 'Business Management '),
+('Computer', 'Engineer'),
+('Enviroment', 'Engineer'),
+('Material', 'Engineer'),
 ('BIT', 'Information Technology'),
 ('DSBA', 'Information Technology'),
 ('IT', 'Information Technology');
@@ -59,7 +62,30 @@ CREATE TABLE `faculty` (
 
 INSERT INTO `faculty` (`name`) VALUES
 ('Business Management '),
+('Engineer'),
 ('Information Technology');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `professor`
+--
+
+CREATE TABLE `professor` (
+  `fullname` varchar(50) NOT NULL,
+  `degree` varchar(50) NOT NULL,
+  `own_subject` varchar(50) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `age` int(10) NOT NULL,
+  `phone` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `professor`
+--
+
+INSERT INTO `professor` (`fullname`, `degree`, `own_subject`, `gender`, `age`, `phone`) VALUES
+('Ajarn\' Bank', 'Ph.D.', 'OOP', 'Male', 31, '0959259515');
 
 -- --------------------------------------------------------
 
@@ -82,7 +108,29 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`fullname`, `age`, `gender`, `phone`, `faculty`, `branch`, `student_id`) VALUES
-('ำฟห', 15, 'ฟหำ', 'ฟหก', '-', '-', 'ำฟห');
+('ศศิธร ศรีจันทร์', 20, 'หญิง', '0857122912xx', '-', '-', '64070106'),
+('นายศุภกร เนตรสุวรรณ', 20, 'ชาย', '0959259515', '-', '-', '64070108');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject`
+--
+
+CREATE TABLE `subject` (
+  `name` varchar(50) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `professor_fullname` varchar(50) NOT NULL,
+  `student_id` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`name`, `subject_id`, `professor_fullname`, `student_id`) VALUES
+('Object Oriented Programming', 15, 'Ajarn\' Bank', '64070108'),
+('Object Oriented Programming', 15, 'Ajarn\' Bank', '64070106');
 
 -- --------------------------------------------------------
 
@@ -121,10 +169,23 @@ ALTER TABLE `faculty`
   ADD PRIMARY KEY (`name`);
 
 --
+-- Indexes for table `professor`
+--
+ALTER TABLE `professor`
+  ADD PRIMARY KEY (`fullname`);
+
+--
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`student_id`);
+
+--
+-- Indexes for table `subject`
+--
+ALTER TABLE `subject`
+  ADD KEY `subject_map_student` (`student_id`),
+  ADD KEY `professor_map_professor` (`professor_fullname`);
 
 --
 -- Indexes for table `user`
@@ -141,6 +202,13 @@ ALTER TABLE `user`
 --
 ALTER TABLE `branch`
   ADD CONSTRAINT `map_faculty` FOREIGN KEY (`in_faculty`) REFERENCES `faculty` (`name`);
+
+--
+-- Constraints for table `subject`
+--
+ALTER TABLE `subject`
+  ADD CONSTRAINT `professor_map_professor` FOREIGN KEY (`professor_fullname`) REFERENCES `professor` (`fullname`),
+  ADD CONSTRAINT `subject_map_student` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
