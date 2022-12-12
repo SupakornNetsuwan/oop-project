@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2022 at 07:12 AM
+-- Generation Time: Dec 12, 2022 at 11:34 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -37,11 +37,14 @@ CREATE TABLE `branch` (
 --
 
 INSERT INTO `branch` (`name`, `in_faculty`) VALUES
+('BUIAM', 'Business Management '),
 ('BUSIM', 'Business Management '),
-('x', 'Business Management '),
 ('Computer', 'Engineer'),
+('Electronic', 'Engineer'),
 ('Enviroment', 'Engineer'),
 ('Material', 'Engineer'),
+('Enviroment Analytic', 'Enviomental Product Design'),
+('Enviroment Investor', 'Enviomental Product Design'),
 ('BIT', 'Information Technology'),
 ('DSBA', 'Information Technology'),
 ('IT', 'Information Technology');
@@ -63,6 +66,7 @@ CREATE TABLE `faculty` (
 INSERT INTO `faculty` (`name`) VALUES
 ('Business Management '),
 ('Engineer'),
+('Enviomental Product Design'),
 ('Information Technology');
 
 -- --------------------------------------------------------
@@ -85,7 +89,8 @@ CREATE TABLE `professor` (
 --
 
 INSERT INTO `professor` (`fullname`, `degree`, `own_subject`, `gender`, `age`, `phone`) VALUES
-('Ajarn\' Bank', 'Ph.D.', 'OOP', 'Male', 31, '0959259515');
+('Ajarn\' Bank', 'Ph.D.', 'OOP', 'Male', 31, '0959259515'),
+('อาจารย์เอิร์ท', 'ปริญญาประถม', '-', 'ชาย', 20, '0959259515');
 
 -- --------------------------------------------------------
 
