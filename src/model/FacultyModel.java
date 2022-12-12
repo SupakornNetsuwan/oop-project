@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class FacultyModel {
 
-    private Faculty Faculty;
+    private Faculty faculty;
     private ArrayList<Faculty> facultyList;
     private final Connection con = Connect.ConnectDB();
     private ResultSet result = null;
@@ -77,8 +77,8 @@ public class FacultyModel {
             result = statement.executeQuery();
             while (result != null && result.next()) {
                 QuantityBranch = 0;
-                Faculty = new Faculty();
-                Faculty.setNameFaculty(result.getString("name"));
+                faculty = new Faculty();
+                faculty.setNameFaculty(result.getString("name"));
                 String sql2 = "SELECT * FROM branch WHERE in_faculty = ?";
                 statement2 = con.prepareStatement(sql2);
                 statement2.setString(1, result.getString("name"));
@@ -86,8 +86,8 @@ public class FacultyModel {
                 while (result2 != null && result2.next()) {
                     QuantityBranch++;
                 }
-                Faculty.setQuantity(QuantityBranch);
-                facultyList.add(Faculty);
+                faculty.setQuantity(QuantityBranch);
+                facultyList.add(faculty);
             }
         } catch (SQLException e) {
             e.printStackTrace();

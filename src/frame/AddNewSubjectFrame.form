@@ -123,7 +123,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="2f" green="89" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe27;&#xe34;&#xe0a;&#xe32;"/>
+            <Property name="text" type="java.lang.String" value="&#xe23;&#xe2b;&#xe31;&#xe2a;&#xe27;&#xe34;&#xe0a;&#xe32;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="subjectIDTextField">

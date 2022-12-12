@@ -2,15 +2,23 @@ package frame;
 
 import java.awt.*;
 import javax.swing.*;
+import model.ProfessorModel;
 
 public class AddNewSubjectFrame extends JFrame {
+    
+    private ProfessorModel professorModel = new ProfessorModel();
 
     public AddNewSubjectFrame() {
         initComponents();
+        initComboBox();
     }
 
     public void init() {
 
+    }
+    
+    public void initComboBox() {
+        subjectProfComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(professorModel.getRecordsForComboBox()));
     }
     
     public JButton getAddSubjectBtn(){
@@ -82,7 +90,7 @@ public class AddNewSubjectFrame extends JFrame {
 
         subjectID.setFont(new java.awt.Font("Prompt Medium", 0, 20)); // NOI18N
         subjectID.setForeground(new java.awt.Color(255, 137, 47));
-        subjectID.setText("ชื่อวิชา");
+        subjectID.setText("รหัสวิชา");
 
         subjectIDTextField.setFont(new java.awt.Font("Prompt", 0, 18)); // NOI18N
         subjectIDTextField.setForeground(new java.awt.Color(154, 154, 154));
