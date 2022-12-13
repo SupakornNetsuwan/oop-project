@@ -133,11 +133,11 @@ public class StudentModel {
         return studySubjectList;
     }
 
-    public ArrayList<Student> studentInSubjectList(String subjectName) {
+    public ArrayList<Student> studentInSubjectList(String subjectId) {
         ArrayList<Student> studentList = new ArrayList();
         try {
-            statement = con.prepareStatement("SELECT * FROM student_in_subject JOIN subject ON student_in_subject.subject = subject.id JOIN student ON student_in_subject.student = student.student_id WHERE subject.name = (?) ");
-            statement.setString(1, subjectName);
+            statement = con.prepareStatement("SELECT * FROM student_in_subject JOIN subject ON student_in_subject.subject = subject.id JOIN student ON student_in_subject.student = student.student_id WHERE subject.id = (?) ");
+            statement.setString(1, subjectId);
             result = statement.executeQuery();
 
             while (result != null && result.next()) {

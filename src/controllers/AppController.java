@@ -101,7 +101,7 @@ public class AppController implements ActionListener {
         mainFrame.repaint();
     }
 
-    public void switchToMainPanel(){
+    public void switchToMainPanel() {
         System.out.println("Main page");
         homePanel = new HomePanel();
         switchTo(homePanel);
@@ -183,19 +183,20 @@ public class AppController implements ActionListener {
 
                 if (col == 5) {
                     switchToEachSubjectPanel(
-                            (String)subjectManagePanel.getSubjectTable().getValueAt(row, 1),
-                            (String)subjectManagePanel.getSubjectTable().getValueAt(row, 3),
-                            Integer.toString((Integer)subjectManagePanel.getSubjectTable().getValueAt(row, 4))
+                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 1),
+                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 3),
+                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 4)),
+                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 5))
                     );
                 }
             }
         });
     }
-    
-    public void switchToEachSubjectPanel(String subject, String professor, String amount) {
-        eachSubjectManagePanel = new EachSubjectManagePanel(subject, professor, amount);
+
+    public void switchToEachSubjectPanel(String subject, String professor, String amount, String subjectId) {
+        eachSubjectManagePanel = new EachSubjectManagePanel(subject, professor, amount, subjectId);
         switchTo(eachSubjectManagePanel);
-        
+
         eachSubjectManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 switchTo(subjectManagePanel);
@@ -224,27 +225,27 @@ public class AppController implements ActionListener {
                 if (branchManagePanel != null && e.getSource().equals(branchManagePanel.getBranchTable())) {
                     int row = branchManagePanel.getBranchTable().rowAtPoint(e.getPoint());
                     int col = branchManagePanel.getBranchTable().columnAtPoint(e.getPoint());
-                    
+
                     if (col == 3) {
-                        switchToEachBranchPanel((String)branchManagePanel.getBranchTable().getValueAt(row, 1), facultyName);
+                        switchToEachBranchPanel((String) branchManagePanel.getBranchTable().getValueAt(row, 1), facultyName);
                     }
                 }
             }
         });
     }
-    
+
     public void switchToEachBranchPanel(String branch, String facluty) {
         branchStudentManagePanel = new BranchStudentManagePanel(branch, facluty);
         switchTo(branchStudentManagePanel);
-        
+
         branchStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 switchTo(branchManagePanel);
             }
         });
     }
-    
-    public void switchToErrorPanel(){
+
+    public void switchToErrorPanel() {
         errorPanel = new ErrorPanel();
         switchTo(errorPanel);
     }

@@ -15,11 +15,13 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
     private String subject;
     private String professor;
     private String amount;
+    private String subjectId;
 
-    public EachSubjectManagePanel(String subject, String professor, String amount) {
+    public EachSubjectManagePanel(String subject, String professor, String amount, String subjectId) {
         this.subject = subject;
         this.professor = professor;
         this.amount = amount;
+        this.subjectId = subjectId;
         initComponents();
         initTable();
         this.subjectNameHeader.setText(subject);
@@ -29,7 +31,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
     }
 
     public void initTable() {
-        ArrayList<Student> students = studentModel.studentInSubjectList(this.subject);
+        ArrayList<Student> students = studentModel.studentInSubjectList(this.subjectId);
         getStudentTable().setViewDatBtnColumn(5);
 
         this.getStudentTable().clearTable();
