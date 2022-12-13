@@ -12,18 +12,25 @@ public class SubjectStudentManagePanel extends JPanel implements ActionListener 
 
     private AddNewSubjectStudentFrame addNewSubjectStudentFrame; // Internal frame
     private StudentModel studentModel = new StudentModel();
-    private String nameFaculty = "";
+    private String subject = "";
+    private String professor = "";
+    private String amount = "";
 
-    public SubjectStudentManagePanel(String facultyName) {
-        this.nameFaculty = facultyName;
+    public SubjectStudentManagePanel(String subject, String professor, String amount) {
+        this.subject = subject;
+        this.professor = professor;
+        this.amount = amount;
         initComponents();
         initTable();
+        this.subjectNameHeader.setText(subject);
+        this.professorName.setText(professor);
+        this.studentAmount.setText(amount);
 //        this.headerSeparator.setText(facultyName);
     }
 
     public void initTable() {
         ArrayList<Student> students = studentModel.getStudents();
-        getStudentTable().setViewDatBtnColumn(4);
+        getStudentTable().setViewDatBtnColumn(5);
 
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {
@@ -33,8 +40,8 @@ public class SubjectStudentManagePanel extends JPanel implements ActionListener 
         }
     }
 
-    public void setNameFaculty(String nameFaculty) {
-        this.nameFaculty = nameFaculty;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
     
     public Table getStudentTable() {

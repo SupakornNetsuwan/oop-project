@@ -59,6 +59,14 @@ public class BranchManagePanel extends JPanel implements ActionListener {
     public JLabel getGoBackLabel() {
         return this.goBackLabel;
     }
+    
+    public String getBranchName() {
+        return branchNameHeader.getText();
+    }
+    
+    public void setBranchName(String s) {
+        branchNameHeader.setText(s);
+    }
 
     public AddNewBranchFrame getAddNewBranchFrame() {
         return this.addNewBranchFrame;
