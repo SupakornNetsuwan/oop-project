@@ -15,7 +15,7 @@ public class Connect {
             return con;
         } catch(SQLException e) {
             System.out.println("Connect Link Failed");
-            JOptionPane.showMessageDialog(MainController.mainFrame, "You're not connect to database. Please open MySQL before using this application.", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(MainController.mainFrame, "You're not connect to database. Please open MySQL and Import waido_db.sql before using this application.", "Error!", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         } catch(ClassNotFoundException ex){
             System.out.println("Please Install Driver");
