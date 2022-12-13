@@ -8,6 +8,7 @@ import page.StudentManagePanel;
 import page.EachStudentManagePanel;
 import page.FacultyManagePanel;
 import page.EachProfessorManagePanel;
+import page.ErrorPanel;
 
 import layout.MainLayout;
 import components.*;
@@ -44,6 +45,7 @@ public class AppController implements ActionListener {
     private StudentManagePanel studentManagePanel;
     private ProfessorManagePanel professorManagePanel;
     private EachStudentManagePanel eachStudentManagePanel;
+    private ErrorPanel errorPanel;
 
     /* Drill down internal panels*/
     private BranchManagePanel branchManagePanel;
@@ -95,16 +97,16 @@ public class AppController implements ActionListener {
         mainFrame.repaint();
     }
 
-    public void switchToMainPanel() {
+    public void switchToMainPanel(){
         System.out.println("Main page");
         homePanel = new HomePanel();
-        swtichTo(homePanel);
+        switchTo(homePanel);
     }
 
     public void switchToFacultyManagePanel() {
         System.out.println("Faculty page");
         facultyManagePanel = new FacultyManagePanel();
-        swtichTo(facultyManagePanel);
+        switchTo(facultyManagePanel);
         ////////////////////////////////////////
 
         /* Faculty Panel listener */
@@ -116,7 +118,7 @@ public class AppController implements ActionListener {
     public void switchToProfessorManagePanel() {
         System.out.println("Professor page");
         professorManagePanel = new ProfessorManagePanel();
-        swtichTo(professorManagePanel);
+        switchTo(professorManagePanel);
         ////////////////////////////////////////
         professorManagePanel.getAddProfessorBtn().addActionListener(this);
         professorManagePanel.getDeleteProfessorBtn().addActionListener(this);
@@ -126,7 +128,7 @@ public class AppController implements ActionListener {
     public void switchToEachProfessorManagePanel(String professorFullName) {
         System.out.println("Each professor page");
         EachProfessorManagePanel eachProfessorManagePanel = new EachProfessorManagePanel(professorFullName);
-        swtichTo(eachProfessorManagePanel);
+        switchTo(eachProfessorManagePanel);
         ////////////////////////////////////////
         eachProfessorManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             @Override
@@ -139,7 +141,7 @@ public class AppController implements ActionListener {
     public void switchToStudentManagePanel() {
         System.out.println("Student page");
         studentManagePanel = new StudentManagePanel();
-        swtichTo(studentManagePanel);
+        switchTo(studentManagePanel);
         ////////////////////////////////////////
 
         studentManagePanel.getAddStudentBtn().addActionListener(this);
@@ -150,7 +152,7 @@ public class AppController implements ActionListener {
     public void switchToEachStudentManagePanel(String student_id) {
         System.out.println("Each student page");
         eachStudentManagePanel = new EachStudentManagePanel(student_id);
-        swtichTo(eachStudentManagePanel);
+        switchTo(eachStudentManagePanel);
         ////////////////////////////////////////
         eachStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             @Override
@@ -163,7 +165,7 @@ public class AppController implements ActionListener {
     public void switchToSubjectManagePanel() {
         System.out.println("Subject page");
         subjectManagePanel = new SubjectManagePanel();
-        swtichTo(subjectManagePanel);
+        switchTo(subjectManagePanel);
         ////////////////////////////////////////
 
         subjectManagePanel.getAddSubjectBtn().addActionListener(this);
@@ -179,7 +181,7 @@ public class AppController implements ActionListener {
     public void switchToBranchManagePanel(String facultyName) {
         System.out.println("Branch page");
         branchManagePanel = new BranchManagePanel(facultyName);
-        swtichTo(branchManagePanel);
+        switchTo(branchManagePanel);
         ////////////////////////////////////////
 
         /* Branch Panel listener */
@@ -192,8 +194,13 @@ public class AppController implements ActionListener {
             }
         });
     }
+    
+    public void switchToErrorPanel(){
+        errorPanel = new ErrorPanel();
+        switchTo(errorPanel);
+    }
 
-    private void swtichTo(JPanel panelToSwitch) {
+    private void switchTo(JPanel panelToSwitch) {
         this.getContentPanel().removeAll();
         this.getContentPanel().add(panelToSwitch);
         mainFrame.revalidate();

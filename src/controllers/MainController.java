@@ -11,7 +11,7 @@ public class MainController implements ActionListener {
     private LoginController loginController;
     private AppController appController;
     /* Primary frame */
-    private MainFrame mainFrame;
+    public static MainFrame mainFrame;
     private UserModel user;
 
     public MainController() {

@@ -2,6 +2,8 @@
 package model;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
+import controllers.*;
 
 public class Connect {
     public static Connection ConnectDB() {
@@ -11,8 +13,12 @@ public class Connect {
             Connection con=DriverManager.getConnection(url, "root", "");
 
             return con;
-        } catch(Exception e) {
-            e.printStackTrace();
+        } catch(SQLException e) {
+            System.out.println("Connect Link Failed");
+            JOptionPane.showMessageDialog(MainController.mainFrame, "You're not connect to database. Please open MySQL before using this application.", "Error!", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        } catch(ClassNotFoundException ex){
+            System.out.println("Please Install Driver");
         }
         return null;
     }
