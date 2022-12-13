@@ -15,7 +15,7 @@ public class FacultyModel {
     private PreparedStatement statement = null;
     private PreparedStatement statement2 = null;
     private String sql;
-    private int QuantityBranch = 0;
+    private int quantityBranch = 0;
 
     public FacultyModel() {
         facultyList = new ArrayList<Faculty>();
@@ -30,11 +30,11 @@ public class FacultyModel {
     }
 
     public int getQuantityBranch() {
-        return QuantityBranch;
+        return quantityBranch;
     }
 
     public void setQuantityBranch(int QuantityBranch) {
-        this.QuantityBranch = QuantityBranch;
+        this.quantityBranch = QuantityBranch;
     }
 
     public boolean insert(String nameFaculty) {
@@ -76,7 +76,7 @@ public class FacultyModel {
             statement = con.prepareStatement(sql);
             result = statement.executeQuery();
             while (result != null && result.next()) {
-                QuantityBranch = 0;
+                quantityBranch = 0;
                 faculty = new Faculty();
                 faculty.setNameFaculty(result.getString("name"));
                 String sql2 = "SELECT * FROM branch WHERE in_faculty = ?";
@@ -84,9 +84,9 @@ public class FacultyModel {
                 statement2.setString(1, result.getString("name"));
                 ResultSet result2 = statement2.executeQuery();
                 while (result2 != null && result2.next()) {
-                    QuantityBranch++;
+                    quantityBranch++;
                 }
-                faculty.setQuantity(QuantityBranch);
+                faculty.setQuantity(quantityBranch);
                 facultyList.add(faculty);
             }
         } catch (SQLException e) {

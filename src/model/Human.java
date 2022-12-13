@@ -7,6 +7,10 @@ public class Human {
     public String gender;
     public String phone;
 
+    public Human() {
+        this("", "", "", "");
+    }
+    
     public Human(String fullname, String age, String gender, String phone) {
         this.fullname = fullname;
         this.age = age;

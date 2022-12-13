@@ -5,6 +5,7 @@ import java.util.*;
 
 public class StudentModel {
 
+    
     private Subject subject;
     private ArrayList<Subject> subjectList;
     private final Connection con = Connect.ConnectDB();
@@ -40,7 +41,31 @@ public class StudentModel {
             err.printStackTrace();
             System.out.println(err.getMessage());
         }
-
+        return students;
+    }
+    
+    public ArrayList<Student> getStudyInBranch(String branchName) {
+        ArrayList<Student> students = new ArrayList();
+        try {
+            statement = con.prepareStatement("SELECT * FROM student WHERE branch = (?)");
+            statement.setString(1, branchName);
+            result = statement.executeQuery();
+            while (result != null && result.next()) {
+                Student student = new Student(
+                        result.getString("fullname"),
+                        result.getString("student_id"),
+                        result.getString("age"),
+                        result.getString("gender"),
+                        result.getString("phone"),
+                        result.getString("faculty"),
+                        result.getString("branch")
+                );
+                students.add(student);
+            }
+        } catch (SQLException err) {
+            err.printStackTrace();
+            System.out.println(err.getMessage());
+        }
         return students;
     }
 
@@ -66,10 +91,9 @@ public class StudentModel {
             err.printStackTrace();
             System.out.println(err.getMessage());
         }
-
         return student;
     }
-
+    
     public boolean addStudent(String studentName, String studentId, String studentGender, String studentAge, String studentPhone) {
         try {
             statement = con.prepareStatement("INSERT INTO student (fullname, age, gender, phone, faculty, branch, student_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -84,6 +108,20 @@ public class StudentModel {
             return true;
         } catch (SQLException err) {
             err.printStackTrace();
+            System.out.println(err.getMessage());
+            return false;
+        }
+    }
+
+    public boolean updateStudent(String studentID, String studentFaculty, String studentBranch) {
+        try {
+            statement = con.prepareStatement("UPDATE student SET faculty = (?), branch = (?) WHERE student_id = (?)");
+            statement.setString(1, studentFaculty);
+            statement.setString(2, studentBranch);
+            statement.setString(3, studentID);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException err) {
             System.out.println(err.getMessage());
             return false;
         }
@@ -150,10 +188,54 @@ public class StudentModel {
         }
         return studentList;
     }
+    
+    public String[] getRecordsForComboBox() {
+        String[] recordsForComboBox = new String [getStudents().size()+1];
+        recordsForComboBox[0] = "";
+        for (int i = 1; i < getStudents().size()+1; i++) {
+            recordsForComboBox[i] = getStudents().get(i-1).getStudentId();
+        }
+        getStudents().clear();
+        return recordsForComboBox;
+    }
+    
+//    public void readStudent(String inBranch) {
+//        try {
+//            statement = con.prepareStatement("SELECT * FROM branch WHERE in_faculty = ?");
+//            statement.setString(1, inFaculty);
+//            result = statement.executeQuery();
+//            while (result != null && result.next()) {
+//                quantityStudent = 0;
+//                branch = new Branch();
+//                branch.setNameBranch(result.getString("name"));
+//                statement2 = con.prepareStatement("SELECT * FROM student WHERE branch = ?");
+//                statement2.setString(1, result.getString("name"));
+//                ResultSet result2 = statement2.executeQuery();
+//                while (result2 != null && result2.next()) {
+//                    quantityStudent++;
+//                }
+//                branch.setQuantity(quantityStudent);
+//                branchList.add(branch);
+//            
+//            }
+//        } catch (SQLException e) {
+////            e.printStackTrace();
+//             System.out.println(e.getMessage());
+//        }
+//            }
+//
+//    public Object[][] getRecordsForTableContent() {
+//        readStudent(inFaculty);
+//        Object[][] recordsForTableContent = new Object[branchList.size()][4];
+//
+//        for (int i = 0; i < branchList.size(); i++) {
+//            Object[] eachBranch = {false, branchList.get(i).getNameBranch(), branchList.get(i).getQuantity(), null};
+//            recordsForTableContent[i] = eachBranch;
+//        }
+//        branchList.clear();
+//
+//        return recordsForTableContent;
+//    }
 
 }
 
-//    public static void main(String args[]) {
-//        StudentModel studentModel = new StudentModel();
-//        System.out.println(studentModel.getStudents().size());
-//    }

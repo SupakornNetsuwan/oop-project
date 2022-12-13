@@ -4,16 +4,13 @@ public class Branch {
 
     private String nameBranch;
     private int quantity;
-    private String inFaculty;
-
     public Branch() {
-        this(" ", 0, " ");
+        this(" ", 0);
     }
 
-    public Branch(String nameBranch, int quantity, String inFaculty) {
+    public Branch(String nameBranch, int quantity) {
         this.nameBranch = nameBranch;
         this.quantity = quantity;
-        this.inFaculty = inFaculty;
     }
 
     public String getNameBranch() {
@@ -31,18 +28,5 @@ public class Branch {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public String getInFaculty() {
-        return inFaculty;
-    }
-
-    public void setInFaculty(String inFaculty) {
-        this.inFaculty = inFaculty;
-    }
-    
-    
-    
-    
-    
 
 }

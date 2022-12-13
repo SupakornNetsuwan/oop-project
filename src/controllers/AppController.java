@@ -111,6 +111,7 @@ public class AppController implements ActionListener {
         System.out.println("Faculty page");
         facultyManagePanel = new FacultyManagePanel();
         switchTo(facultyManagePanel);
+        facultyManagePanel.initTable();
         ////////////////////////////////////////
 
         /* Faculty Panel listener */
@@ -123,6 +124,7 @@ public class AppController implements ActionListener {
         System.out.println("Professor page");
         professorManagePanel = new ProfessorManagePanel();
         switchTo(professorManagePanel);
+        professorManagePanel.initTable();
         ////////////////////////////////////////
         professorManagePanel.getAddProfessorBtn().addActionListener(this);
         professorManagePanel.getDeleteProfessorBtn().addActionListener(this);
@@ -146,6 +148,7 @@ public class AppController implements ActionListener {
         System.out.println("Student page");
         studentManagePanel = new StudentManagePanel();
         switchTo(studentManagePanel);
+        studentManagePanel.initTable();
         ////////////////////////////////////////
 
         studentManagePanel.getAddStudentBtn().addActionListener(this);
@@ -170,6 +173,7 @@ public class AppController implements ActionListener {
         System.out.println("Subject page");
         subjectManagePanel = new SubjectManagePanel();
         switchTo(subjectManagePanel);
+        subjectManagePanel.initTable();
         ////////////////////////////////////////
 
         subjectManagePanel.getAddSubjectBtn().addActionListener(this);
@@ -196,10 +200,12 @@ public class AppController implements ActionListener {
     public void switchToEachSubjectPanel(String subject, String professor, String amount, String subjectId) {
         eachSubjectManagePanel = new EachSubjectManagePanel(subject, professor, amount, subjectId);
         switchTo(eachSubjectManagePanel);
+        eachSubjectManagePanel.initTable();
 
         eachSubjectManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 switchTo(subjectManagePanel);
+                subjectManagePanel.initTable();
             }
         });
     }
@@ -208,6 +214,7 @@ public class AppController implements ActionListener {
         System.out.println("Branch page");
         branchManagePanel = new BranchManagePanel(facultyName);
         switchTo(branchManagePanel);
+        branchManagePanel.initTable();
         ////////////////////////////////////////
 
         /* Branch Panel listener */
@@ -237,13 +244,17 @@ public class AppController implements ActionListener {
     public void switchToEachBranchPanel(String branch, String facluty) {
         branchStudentManagePanel = new BranchStudentManagePanel(branch, facluty);
         switchTo(branchStudentManagePanel);
-
+        branchStudentManagePanel.initTable();
+     
+        branchStudentManagePanel.getAddStudentBtn().addActionListener(this);
+        
         branchStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 switchTo(branchManagePanel);
+                branchManagePanel.initTable();
             }
         });
-    }
+            }
 
     public void switchToErrorPanel() {
         errorPanel = new ErrorPanel();
@@ -278,6 +289,11 @@ public class AppController implements ActionListener {
         } else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getDeleteBranchBtn())) {
             // Delete a branch
             branchManagePanel.deleteBranch();
+
+        } else if (branchStudentManagePanel != null && event.getSource().equals(branchStudentManagePanel.getAddStudentBtn())) {
+            /* --------------------   Branch -> Add Student   -------------------- */
+            branchStudentManagePanel.createAddNewBranchStudentFrame();
+            branchStudentManagePanel.configAddNewBranchStudentFrame();
 
         } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getAddSubjectBtn())) {
             /* --------------------   Subject page   -------------------- */
