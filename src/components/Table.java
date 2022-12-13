@@ -14,11 +14,11 @@ public class Table extends JTable {
         model.addRow(row);
     }
 
-    public void setViewDatBtnColumn(int newVuewDataBtnColumn) {
+    public void setViewDataBtnColumn(int newViewDataBtnColumn) {
         setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                if (column == newVuewDataBtnColumn) { // <- buton location
+                if (column == newViewDataBtnColumn) { // <- buton location
                     ViewDataBtn viewBtn = new ViewDataBtn("ดูข้อมูล");
                     return viewBtn;
                 } else {
@@ -76,7 +76,7 @@ public class Table extends JTable {
             }
 
         });
-        this.setViewDatBtnColumn(3);
+        this.setViewDataBtnColumn(3);
     }
 
     @Override

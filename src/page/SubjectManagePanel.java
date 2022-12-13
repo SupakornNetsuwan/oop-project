@@ -19,7 +19,7 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
 
     public void initTable() {
         Object tableRows[][] = subjectModel.getRecordsForTableContent();
-        this.getSubjectTable().setViewDatBtnColumn(5);
+        this.getSubjectTable().setViewDataBtnColumn(5);
         this.getSubjectTable().clearTable();
         for (Object[] tableRow : tableRows) {
             this.getSubjectTable().addRow(tableRow);

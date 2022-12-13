@@ -25,7 +25,7 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
 
     public void initTable() {
         ArrayList<Student> students = studentModel.getStudents();
-        getStudentTable().setViewDatBtnColumn(7);
+        getStudentTable().setViewDataBtnColumn(7);
 
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {

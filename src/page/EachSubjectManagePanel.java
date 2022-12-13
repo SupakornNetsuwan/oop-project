@@ -32,7 +32,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
 
     public void initTable() {
         ArrayList<Student> students = studentModel.studentInSubjectList(this.subjectId);
-        getStudentTable().setViewDatBtnColumn(5);
+        getStudentTable().setViewDataBtnColumn(5);
 
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {
