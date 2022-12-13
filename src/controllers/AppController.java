@@ -194,11 +194,11 @@ public class AppController implements ActionListener {
     
     public void switchToEachSubjectPanel(String subject, String professor, String amount) {
         subjectStudentManagePanel = new SubjectStudentManagePanel(subject, professor, amount);
-        swtichTo(subjectStudentManagePanel);
+        switchTo(subjectStudentManagePanel);
         
         subjectStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                swtichTo(subjectManagePanel);
+                switchTo(subjectManagePanel);
             }
         });
     }
@@ -235,11 +235,11 @@ public class AppController implements ActionListener {
     
     public void switchToEachBranchPanel(String branch, String facluty) {
         branchStudentManagePanel = new BranchStudentManagePanel(branch, facluty);
-        swtichTo(branchStudentManagePanel);
+        switchTo(branchStudentManagePanel);
         
         branchStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                swtichTo(branchManagePanel);
+                switchTo(branchManagePanel);
             }
         });
     }
