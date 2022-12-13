@@ -16,7 +16,7 @@ public class StudentModel {
     public StudentModel() {
         subjectList = new ArrayList<Subject>();
     }
-    
+
     public ArrayList<Student> getStudents() {
         ArrayList<Student> students = new ArrayList();
         try {
@@ -100,8 +100,8 @@ public class StudentModel {
             return false;
         }
     }
-    
-public String[] studySubjectList(String studentId) {
+
+    public String[] studySubjectList(String studentId) {
         sql = "SELECT * FROM student_in_subject WHERE student = (?)";
         try {
             statement = con.prepareStatement(sql);
@@ -117,20 +117,40 @@ public String[] studySubjectList(String studentId) {
                     subject.setName(result2.getString("name"));
                     subject.setId(result2.getString("subject_id"));
                     subject.setProfessorName(result2.getString("professor_fullname"));
-                    subject.setDetail(result2.getString("details"));            
+                    subject.setDetail(result2.getString("details"));
                     subjectList.add(subject);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String[] studySubjectList = new String [subjectList.size()];
-         for (int i = 0; i < subjectList.size(); i++) {
+
+        String[] studySubjectList = new String[subjectList.size()];
+        for (int i = 0; i < subjectList.size(); i++) {
             studySubjectList[i] = subjectList.get(i).getName();
         }
         subjectList.clear();
         return studySubjectList;
     }
+
+    public ArrayList<Student> studentInSubjectList(String subjectName) {
+        ArrayList<Student> studentList = new ArrayList();
+        try {
+            statement = con.prepareStatement("SELECT * FROM student_in_subject JOIN subject ON student_in_subject.subject = subject.id JOIN student ON student_in_subject.student = student.student_id WHERE subject.name = (?) ");
+            statement.setString(1, subjectName);
+            result = statement.executeQuery();
+
+            while (result != null && result.next()) {
+                Student student = new Student(result.getString("fullname"), result.getString("student_id"), result.getString("age"), result.getString("gender"), result.getString("phone"), result.getString("faculty"), result.getString("branch"));
+                studentList.add(student);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("ERR : " + e.getMessage());
+        }
+        return studentList;
+    }
+
 }
 
 //    public static void main(String args[]) {

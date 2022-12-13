@@ -43,7 +43,7 @@ public class SubjectModel {
             return false;
         }
     }
-    
+
     public boolean deleteSubject(String subjectID, String professorName) {
         try {
             statement = con.prepareStatement("DELETE FROM subject WHERE subject_id = (?) AND professor_fullname = (?)");
@@ -57,7 +57,6 @@ public class SubjectModel {
         }
     }
 
-    
     public void readSubject() {
         sql = "SELECT * FROM subject";
         try {
@@ -65,13 +64,13 @@ public class SubjectModel {
             result = statement.executeQuery();
             while (result != null && result.next()) {
                 QuantityStudent = 0;
-                subject= new Subject();
+                subject = new Subject();
                 subject.setIdDB(result.getInt("id"));
                 subject.setName(result.getString("name"));
                 subject.setId(result.getString("subject_id"));
                 subject.setProfessorName(result.getString("professor_fullname"));
                 subject.setDetail(result.getString("details"));
-                
+
                 statement2 = con.prepareStatement("SELECT * FROM student_in_subject WHERE subject = ?");
                 statement2.setString(1, String.valueOf(result.getInt("id")));
                 ResultSet result2 = statement2.executeQuery();
@@ -85,7 +84,6 @@ public class SubjectModel {
             e.printStackTrace();
         }
     }
-    
 
     public Object[][] getRecordsForTableContent() {
         readSubject();
@@ -99,6 +97,3 @@ public class SubjectModel {
     }
 
 }
-
-   
-

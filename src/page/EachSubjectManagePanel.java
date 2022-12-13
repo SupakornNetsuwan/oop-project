@@ -8,15 +8,15 @@ import javax.swing.*;
 import model.Student;
 import model.StudentModel;
 
-public class SubjectStudentManagePanel extends JPanel implements ActionListener {
+public class EachSubjectManagePanel extends JPanel implements ActionListener {
 
     private AddNewSubjectStudentFrame addNewSubjectStudentFrame; // Internal frame
     private StudentModel studentModel = new StudentModel();
-    private String subject = "";
-    private String professor = "";
-    private String amount = "";
+    private String subject;
+    private String professor;
+    private String amount;
 
-    public SubjectStudentManagePanel(String subject, String professor, String amount) {
+    public EachSubjectManagePanel(String subject, String professor, String amount) {
         this.subject = subject;
         this.professor = professor;
         this.amount = amount;
@@ -29,13 +29,13 @@ public class SubjectStudentManagePanel extends JPanel implements ActionListener 
     }
 
     public void initTable() {
-        ArrayList<Student> students = studentModel.getStudents();
+        ArrayList<Student> students = studentModel.studentInSubjectList(this.subject);
         getStudentTable().setViewDatBtnColumn(5);
 
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
-            Object[] object = {null, student.getFullname(), student.getStudentId(), student.getFaculty() + "/" + student.getBranch(), null};
+            Object[] object = {null, student.getFullname(), student.getStudentId(), student.getFaculty() + "/" + student.getBranch(), student.getGender()};
             this.getStudentTable().addRow(object);
         }
     }
@@ -43,11 +43,11 @@ public class SubjectStudentManagePanel extends JPanel implements ActionListener 
     public void setSubject(String subject) {
         this.subject = subject;
     }
-    
+
     public Table getStudentTable() {
         return this.studentTable;
     }
-    
+
     public String getProfessorName() {
         return this.professorName.getText();
     }
@@ -55,7 +55,7 @@ public class SubjectStudentManagePanel extends JPanel implements ActionListener 
     public void setProfessorName(String s) {
         this.professorName.setText(s);
     }
-    
+
     public String getStudentAmount() {
         return this.studentAmount.getText();
     }
@@ -63,7 +63,7 @@ public class SubjectStudentManagePanel extends JPanel implements ActionListener 
     public void setStudentAmount(String s) {
         this.studentAmount.setText(s);
     }
-    
+
     public JButton getAddStudentBtn() {
         return this.addStudent;
     }
@@ -76,14 +76,12 @@ public class SubjectStudentManagePanel extends JPanel implements ActionListener 
         return this.goBackLabel;
     }
 
-
     @Override
     public void actionPerformed(ActionEvent event) {
 //        if (event.getSource().equals(addNewBranchFrame.getAddBranchBtn())) {
 
 //            ???
-
-            this.initTable();
+        this.initTable();
 
 //        }
     }
@@ -265,7 +263,7 @@ public class SubjectStudentManagePanel extends JPanel implements ActionListener 
 
             },
             new String [] {
-                "การเลือก", "ชื่อ-นามสกุล", "อายุ", "เพศ", "เบอร์โทรศัพท์"
+                "การเลือก", "ชื่อ-นามสกุล", "รหัสนักศึกษา", "คณะ/สาขา", "เพศ"
             }
         ) {
             Class[] types = new Class [] {

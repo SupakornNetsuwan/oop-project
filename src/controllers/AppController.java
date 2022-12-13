@@ -19,7 +19,7 @@ import javax.swing.*;
 import model.FacultyModel;
 import page.BranchManagePanel;
 import page.BranchStudentManagePanel;
-import page.SubjectStudentManagePanel;
+import page.EachSubjectManagePanel;
 
 public class AppController implements ActionListener {
 
@@ -52,7 +52,7 @@ public class AppController implements ActionListener {
     /* Drill down internal panels*/
     private BranchManagePanel branchManagePanel;
     private BranchStudentManagePanel branchStudentManagePanel;
-    private SubjectStudentManagePanel subjectStudentManagePanel;
+    private EachSubjectManagePanel eachSubjectManagePanel;
 
     /* Panels getter in content panel */
     public HomePanel getHomePanel() {
@@ -193,10 +193,10 @@ public class AppController implements ActionListener {
     }
     
     public void switchToEachSubjectPanel(String subject, String professor, String amount) {
-        subjectStudentManagePanel = new SubjectStudentManagePanel(subject, professor, amount);
-        switchTo(subjectStudentManagePanel);
+        eachSubjectManagePanel = new EachSubjectManagePanel(subject, professor, amount);
+        switchTo(eachSubjectManagePanel);
         
-        subjectStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
+        eachSubjectManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 switchTo(subjectManagePanel);
             }
