@@ -12,29 +12,31 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
 
     private AddNewStudentFrame addNewStudentFrame; // Internal frame
     private StudentModel studentModel = new StudentModel();
-    private String nameFaculty = "";
+    private String nameBranch = "";
 
-    public BranchStudentManagePanel(String facultyName) {
-        this.nameFaculty = facultyName;
+    public BranchStudentManagePanel(String nameBranch, String nameFaculty) {
+        this.nameBranch = nameBranch;
         initComponents();
         initTable();
+        facultyNameHeader.setText(nameFaculty);
+        branchNameHeader.setText(nameBranch);
 //        this.headerSeparator.setText(facultyName);
     }
 
     public void initTable() {
         ArrayList<Student> students = studentModel.getStudents();
-        getStudentTable().setViewDatBtnColumn(4);
+        getStudentTable().setViewDatBtnColumn(7);
 
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
-            Object[] object = {null, student.getFullname(), student.getStudentId(), student.getFaculty() + "/" + student.getBranch(), null};
+            Object[] object = {null, student.getFullname(), student.getStudentId(), student.getAge(), student.getGender(), student.getPhone(), null};
             this.getStudentTable().addRow(object);
         }
     }
 
-    public void setNameFaculty(String nameFaculty) {
-        this.nameFaculty = nameFaculty;
+    public void setNameBranch(String nameBranch) {
+        this.nameBranch = nameBranch;
     }
     
     public Table getStudentTable() {
@@ -235,11 +237,11 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
 
             },
             new String [] {
-                "การเลือก", "ชื่อ-นามสกุล", "รหัสนึกศึกษา", "อายุ", "เพศ", "เบอร์โทรศัพท์", "วิชาที่เรียน", "ดูข้อมูล"
+                "การเลือก", "ชื่อ-นามสกุล", "รหัสนึกศึกษา", "อายุ", "เพศ", "เบอร์โทรศัพท์", "วิชาที่เรียน"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -251,9 +253,6 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
             studentTable.getColumnModel().getColumn(0).setMinWidth(80);
             studentTable.getColumnModel().getColumn(0).setPreferredWidth(80);
             studentTable.getColumnModel().getColumn(0).setMaxWidth(80);
-            studentTable.getColumnModel().getColumn(7).setMinWidth(100);
-            studentTable.getColumnModel().getColumn(7).setPreferredWidth(100);
-            studentTable.getColumnModel().getColumn(7).setMaxWidth(100);
         }
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);

@@ -17,6 +17,7 @@ import javax.swing.*;
 
 import model.FacultyModel;
 import page.BranchManagePanel;
+import page.BranchStudentManagePanel;
 
 public class AppController implements ActionListener {
 
@@ -47,6 +48,7 @@ public class AppController implements ActionListener {
 
     /* Drill down internal panels*/
     private BranchManagePanel branchManagePanel;
+    private BranchStudentManagePanel branchStudentManagePanel;
 
     /* Panels getter in content panel */
     public HomePanel getHomePanel() {
@@ -189,6 +191,26 @@ public class AppController implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 switchToFacultyManagePanel();
+            }
+        });
+        branchManagePanel.getBranchTable().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (branchManagePanel != null && e.getSource().equals(branchManagePanel.getBranchTable())) {
+                    int row = branchManagePanel.getBranchTable().rowAtPoint(e.getPoint());
+                    int col = branchManagePanel.getBranchTable().columnAtPoint(e.getPoint());
+                    
+                    if (col == 3) {
+                        branchStudentManagePanel = new BranchStudentManagePanel((String)branchManagePanel.getBranchTable().getValueAt(row, 1), facultyName);
+                        swtichTo(branchStudentManagePanel);
+                        
+                        branchStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
+                            public void mouseClicked(MouseEvent e) {
+                                swtichTo(branchManagePanel);
+                            }
+                        });
+                    }
+                }
             }
         });
     }
