@@ -18,6 +18,7 @@ import javax.swing.*;
 import model.FacultyModel;
 import page.BranchManagePanel;
 import page.BranchStudentManagePanel;
+import page.SubjectStudentManagePanel;
 
 public class AppController implements ActionListener {
 
@@ -49,6 +50,7 @@ public class AppController implements ActionListener {
     /* Drill down internal panels*/
     private BranchManagePanel branchManagePanel;
     private BranchStudentManagePanel branchStudentManagePanel;
+    private SubjectStudentManagePanel subjectStudentManagePanel;
 
     /* Panels getter in content panel */
     public HomePanel getHomePanel() {
@@ -174,6 +176,27 @@ public class AppController implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // Drill down to -> switchToEachSubjectPanel;
+                int row = subjectManagePanel.getSubjectTable().rowAtPoint(e.getPoint());
+                int col = subjectManagePanel.getSubjectTable().columnAtPoint(e.getPoint());
+
+                if (col == 5) {
+                    switchToEachSubjectPanel(
+                            (String)subjectManagePanel.getSubjectTable().getValueAt(row, 1),
+                            (String)subjectManagePanel.getSubjectTable().getValueAt(row, 3),
+                            Integer.toString((Integer)subjectManagePanel.getSubjectTable().getValueAt(row, 4))
+                    );
+                }
+            }
+        });
+    }
+    
+    public void switchToEachSubjectPanel(String subject, String professor, String amount) {
+        subjectStudentManagePanel = new SubjectStudentManagePanel(subject, professor, amount);
+        swtichTo(subjectStudentManagePanel);
+        
+        subjectStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                swtichTo(subjectManagePanel);
             }
         });
     }
@@ -201,16 +224,20 @@ public class AppController implements ActionListener {
                     int col = branchManagePanel.getBranchTable().columnAtPoint(e.getPoint());
                     
                     if (col == 3) {
-                        branchStudentManagePanel = new BranchStudentManagePanel((String)branchManagePanel.getBranchTable().getValueAt(row, 1), facultyName);
-                        swtichTo(branchStudentManagePanel);
-                        
-                        branchStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
-                            public void mouseClicked(MouseEvent e) {
-                                swtichTo(branchManagePanel);
-                            }
-                        });
+                        switchToEachBranchPanel((String)branchManagePanel.getBranchTable().getValueAt(row, 1), facultyName);
                     }
                 }
+            }
+        });
+    }
+    
+    public void switchToEachBranchPanel(String branch, String facluty) {
+        branchStudentManagePanel = new BranchStudentManagePanel(branch, facluty);
+        swtichTo(branchStudentManagePanel);
+        
+        branchStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                swtichTo(branchManagePanel);
             }
         });
     }
