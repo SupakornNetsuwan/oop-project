@@ -5,7 +5,7 @@ import javax.swing.*;
 import model.ProfessorModel;
 
 public class AddNewSubjectFrame extends JFrame {
-    
+
     private ProfessorModel professorModel = new ProfessorModel();
 
     public AddNewSubjectFrame() {
@@ -16,12 +16,12 @@ public class AddNewSubjectFrame extends JFrame {
     public void init() {
 
     }
-    
+
     public void initComboBox() {
         subjectProfComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(professorModel.getRecordsForComboBox()));
     }
-    
-    public JButton getAddSubjectBtn(){
+
+    public JButton getAddSubjectBtn() {
         return this.addSubjectBtn;
     }
 
@@ -40,8 +40,6 @@ public class AddNewSubjectFrame extends JFrame {
     public JComboBox<String> getSubjectProfComboBox() {
         return subjectProfComboBox;
     }
-    
-    
 
     public void config() {
         this.setLayout(new BorderLayout());

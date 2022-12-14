@@ -12,6 +12,7 @@ public class ProfessorModel {
 
     public ArrayList<Professor> getProfessors() {
         ArrayList<Professor> professorList = new ArrayList();
+
         try {
             statement = con.prepareStatement("SELECT * FROM professor");
             result = statement.executeQuery();
@@ -20,7 +21,6 @@ public class ProfessorModel {
                 professor = new Professor(
                         result.getString("fullname"),
                         result.getString("degree"),
-                        result.getString("own_subject"),
                         result.getString("gender"),
                         result.getString("age"),
                         result.getString("phone")
@@ -31,6 +31,7 @@ public class ProfessorModel {
         } catch (SQLException err) {
             System.out.println(err.getMessage());
         }
+
         return professorList;
     }
 
@@ -45,7 +46,6 @@ public class ProfessorModel {
                 professor = new Professor(
                         result.getString("fullname"),
                         result.getString("degree"),
-                        result.getString("own_subject"),
                         result.getString("gender"),
                         result.getString("age"),
                         result.getString("phone")
@@ -60,13 +60,12 @@ public class ProfessorModel {
 
     public boolean addProfessor(String professorFullName, String professorDegree, String professorOwnSubject, String professorGender, String professorAge, String professorPhone) {
         try {
-            statement = con.prepareStatement("INSERT INTO professor (fullname, degree, own_subject, gender, age, phone) VALUES (?, ?, ?, ?, ?, ?)");
+            statement = con.prepareStatement("INSERT INTO professor (fullname, degree,  gender, age, phone) VALUES (?, ?, ?,  ?, ?)");
             statement.setString(1, professorFullName);
             statement.setString(2, professorDegree);
-            statement.setString(3, professorOwnSubject);
-            statement.setString(4, professorGender);
-            statement.setString(5, professorAge);
-            statement.setString(6, professorPhone);
+            statement.setString(3, professorGender);
+            statement.setString(4, professorAge);
+            statement.setString(5, professorPhone);
             statement.executeUpdate();
             return true;
         } catch (SQLException err) {
@@ -88,7 +87,7 @@ public class ProfessorModel {
     }
 
     public String[] getRecordsForComboBox() {
-        ArrayList<Professor> professorList = new ArrayList();
+        ArrayList<Professor> professorList = this.getProfessors();
         String[] recordsForComboBox = new String[getProfessors().size() + 1];
         recordsForComboBox[0] = "";
         for (int i = 1; i < professorList.size() + 1; i++) {

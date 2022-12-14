@@ -19,14 +19,11 @@ public class ProfessorManagePanel extends JPanel implements ActionListener {
     }
 
     public void initTable() {
-        this.getProfessorTable().setViewDataBtnColumn(4);
         ArrayList<Professor> professors = professorModel.getProfessors();
-        getProfessorTable().setViewDataBtnColumn(4);
-
         this.getProfessorTable().clearTable();
         for (int i = 0; i < professors.size(); i++) {
             Professor professor = professors.get(i);
-            Object[] object = {null, professor.getFullname(), professor.getDegree(), professor.getOwnSubject(), null};
+            Object[] object = {null, professor.getFullname(), professor.getDegree(), null};
             this.getProfessorTable().addRow(object);
         }
     }
@@ -204,11 +201,11 @@ public class ProfessorManagePanel extends JPanel implements ActionListener {
 
             },
             new String [] {
-                "การเลือก", "ชื่อจริง-นามสกุล", "ระดับการศึกษา", "ประจำวิชา", "ดูข้อมูล"
+                "การเลือก", "ชื่อจริง-นามสกุล", "ระดับการศึกษา", "ดูข้อมูล"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -223,9 +220,6 @@ public class ProfessorManagePanel extends JPanel implements ActionListener {
             professorTable.getColumnModel().getColumn(3).setMinWidth(100);
             professorTable.getColumnModel().getColumn(3).setPreferredWidth(100);
             professorTable.getColumnModel().getColumn(3).setMaxWidth(100);
-            professorTable.getColumnModel().getColumn(4).setMinWidth(100);
-            professorTable.getColumnModel().getColumn(4).setPreferredWidth(100);
-            professorTable.getColumnModel().getColumn(4).setMaxWidth(100);
         }
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);

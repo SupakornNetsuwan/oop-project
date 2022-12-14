@@ -22,23 +22,14 @@ public class EachProfessorManagePanel extends JPanel {
         this.getAgeLabel().setText(professor.getAge());
         this.getPhoneLabel().setText(professor.getPhone());
         this.getDegree().setText(professor.getDegree());
-        this.getOwnSubject().setText(professor.getOwnSubject());
     }
 
     public JLabel getDegree() {
         return degree;
     }
 
-    public JLabel getOwnSubject() {
-        return ownSubject;
-    }
-
     public JLabel getAgeLabel() {
         return age;
-    }
-
-    public JLabel getBranchLabel() {
-        return ownSubject;
     }
 
     public JLabel getFacultyLabel() {
@@ -97,8 +88,6 @@ public class EachProfessorManagePanel extends JPanel {
         fullname = new javax.swing.JLabel();
         degreeLabel = new javax.swing.JLabel();
         degree = new javax.swing.JLabel();
-        ownSubjectLabel = new javax.swing.JLabel();
-        ownSubject = new javax.swing.JLabel();
         genderLabel = new javax.swing.JLabel();
         gender = new javax.swing.JLabel();
         ageLabel = new javax.swing.JLabel();
@@ -181,17 +170,6 @@ public class EachProfessorManagePanel extends JPanel {
         degree.setText("ปริญญาเอก");
         studentDetailWrapper.add(degree);
 
-        ownSubjectLabel.setBackground(new java.awt.Color(255, 255, 255));
-        ownSubjectLabel.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
-        ownSubjectLabel.setText("ผู้สอนประจำวิชา");
-        studentDetailWrapper.add(ownSubjectLabel);
-
-        ownSubject.setBackground(new java.awt.Color(255, 255, 255));
-        ownSubject.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
-        ownSubject.setForeground(new java.awt.Color(134, 134, 134));
-        ownSubject.setText("MIS");
-        studentDetailWrapper.add(ownSubject);
-
         genderLabel.setBackground(new java.awt.Color(255, 255, 255));
         genderLabel.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
         genderLabel.setText("เพศ");
@@ -253,8 +231,8 @@ public class EachProfessorManagePanel extends JPanel {
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(centerPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(studentDetailWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(studentDetailWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
                 .addComponent(studentSubjectsWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -281,8 +259,6 @@ public class EachProfessorManagePanel extends JPanel {
     private javax.swing.JSeparator headerSeparator;
     private javax.swing.JPanel northPanel;
     private javax.swing.JPanel northPanelWrapper;
-    private javax.swing.JLabel ownSubject;
-    private javax.swing.JLabel ownSubjectLabel;
     private javax.swing.JLabel phone;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel professorHeader;

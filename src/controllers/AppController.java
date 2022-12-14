@@ -377,7 +377,7 @@ public class AppController implements ActionListener {
             } else if (professorManagePanel != null && e.getSource().equals(professorManagePanel.getProfessorTable())) {
                 int row = professorManagePanel.getProfessorTable().rowAtPoint(e.getPoint());
                 int col = professorManagePanel.getProfessorTable().columnAtPoint(e.getPoint());
-                if (col == 4) {
+                if (col == 3) {
                     switchToEachProfessorManagePanel((String) professorManagePanel.getProfessorTable().getModel().getValueAt(row, 1));
                 }
             }
