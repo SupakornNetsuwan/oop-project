@@ -233,6 +233,7 @@ public class AppController implements ActionListener, MouseListener {
         branchStudentManagePanel.initTable();
 
         branchStudentManagePanel.getAddStudentBtn().addActionListener(this);
+        branchStudentManagePanel.getDeleteStudentBtn().addActionListener(this);
 
         branchStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -280,6 +281,10 @@ public class AppController implements ActionListener, MouseListener {
             /* --------------------   Branch -> Add Student   -------------------- */
             branchStudentManagePanel.createAddNewBranchStudentFrame();
             branchStudentManagePanel.configAddNewBranchStudentFrame();
+
+        }else if (branchStudentManagePanel != null && event.getSource().equals(branchStudentManagePanel.getDeleteStudentBtn())) {
+            // Delete student
+            branchStudentManagePanel.deleteStudent();
 
         } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getAddSubjectBtn())) {
             /* --------------------   Subject page   -------------------- */

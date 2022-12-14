@@ -25,16 +25,20 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
 
     public void initTable() {
         ArrayList<Student> students = studentModel.getStudyInBranch(nameBranch);
-        getStudentTable().setViewDataBtnColumn(6);
+        getStudentTable().setViewDataBtnColumn(5);
 
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
-            Object[] object = {null, student.getFullname(), student.getStudentId(), student.getAge(), student.getGender(), student.getPhone(), null};
+            Object[] object = {null, student.getFullname(), student.getStudentId(), student.getFaculty() + "/" + student.getBranch(), student.getGender()};
             this.getStudentTable().addRow(object);
         }
     }
 
+    public StudentModel getStudentModel() {
+        return studentModel;
+    }
+    
     public void setNameBranch(String nameBranch) {
         this.nameBranch = nameBranch;
     }
@@ -62,16 +66,29 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
     public void configAddNewBranchStudentFrame() {
         this.addNewBranchStudentFrame.config();
     }
-
+    
+    public void deleteStudent() {
+        for (int i = 0; i < this.getStudentTable().getRowCount(); i++) {
+            Boolean selected = (Boolean) this.getStudentTable().getModel().getValueAt(i, 0);
+            if (selected == null) {
+                selected = false;
+            }
+            String studentID = this.getStudentTable().getModel().getValueAt(i, 2).toString();
+            if (selected) {
+                this.getStudentModel().deleteBranch(studentID);
+            }
+        }
+        this.initTable();
+    }
 
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource().equals(addNewBranchStudentFrame.getAddStudentBtn())) {
             // Clicked on add new subject btn
             // check in DB
-            String studentID = addNewBranchStudentFrame.getStudentNameComboBox().getSelectedItem().toString();
-            if (!studentID.isBlank()) {
-                if (!studentModel.updateStudent(studentID, facultyNameHeader.getText(), branchNameHeader.getText())) {
+            String studentName = addNewBranchStudentFrame.getStudentNameComboBox().getSelectedItem().toString();
+            if (!studentName.isBlank()) {
+                if (!studentModel.updateStudent(studentName, facultyNameHeader.getText(), branchNameHeader.getText())) {
                     JOptionPane.showMessageDialog(addNewBranchStudentFrame, "Error, make sure your data is correctly", "Error!", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -251,11 +268,11 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
 
             },
             new String [] {
-                "การเลือก", "ชื่อ-นามสกุล", "รหัสนึกศึกษา", "อายุ", "เพศ", "เบอร์โทรศัพท์", "ดูข้อมูล"
+                "การเลือก", "ชื่อ-นามสกุล", "รหัสนึกศึกษา", "คณะ/สาขา", "เพศ"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

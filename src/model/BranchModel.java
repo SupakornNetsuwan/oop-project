@@ -57,6 +57,9 @@ public class BranchModel {
             statement = con.prepareStatement("DELETE  FROM branch WHERE name = ?");
             statement.setString(1, nameBranch);
             statement.executeUpdate();
+            statement2 = con.prepareStatement("UPDATE student SET faculty = '-', branch = '-' WHERE branch = (?)");;
+            statement2.setString(1, nameBranch);
+            statement2.executeUpdate();
             return true;
         } catch (SQLException e) {
 //            e.printStackTrace();
@@ -70,6 +73,9 @@ public class BranchModel {
             statement = con.prepareStatement("DELETE  FROM branch WHERE in_faculty = ?");
             statement.setString(1, in_faculty);
             statement.executeUpdate();
+            statement2 = con.prepareStatement("UPDATE student SET faculty = '-', branch = '-' WHERE faculty = (?)");;
+            statement2.setString(1, in_faculty);
+            statement2.executeUpdate();
             return true;
         } catch (SQLException e) {
 //            e.printStackTrace();
@@ -77,7 +83,7 @@ public class BranchModel {
             return false;
         }
     }
-
+    
     public void readBranch(String inFaculty) {
         try {
             statement = con.prepareStatement("SELECT * FROM branch WHERE in_faculty = ?");

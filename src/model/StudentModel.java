@@ -139,12 +139,12 @@ public class StudentModel {
         }
     }
 
-    public boolean updateStudent(String studentID, String studentFaculty, String studentBranch) {
+    public boolean updateStudent(String studentName, String studentFaculty, String studentBranch) {
         try {
-            statement = con.prepareStatement("UPDATE student SET faculty = (?), branch = (?) WHERE student_id = (?)");
+            statement = con.prepareStatement("UPDATE student SET faculty = (?), branch = (?) WHERE fullname = (?)");
             statement.setString(1, studentFaculty);
             statement.setString(2, studentBranch);
-            statement.setString(3, studentID);
+            statement.setString(3, studentName);
             statement.executeUpdate();
             return true;
         } catch (SQLException err) {
@@ -152,7 +152,19 @@ public class StudentModel {
             return false;
         }
     }
-
+    
+    public boolean deleteBranch(String studentID) {
+        try {
+            statement = con.prepareStatement("UPDATE student SET faculty = '-', branch = '-' WHERE student_id = (?)");
+            statement.setString(1, studentID);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+            return false;
+        }
+    }
+    
     public boolean deleteStudent(String studentId) {
         try {
             statement = con.prepareStatement("DELETE FROM student WHERE student_id = (?)");
@@ -219,49 +231,11 @@ public class StudentModel {
         String[] recordsForComboBox = new String [getStudents().size()+1];
         recordsForComboBox[0] = "";
         for (int i = 1; i < getStudents().size()+1; i++) {
-            recordsForComboBox[i] = getStudents().get(i-1).getStudentId();
+            recordsForComboBox[i] = getStudents().get(i-1).getFullname();
         }
         getStudents().clear();
         return recordsForComboBox;
     }
     
-//    public void readStudent(String inBranch) {
-//        try {
-//            statement = con.prepareStatement("SELECT * FROM branch WHERE in_faculty = ?");
-//            statement.setString(1, inFaculty);
-//            result = statement.executeQuery();
-//            while (result != null && result.next()) {
-//                quantityStudent = 0;
-//                branch = new Branch();
-//                branch.setNameBranch(result.getString("name"));
-//                statement2 = con.prepareStatement("SELECT * FROM student WHERE branch = ?");
-//                statement2.setString(1, result.getString("name"));
-//                ResultSet result2 = statement2.executeQuery();
-//                while (result2 != null && result2.next()) {
-//                    quantityStudent++;
-//                }
-//                branch.setQuantity(quantityStudent);
-//                branchList.add(branch);
-//            
-//            }
-//        } catch (SQLException e) {
-////            e.printStackTrace();
-//             System.out.println(e.getMessage());
-//        }
-//            }
-//
-//    public Object[][] getRecordsForTableContent() {
-//        readStudent(inFaculty);
-//        Object[][] recordsForTableContent = new Object[branchList.size()][4];
-//
-//        for (int i = 0; i < branchList.size(); i++) {
-//            Object[] eachBranch = {false, branchList.get(i).getNameBranch(), branchList.get(i).getQuantity(), null};
-//            recordsForTableContent[i] = eachBranch;
-//        }
-//        branchList.clear();
-//
-//        return recordsForTableContent;
-//    }
-
 }
 

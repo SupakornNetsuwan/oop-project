@@ -89,7 +89,7 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
             if (selected) {
                 // delete selected
                 if (!subjectModel.deleteSubject(subjectId)) {
-                    new AlertFrame(addNewSubjectFrame, "ไม่สามารถลบวิชา " + subjectName + " ได้เนื่องจากมีผู้เรียนอยู่ โปรดลบผู้เรียนก่อน", "ไม่สามารถดำพเนิการได้");
+                    new AlertFrame(addNewSubjectFrame, "ไม่สามารถลบวิชา " + subjectName + " ได้เนื่องจากมีผู้เรียนอยู่ โปรดลบผู้เรียนก่อน", "ไม่สามารถดำเนินการได้");
                 }
             }
         }

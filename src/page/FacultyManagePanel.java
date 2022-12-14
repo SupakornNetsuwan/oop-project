@@ -2,6 +2,7 @@ package page;
 
 import frame.AddNewFacultyFrame;
 import components.*;
+import frame.AlertFrame;
 import java.awt.event.*;
 import javax.swing.*;
 import model.FacultyModel;
@@ -64,10 +65,9 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
             }
             String name = this.getFacultyTable().getModel().getValueAt(i, 1).toString();
             if (selected) {
-                if (Integer.parseInt(this.getFacultyTable().getModel().getValueAt(i, 2).toString()) > 0) {
-                    new BranchModel().deleteAllInFaculty(name);
+                if (!this.getFacultyModel().delete(name)) {
+                    new AlertFrame(addNewFacultyFrame, "ไม่สามารถลบคณะ " + name + " ได้เนื่องจากมีสาขาอยู่ โปรดลบสาขาก่อน", "ไม่สามารถดำเนินการได้");
                 }
-                this.getFacultyModel().delete(name);
             }
         }
         this.initTable();
