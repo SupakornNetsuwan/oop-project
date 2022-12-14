@@ -44,11 +44,10 @@ public class SubjectModel {
         }
     }
 
-    public boolean deleteSubject(String subjectID, String professorName) {
+    public boolean deleteSubject(String realId) {
         try {
-            statement = con.prepareStatement("DELETE FROM subject WHERE subject_id = (?) AND professor_fullname = (?)");
-            statement.setString(1, subjectID);
-            statement.setString(1, professorName);
+            statement = con.prepareStatement("DELETE FROM subject WHERE id=(?)");
+            statement.setString(1, realId);
             statement.executeUpdate();
             return true;
         } catch (SQLException err) {

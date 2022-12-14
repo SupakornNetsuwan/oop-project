@@ -2,6 +2,8 @@ package page;
 
 import frame.AddNewSubjectFrame;
 import components.*;
+import frame.AlertFrame;
+import java.awt.Font;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -76,17 +78,22 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
     }
 
     public void deleteSubject() {
+
         for (int i = 0; i < this.getSubjectTable().getRowCount(); i++) {
             Boolean selected = (Boolean) this.getSubjectTable().getModel().getValueAt(i, 0);
             if (selected == null) {
                 selected = false;
             }
             String subjectId = this.getSubjectTable().getModel().getValueAt(i, 5).toString();
+            String subjectName = this.getSubjectTable().getModel().getValueAt(i, 1).toString();
             if (selected) {
                 // delete selected
-                System.out.println("Delete subject ID : " + subjectId);
+                if (!subjectModel.deleteSubject(subjectId)) {
+                    new AlertFrame(addNewSubjectFrame, "ไม่สามารถลบวิชา " + subjectName + " ได้เนื่องจากมีผู้เรียนอยู่ โปรดลบผู้เรียนก่อน", "ไม่สามารถดำพเนิการได้");
+                }
             }
         }
+
         this.initTable();
     }
 
