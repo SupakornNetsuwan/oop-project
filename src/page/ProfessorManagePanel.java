@@ -2,6 +2,7 @@ package page;
 
 import frame.AddNewProfessorFrame;
 import components.*;
+import frame.AlertFrame;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
@@ -63,7 +64,10 @@ public class ProfessorManagePanel extends JPanel implements ActionListener {
 
             String professorFullname = this.getProfessorTable().getModel().getValueAt(i, 1).toString();
             if (selected) {
-                this.professorModel.deleteProfessor(professorFullname);
+                // delete selected
+                if (!professorModel.deleteProfessor(professorFullname)) {
+                    new AlertFrame(null, "ไม่สามารถลบอาจารย์ " + professorFullname + " เนื่องจากมีวิชาที่สอนอยู่ โปรดลบวิชาที่สอน", "ไม่สามารถดำเนินการได้");
+                }
             }
         }
 
