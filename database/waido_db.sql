@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2022 at 08:02 PM
+-- Generation Time: Dec 14, 2022 at 08:58 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,7 +47,9 @@ INSERT INTO `branch` (`name`, `in_faculty`) VALUES
 ('Enviroment Investor', 'Enviomental Product Design'),
 ('BIT', 'Information Technology'),
 ('DSBA', 'Information Technology'),
-('IT', 'Information Technology');
+('IT', 'Information Technology'),
+('Health Technology', 'Medical Technology'),
+('Health Wellness', 'Medical Technology');
 
 -- --------------------------------------------------------
 
@@ -67,7 +69,8 @@ INSERT INTO `faculty` (`name`) VALUES
 ('Business Management '),
 ('Engineer'),
 ('Enviomental Product Design'),
-('Information Technology');
+('Information Technology'),
+('Medical Technology');
 
 -- --------------------------------------------------------
 
@@ -91,7 +94,8 @@ CREATE TABLE `professor` (
 INSERT INTO `professor` (`fullname`, `degree`, `own_subject`, `gender`, `age`, `phone`) VALUES
 ('Ajarn\' Bank', 'Ph.D.', 'OOP', 'Male', 31, '0959259515'),
 ('lnwza', 'ป.2', '-', 'lnwza', 5, '9999966666'),
-('อาจารย์เอิร์ท', 'ปริญญาประถม', '-', 'ชาย', 20, '0959259515');
+('อาจารย์เอิร์ท', 'ปริญญาประถม', '-', 'ชาย', 20, '0959259515'),
+('อาจารย์ไหม', 'ปริญญาพันเอก', '-', 'หญิง', 22, '0858129214');
 
 -- --------------------------------------------------------
 
@@ -115,8 +119,8 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`fullname`, `age`, `gender`, `phone`, `faculty`, `branch`, `student_id`) VALUES
 ('นายวชิรพล กลิ่นเกษร', 20, 'ชาย', '0909xxxxx', '-', '-', '64070096'),
-('ศศิธร ศรีจันทร์', 20, 'หญิง', '0857122912', '-', '-', '64070106'),
-('นายศุภกร เนตรสุวรรณ', 20, 'ชาย', '0959259515', '-', '-', '64070108');
+('ศศิธร ศรีจันทร์', 20, 'หญิง', '0857122912', 'Engineer', 'Computer', '64070106'),
+('นายศุภกร เนตรสุวรรณ', 20, 'ชาย', '0959259515', 'Engineer', 'Electronic', '64070108');
 
 -- --------------------------------------------------------
 
@@ -135,11 +139,12 @@ CREATE TABLE `student_in_subject` (
 --
 
 INSERT INTO `student_in_subject` (`id`, `subject`, `student`) VALUES
-(6, 1, '64070108'),
-(7, 1, '64070106'),
-(8, 7, '64070096'),
-(9, 7, '64070108'),
-(10, 8, '64070096');
+(12, 7, '64070106'),
+(13, 9, '64070106'),
+(14, 9, '64070096'),
+(18, 1, '64070108'),
+(20, 8, '64070106'),
+(21, 8, '64070096');
 
 -- --------------------------------------------------------
 
@@ -162,7 +167,10 @@ CREATE TABLE `subject` (
 INSERT INTO `subject` (`name`, `subject_id`, `professor_fullname`, `details`, `id`) VALUES
 ('OOP', '15', 'Ajarn\' Bank', 'GG', 1),
 ('Project', '55500', 'อาจารย์เอิร์ท', '', 7),
-('Waido', '100', 'lnwza', '', 8);
+('Waido', '100', 'lnwza', '', 8),
+('Happiness school', '55600', 'อาจารย์ไหม', 'ทดสอบรายการ', 9),
+('xxxxxxx', '1412', 'lnwza', 'saasf', 11),
+('Project', '55500', 'อาจารย์ไหม', 'asesa', 12);
 
 -- --------------------------------------------------------
 
@@ -241,13 +249,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `student_in_subject`
 --
 ALTER TABLE `student_in_subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Database', AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Database', AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
