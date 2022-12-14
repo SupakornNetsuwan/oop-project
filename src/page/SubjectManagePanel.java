@@ -18,7 +18,7 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
     }
 
     public void initTable() {
-        Object tableRows[][] = subjectModel.getRecordsForTableContent();
+        Object tableRows[][] = subjectModel.getSubjects();
         this.getSubjectTable().setViewDatBtnColumn(5);
         this.getSubjectTable().clearTable();
         for (Object[] tableRow : tableRows) {
@@ -31,7 +31,7 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
     }
 //    
 //    public void initTable() {
-//        Object tableRows[][] = facultyModel.getRecordsForTableContent();
+//        Object tableRows[][] = facultyModel.getSubjects();
 //        //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
 //
 //        this.getFacultyTable().clearTable();

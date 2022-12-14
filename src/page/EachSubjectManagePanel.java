@@ -6,21 +6,18 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import model.Student;
+import model.StudentInSubjectModel;
 import model.StudentModel;
 
 public class EachSubjectManagePanel extends JPanel implements ActionListener {
 
     private AddNewSubjectStudentFrame addNewSubjectStudentFrame; // Internal frame
     private StudentModel studentModel = new StudentModel();
-    private String subject;
-    private String professor;
-    private String amount;
+    private StudentInSubjectModel studentInSubjectModel = new StudentInSubjectModel();
+    /* Local variable */
     private String subjectId;
 
     public EachSubjectManagePanel(String subject, String professor, String amount, String subjectId) {
-        this.subject = subject;
-        this.professor = professor;
-        this.amount = amount;
         this.subjectId = subjectId;
         initComponents();
         initTable();
@@ -31,7 +28,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
     }
 
     public void initTable() {
-        ArrayList<Student> students = studentModel.studentInSubjectList(this.subjectId);
+        ArrayList<Student> students = studentInSubjectModel.studentInSubjectList(this.subjectId);
         getStudentTable().setViewDatBtnColumn(5);
 
         this.getStudentTable().clearTable();
@@ -42,28 +39,8 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
         }
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
     public Table getStudentTable() {
         return this.studentTable;
-    }
-
-    public String getProfessorName() {
-        return this.professorName.getText();
-    }
-
-    public void setProfessorName(String s) {
-        this.professorName.setText(s);
-    }
-
-    public String getStudentAmount() {
-        return this.studentAmount.getText();
-    }
-
-    public void setStudentAmount(String s) {
-        this.studentAmount.setText(s);
     }
 
     public JButton getAddStudentBtn() {
@@ -78,14 +55,39 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
         return this.goBackLabel;
     }
 
+    public void createAddNewStudenntFrame() {
+        this.addNewSubjectStudentFrame = new AddNewSubjectStudentFrame();
+        addNewSubjectStudentFrame.getAddStudentBtn().addActionListener(this);
+    }
+
+    public void configAddNewStudentFrame() {
+        this.addNewSubjectStudentFrame.config();
+    }
+
+    public void deleteStudent() {
+        for (int i = 0; i < this.getStudentTable().getRowCount(); i++) {
+            Boolean selected = (Boolean) this.getStudentTable().getModel().getValueAt(i, 0);
+            if (selected == null) {
+                selected = false;
+            }
+            String name = this.getStudentTable().getModel().getValueAt(i, 1).toString();
+            if (selected) {
+//                this.getStudentTable().delete(name);
+                System.out.println("TO DELETE : " + name);
+            }
+        }
+        this.initTable();
+    }
+
     @Override
     public void actionPerformed(ActionEvent event) {
-//        if (event.getSource().equals(addNewBranchFrame.getAddBranchBtn())) {
-
-//            ???
-        this.initTable();
-
-//        }
+        if (event.getSource().equals(addNewSubjectStudentFrame.getAddStudentBtn())) {
+            if (!studentInSubjectModel.addStudentToSubject(subjectId, (String) addNewSubjectStudentFrame.getStudentNameComboBox().getSelectedItem())) {
+                JOptionPane.showMessageDialog(addNewSubjectStudentFrame, "Error, This student may have already inserted.", "Error!", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            this.initTable();
+        }
     }
 
     /**

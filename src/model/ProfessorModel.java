@@ -8,18 +8,16 @@ public class ProfessorModel {
     private final Connection con = Connect.ConnectDB();
     private PreparedStatement statement = null;
     private Professor professor;
-    private ArrayList<Professor> professorList;
     private ResultSet result = null;
-    private int QuantityBranch = 0;
-    
+
     public ArrayList<Professor> getProfessors() {
-            professorList = new ArrayList<Professor>();
+        ArrayList<Professor> professorList = new ArrayList();
         try {
             statement = con.prepareStatement("SELECT * FROM professor");
             result = statement.executeQuery();
 
             while (result != null && result.next()) {
-                        professor = new Professor(
+                professor = new Professor(
                         result.getString("fullname"),
                         result.getString("degree"),
                         result.getString("own_subject"),
@@ -88,12 +86,13 @@ public class ProfessorModel {
             return false;
         }
     }
-    
+
     public String[] getRecordsForComboBox() {
-        String[] recordsForComboBox = new String [getProfessors().size()+1];
+        ArrayList<Professor> professorList = new ArrayList();
+        String[] recordsForComboBox = new String[getProfessors().size() + 1];
         recordsForComboBox[0] = "";
-        for (int i = 1; i < professorList.size()+1; i++) {
-            recordsForComboBox[i] = professorList.get(i-1).getFullname();
+        for (int i = 1; i < professorList.size() + 1; i++) {
+            recordsForComboBox[i] = professorList.get(i - 1).getFullname();
         }
         professorList.clear();
         return recordsForComboBox;

@@ -55,29 +55,4 @@ public class Student extends Human {
     public void setBranch(String branch) {
         this.branch = branch;
     }
-    
-    public String getAge() {
-        return age;
-    }
-    
-    public void setAge(String age) {
-        this.age = age;
-    }
-    
-    public String getGender() {
-        return this.gender;
-    }
-    
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-    
-    public String getPhone() {
-        return phone;
-    }
-    
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
 }

@@ -70,6 +70,32 @@ public class StudentModel {
         return student;
     }
 
+    public Student getStudentFromFullname(String studentFullname) {
+        Student student = null;
+
+        try {
+            statement = con.prepareStatement("SELECT * FROM student WHERE fullname = (?)");
+            statement.setString(1, studentFullname);
+            ResultSet result = statement.executeQuery();
+            while (result != null && result.next()) {
+                student = new Student(
+                        result.getString("fullname"),
+                        result.getString("student_id"),
+                        result.getString("age"),
+                        result.getString("gender"),
+                        result.getString("phone"),
+                        result.getString("faculty"),
+                        result.getString("branch")
+                );
+            }
+        } catch (SQLException err) {
+            err.printStackTrace();
+            System.out.println(err.getMessage());
+        }
+
+        return student;
+    }
+
     public boolean addStudent(String studentName, String studentId, String studentGender, String studentAge, String studentPhone) {
         try {
             statement = con.prepareStatement("INSERT INTO student (fullname, age, gender, phone, faculty, branch, student_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -131,24 +157,6 @@ public class StudentModel {
         }
         subjectList.clear();
         return studySubjectList;
-    }
-
-    public ArrayList<Student> studentInSubjectList(String subjectId) {
-        ArrayList<Student> studentList = new ArrayList();
-        try {
-            statement = con.prepareStatement("SELECT * FROM student_in_subject JOIN subject ON student_in_subject.subject = subject.id JOIN student ON student_in_subject.student = student.student_id WHERE subject.id = (?) ");
-            statement.setString(1, subjectId);
-            result = statement.executeQuery();
-
-            while (result != null && result.next()) {
-                Student student = new Student(result.getString("fullname"), result.getString("student_id"), result.getString("age"), result.getString("gender"), result.getString("phone"), result.getString("faculty"), result.getString("branch"));
-                studentList.add(student);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("ERR : " + e.getMessage());
-        }
-        return studentList;
     }
 
 }

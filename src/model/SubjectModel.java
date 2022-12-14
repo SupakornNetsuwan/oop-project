@@ -85,12 +85,12 @@ public class SubjectModel {
         }
     }
 
-    public Object[][] getRecordsForTableContent() {
+    public Object[][] getSubjects() {
         readSubject();
         Object[][] recordsForTableContent = new Object[subjectList.size()][6];
         for (int i = 0; i < subjectList.size(); i++) {
-            Object[] eachFaculty = {false, subjectList.get(i).getName(), subjectList.get(i).getId(), subjectList.get(i).getProfessorName(), subjectList.get(i).getQuantityStudent(), subjectList.get(i).getIdDB()};
-            recordsForTableContent[i] = eachFaculty;
+            Object[] eachSubject = {false, subjectList.get(i).getName(), subjectList.get(i).getId(), subjectList.get(i).getProfessorName(), subjectList.get(i).getQuantityStudent(), subjectList.get(i).getIdDB()};
+            recordsForTableContent[i] = eachSubject;
         }
         subjectList.clear();
         return recordsForTableContent;

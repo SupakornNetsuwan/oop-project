@@ -197,6 +197,8 @@ public class AppController implements ActionListener {
         eachSubjectManagePanel = new EachSubjectManagePanel(subject, professor, amount, subjectId);
         switchTo(eachSubjectManagePanel);
 
+        eachSubjectManagePanel.getAddStudentBtn().addActionListener(this);
+        eachSubjectManagePanel.getDeleteStudentBtn().addActionListener(this);
         eachSubjectManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 switchTo(subjectManagePanel);
@@ -302,6 +304,12 @@ public class AppController implements ActionListener {
         } else if (professorManagePanel != null && event.getSource().equals(professorManagePanel.getDeleteProfessorBtn())) {
             // Delete a professor
             professorManagePanel.deleteProfessor();
+        }else if(eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getAddStudentBtn())){
+            /* --------------------   Each subjet page   -------------------- */
+            eachSubjectManagePanel.createAddNewStudenntFrame();
+            eachSubjectManagePanel.configAddNewStudentFrame();
+        }else if(eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getDeleteStudentBtn())){
+             eachSubjectManagePanel.deleteStudent();
         }
     }
 

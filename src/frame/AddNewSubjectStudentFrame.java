@@ -1,26 +1,36 @@
 package frame;
 
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
+import model.Student;
+import model.StudentModel;
 
 public class AddNewSubjectStudentFrame extends JFrame {
 
+    private StudentModel studentModel = new StudentModel();
+
     public AddNewSubjectStudentFrame() {
         initComponents();
+        setStudentList();
     }
 
-    public void init() {
+    public void setStudentList() {
+        ArrayList<Student> students = studentModel.getStudents();
+        for (int i = 0; i < students.size(); i++) {
+            this.getStudentNameComboBox().addItem(students.get(i).getFullname());
+        }
 
     }
-    
-    public JButton getAddStudentBtn(){
+
+    public JButton getAddStudentBtn() {
         return this.addStudentBtn;
     }
 
     public JComboBox<String> getStudentNameComboBox() {
         return this.studentNameComboBox;
     }
-    
+
     public void config() {
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -56,7 +66,6 @@ public class AddNewSubjectStudentFrame extends JFrame {
         studentLabel.setText("เลือกนักศึกษาที่ต้องการเพิ่มเข้าในรายวิชา");
 
         studentNameComboBox.setFont(new java.awt.Font("Prompt", 0, 18)); // NOI18N
-        studentNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         studentNameComboBox.setPreferredSize(new java.awt.Dimension(23, 50));
 
         addStudentBtn.setBackground(new java.awt.Color(255, 137, 47));
