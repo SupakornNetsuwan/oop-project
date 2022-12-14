@@ -21,7 +21,7 @@ import page.BranchManagePanel;
 import page.BranchStudentManagePanel;
 import page.EachSubjectManagePanel;
 
-public class AppController implements ActionListener {
+public class AppController implements ActionListener, MouseListener {
 
     /* Pages & panels*/
     private MainLayout mainLayout;
@@ -117,7 +117,7 @@ public class AppController implements ActionListener {
         /* Faculty Panel listener */
         facultyManagePanel.getAddFacultyBtn().addActionListener(this);
         facultyManagePanel.getDeleteFacultyBtn().addActionListener(this);
-        facultyManagePanel.getFacultyTable().addMouseListener(new MouseHandler());
+        facultyManagePanel.getFacultyTable().addMouseListener(this);
     }
 
     public void switchToProfessorManagePanel() {
@@ -128,7 +128,7 @@ public class AppController implements ActionListener {
         ////////////////////////////////////////
         professorManagePanel.getAddProfessorBtn().addActionListener(this);
         professorManagePanel.getDeleteProfessorBtn().addActionListener(this);
-        professorManagePanel.getProfessorTable().addMouseListener(new MouseHandler());
+        professorManagePanel.getProfessorTable().addMouseListener(this);
     }
 
     public void switchToEachProfessorManagePanel(String professorFullName) {
@@ -153,7 +153,7 @@ public class AppController implements ActionListener {
 
         studentManagePanel.getAddStudentBtn().addActionListener(this);
         studentManagePanel.getDeleteStudentBtn().addActionListener(this);
-        studentManagePanel.getStudentTable().addMouseListener(new MouseHandler());
+        studentManagePanel.getStudentTable().addMouseListener(this);
     }
 
     public void switchToEachStudentManagePanel(String student_id) {
@@ -178,23 +178,24 @@ public class AppController implements ActionListener {
 
         subjectManagePanel.getAddSubjectBtn().addActionListener(this);
         subjectManagePanel.getDeleteSubjectBtn().addActionListener(this);
-        subjectManagePanel.getSubjectTable().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // Drill down to -> switchToEachSubjectPanel;
-                int row = subjectManagePanel.getSubjectTable().rowAtPoint(e.getPoint());
-                int col = subjectManagePanel.getSubjectTable().columnAtPoint(e.getPoint());
-
-                if (col == 5) {
-                    switchToEachSubjectPanel(
-                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 1),
-                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 3),
-                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 4)),
-                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 5))
-                    );
-                }
-            }
-        });
+        subjectManagePanel.getSubjectTable().addMouseListener(this);
+//        subjectManagePanel.getSubjectTable().addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                // Drill down to -> switchToEachSubjectPanel;
+//                int row = subjectManagePanel.getSubjectTable().rowAtPoint(e.getPoint());
+//                int col = subjectManagePanel.getSubjectTable().columnAtPoint(e.getPoint());
+//
+//                if (col == 5) {
+//                    switchToEachSubjectPanel(
+//                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 1),
+//                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 3),
+//                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 4)),
+//                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 5))
+//                    );
+//                }
+//            }
+//        });
     }
 
     public void switchToEachSubjectPanel(String subject, String professor, String amount, String subjectId) {
@@ -330,11 +331,9 @@ public class AppController implements ActionListener {
         }
     }
 
-    class MouseHandler extends MouseAdapter {
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (facultyManagePanel != null && e.getSource().equals(facultyManagePanel.getFacultyTable())) {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (facultyManagePanel != null && e.getSource().equals(facultyManagePanel.getFacultyTable())) {
                 // Obtain row and column indexes the user clicked.
                 int row = facultyManagePanel.getFacultyTable().rowAtPoint(e.getPoint());
                 int col = facultyManagePanel.getFacultyTable().columnAtPoint(e.getPoint());
@@ -380,7 +379,104 @@ public class AppController implements ActionListener {
                 if (col == 3) {
                     switchToEachProfessorManagePanel((String) professorManagePanel.getProfessorTable().getModel().getValueAt(row, 1));
                 }
+            } else if (subjectManagePanel != null && e.getSource().equals(subjectManagePanel.getSubjectTable())) {
+                // Drill down to -> switchToEachSubjectPanel;
+                int row = subjectManagePanel.getSubjectTable().rowAtPoint(e.getPoint());
+                int col = subjectManagePanel.getSubjectTable().columnAtPoint(e.getPoint());
+
+                if (col == 5) {
+                    switchToEachSubjectPanel(
+                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 1),
+                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 3),
+                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 4)),
+                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 5))
+                    );
+                }
             }
-        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
 }
+    
+
+//    class MouseHandler extends MouseAdapter {
+//
+//        @Override
+//        public void mouseClicked(MouseEvent e) {
+//            if (facultyManagePanel != null && e.getSource().equals(facultyManagePanel.getFacultyTable())) {
+//                // Obtain row and column indexes the user clicked.
+//                int row = facultyManagePanel.getFacultyTable().rowAtPoint(e.getPoint());
+//                int col = facultyManagePanel.getFacultyTable().columnAtPoint(e.getPoint());
+//
+//                if (col == 3) {
+//                    // Check if user clicks the cell that the JButton is located,
+//                    // then show the data of that row in JOptionPane.
+//
+////                            System.out.println("Clicked a button. [" + row + ", " + col + "]");
+////                            String str = "isSelected: " + facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 0) + "\n"
+////                                    + "name: " + facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 1) + "\n"
+////                                    + "amount: " + facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 2);
+////                            JOptionPane.showMessageDialog(null, str);
+//                    switchToBranchManagePanel((String) facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 1));
+////                    branchManagePanel.setNameFaculty();
+//                    System.out.println(branchManagePanel.getNameFaculty());
+//
+//                } else {
+//                    // When user ticks JCheckBox, print all row names that has
+//                    // JCheckBox ticked on console.
+//                    String toShow = "selected:";
+//                    for (int i = 0; i < facultyManagePanel.getFacultyTable().getRowCount(); i++) {
+//                        Boolean selected = (Boolean) facultyManagePanel.getFacultyTable().getModel().getValueAt(i, 0);
+//                        if (selected == null) {
+//                            selected = false;
+//                        }
+//                        String name = facultyManagePanel.getFacultyTable().getModel().getValueAt(i, 1).toString();
+//                        if (selected) {
+//                            toShow += " " + name;
+//                        }
+//                    }
+//                    System.out.println(toShow);
+//                }
+//            } else if (studentManagePanel != null && e.getSource().equals(studentManagePanel.getStudentTable())) {
+//                int row = studentManagePanel.getStudentTable().rowAtPoint(e.getPoint());
+//                int col = studentManagePanel.getStudentTable().columnAtPoint(e.getPoint());
+//                if (col == 4) {
+//                    switchToEachStudentManagePanel((String) studentManagePanel.getStudentTable().getModel().getValueAt(row, 2));
+//                }
+//            } else if (professorManagePanel != null && e.getSource().equals(professorManagePanel.getProfessorTable())) {
+//                int row = professorManagePanel.getProfessorTable().rowAtPoint(e.getPoint());
+//                int col = professorManagePanel.getProfessorTable().columnAtPoint(e.getPoint());
+//                if (col == 3) {
+//                    switchToEachProfessorManagePanel((String) professorManagePanel.getProfessorTable().getModel().getValueAt(row, 1));
+//                }
+//            } else if (subjectManagePanel != null && e.getSource().equals(subjectManagePanel.getSubjectTable())) {
+//                // Drill down to -> switchToEachSubjectPanel;
+//                int row = subjectManagePanel.getSubjectTable().rowAtPoint(e.getPoint());
+//                int col = subjectManagePanel.getSubjectTable().columnAtPoint(e.getPoint());
+//
+//                if (col == 5) {
+//                    switchToEachSubjectPanel(
+//                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 1),
+//                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 3),
+//                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 4)),
+//                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 5))
+//                    );
+//                }
+//            }
+//        }
+//    }
+//}

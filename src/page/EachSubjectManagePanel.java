@@ -23,6 +23,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
         this.professorName.setText(professor);
         this.studentAmount.setText(amount);
 //        this.headerSeparator.setText(facultyName);
+        this.subjectDetail.setText("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
     }
 
     public void initTable() {
@@ -51,7 +52,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
 
     public JLabel getGoBackLabel() {
         return this.goBackLabel;
-    }
+    } 
 
     public void createAddNewStudenntFrame() {
         this.addNewSubjectStudentFrame = new AddNewSubjectStudentFrame();
@@ -109,6 +110,9 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
         addStudent = new javax.swing.JButton();
         findStudent = new javax.swing.JTextField();
         subjectDetails = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        subjectDetail = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         professorName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -237,6 +241,17 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
 
         subjectDetails.setBackground(new java.awt.Color(249, 249, 249));
 
+        jLabel3.setFont(new java.awt.Font("Prompt", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(93, 93, 93));
+        jLabel3.setText("รายละเอียดวิชา");
+
+        subjectDetail.setEditable(false);
+        subjectDetail.setBackground(new java.awt.Color(249, 249, 249));
+        subjectDetail.setColumns(20);
+        subjectDetail.setFont(new java.awt.Font("Prompt", 1, 18)); // NOI18N
+        subjectDetail.setRows(5);
+        jScrollPane1.setViewportView(subjectDetail);
+
         jLabel1.setFont(new java.awt.Font("Prompt", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(93, 93, 93));
         jLabel1.setText("ผู้สอน");
@@ -286,6 +301,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
         subjectDetails.setLayout(subjectDetailsLayout);
         subjectDetailsLayout.setHorizontalGroup(
             subjectDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
             .addGroup(subjectDetailsLayout.createSequentialGroup()
                 .addGroup(subjectDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(subjectDetailsLayout.createSequentialGroup()
@@ -297,14 +313,19 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(studentAmount)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addComponent(jLabel3))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         subjectDetailsLayout.setVerticalGroup(
             subjectDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(subjectDetailsLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(subjectDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(professorName))
@@ -313,8 +334,8 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
                     .addComponent(jLabel2)
                     .addComponent(studentAmount)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -336,7 +357,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
                 .addComponent(actionWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(subjectDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(centerPanel, java.awt.BorderLayout.CENTER);
@@ -366,13 +387,16 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
     private javax.swing.JSeparator headerSeparator;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel nameHeader;
     private javax.swing.JPanel northPanel;
     private javax.swing.JPanel northPanelWrapper;
     private javax.swing.JLabel professorName;
     private javax.swing.JLabel studentAmount;
     private components.Table studentTable;
+    private javax.swing.JTextArea subjectDetail;
     private javax.swing.JPanel subjectDetails;
     private javax.swing.JLabel subjectNameHeader;
     private javax.swing.JScrollPane tableScrollPane;
