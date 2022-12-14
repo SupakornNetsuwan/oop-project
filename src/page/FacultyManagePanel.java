@@ -44,6 +44,10 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
         return this.deleteFaculty;
     }
 
+    public JTextField getFindFacultyTextField() {
+        return findFacultyTextField;
+    }    
+
     public AddNewFacultyFrame getAddNewFacultyFrame() {
         return this.addNewFacultyFrame;
     }
@@ -104,7 +108,7 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
         buttonsWrapper = new javax.swing.JPanel();
         deleteFaculty = new javax.swing.JButton();
         addFaculty = new javax.swing.JButton();
-        findFaculty = new javax.swing.JTextField();
+        findFacultyTextField = new javax.swing.JTextField();
         tableScrollPane = new javax.swing.JScrollPane();
         facultyTable = new components.Table();
 
@@ -174,21 +178,21 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
 
         actionWrapper.add(buttonsWrapper, java.awt.BorderLayout.EAST);
 
-        findFaculty.setColumns(20);
-        findFaculty.setFont(new java.awt.Font("Prompt", 1, 14)); // NOI18N
-        findFaculty.setForeground(new java.awt.Color(93, 93, 93));
-        findFaculty.setToolTipText("");
-        findFaculty.setActionCommand("<Not Set>");
-        findFaculty.setAutoscrolls(false);
-        findFaculty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Prompt", 0, 12), new java.awt.Color(149, 149, 149))); // NOI18N
-        findFaculty.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        findFaculty.setMargin(new java.awt.Insets(2, 24, 2, 24));
-        findFaculty.addActionListener(new java.awt.event.ActionListener() {
+        findFacultyTextField.setColumns(20);
+        findFacultyTextField.setFont(new java.awt.Font("Prompt", 1, 14)); // NOI18N
+        findFacultyTextField.setForeground(new java.awt.Color(93, 93, 93));
+        findFacultyTextField.setToolTipText("");
+        findFacultyTextField.setActionCommand("<Not Set>");
+        findFacultyTextField.setAutoscrolls(false);
+        findFacultyTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาคณะ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Prompt", 0, 12), new java.awt.Color(149, 149, 149))); // NOI18N
+        findFacultyTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        findFacultyTextField.setMargin(new java.awt.Insets(2, 24, 2, 24));
+        findFacultyTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                findFacultyActionPerformed(evt);
+                findFacultyTextFieldActionPerformed(evt);
             }
         });
-        actionWrapper.add(findFaculty, java.awt.BorderLayout.LINE_START);
+        actionWrapper.add(findFacultyTextField, java.awt.BorderLayout.LINE_START);
 
         tableScrollPane.setBorder(null);
 
@@ -242,9 +246,9 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void findFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findFacultyActionPerformed
+    private void findFacultyTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findFacultyTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_findFacultyActionPerformed
+    }//GEN-LAST:event_findFacultyTextFieldActionPerformed
 
     private void deleteFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteFacultyActionPerformed
         // TODO add your handling code here:
@@ -262,7 +266,7 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
     private javax.swing.JPanel centerPanel;
     private javax.swing.JButton deleteFaculty;
     private components.Table facultyTable;
-    private javax.swing.JTextField findFaculty;
+    private javax.swing.JTextField findFacultyTextField;
     private javax.swing.JSeparator headerSeparator;
     private javax.swing.JPanel northPanel;
     private javax.swing.JLabel pageHeader;

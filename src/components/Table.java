@@ -3,9 +3,8 @@ package components;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import static javax.swing.SwingConstants.CENTER;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
+//import static javax.swing.SwingConstants.CENTER;
 
 public class Table extends JTable {
 
@@ -74,9 +73,12 @@ public class Table extends JTable {
 
                 return tHeader;
             }
-
         });
         this.setViewDataBtnColumn(3);
+    }
+
+    public void filterTableRow(String textToFilter) {
+
     }
 
     @Override

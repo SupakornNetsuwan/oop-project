@@ -2,13 +2,21 @@ package frame;
 
 import java.awt.*;
 import javax.swing.*;
+import components.MenuBar;
 
 public class MainFrame extends JFrame {
+    private MenuBar menuBar = new MenuBar();
 
     public MainFrame() {
         initComponents();
+        initMenuBar();
     }
-
+    
+    public void initMenuBar(){
+        this.setJMenuBar(menuBar);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
