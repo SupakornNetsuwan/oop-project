@@ -94,5 +94,38 @@ public class SubjectModel {
         subjectList.clear();
         return recordsForTableContent;
     }
+    
+    public Subject getSubject(String subject_id){
+        Subject subject = new Subject();
+        System.out.println(subject_id);
+        try{
+            statement = con.prepareStatement("SELECT * FROM subject WHERE id = (?)");
+            statement.setString(1, subject_id);
+            ResultSet result = statement.executeQuery();
+            while (result != null && result.next()){
+                subject = new Subject(
+                        result.getInt("id"),
+                        result.getString("name"),
+                        result.getString("subject_id"),
+                        result.getString("professor_fullname"),
+                        result.getString("details"),
+                        0
+                );
+                
+                statement2 = con.prepareStatement("SELECT * FROM student_in_subject WHERE subject = ?");
+                statement2.setString(1, String.valueOf(result.getInt("id")));
+                ResultSet result2 = statement2.executeQuery();
+                while (result2 != null && result2.next()) {
+                    QuantityStudent++;
+                }
+                subject.setQuantityStudent(QuantityStudent);
+            }
+        }
+        catch(SQLException err){
+            err.printStackTrace();
+            System.out.println(err.getMessage());
+        }
+        return subject;
+    }
 
 }

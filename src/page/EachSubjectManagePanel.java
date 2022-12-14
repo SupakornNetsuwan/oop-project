@@ -7,25 +7,33 @@ import java.util.ArrayList;
 import javax.swing.*;
 import model.Student;
 import model.StudentInSubjectModel;
+import model.Subject;
+import model.SubjectModel;
 
 public class EachSubjectManagePanel extends JPanel implements ActionListener {
 
     private AddNewSubjectStudentFrame addNewSubjectStudentFrame; // Internal frame
     private StudentInSubjectModel studentInSubjectModel = new StudentInSubjectModel();
+    private Subject subject = new Subject();
+    private SubjectModel subjectModel = new SubjectModel();
     /* Local variable */
     private String subjectId;
 
-    public EachSubjectManagePanel(String subject, String professor, String amount, String subjectId) {
+    public EachSubjectManagePanel(String subjectId) {
         this.subjectId = subjectId;
         initComponents();
-        initTable();
-        this.subjectNameHeader.setText(subject);
-        this.professorName.setText(professor);
-        this.studentAmount.setText(amount);
-//        this.headerSeparator.setText(facultyName);
-        this.subjectDetail.setText("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        initSubjectDetail();
+        initTable();       
     }
-
+    
+    public void initSubjectDetail(){
+        this.setSubject(subjectModel.getSubject(this.subjectId));
+        this.subjectNameHeader.setText(subject.getName());
+        this.professorName.setText(subject.getProfessorName());
+        this.studentAmount.setText(subject.getQuantityStudent()+"");
+        this.subjectDetail.setText(subject.getDetail());
+    }
+    
     public void initTable() {
         ArrayList<Student> students = studentInSubjectModel.studentInSubjectList(this.subjectId);
         getStudentTable().setViewDataBtnColumn(5);
@@ -53,6 +61,15 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
     public JLabel getGoBackLabel() {
         return this.goBackLabel;
     } 
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+    
 
     public void createAddNewStudenntFrame() {
         this.addNewSubjectStudentFrame = new AddNewSubjectStudentFrame();

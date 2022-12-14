@@ -179,27 +179,10 @@ public class AppController implements ActionListener, MouseListener {
         subjectManagePanel.getAddSubjectBtn().addActionListener(this);
         subjectManagePanel.getDeleteSubjectBtn().addActionListener(this);
         subjectManagePanel.getSubjectTable().addMouseListener(this);
-//        subjectManagePanel.getSubjectTable().addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                // Drill down to -> switchToEachSubjectPanel;
-//                int row = subjectManagePanel.getSubjectTable().rowAtPoint(e.getPoint());
-//                int col = subjectManagePanel.getSubjectTable().columnAtPoint(e.getPoint());
-//
-//                if (col == 5) {
-//                    switchToEachSubjectPanel(
-//                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 1),
-//                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 3),
-//                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 4)),
-//                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 5))
-//                    );
-//                }
-//            }
-//        });
     }
 
-    public void switchToEachSubjectPanel(String subject, String professor, String amount, String subjectId) {
-        eachSubjectManagePanel = new EachSubjectManagePanel(subject, professor, amount, subjectId);
+    public void switchToEachSubjectPanel(String subjectId) {
+        eachSubjectManagePanel = new EachSubjectManagePanel(subjectId);
         switchTo(eachSubjectManagePanel);
         eachSubjectManagePanel.initTable();
 
@@ -386,9 +369,9 @@ public class AppController implements ActionListener, MouseListener {
 
                 if (col == 5) {
                     switchToEachSubjectPanel(
-                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 1),
-                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 3),
-                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 4)),
+//                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 1),
+//                            (String) subjectManagePanel.getSubjectTable().getValueAt(row, 2),
+//                            Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 4)),
                             Integer.toString((Integer) subjectManagePanel.getSubjectTable().getValueAt(row, 5))
                     );
                 }
