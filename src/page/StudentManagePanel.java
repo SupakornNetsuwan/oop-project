@@ -2,6 +2,7 @@ package page;
 
 import frame.AddNewStudentFrame;
 import components.*;
+import frame.AlertFrame;
 import java.awt.event.*;
 import javax.swing.*;
 import model.StudentModel;
@@ -64,7 +65,9 @@ public class StudentManagePanel extends JPanel implements ActionListener {
 
             String studentId = this.getStudentTable().getModel().getValueAt(i, 2).toString();
             if (selected) {
-                this.studentModel.deleteStudent(studentId);
+                if (!this.studentModel.deleteStudent(studentId)) {
+                    new AlertFrame(addNewStudentFrame, "ไม่สามารถลบนักศึกษา " + studentId + " ได้เนื่องจากยังมีข้อมูลรายวิชาที่เรียนค้างอยู่ โปรดลบนักศึกษาออกจากรายวิชา", "ไม่สามารถลบนักศึกษาได้");
+                }
             }
         }
 
@@ -84,7 +87,7 @@ public class StudentManagePanel extends JPanel implements ActionListener {
 
             if (!studentName.isBlank() && !studentId.isBlank() && !studentGender.isBlank() && !studentAge.isBlank() && !studentPhone.isBlank()) {
                 if (!studentModel.addStudent(studentName, studentId, studentGender, studentAge, studentPhone)) {
-                    JOptionPane.showMessageDialog(addNewStudentFrame, "Error, make sure your inserted data is correctly and no duplicated ID", "Error!", JOptionPane.ERROR_MESSAGE);
+                    new AlertFrame(addNewStudentFrame, "รหัสนักศึกษา " + studentId + " ถูกใช้ไปแล้วโปรดใช้รหัสอื่น", "ไม่สามารถเพิ่มนักศึกษา");
                     return;
                 }
             }
