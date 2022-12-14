@@ -47,8 +47,17 @@ public class StudentInSubjectModel {
 //        StudentInSubjectModel studentInSubjectModel = new StudentInSubjectModel();
 //        studentInSubjectModel.addStudentToSubject("7","นายศุภกร เนตรสุวรรณ");
 //    }
-    public void deleteStudentFromSubject(String subjectId, String StudentId) {
+    public boolean deleteStudentFromSubject(String subjectId, String studentFullname) {
+        try {
+            Student student = studentModel.getStudentFromFullname(studentFullname);
+            String sql = "DELETE FROM student_in_subject WHERE subject=" + subjectId + " AND student=" + student.getStudentId();
+            con.createStatement().executeUpdate(sql);
+            return true;
+        } catch (SQLException err) {
+            System.out.println("ERR : " + err.getMessage());
+        }
 
+        return false;
     }
 
     public ArrayList<Student> studentInSubjectList(String subjectId) {

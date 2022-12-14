@@ -7,12 +7,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 import model.Student;
 import model.StudentInSubjectModel;
-import model.StudentModel;
 
 public class EachSubjectManagePanel extends JPanel implements ActionListener {
 
     private AddNewSubjectStudentFrame addNewSubjectStudentFrame; // Internal frame
-    private StudentModel studentModel = new StudentModel();
     private StudentInSubjectModel studentInSubjectModel = new StudentInSubjectModel();
     /* Local variable */
     private String subjectId;
@@ -29,7 +27,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
 
     public void initTable() {
         ArrayList<Student> students = studentInSubjectModel.studentInSubjectList(this.subjectId);
-        getStudentTable().setViewDatBtnColumn(5);
+        getStudentTable().setViewDataBtnColumn(5);
 
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {
@@ -70,10 +68,9 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
             if (selected == null) {
                 selected = false;
             }
-            String name = this.getStudentTable().getModel().getValueAt(i, 1).toString();
+            String studentFullname = this.getStudentTable().getModel().getValueAt(i, 1).toString();
             if (selected) {
-//                this.getStudentTable().delete(name);
-                System.out.println("TO DELETE : " + name);
+                studentInSubjectModel.deleteStudentFromSubject(subjectId, studentFullname);
             }
         }
         this.initTable();

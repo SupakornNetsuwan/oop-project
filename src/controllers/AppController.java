@@ -247,16 +247,16 @@ public class AppController implements ActionListener {
         branchStudentManagePanel = new BranchStudentManagePanel(branch, facluty);
         switchTo(branchStudentManagePanel);
         branchStudentManagePanel.initTable();
-     
+
         branchStudentManagePanel.getAddStudentBtn().addActionListener(this);
-        
+
         branchStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 switchTo(branchManagePanel);
                 branchManagePanel.initTable();
             }
         });
-            }
+    }
 
     public void switchToErrorPanel() {
         errorPanel = new ErrorPanel();
@@ -304,6 +304,7 @@ public class AppController implements ActionListener {
 
         } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getDeleteSubjectBtn())) {
             // Delete a subject
+            subjectManagePanel.deleteSubject();
 
         } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getAddStudentBtn())) {
             /* --------------------   Subject page   -------------------- */
@@ -320,12 +321,12 @@ public class AppController implements ActionListener {
         } else if (professorManagePanel != null && event.getSource().equals(professorManagePanel.getDeleteProfessorBtn())) {
             // Delete a professor
             professorManagePanel.deleteProfessor();
-        }else if(eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getAddStudentBtn())){
+        } else if (eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getAddStudentBtn())) {
             /* --------------------   Each subjet page   -------------------- */
             eachSubjectManagePanel.createAddNewStudenntFrame();
             eachSubjectManagePanel.configAddNewStudentFrame();
-        }else if(eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getDeleteStudentBtn())){
-             eachSubjectManagePanel.deleteStudent();
+        } else if (eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getDeleteStudentBtn())) {
+            eachSubjectManagePanel.deleteStudent();
         }
     }
 

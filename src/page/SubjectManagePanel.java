@@ -19,13 +19,11 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
 
     public void initTable() {
         Object tableRows[][] = subjectModel.getSubjects();
-        this.getSubjectTable().setViewDatBtnColumn(5);
+        this.getSubjectTable().setViewDataBtnColumn(5);
         this.getSubjectTable().clearTable();
         for (Object[] tableRow : tableRows) {
             this.getSubjectTable().addRow(tableRow);
         }
-        
-
 
         // Loop from database and insert subject list
     }
@@ -75,6 +73,21 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
 
     public void configAddNewSubjectFrame() {
         this.addNewSubjectFrame.config();
+    }
+
+    public void deleteSubject() {
+        for (int i = 0; i < this.getSubjectTable().getRowCount(); i++) {
+            Boolean selected = (Boolean) this.getSubjectTable().getModel().getValueAt(i, 0);
+            if (selected == null) {
+                selected = false;
+            }
+            String subjectId = this.getSubjectTable().getModel().getValueAt(i, 5).toString();
+            if (selected) {
+                // delete selected
+                System.out.println("Delete subject ID : " + subjectId);
+            }
+        }
+        this.initTable();
     }
 
     @Override
