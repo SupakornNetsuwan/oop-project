@@ -219,8 +219,11 @@ public class StudentManagePanel extends JPanel implements ActionListener {
             studentTable.getColumnModel().getColumn(0).setPreferredWidth(80);
             studentTable.getColumnModel().getColumn(0).setMaxWidth(80);
             studentTable.getColumnModel().getColumn(3).setMinWidth(100);
-            studentTable.getColumnModel().getColumn(3).setPreferredWidth(100);
-            studentTable.getColumnModel().getColumn(3).setMaxWidth(100);
+            studentTable.getColumnModel().getColumn(3).setPreferredWidth(400);
+            studentTable.getColumnModel().getColumn(3).setMaxWidth(400);
+            studentTable.getColumnModel().getColumn(4).setMinWidth(100);
+            studentTable.getColumnModel().getColumn(4).setPreferredWidth(100);
+            studentTable.getColumnModel().getColumn(4).setMaxWidth(100);
         }
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);

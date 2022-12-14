@@ -239,6 +239,9 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
             subjectTable.getColumnModel().getColumn(3).setMinWidth(100);
             subjectTable.getColumnModel().getColumn(3).setPreferredWidth(100);
             subjectTable.getColumnModel().getColumn(3).setMaxWidth(100);
+            subjectTable.getColumnModel().getColumn(5).setMinWidth(100);
+            subjectTable.getColumnModel().getColumn(5).setPreferredWidth(100);
+            subjectTable.getColumnModel().getColumn(5).setMaxWidth(100);
         }
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
