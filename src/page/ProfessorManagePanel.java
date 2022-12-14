@@ -19,9 +19,9 @@ public class ProfessorManagePanel extends JPanel implements ActionListener {
     }
 
     public void initTable() {
-        this.getProfessorTable().setViewDatBtnColumn(4);
+        this.getProfessorTable().setViewDataBtnColumn(4);
         ArrayList<Professor> professors = professorModel.getProfessors();
-        getProfessorTable().setViewDatBtnColumn(4);
+        getProfessorTable().setViewDataBtnColumn(4);
 
         this.getProfessorTable().clearTable();
         for (int i = 0; i < professors.size(); i++) {

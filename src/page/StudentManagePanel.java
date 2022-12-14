@@ -20,7 +20,7 @@ public class StudentManagePanel extends JPanel implements ActionListener {
 
     public void initTable() {
         ArrayList<Student> students = studentModel.getStudents();
-        getStudentTable().setViewDatBtnColumn(4);
+        getStudentTable().setViewDataBtnColumn(4);
 
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {

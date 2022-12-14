@@ -1,7 +1,7 @@
 package page;
 
 import components.*;
-import frame.AddNewStudentFrame;
+import frame.AddNewBranchStudentFrame;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -10,7 +10,7 @@ import model.StudentModel;
 
 public class BranchStudentManagePanel extends JPanel implements ActionListener {
 
-    private AddNewStudentFrame addNewStudentFrame; // Internal frame
+    private AddNewBranchStudentFrame addNewBranchStudentFrame; // Internal frame
     private StudentModel studentModel = new StudentModel();
     private String nameBranch = "";
 
@@ -24,8 +24,8 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
     }
 
     public void initTable() {
-        ArrayList<Student> students = studentModel.getStudents();
-        getStudentTable().setViewDatBtnColumn(7);
+        ArrayList<Student> students = studentModel.getStudyInBranch(nameBranch);
+        getStudentTable().setViewDataBtnColumn(6);
 
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {
@@ -54,17 +54,31 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
     public JLabel getGoBackLabel() {
         return this.goBackLabel;
     }
+    
+    public void createAddNewBranchStudentFrame() {
+        this.addNewBranchStudentFrame = new AddNewBranchStudentFrame();
+        addNewBranchStudentFrame.getAddStudentBtn().addActionListener(this);
+    }
+    public void configAddNewBranchStudentFrame() {
+        this.addNewBranchStudentFrame.config();
+    }
 
 
     @Override
     public void actionPerformed(ActionEvent event) {
-//        if (event.getSource().equals(addNewBranchFrame.getAddBranchBtn())) {
-
-//            ???
-
+        if (event.getSource().equals(addNewBranchStudentFrame.getAddStudentBtn())) {
+            // Clicked on add new subject btn
+            // check in DB
+            String studentID = addNewBranchStudentFrame.getStudentNameComboBox().getSelectedItem().toString();
+            if (!studentID.isBlank()) {
+                if (!studentModel.updateStudent(studentID, facultyNameHeader.getText(), branchNameHeader.getText())) {
+                    JOptionPane.showMessageDialog(addNewBranchStudentFrame, "Error, make sure your data is correctly", "Error!", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
             this.initTable();
-
-//        }
+        }
+        
     }
 
     /**
@@ -237,7 +251,7 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
 
             },
             new String [] {
-                "การเลือก", "ชื่อ-นามสกุล", "รหัสนึกศึกษา", "อายุ", "เพศ", "เบอร์โทรศัพท์", "วิชาที่เรียน"
+                "การเลือก", "ชื่อ-นามสกุล", "รหัสนึกศึกษา", "อายุ", "เพศ", "เบอร์โทรศัพท์", "ดูข้อมูล"
             }
         ) {
             Class[] types = new Class [] {

@@ -2,15 +2,23 @@ package frame;
 
 import java.awt.*;
 import javax.swing.*;
+import model.StudentModel;
 
 public class AddNewBranchStudentFrame extends JFrame {
+    
+    private StudentModel studentModel = new StudentModel();
 
     public AddNewBranchStudentFrame() {
         initComponents();
+        initComboBox();
     }
 
     public void init() {
 
+    }
+    
+    public void initComboBox() {
+        studentNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(studentModel.getRecordsForComboBox()));
     }
     
     public JButton getAddStudentBtn(){

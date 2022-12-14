@@ -6,6 +6,10 @@ public class Student extends Human {
     private String faculty;
     private String branch;
 
+    public Student() {
+        this("", "", "", "", "", "", "");
+    }
+    
     public Student(
             String fullname,
             String studentId,
