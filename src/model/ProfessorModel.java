@@ -96,4 +96,20 @@ public class ProfessorModel {
         professorList.clear();
         return recordsForComboBox;
     }
+
+    public ArrayList<String> getSubjetList(String professorFullname) {
+        ArrayList<String> subjectName = new ArrayList();
+        try {
+            statement = con.prepareStatement("SELECT * FROM subject WHERE professor_fullname = (?)");
+            statement.setString(1, professorFullname);
+            result = statement.executeQuery();
+            while (result != null && result.next()) {
+                subjectName.add(result.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("ERR : " + e.getMessage());
+        }
+        return subjectName;
+    }
 }

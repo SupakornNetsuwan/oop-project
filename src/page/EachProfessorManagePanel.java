@@ -3,6 +3,7 @@ package page;
 import javax.swing.*;
 import model.ProfessorModel;
 import model.Professor;
+import java.util.ArrayList;
 
 public class EachProfessorManagePanel extends JPanel {
 
@@ -22,6 +23,17 @@ public class EachProfessorManagePanel extends JPanel {
         this.getAgeLabel().setText(professor.getAge());
         this.getPhoneLabel().setText(professor.getPhone());
         this.getDegree().setText(professor.getDegree());
+        this.getSubjectList().setModel(new javax.swing.AbstractListModel<String>() {
+            ArrayList<String> subjectList = professorModel.getSubjetList(professor.getFullname());
+
+            public int getSize() {
+                return subjectList.size();
+            }
+
+            public String getElementAt(int i) {
+                return subjectList.get(i);
+            }
+        });
     }
 
     public JLabel getDegree() {
@@ -64,6 +76,10 @@ public class EachProfessorManagePanel extends JPanel {
         this.professor = professor;
     }
 
+    public JList<String> getSubjectList() {
+        return subjectList;
+    }
+
     public Professor getStudent() {
         return this.professor;
     }
@@ -95,6 +111,10 @@ public class EachProfessorManagePanel extends JPanel {
         phoneLabel = new javax.swing.JLabel();
         phone = new javax.swing.JLabel();
         studentSubjectsWrapper = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        subjectsLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        subjectList = new javax.swing.JList<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -209,12 +229,27 @@ public class EachProfessorManagePanel extends JPanel {
         studentSubjectsWrapper.setLayout(studentSubjectsWrapperLayout);
         studentSubjectsWrapperLayout.setHorizontalGroup(
             studentSubjectsWrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 968, Short.MAX_VALUE)
+            .addGap(0, 358, Short.MAX_VALUE)
         );
         studentSubjectsWrapperLayout.setVerticalGroup(
             studentSubjectsWrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 340, Short.MAX_VALUE)
         );
+
+        subjectsLabel.setBackground(new java.awt.Color(255, 255, 255));
+        subjectsLabel.setFont(new java.awt.Font("Prompt Medium", 0, 14)); // NOI18N
+        subjectsLabel.setText("วิชาที่สอน");
+
+        subjectList.setFont(new java.awt.Font("Prompt", 0, 14)); // NOI18N
+        subjectList.setForeground(new java.awt.Color(134, 134, 134));
+        subjectList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "วิชา xxx-1", "วิชา xxx-2", "วิชา  yyyy-1", "วิชา  yyzz-2" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        subjectList.setSelectionBackground(new java.awt.Color(255, 137, 47));
+        subjectList.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportView(subjectList);
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
         centerPanel.setLayout(centerPanelLayout);
@@ -224,17 +259,33 @@ public class EachProfessorManagePanel extends JPanel {
                 .addContainerGap()
                 .addGroup(centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(studentDetailWrapper, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
-                    .addComponent(studentSubjectsWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(centerPanelLayout.createSequentialGroup()
+                        .addComponent(subjectsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(studentSubjectsWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         centerPanelLayout.setVerticalGroup(
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(centerPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(studentDetailWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(studentSubjectsWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(centerPanelLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(studentSubjectsWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(centerPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(subjectsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         add(centerPanel, java.awt.BorderLayout.CENTER);
@@ -257,6 +308,8 @@ public class EachProfessorManagePanel extends JPanel {
     private javax.swing.JLabel genderLabel;
     private javax.swing.JLabel goBackLabel;
     private javax.swing.JSeparator headerSeparator;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel northPanel;
     private javax.swing.JPanel northPanelWrapper;
     private javax.swing.JLabel phone;
@@ -264,5 +317,7 @@ public class EachProfessorManagePanel extends JPanel {
     private javax.swing.JLabel professorHeader;
     private javax.swing.JPanel studentDetailWrapper;
     private javax.swing.JPanel studentSubjectsWrapper;
+    private javax.swing.JList<String> subjectList;
+    private javax.swing.JLabel subjectsLabel;
     // End of variables declaration//GEN-END:variables
 }
