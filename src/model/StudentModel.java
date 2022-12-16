@@ -231,7 +231,7 @@ public class StudentModel {
         String[] recordsForComboBox = new String [getStudents().size()+1];
         recordsForComboBox[0] = "";
         for (int i = 1; i < getStudents().size()+1; i++) {
-            recordsForComboBox[i] = getStudents().get(i-1).getFullname();
+            recordsForComboBox[i] = getStudents().get(i-1).getFullname() + " ("+getStudents().get(i-1).getStudentId()+")";
         }
         getStudents().clear();
         return recordsForComboBox;

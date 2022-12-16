@@ -38,11 +38,11 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
     public StudentModel getStudentModel() {
         return studentModel;
     }
-    
+
     public void setNameBranch(String nameBranch) {
         this.nameBranch = nameBranch;
     }
-    
+
     public Table getStudentTable() {
         return this.studentTable;
     }
@@ -58,15 +58,16 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
     public JLabel getGoBackLabel() {
         return this.goBackLabel;
     }
-    
+
     public void createAddNewBranchStudentFrame() {
         this.addNewBranchStudentFrame = new AddNewBranchStudentFrame();
         addNewBranchStudentFrame.getAddStudentBtn().addActionListener(this);
     }
+
     public void configAddNewBranchStudentFrame() {
         this.addNewBranchStudentFrame.config();
     }
-    
+
     public void deleteStudent() {
         for (int i = 0; i < this.getStudentTable().getRowCount(); i++) {
             Boolean selected = (Boolean) this.getStudentTable().getModel().getValueAt(i, 0);
@@ -87,15 +88,17 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
             // Clicked on add new subject btn
             // check in DB
             String studentName = addNewBranchStudentFrame.getStudentNameComboBox().getSelectedItem().toString();
+            String[] studentNameSplit = studentName.split("\\(",2);
+
             if (!studentName.isBlank()) {
-                if (!studentModel.updateStudent(studentName, facultyNameHeader.getText(), branchNameHeader.getText())) {
+                if (!studentModel.updateStudent(studentNameSplit[0], facultyNameHeader.getText(), branchNameHeader.getText())) {
                     JOptionPane.showMessageDialog(addNewBranchStudentFrame, "Error, make sure your data is correctly", "Error!", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
             this.initTable();
         }
-        
+
     }
 
     /**

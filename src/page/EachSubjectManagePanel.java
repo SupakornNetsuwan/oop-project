@@ -2,6 +2,7 @@ package page;
 
 import components.*;
 import frame.AddNewSubjectStudentFrame;
+import frame.AlertFrame;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -23,17 +24,17 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
         this.subjectId = subjectId;
         initComponents();
         initSubjectDetail();
-        initTable();       
+        initTable();
     }
-    
-    public void initSubjectDetail(){
+
+    public void initSubjectDetail() {
         this.setSubject(subjectModel.getSubject(this.subjectId));
         this.subjectNameHeader.setText(subject.getName());
         this.professorName.setText(subject.getProfessorName());
-        this.studentAmount.setText(subject.getQuantityStudent()+"");
+        this.studentAmount.setText(subject.getQuantityStudent() + "");
         this.subjectDetail.setText(subject.getDetail());
     }
-    
+
     public void initTable() {
         ArrayList<Student> students = studentInSubjectModel.studentInSubjectList(this.subjectId);
         getStudentTable().setViewDataBtnColumn(5);
@@ -60,7 +61,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
 
     public JLabel getGoBackLabel() {
         return this.goBackLabel;
-    } 
+    }
 
     public void setSubject(Subject subject) {
         this.subject = subject;
@@ -69,7 +70,6 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
     public Subject getSubject() {
         return subject;
     }
-    
 
     public void createAddNewStudenntFrame() {
         this.addNewSubjectStudentFrame = new AddNewSubjectStudentFrame();
@@ -97,8 +97,11 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource().equals(addNewSubjectStudentFrame.getAddStudentBtn())) {
-            if (!studentInSubjectModel.addStudentToSubject(subjectId, (String) addNewSubjectStudentFrame.getStudentNameComboBox().getSelectedItem())) {
-                JOptionPane.showMessageDialog(addNewSubjectStudentFrame, "Error, This student may have already inserted.", "Error!", JOptionPane.ERROR_MESSAGE);
+            String studentName = (String) addNewSubjectStudentFrame.getStudentNameComboBox().getSelectedItem();
+            String[] studentNameSplit = studentName.split("\\(", 2);
+
+            if (!studentInSubjectModel.addStudentToSubject(subjectId, studentNameSplit[0])) {
+                new AlertFrame(addNewSubjectStudentFrame, "ผู้เรียนคนนี้อาจจะถูกเพิ่มในรายวิชาแล้ว", "ไม่สามารถเพิ่มผู้เรียนได้");
                 return;
             }
             this.initTable();

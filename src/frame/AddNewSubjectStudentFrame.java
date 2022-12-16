@@ -18,7 +18,7 @@ public class AddNewSubjectStudentFrame extends JFrame {
     public void setStudentList() {
         ArrayList<Student> students = studentModel.getStudents();
         for (int i = 0; i < students.size(); i++) {
-            this.getStudentNameComboBox().addItem(students.get(i).getFullname());
+            this.getStudentNameComboBox().addItem(students.get(i).getFullname() + " ("+students.get(i).getStudentId()+")");
         }
 
     }
