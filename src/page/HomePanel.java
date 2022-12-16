@@ -4,16 +4,20 @@ import components.Barchart;
 import components.Piechart;
 import javax.swing.*;
 import java.awt.*;
+import model.ProfessorModel;
+import model.FacultyModel;
 
 public class HomePanel extends javax.swing.JPanel {
 
     private Piechart piechart = new Piechart();
     private Barchart barchart = new Barchart();
+    private ProfessorModel professorModel = new ProfessorModel();
+    private FacultyModel facultyModel = new FacultyModel();
 
     public HomePanel() {
         initComponents();
         init();
-        this.paintChart();
+        paintChart();
     }
 
     public void init() {
@@ -21,8 +25,14 @@ public class HomePanel extends javax.swing.JPanel {
     }
 
     public void paintChart() {
-        this.getPanel1().add(piechart.createPiePanel("อัตราส่วนวิชาที่อาจารย์สอนต่อท่าน"));
-        this.getPanel2().add(barchart.createBarPanel("อัตราส่วนนักศึกษาต่อคณะและสาขา"));
+        this.getPanel1().add(
+            piechart.createPiePanel("อัตราส่วนวิชาที่อาจารย์สอนต่อท่าน",
+            professorModel.getProfessorDataForPiechart())
+        );
+        this.getPanel2().add(
+            barchart.createBarPanel("อัตราส่วนนักศึกษาต่อคณะและสาขา",
+            facultyModel.getFacultyDataForBarchart())
+        );
 
     }
 

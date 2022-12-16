@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.*;
 
 public class FacultyModel {
 
@@ -14,6 +15,10 @@ public class FacultyModel {
     private ResultSet result = null;
     private PreparedStatement statement = null;
     private PreparedStatement statement2 = null;
+    private PreparedStatement s1 = null;
+    private ResultSet r1 = null;
+    private PreparedStatement s2 = null;
+    private ResultSet r2 = null;
     private String sql;
     private int quantityBranch = 0;
 
@@ -104,6 +109,49 @@ public class FacultyModel {
         facultyList.clear();
 
         return recordsForTableContent;
+    }
+    
+    public Map<String,Map> getFacultyDataForBarchart() {
+        Map<String,Map> faculties = new HashMap<>();
+        ArrayList<String> eachName = new ArrayList();
+        
+        try {
+            s1 = con.prepareStatement("SELECT * FROM faculty");
+            r1 = s1.executeQuery();
+            while (r1 != null && r1.next()) {
+                eachName.add(r1.getString("name"));
+            }
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+        
+        eachName.forEach((f) -> {
+            Map<String,Integer> branches = new HashMap<>();
+            try {
+                s1 = con.prepareStatement("SELECT * FROM branch WHERE in_faculty = (?)");
+                s1.setString(1, f);
+                r1 = s1.executeQuery();
+                while (r1 != null && r1.next()) {
+                    String branchName = r1.getString("name");
+                    try {
+                        s2 = con.prepareStatement("SELECT COUNT(*) FROM student WHERE branch = (?)");
+                        s2.setString(1, branchName);
+                        r2 = s2.executeQuery();
+                        while (r2 != null && r2.next()) {
+                            branches.put(branchName, Integer.parseInt(r2.getString("COUNT(*)")));
+                        }
+                    } catch (SQLException err) {
+                        System.out.println(err.getMessage());
+                    }
+                }
+            } catch (SQLException err) {
+                System.out.println(err.getMessage());
+            }
+            faculties.put(f, branches);
+        });
+        
+//        System.out.println(faculties);
+        return faculties;
     }
 
 }

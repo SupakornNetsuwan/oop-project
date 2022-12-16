@@ -1,5 +1,6 @@
 package components;
 
+import java.awt.Font;
 import javax.swing.*;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -7,61 +8,42 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+import java.util.*;
 
 public class Barchart {
 
-    public JPanel createBarPanel(String title) {
+    public JPanel createBarPanel(String title, Map<String,Map> source) {
         JFreeChart barChart = ChartFactory.createBarChart(
                 title,
                 null,
                 "Score",
-                createDataset(),
+                createDataset(source),
                 PlotOrientation.HORIZONTAL,
                 true, true, false);
+        barChart.getTitle().setFont(new Font("Prompt", Font.BOLD, 24));
+        barChart.getLegend().setItemFont(new Font("Prompt", Font.PLAIN, 12));
 
         ChartPanel chartPanel = new ChartPanel(barChart);
         return chartPanel;
     }
 
-    private CategoryDataset createDataset() {
-        final String fiat = "FIAT";
-        final String audi = "AUDI";
-        final String ford = "FORD";
-        final String fordx = "FORDX";
-        final String fordy = "FORDY";
-        final String speed = "Speed";
-        final String millage = "Millage";
-        final String userrating = "User Rating";
-        final String safety = "safety";
+    private CategoryDataset createDataset(Map<String,Map> source) {
         final DefaultCategoryDataset dataset
                 = new DefaultCategoryDataset();
-
-        dataset.addValue(1.0, fiat, speed);
-        dataset.addValue(3.0, fiat, userrating);
-        dataset.addValue(5.0, fiat, millage);
-        dataset.addValue(5.0, fiat, safety);
-
-        dataset.addValue(5.0, audi, speed);
-        dataset.addValue(6.0, audi, userrating);
-        dataset.addValue(10.0, audi, millage);
-        dataset.addValue(4.0, audi, safety);
-
-        dataset.addValue(4.0, ford, speed);
-        dataset.addValue(2.0, ford, userrating);
-        dataset.addValue(3.0, ford, millage);
-        dataset.addValue(6.0, ford, safety);
-
-        dataset.addValue(4.0, fordx, speed);
-        dataset.addValue(2.0, fordx, userrating);
-        dataset.addValue(3.0, fordx, millage);
-        dataset.addValue(6.0, fordx, safety);
-
-        dataset.addValue(4.0, fordy, speed);
-        dataset.addValue(2.0, fordy, userrating);
-        dataset.addValue(3.0, fordy, millage);
-        dataset.addValue(6.0, fordy, safety);
-
+        
+        Map<String,Map> faculties = source;
+        
+        for (String f : faculties.keySet()) {
+//            System.out.println("IN FACLUTY: " + f);
+            Map<String,Integer> branch = faculties.get(f);
+            for (String b : branch.keySet()) {
+//                System.out.println(branch.get(b) + ", " + b + ", " + f);
+                dataset.addValue(branch.get(b), b, f);
+            }
+        }
+        
         return dataset;
     }
+    
 
 }

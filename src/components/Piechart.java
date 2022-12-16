@@ -1,16 +1,21 @@
 package components;
 
+import java.awt.Font;
 import javax.swing.*;
 import org.jfree.chart.*;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
+import java.util.*;
 
 public class Piechart {
+    
     // CREATE THE PIE CHART
 
-    public JPanel createPiePanel(String title) {
-        JFreeChart pieChart = createPieChart(createPieDataset(), title);
+    public JPanel createPiePanel(String title, Map<String,Integer> source) {
+        JFreeChart pieChart = createPieChart(createPieDataset(source), title);
+        pieChart.getTitle().setFont(new Font("Prompt", Font.BOLD, 24));
+        pieChart.getLegend().setItemFont(new Font("Prompt", Font.PLAIN, 12));
         return new ChartPanel(pieChart);
     }
 
@@ -35,18 +40,17 @@ public class Piechart {
     }
 
     // CREATE THE PIE CHART DATA
-    private static PieDataset createPieDataset() {
+    private PieDataset createPieDataset(Map<String,Integer> source) {
 
         DefaultPieDataset dataset = new DefaultPieDataset();
-
-        dataset.setValue("One", Double.valueOf(43.21));
-        dataset.setValue("Two", Double.valueOf(12.38));
-        dataset.setValue("Three", Double.valueOf(25.9));
-        dataset.setValue("Four", Double.valueOf(32.12));
-        dataset.setValue("Five", Double.valueOf(16.25));
+        Map<String,Integer> professorSubjects = source;
+        
+        for (String p : professorSubjects.keySet()) {
+            dataset.setValue(p, professorSubjects.get(p));
+        }
 
         return dataset;
 
     }
-
+    
 }

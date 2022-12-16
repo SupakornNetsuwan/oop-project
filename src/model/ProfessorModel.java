@@ -112,4 +112,39 @@ public class ProfessorModel {
         }
         return subjectName;
     }
+    
+    public Map<String,Integer> getProfessorDataForPiechart() {
+        Map<String,Integer> professorSubjects = new HashMap<>();
+        ArrayList<String> professors = new ArrayList();
+        
+        // get ArrayList<String> containing names of all professors in the DB.
+        try {
+            statement = con.prepareStatement("SELECT fullname FROM professor");
+            result = statement.executeQuery();
+            while (result != null && result.next()) {
+                professors.add(result.getString("fullname"));
+            }
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+        
+        // for each professors, count the amount of subjects in the DB with each professor's name
+        // then add item to Map<String,Integer>.
+        professors.forEach((p) -> {
+            int subjectAmount = 0;
+            try {
+                statement = con.prepareStatement("SELECT COUNT(*) FROM subject WHERE professor_fullname = (?)");
+                statement.setString(1, p);
+                result = statement.executeQuery();
+                while (result != null && result.next()) {
+                    subjectAmount = Integer.parseInt(result.getString("COUNT(*)"));
+                }
+                professorSubjects.put(p, subjectAmount);
+            } catch (SQLException err) {
+                System.out.println(err.getMessage());
+            }
+        });
+        
+        return professorSubjects;
+    }
 }
