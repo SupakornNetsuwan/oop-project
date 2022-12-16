@@ -117,8 +117,8 @@ public class AppController implements ActionListener, MouseListener {
         /* Faculty Panel listener */
         facultyManagePanel.getAddFacultyBtn().addActionListener(this);
         facultyManagePanel.getDeleteFacultyBtn().addActionListener(this);
-        facultyManagePanel.getFacultyTable().addMouseListener(this);
         facultyManagePanel.getFindFacultyTextField().addActionListener(this);
+        facultyManagePanel.getFacultyTable().addMouseListener(this);
     }
 
     public void switchToProfessorManagePanel() {
@@ -129,6 +129,7 @@ public class AppController implements ActionListener, MouseListener {
         ////////////////////////////////////////
         professorManagePanel.getAddProfessorBtn().addActionListener(this);
         professorManagePanel.getDeleteProfessorBtn().addActionListener(this);
+        professorManagePanel.getFindProfessor().addActionListener(this);
         professorManagePanel.getProfessorTable().addMouseListener(this);
     }
 
@@ -154,7 +155,8 @@ public class AppController implements ActionListener, MouseListener {
 
         studentManagePanel.getAddStudentBtn().addActionListener(this);
         studentManagePanel.getDeleteStudentBtn().addActionListener(this);
-        studentManagePanel.getStudentTable().addMouseListener(this);
+        studentManagePanel.getFindStudent().addActionListener(this);
+        studentManagePanel.getStudentTable().addMouseListener(this);    
     }
 
     public void switchToEachStudentManagePanel(String student_id) {
@@ -179,6 +181,7 @@ public class AppController implements ActionListener, MouseListener {
 
         subjectManagePanel.getAddSubjectBtn().addActionListener(this);
         subjectManagePanel.getDeleteSubjectBtn().addActionListener(this);
+        subjectManagePanel.getFindSubject().addActionListener(this);
         subjectManagePanel.getSubjectTable().addMouseListener(this);
     }
 
@@ -189,6 +192,7 @@ public class AppController implements ActionListener, MouseListener {
 
         eachSubjectManagePanel.getAddStudentBtn().addActionListener(this);
         eachSubjectManagePanel.getDeleteStudentBtn().addActionListener(this);
+        eachSubjectManagePanel.getFindStudent().addActionListener(this);
         eachSubjectManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 switchTo(subjectManagePanel);
@@ -207,6 +211,7 @@ public class AppController implements ActionListener, MouseListener {
         /* Branch Panel listener */
         branchManagePanel.getAddBranchBtn().addActionListener(this);
         branchManagePanel.getDeleteBranchBtn().addActionListener(this);
+        branchManagePanel.getFindBranch().addActionListener(this);
         branchManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -235,7 +240,7 @@ public class AppController implements ActionListener, MouseListener {
 
         branchStudentManagePanel.getAddStudentBtn().addActionListener(this);
         branchStudentManagePanel.getDeleteStudentBtn().addActionListener(this);
-
+        branchStudentManagePanel.getFindStudent().addActionListener(this);
         branchStudentManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 switchTo(branchManagePanel);
@@ -266,22 +271,22 @@ public class AppController implements ActionListener, MouseListener {
             // Add a new faculty frame
             facultyManagePanel.createAddNewFacultyFrame();
             facultyManagePanel.configAddNewFacultyFrame();
-
         } else if (facultyManagePanel != null && event.getSource().equals(facultyManagePanel.getDeleteFacultyBtn())) {
             // Delete a faculty
             facultyManagePanel.deleteFaculty();
         } else if (facultyManagePanel != null && event.getSource().equals(facultyManagePanel.getFindFacultyTextField())) {
-            facultyManagePanel.getFacultyTable().filterTableRow(facultyManagePanel.getFindFacultyTextField().getText());
             facultyManagePanel.initTable();
+            
         } else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getAddBranchBtn())) {
             /* --------------------   Faculty -> Branch page   -------------------- */
             branchManagePanel.createAddNewBranchFrame();
             branchManagePanel.configAddNewBranchFrame();
-
         } else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getDeleteBranchBtn())) {
             // Delete a branch
             branchManagePanel.deleteBranch();
-
+        }else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getFindBranch())) {
+            branchManagePanel.initTable();
+            
         } else if (branchStudentManagePanel != null && event.getSource().equals(branchStudentManagePanel.getAddStudentBtn())) {
             /* --------------------   Branch -> Add Student   -------------------- */
             branchStudentManagePanel.createAddNewBranchStudentFrame();
@@ -290,24 +295,29 @@ public class AppController implements ActionListener, MouseListener {
         } else if (branchStudentManagePanel != null && event.getSource().equals(branchStudentManagePanel.getDeleteStudentBtn())) {
             // Delete student
             branchStudentManagePanel.deleteStudent();
-
+        } else if (branchStudentManagePanel != null && event.getSource().equals(branchStudentManagePanel.getFindStudent())) {
+            branchStudentManagePanel.initTable();
+            
         } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getAddSubjectBtn())) {
             /* --------------------   Subject page   -------------------- */
             subjectManagePanel.createAddNewSubjectFrame();
             subjectManagePanel.configAddNewSubjectFrame();
-
         } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getDeleteSubjectBtn())) {
             // Delete a subject
             subjectManagePanel.deleteSubject();
-
+        } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getFindSubject())) {
+            subjectManagePanel.initTable();
+            
         } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getAddStudentBtn())) {
             /* --------------------   Subject page   -------------------- */
             studentManagePanel.createAddNewStudentFrame();
             studentManagePanel.configAddNewStudentFrame();
-
         } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getDeleteStudentBtn())) {
             // Delete a subject
-            studentManagePanel.deleteStudent();
+            studentManagePanel.deleteStudent(); 
+        } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getFindStudent())) {
+            studentManagePanel.initTable();
+            
         } else if (professorManagePanel != null && event.getSource().equals(professorManagePanel.getAddProfessorBtn())) {
             /* --------------------   Professor page   -------------------- */
             professorManagePanel.createAddNewProfessorFrame();
@@ -315,12 +325,18 @@ public class AppController implements ActionListener, MouseListener {
         } else if (professorManagePanel != null && event.getSource().equals(professorManagePanel.getDeleteProfessorBtn())) {
             // Delete a professor
             professorManagePanel.deleteProfessor();
+        } else if (professorManagePanel != null && event.getSource().equals(professorManagePanel.getFindProfessor())) {
+            professorManagePanel.initTable();
+            
         } else if (eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getAddStudentBtn())) {
             /* --------------------   Each subjet page   -------------------- */
             eachSubjectManagePanel.createAddNewStudenntFrame();
             eachSubjectManagePanel.configAddNewStudentFrame();
         } else if (eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getDeleteStudentBtn())) {
             eachSubjectManagePanel.deleteStudent();
+        } else if (eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getFindStudent())) {
+            eachSubjectManagePanel.initTable();
+            
         }
     }
 

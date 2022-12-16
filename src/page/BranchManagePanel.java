@@ -24,14 +24,15 @@ public class BranchManagePanel extends JPanel implements ActionListener {
     public void initTable() {
         branchModel.setInFaculty(nameFaculty);
         Object tableRows[][] = branchModel.getRecordsForTableContent();
-
         //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
         this.getBranchTable().clearTable();
         for (Object[] tableRow : tableRows) {
-            this.getBranchTable().addRow(tableRow);
+            if(String.valueOf(tableRow[1]).contains(this.getFindBranch().getText())){
+                this.getBranchTable().addRow(tableRow);
+            }
         }
     }
-
+    
     public BranchModel getBranchModel() {
         return branchModel;
     }
@@ -54,6 +55,10 @@ public class BranchManagePanel extends JPanel implements ActionListener {
 
     public JButton getDeleteBranchBtn() {
         return this.deleteBranch;
+    }
+
+    public JTextField getFindBranch() {
+        return findBranch;
     }
 
     public JLabel getGoBackLabel() {

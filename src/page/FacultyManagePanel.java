@@ -21,10 +21,11 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
     public void initTable() {
         Object tableRows[][] = facultyModel.getRecordsForTableContent();
         //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
-
         this.getFacultyTable().clearTable();
         for (Object[] tableRow : tableRows) {
-            this.getFacultyTable().addRow(tableRow);
+            if(String.valueOf(tableRow[1]).contains(this.getFindFacultyTextField().getText())){
+                this.getFacultyTable().addRow(tableRow);
+            }
         }
     }
 

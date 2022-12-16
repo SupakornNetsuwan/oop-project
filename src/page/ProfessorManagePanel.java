@@ -25,7 +25,9 @@ public class ProfessorManagePanel extends JPanel implements ActionListener {
         for (int i = 0; i < professors.size(); i++) {
             Professor professor = professors.get(i);
             Object[] object = {null, professor.getFullname(), professor.getDegree(), null};
-            this.getProfessorTable().addRow(object);
+            if((String.valueOf(object[1]).contains(this.getFindProfessor().getText())) || (String.valueOf(object[2]).contains(this.getFindProfessor().getText()))){
+                this.getProfessorTable().addRow(object);
+            }
         }
     }
 
@@ -39,6 +41,10 @@ public class ProfessorManagePanel extends JPanel implements ActionListener {
 
     public JButton getDeleteProfessorBtn() {
         return this.deleteProfessor;
+    }
+
+    public JTextField getFindProfessor() {
+        return findProfessor;
     }
 
     public AddNewProfessorFrame getAddNewProfessorFrame() {

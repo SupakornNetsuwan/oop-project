@@ -43,7 +43,10 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
             Object[] object = {null, student.getFullname(), student.getStudentId(), student.getFaculty() + "/" + student.getBranch(), student.getGender()};
-            this.getStudentTable().addRow(object);
+            if((String.valueOf(object[1]).contains(this.getFindStudent().getText())) || (String.valueOf(object[2]).contains(this.getFindStudent().getText()))
+            || (String.valueOf(object[3]).contains(this.getFindStudent().getText())) || (String.valueOf(object[4]).contains(this.getFindStudent().getText()))){
+                this.getStudentTable().addRow(object);
+            }
         }
     }
 
@@ -59,6 +62,10 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
         return this.deleteStudent;
     }
 
+    public JTextField getFindStudent() {
+        return findStudent;
+    }
+    
     public JLabel getGoBackLabel() {
         return this.goBackLabel;
     }

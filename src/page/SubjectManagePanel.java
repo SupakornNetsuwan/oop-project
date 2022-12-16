@@ -24,33 +24,14 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
         this.getSubjectTable().setViewDataBtnColumn(5);
         this.getSubjectTable().clearTable();
         for (Object[] tableRow : tableRows) {
-            this.getSubjectTable().addRow(tableRow);
+            if((String.valueOf(tableRow[1]).contains(this.getFindSubject().getText())) || (String.valueOf(tableRow[2]).contains(this.getFindSubject().getText()))
+            || (String.valueOf(tableRow[3]).contains(this.getFindSubject().getText()))){
+                this.getSubjectTable().addRow(tableRow);
+            }
         }
 
         // Loop from database and insert subject list
     }
-//    
-//    public void initTable() {
-//        Object tableRows[][] = facultyModel.getSubjects();
-//        //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
-//
-//        this.getFacultyTable().clearTable();
-//        for (Object[] tableRow : tableRows) {
-//            this.getFacultyTable().addRow(tableRow);
-//        }
-//    }
-//    
-//    public void initTable() {
-//        ArrayList<Student> students = studentModel.getStudents();
-//        getStudentTable().setViewDatBtnColumn(4);
-//
-//        this.getStudentTable().clearTable();
-//        for (int i = 0; i < students.size(); i++) {
-//            Student student = students.get(i);
-//            Object[] object = {false, student.getFullname(), student.getStudentId(), student.getFaculty() + "/" + student.getBranch(), null};
-//            this.getStudentTable().addRow(object);
-//        }
-//    }
 
     public Table getSubjectTable() {
         return this.subjectTable;
@@ -64,6 +45,10 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
         return this.deleteSubject;
     }
 
+    public JTextField getFindSubject() {
+        return findSubject;
+    }
+    
     public AddNewSubjectFrame getAddNewSubjectFrame() {
         return this.addNewSubjectFrame;
     }
@@ -134,7 +119,7 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
         buttonsWrapper = new javax.swing.JPanel();
         deleteSubject = new javax.swing.JButton();
         addSubject = new javax.swing.JButton();
-        findFaculty = new javax.swing.JTextField();
+        findSubject = new javax.swing.JTextField();
         tableScrollPane = new javax.swing.JScrollPane();
         subjectTable = new components.Table();
 
@@ -204,21 +189,21 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
 
         actionWrapper.add(buttonsWrapper, java.awt.BorderLayout.EAST);
 
-        findFaculty.setColumns(20);
-        findFaculty.setFont(new java.awt.Font("Prompt", 1, 14)); // NOI18N
-        findFaculty.setForeground(new java.awt.Color(93, 93, 93));
-        findFaculty.setToolTipText("");
-        findFaculty.setActionCommand("<Not Set>");
-        findFaculty.setAutoscrolls(false);
-        findFaculty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาวิชาเรียน", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Prompt", 0, 12), new java.awt.Color(149, 149, 149))); // NOI18N
-        findFaculty.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        findFaculty.setMargin(new java.awt.Insets(2, 24, 2, 24));
-        findFaculty.addActionListener(new java.awt.event.ActionListener() {
+        findSubject.setColumns(20);
+        findSubject.setFont(new java.awt.Font("Prompt", 1, 14)); // NOI18N
+        findSubject.setForeground(new java.awt.Color(93, 93, 93));
+        findSubject.setToolTipText("");
+        findSubject.setActionCommand("<Not Set>");
+        findSubject.setAutoscrolls(false);
+        findSubject.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาวิชาเรียน", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Prompt", 0, 12), new java.awt.Color(149, 149, 149))); // NOI18N
+        findSubject.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        findSubject.setMargin(new java.awt.Insets(2, 24, 2, 24));
+        findSubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                findFacultyActionPerformed(evt);
+                findSubjectActionPerformed(evt);
             }
         });
-        actionWrapper.add(findFaculty, java.awt.BorderLayout.LINE_START);
+        actionWrapper.add(findSubject, java.awt.BorderLayout.LINE_START);
 
         tableScrollPane.setBorder(null);
 
@@ -275,9 +260,9 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void findFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findFacultyActionPerformed
+    private void findSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findSubjectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_findFacultyActionPerformed
+    }//GEN-LAST:event_findSubjectActionPerformed
 
     private void deleteSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSubjectActionPerformed
         // TODO add your handling code here:
@@ -294,7 +279,7 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
     private javax.swing.JPanel buttonsWrapper;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JButton deleteSubject;
-    private javax.swing.JTextField findFaculty;
+    private javax.swing.JTextField findSubject;
     private javax.swing.JSeparator headerSeparator;
     private javax.swing.JPanel northPanel;
     private javax.swing.JLabel pageHeader;
