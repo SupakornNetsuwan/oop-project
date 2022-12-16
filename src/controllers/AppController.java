@@ -101,8 +101,8 @@ public class AppController implements ActionListener, MouseListener {
         mainFrame.repaint();
     }
 
-    public void switchToMainPanel() {
-        System.out.println("Main page");
+    public void switchToHomePanel() {
+        System.out.println("Home page");
         homePanel = new HomePanel();
         switchTo(homePanel);
     }
@@ -287,7 +287,7 @@ public class AppController implements ActionListener, MouseListener {
             branchStudentManagePanel.createAddNewBranchStudentFrame();
             branchStudentManagePanel.configAddNewBranchStudentFrame();
 
-        }else if (branchStudentManagePanel != null && event.getSource().equals(branchStudentManagePanel.getDeleteStudentBtn())) {
+        } else if (branchStudentManagePanel != null && event.getSource().equals(branchStudentManagePanel.getDeleteStudentBtn())) {
             // Delete student
             branchStudentManagePanel.deleteStudent();
 

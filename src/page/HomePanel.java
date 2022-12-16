@@ -1,20 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package page;
 
-/**
- *
- * @author windows
- */
+import components.Barchart;
+import components.Piechart;
+import javax.swing.*;
+import java.awt.*;
+
 public class HomePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MainPanel2
-     */
+    private Piechart piechart = new Piechart();
+    private Barchart barchart = new Barchart();
+
     public HomePanel() {
         initComponents();
+        init();
+        this.paintChart();
+    }
+
+    public void init() {
+
+    }
+
+    public void paintChart() {
+        this.getPanel1().add(piechart.createPiePanel("อัตราส่วนวิชาที่อาจารย์สอนต่อท่าน"));
+        this.getPanel2().add(barchart.createBarPanel("อัตราส่วนนักศึกษาต่อคณะและสาขา"));
+
+    }
+
+    public JPanel getPanel1() {
+        return panel1;
+    }
+
+    public JPanel getPanel2() {
+        return panel2;
     }
 
     /**
@@ -25,30 +42,57 @@ public class HomePanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        northPanel = new javax.swing.JPanel();
         pageHeader = new javax.swing.JLabel();
         headerSeparator = new javax.swing.JSeparator();
+        centerPanel = new javax.swing.JPanel();
+        panel1 = new javax.swing.JPanel();
+        panel2 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setPreferredSize(new java.awt.Dimension(1000, 720));
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
+        setLayout(new java.awt.BorderLayout());
+
+        northPanel.setBackground(new java.awt.Color(255, 255, 255));
+        northPanel.setLayout(new javax.swing.BoxLayout(northPanel, javax.swing.BoxLayout.PAGE_AXIS));
 
         pageHeader.setFont(new java.awt.Font("Prompt", 1, 28)); // NOI18N
         pageHeader.setForeground(new java.awt.Color(93, 93, 93));
-        pageHeader.setText("ยินดีต้อนรับ");
+        pageHeader.setText("หนัาหลัก");
         pageHeader.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         pageHeader.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        add(pageHeader);
+        northPanel.add(pageHeader);
 
         headerSeparator.setForeground(new java.awt.Color(193, 193, 193));
         headerSeparator.setPreferredSize(new java.awt.Dimension(950, 2));
-        add(headerSeparator);
+        northPanel.add(headerSeparator);
+
+        add(northPanel, java.awt.BorderLayout.PAGE_START);
+
+        centerPanel.setBackground(new java.awt.Color(249, 249, 249));
+        centerPanel.setLayout(new java.awt.GridLayout());
+
+        panel1.setBackground(new java.awt.Color(0, 0, 153));
+        panel1.setLayout(new java.awt.BorderLayout());
+        centerPanel.add(panel1);
+
+        panel2.setBackground(new java.awt.Color(51, 255, 51));
+        panel2.setLayout(new java.awt.BorderLayout());
+        centerPanel.add(panel2);
+
+        add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel centerPanel;
     private javax.swing.JSeparator headerSeparator;
+    private javax.swing.JPanel northPanel;
     private javax.swing.JLabel pageHeader;
+    private javax.swing.JPanel panel1;
+    private javax.swing.JPanel panel2;
     // End of variables declaration//GEN-END:variables
 }

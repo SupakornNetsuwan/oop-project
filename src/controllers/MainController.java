@@ -33,7 +33,7 @@ public class MainController implements ActionListener {
     private void mainAppControllerInit() {
         appController = new AppController(mainFrame); // 1. - create controller
         appController.openMainApp(); // 2. - call open page method
-        appController.switchToMainPanel(); // 3. - Switch to first page
+        appController.switchToHomePanel(); // 3. - Switch to first page
         /* Navbar listener */
         appController.getNavPanel().getMainPageBtn().addActionListener(this);
         appController.getNavPanel().getStudentManageBtn().addActionListener(this);
@@ -59,7 +59,7 @@ public class MainController implements ActionListener {
             /* -------------------- Sidebar (Navbar) -------------------- */
             if (e.getSource().equals(appController.getNavPanel().getMainPageBtn())) {
 
-                appController.switchToMainPanel();
+                appController.switchToHomePanel();
             } else if (e.getSource().equals(appController.getNavPanel().getStudentManageBtn())) {
 
                 appController.switchToStudentManagePanel();
