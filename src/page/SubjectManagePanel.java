@@ -228,9 +228,8 @@ public class SubjectManagePanel extends JPanel implements ActionListener {
             subjectTable.getColumnModel().getColumn(0).setMinWidth(80);
             subjectTable.getColumnModel().getColumn(0).setPreferredWidth(80);
             subjectTable.getColumnModel().getColumn(0).setMaxWidth(80);
-            subjectTable.getColumnModel().getColumn(3).setMinWidth(100);
-            subjectTable.getColumnModel().getColumn(3).setPreferredWidth(100);
-            subjectTable.getColumnModel().getColumn(3).setMaxWidth(100);
+            subjectTable.getColumnModel().getColumn(1).setPreferredWidth(180);
+            subjectTable.getColumnModel().getColumn(3).setPreferredWidth(120);
             subjectTable.getColumnModel().getColumn(5).setMinWidth(100);
             subjectTable.getColumnModel().getColumn(5).setPreferredWidth(100);
             subjectTable.getColumnModel().getColumn(5).setMaxWidth(100);
