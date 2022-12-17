@@ -278,7 +278,7 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
 
             },
             new String [] {
-                "การเลือก", "ชื่อ-นามสกุล", "รหัสนึกศึกษา", "คณะ/สาขา", "เพศ"
+                "การเลือก", "ชื่อ-นามสกุล", "รหัสนักศึกษา", "คณะ/สาขา", "เพศ"
             }
         ) {
             Class[] types = new Class [] {

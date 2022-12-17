@@ -1,12 +1,14 @@
 package components;
 
-import java.awt.Font;
+import java.util.*;
+import java.awt.*;
 import javax.swing.*;
 import org.jfree.chart.*;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieToolTipGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-import java.util.*;
 
 public class Piechart {
     
@@ -32,7 +34,22 @@ public class Piechart {
 
         PiePlot plot = (PiePlot) chart.getPlot();
 
-        plot.setSectionOutlinesVisible(false);
+        plot.setSectionOutlinesVisible(true);
+        plot.setLabelFont(new Font("Prompt", Font.PLAIN, 12));
+        // {0} = professor, {1} = amount, {2} = percentage
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator(
+            "{0}"
+        ));
+//        plot.setToolTipGenerator(new PieToolTipGenerator() {
+//            @Override
+//            public String generateToolTip(PieDataset dataset, Comparable key) {
+//                return key + " - " + dataset.getValue(key) + " คน";
+//            }
+//        });
+        plot.setToolTipGenerator(new StandardPieToolTipGenerator("{0} - {1} คน ({2})"));
+        UIManager.put("ToolTip.background", Color.WHITE);
+        UIManager.put("ToolTip.foreground", Color.BLACK);
+        UIManager.put("ToolTip.font", new Font("Prompt", Font.PLAIN, 12));
 
         plot.setNoDataMessage("ไม่มีข้อมูลให้แสดง");
         return chart;
