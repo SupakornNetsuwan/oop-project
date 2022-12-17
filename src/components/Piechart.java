@@ -11,10 +11,9 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
 public class Piechart {
-    
-    // CREATE THE PIE CHART
 
-    public JPanel createPiePanel(String title, Map<String,Integer> source) {
+    // CREATE THE PIE CHART
+    public JPanel createPiePanel(String title, Map<String, Integer> source) {
         JFreeChart pieChart = createPieChart(createPieDataset(source), title);
         pieChart.getTitle().setFont(new Font("Prompt", Font.BOLD, 24));
         pieChart.getLegend().setItemFont(new Font("Prompt", Font.PLAIN, 12));
@@ -38,7 +37,7 @@ public class Piechart {
         plot.setLabelFont(new Font("Prompt", Font.PLAIN, 12));
         // {0} = professor, {1} = amount, {2} = percentage
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator(
-            "{0}"
+                "{0}"
         ));
 //        plot.setToolTipGenerator(new PieToolTipGenerator() {
 //            @Override
@@ -51,17 +50,17 @@ public class Piechart {
         UIManager.put("ToolTip.foreground", Color.BLACK);
         UIManager.put("ToolTip.font", new Font("Prompt", Font.PLAIN, 12));
 
-        plot.setNoDataMessage("ไม่มีข้อมูลให้แสดง");
+        plot.setNoDataMessage("No professors data available.");
         return chart;
 
     }
 
     // CREATE THE PIE CHART DATA
-    private PieDataset createPieDataset(Map<String,Integer> source) {
+    private PieDataset createPieDataset(Map<String, Integer> source) {
 
         DefaultPieDataset dataset = new DefaultPieDataset();
-        Map<String,Integer> professorSubjects = source;
-        
+        Map<String, Integer> professorSubjects = source;
+
         for (String p : professorSubjects.keySet()) {
             dataset.setValue(p, professorSubjects.get(p));
         }
@@ -69,5 +68,5 @@ public class Piechart {
         return dataset;
 
     }
-    
+
 }

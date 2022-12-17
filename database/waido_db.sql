@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2022 at 08:58 AM
+-- Generation Time: Dec 17, 2022 at 03:05 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -37,19 +37,14 @@ CREATE TABLE `branch` (
 --
 
 INSERT INTO `branch` (`name`, `in_faculty`) VALUES
-('BUIAM', 'Business Management '),
-('BUSIM', 'Business Management '),
+('BBT', 'Business Management'),
+('BMT', 'Business Management'),
+('Chemistry', 'Engineer'),
 ('Computer', 'Engineer'),
-('Electronic', 'Engineer'),
-('Enviroment', 'Engineer'),
-('Material', 'Engineer'),
-('Enviroment Analytic', 'Enviomental Product Design'),
-('Enviroment Investor', 'Enviomental Product Design'),
+('Mechanic', 'Engineer'),
 ('BIT', 'Information Technology'),
 ('DSBA', 'Information Technology'),
-('IT', 'Information Technology'),
-('Health Technology', 'Medical Technology'),
-('Health Wellness', 'Medical Technology');
+('IT', 'Information Technology');
 
 -- --------------------------------------------------------
 
@@ -66,11 +61,9 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`name`) VALUES
-('Business Management '),
+('Business Management'),
 ('Engineer'),
-('Enviomental Product Design'),
-('Information Technology'),
-('Medical Technology');
+('Information Technology');
 
 -- --------------------------------------------------------
 
@@ -81,7 +74,6 @@ INSERT INTO `faculty` (`name`) VALUES
 CREATE TABLE `professor` (
   `fullname` varchar(50) NOT NULL,
   `degree` varchar(50) NOT NULL,
-  `own_subject` varchar(50) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `age` int(10) NOT NULL,
   `phone` varchar(10) NOT NULL
@@ -91,11 +83,10 @@ CREATE TABLE `professor` (
 -- Dumping data for table `professor`
 --
 
-INSERT INTO `professor` (`fullname`, `degree`, `own_subject`, `gender`, `age`, `phone`) VALUES
-('Ajarn\' Bank', 'Ph.D.', 'OOP', 'Male', 31, '0959259515'),
-('lnwza', 'ป.2', '-', 'lnwza', 5, '9999966666'),
-('อาจารย์เอิร์ท', 'ปริญญาประถม', '-', 'ชาย', 20, '0959259515'),
-('อาจารย์ไหม', 'ปริญญาพันเอก', '-', 'หญิง', 22, '0858129214');
+INSERT INTO `professor` (`fullname`, `degree`, `gender`, `age`, `phone`) VALUES
+('Ajarn\' Bank', 'ปริญญาเอก', 'ชาย', 32, '085920125'),
+('Ajarn\' Manp', 'ปริญญาโท', 'ชาย', 55, '0859201925'),
+('Ajarn\' Panwith', 'ปริญญาเอก', 'ชาย', 49, '0859210591');
 
 -- --------------------------------------------------------
 
@@ -118,9 +109,12 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`fullname`, `age`, `gender`, `phone`, `faculty`, `branch`, `student_id`) VALUES
-('นายวชิรพล กลิ่นเกษร', 20, 'ชาย', '0909xxxxx', '-', '-', '64070096'),
-('ศศิธร ศรีจันทร์', 20, 'หญิง', '0857122912', 'Engineer', 'Computer', '64070106'),
-('นายศุภกร เนตรสุวรรณ', 20, 'ชาย', '0959259515', 'Engineer', 'Electronic', '64070108');
+('นายเกวลี ดอกท้อ', 22, 'ชาย', '0859201295', 'Engineer', 'Computer', '62064112'),
+('นายดอกท้อ แสดงดี', 22, 'ชาย', '095819251', 'Engineer', 'Chemistry', '62065107'),
+('นายกมล เหลี่ยม', 20, 'ชาย', '085910294', 'Information Technology', 'BIT', '64070001'),
+('นางสาวศศิธร ศรีจันทร์', 20, 'หญิง', '0859102915', 'Information Technology', 'DSBA', '64070106'),
+('นายศุภกร เนตรสุวรรณ', 20, 'ชาย', '0959259515', 'Information Technology', 'IT', '64070108'),
+('นายเมธาสิน ทรัพย์โสรี', 20, 'ชาย', '0959259515', 'Information Technology', 'IT', '64070112');
 
 -- --------------------------------------------------------
 
@@ -139,12 +133,16 @@ CREATE TABLE `student_in_subject` (
 --
 
 INSERT INTO `student_in_subject` (`id`, `subject`, `student`) VALUES
-(12, 7, '64070106'),
-(13, 9, '64070106'),
-(14, 9, '64070096'),
-(18, 1, '64070108'),
-(20, 8, '64070106'),
-(21, 8, '64070096');
+(46, 41, '64070106'),
+(47, 41, '64070001'),
+(48, 42, '64070108'),
+(49, 42, '64070112'),
+(50, 38, '64070001'),
+(51, 38, '64070106'),
+(52, 38, '64070108'),
+(53, 38, '64070112'),
+(54, 43, '62064112'),
+(57, 41, '62065107');
 
 -- --------------------------------------------------------
 
@@ -165,12 +163,10 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`name`, `subject_id`, `professor_fullname`, `details`, `id`) VALUES
-('OOP', '15', 'Ajarn\' Bank', 'GG', 1),
-('Project', '55500', 'อาจารย์เอิร์ท', '', 7),
-('Waido', '100', 'lnwza', '', 8),
-('Happiness school', '55600', 'อาจารย์ไหม', 'ทดสอบรายการ', 9),
-('xxxxxxx', '1412', 'lnwza', 'saasf', 11),
-('Project', '55500', 'อาจารย์ไหม', 'asesa', 12);
+('Math for IT', '1', 'Ajarn\' Panwith', 'การศึกษาวิชาคณิตศาสตร์', 38),
+('OOP - sec 1', '2', 'Ajarn\' Bank', 'การศึกษาการเขียนโปรแกรมเชิงวัตถุ', 41),
+('OOP - sec 2', '2', 'Ajarn\' Bank', 'การศึกษาการเขียนโปรแกรมเชิงวัตถุ', 42),
+('Web Technology', '3', 'Ajarn\' Manp', 'การศึกษาการเขียนเว็บ', 43);
 
 -- --------------------------------------------------------
 
@@ -249,13 +245,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `student_in_subject`
 --
 ALTER TABLE `student_in_subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Database', AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Database', AUTO_INCREMENT=44;
 
 --
 -- Constraints for dumped tables
