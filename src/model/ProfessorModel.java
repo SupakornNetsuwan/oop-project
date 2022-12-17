@@ -139,7 +139,9 @@ public class ProfessorModel {
                 while (result != null && result.next()) {
                     subjectAmount = Integer.parseInt(result.getString("COUNT(*)"));
                 }
-                professorSubjects.put(p, subjectAmount);
+                if (subjectAmount != 0) {
+                    professorSubjects.put(p, subjectAmount);
+                }
             } catch (SQLException err) {
                 System.out.println(err.getMessage());
             }

@@ -138,7 +138,10 @@ public class FacultyModel {
                         s2.setString(1, branchName);
                         r2 = s2.executeQuery();
                         while (r2 != null && r2.next()) {
-                            branches.put(branchName, Integer.parseInt(r2.getString("COUNT(*)")));
+                            int studentAmount = Integer.parseInt(r2.getString("COUNT(*)"));
+                            if (studentAmount != 0) {
+                                branches.put(branchName, studentAmount);
+                            }
                         }
                     } catch (SQLException err) {
                         System.out.println(err.getMessage());
@@ -147,7 +150,9 @@ public class FacultyModel {
             } catch (SQLException err) {
                 System.out.println(err.getMessage());
             }
-            faculties.put(f, branches);
+            if (!branches.isEmpty()) {
+                faculties.put(f, branches);
+            }
         });
         
 //        System.out.println(faculties);
