@@ -62,7 +62,6 @@ public class SubjectModel {
             statement = con.prepareStatement(sql);
             result = statement.executeQuery();
             while (result != null && result.next()) {
-                QuantityStudent = 0;
                 subject = new Subject();
                 subject.setIdDB(result.getInt("id"));
                 subject.setName(result.getString("name"));
@@ -78,6 +77,7 @@ public class SubjectModel {
                 }
                 subject.setQuantityStudent(QuantityStudent);
                 subjectList.add(subject);
+                QuantityStudent = 0;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -111,7 +111,6 @@ public class SubjectModel {
                         result.getString("details"),
                         0
                 );
-                
                 statement2 = con.prepareStatement("SELECT * FROM student_in_subject WHERE subject = ?");
                 statement2.setString(1, String.valueOf(result.getInt("id")));
                 ResultSet result2 = statement2.executeQuery();
@@ -119,6 +118,7 @@ public class SubjectModel {
                     QuantityStudent++;
                 }
                 subject.setQuantityStudent(QuantityStudent);
+                QuantityStudent = 0;
             }
         }
         catch(SQLException err){

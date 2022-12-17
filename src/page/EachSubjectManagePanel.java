@@ -34,11 +34,10 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
         this.studentAmount.setText(subject.getQuantityStudent() + "");
         this.subjectDetail.setText(subject.getDetail());
     }
-
+    
     public void initTable() {
         ArrayList<Student> students = studentInSubjectModel.studentInSubjectList(this.subjectId);
         getStudentTable().setViewDataBtnColumn(5);
-
         this.getStudentTable().clearTable();
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
@@ -48,6 +47,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
                 this.getStudentTable().addRow(object);
             }
         }
+        initSubjectDetail();
     }
 
     public Table getStudentTable() {
@@ -77,7 +77,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
     public Subject getSubject() {
         return subject;
     }
-
+ 
     public void createAddNewStudenntFrame() {
         this.addNewSubjectStudentFrame = new AddNewSubjectStudentFrame();
         addNewSubjectStudentFrame.getAddStudentBtn().addActionListener(this);
