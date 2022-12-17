@@ -5,7 +5,6 @@ import java.util.*;
 
 public class StudentModel {
 
-    
     private Subject subject;
     private ArrayList<Subject> subjectList;
     private final Connection con = Connect.ConnectDB();
@@ -43,7 +42,7 @@ public class StudentModel {
         }
         return students;
     }
-    
+
     public ArrayList<Student> getStudyInBranch(String branchName) {
         ArrayList<Student> students = new ArrayList();
         try {
@@ -152,7 +151,7 @@ public class StudentModel {
             return false;
         }
     }
-    
+
     public boolean deleteBranch(String studentID) {
         try {
             statement = con.prepareStatement("UPDATE student SET faculty = '-', branch = '-' WHERE student_id = (?)");
@@ -164,7 +163,7 @@ public class StudentModel {
             return false;
         }
     }
-    
+
     public boolean deleteStudent(String studentId) {
         try {
             statement = con.prepareStatement("DELETE FROM student WHERE student_id = (?)");
@@ -226,16 +225,57 @@ public class StudentModel {
         }
         return studentList;
     }
-    
+
     public String[] getRecordsForComboBox() {
-        String[] recordsForComboBox = new String [getStudents().size()+1];
+        String[] recordsForComboBox = new String[getStudents().size() + 1];
         recordsForComboBox[0] = "";
-        for (int i = 1; i < getStudents().size()+1; i++) {
-            recordsForComboBox[i] = getStudents().get(i-1).getFullname() + " ("+getStudents().get(i-1).getStudentId()+")";
+        for (int i = 1; i < getStudents().size() + 1; i++) {
+            recordsForComboBox[i] = getStudents().get(i - 1).getFullname() + " (" + getStudents().get(i - 1).getStudentId() + ")";
         }
         getStudents().clear();
         return recordsForComboBox;
     }
-    
-}
 
+    public StringBuilder exportStudents() {
+        StringBuilder stringBuilder = new StringBuilder();
+        // SQL query
+        try {
+            statement = con.prepareStatement("SELECT * FROM student");
+            result = statement.executeQuery();
+            stringBuilder.append("fullname");
+            stringBuilder.append(",");
+            stringBuilder.append("age");
+            stringBuilder.append(",");
+            stringBuilder.append("gender");
+            stringBuilder.append(",");
+            stringBuilder.append("phone");
+            stringBuilder.append(",");
+            stringBuilder.append("faculty");
+            stringBuilder.append(",");
+            stringBuilder.append("branch");
+            stringBuilder.append(",");
+            stringBuilder.append("student_id");
+            stringBuilder.append("\r\n");
+            while (result != null && result.next()) {
+                stringBuilder.append(result.getString("fullname"));
+                stringBuilder.append(",");
+                stringBuilder.append(result.getString("age"));
+                stringBuilder.append(",");
+                stringBuilder.append(result.getString("gender"));
+                stringBuilder.append(",");
+                stringBuilder.append(result.getString("phone"));
+                stringBuilder.append(",");
+                stringBuilder.append(result.getString("faculty"));
+                stringBuilder.append(",");
+                stringBuilder.append(result.getString("branch"));
+                stringBuilder.append(",");
+                stringBuilder.append(result.getString("student_id"));
+                stringBuilder.append("\r\n");
+            }
+        } catch (SQLException err) {
+            System.out.println("ERR : " + err.getMessage());
+        }
+        return stringBuilder;
+    }
+
+}

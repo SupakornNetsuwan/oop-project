@@ -1,22 +1,31 @@
 package frame;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import components.MenuBar;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ActionListener {
+
     private MenuBar menuBar = new MenuBar();
 
     public MainFrame() {
         initComponents();
         initMenuBar();
     }
-    
-    public void initMenuBar(){
+
+    public void initMenuBar() {
         this.setJMenuBar(menuBar);
+        menuBar.getExportStudent().addActionListener(this);
     }
-    
-    
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource().equals(menuBar.getExportStudent())) {
+            menuBar.exportStudents();
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
