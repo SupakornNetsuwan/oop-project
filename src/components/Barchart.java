@@ -16,7 +16,7 @@ public class Barchart {
         JFreeChart barChart = ChartFactory.createBarChart(
                 title,
                 null,
-                "Score",
+                "จำนวนนักศึกษา",
                 createDataset(source),
                 PlotOrientation.HORIZONTAL,
                 true, true, false);
