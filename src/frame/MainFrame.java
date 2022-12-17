@@ -7,16 +7,20 @@ import components.MenuBar;
 
 public class MainFrame extends JFrame implements ActionListener {
 
-    private MenuBar menuBar = new MenuBar();
+    private MenuBar menuBar;
 
     public MainFrame() {
         initComponents();
-        initMenuBar();
     }
 
-    public void initMenuBar() {
+    public void displayMenuBar() {
+        menuBar = new MenuBar();
         this.setJMenuBar(menuBar);
         menuBar.getExportStudent().addActionListener(this);
+    }
+
+    public void removeMenuBar() {
+        this.setJMenuBar(null);
     }
 
     @Override

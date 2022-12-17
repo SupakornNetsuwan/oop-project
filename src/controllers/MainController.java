@@ -31,6 +31,7 @@ public class MainController implements ActionListener {
     }
 
     private void mainAppControllerInit() {
+        mainFrame.displayMenuBar();
         appController = new AppController(mainFrame); // 1. - create controller
         appController.openMainApp(); // 2. - call open page method
         appController.switchToHomePanel(); // 3. - Switch to first page
@@ -76,6 +77,7 @@ public class MainController implements ActionListener {
 
                 int x = JOptionPane.showConfirmDialog(mainFrame, "Confirm Logout", "Make sure you want to Logout?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/logout2.png")));
                 if (x == 0) {
+                    mainFrame.removeMenuBar();
                     this.loginControllerInit();
                 }
             }
