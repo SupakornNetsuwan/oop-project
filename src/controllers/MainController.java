@@ -20,7 +20,7 @@ public class MainController implements ActionListener {
         loginControllerInit(); // start with login page
 
         // Dev enviroment method !! do not use on production
-//        this.mainAppControllerInit();
+        this.mainAppControllerInit();
     }
 
     private void loginControllerInit() {

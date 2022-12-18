@@ -31,8 +31,8 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
             Object[] object = {null, student.getFullname(), student.getStudentId(), student.getFaculty() + "/" + student.getBranch(), student.getGender()};
-            if((String.valueOf(object[1]).contains(this.getFindStudent().getText())) || (String.valueOf(object[2]).contains(this.getFindStudent().getText()))
-            || (String.valueOf(object[3]).contains(this.getFindStudent().getText())) || (String.valueOf(object[4]).contains(this.getFindStudent().getText()))){
+            if ((String.valueOf(object[1]).contains(this.getFindStudent().getText())) || (String.valueOf(object[2]).contains(this.getFindStudent().getText()))
+                    || (String.valueOf(object[3]).contains(this.getFindStudent().getText())) || (String.valueOf(object[4]).contains(this.getFindStudent().getText()))) {
                 this.getStudentTable().addRow(object);
             }
         }
@@ -61,7 +61,7 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
     public JTextField getFindStudent() {
         return findStudent;
     }
-    
+
     public JLabel getGoBackLabel() {
         return this.goBackLabel;
     }
@@ -95,10 +95,13 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
             // Clicked on add new subject btn
             // check in DB
             String studentName = addNewBranchStudentFrame.getStudentNameComboBox().getSelectedItem().toString();
-            String[] studentNameSplit = studentName.split("\\(",2);
+            String[] studentNameSplit = studentName.split("\\(", 2);
+
+            StringBuffer sliceLastChar = new StringBuffer(studentNameSplit[1]);
+            String studentId = sliceLastChar.deleteCharAt(sliceLastChar.length() - 1).toString();
 
             if (!studentName.isBlank()) {
-                if (!studentModel.updateStudent(studentNameSplit[0], facultyNameHeader.getText(), branchNameHeader.getText())) {
+                if (!studentModel.updateStudent(studentId, facultyNameHeader.getText(), branchNameHeader.getText())) {
                     JOptionPane.showMessageDialog(addNewBranchStudentFrame, "Error, make sure your data is correctly", "Error!", JOptionPane.ERROR_MESSAGE);
                     return;
                 }

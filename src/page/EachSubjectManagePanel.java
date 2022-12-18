@@ -43,8 +43,8 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
             Object[] object = {null, student.getFullname(), student.getStudentId(), student.getFaculty() + "/" + student.getBranch(), student.getGender()};
-            if((String.valueOf(object[1]).contains(this.getFindStudent().getText())) || (String.valueOf(object[2]).contains(this.getFindStudent().getText()))
-            || (String.valueOf(object[3]).contains(this.getFindStudent().getText())) || (String.valueOf(object[4]).contains(this.getFindStudent().getText()))){
+            if ((String.valueOf(object[1]).contains(this.getFindStudent().getText())) || (String.valueOf(object[2]).contains(this.getFindStudent().getText()))
+                    || (String.valueOf(object[3]).contains(this.getFindStudent().getText())) || (String.valueOf(object[4]).contains(this.getFindStudent().getText()))) {
                 this.getStudentTable().addRow(object);
             }
         }
@@ -65,7 +65,7 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
     public JTextField getFindStudent() {
         return findStudent;
     }
-    
+
     public JLabel getGoBackLabel() {
         return this.goBackLabel;
     }
@@ -107,7 +107,10 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
             String studentName = (String) addNewSubjectStudentFrame.getStudentNameComboBox().getSelectedItem();
             String[] studentNameSplit = studentName.split("\\(", 2);
 
-            if (!studentInSubjectModel.addStudentToSubject(subjectId, studentNameSplit[0])) {
+            StringBuffer sliceLastChar = new StringBuffer(studentNameSplit[1]);
+            String studentId = sliceLastChar.deleteCharAt(sliceLastChar.length() - 1).toString();
+
+            if (!studentInSubjectModel.addStudentToSubject(subjectId, studentId)) {
                 new AlertFrame(addNewSubjectStudentFrame, "ผู้เรียนคนนี้อาจจะถูกเพิ่มในรายวิชาแล้ว", "ไม่สามารถเพิ่มผู้เรียนได้");
                 return;
             }

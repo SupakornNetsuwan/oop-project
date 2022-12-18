@@ -18,12 +18,12 @@ public class StudentInSubjectModel {
 
     }
 
-    public boolean addStudentToSubject(String subjectId, String studentFullname) {
+    public boolean addStudentToSubject(String subjectId, String studentId) {
         try {
-            Student student = studentModel.getStudentFromFullname(studentFullname);
+
             statement = con.prepareStatement("SELECT * FROM student_in_subject WHERE (subject=(?) AND student=(?))");
             statement.setString(1, subjectId);
-            statement.setString(2, student.getStudentId());
+            statement.setString(2, studentId);
             result = statement.executeQuery();
 
             if (result.next()) {
@@ -34,7 +34,7 @@ public class StudentInSubjectModel {
 
             statement = con.prepareStatement("INSERT INTO student_in_subject (subject, student) VALUES (?, ?)");
             statement.setString(1, subjectId);
-            statement.setString(2, student.getStudentId());
+            statement.setString(2, studentId);
             statement.executeUpdate();
             return true;
         } catch (SQLException err) {

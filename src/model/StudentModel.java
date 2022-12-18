@@ -138,12 +138,12 @@ public class StudentModel {
         }
     }
 
-    public boolean updateStudent(String studentName, String studentFaculty, String studentBranch) {
+    public boolean updateStudent(String studentId, String studentFaculty, String studentBranch) {
         try {
-            statement = con.prepareStatement("UPDATE student SET faculty = (?), branch = (?) WHERE fullname = (?)");
+            statement = con.prepareStatement("UPDATE student SET faculty = (?), branch = (?) WHERE student_id = (?)");
             statement.setString(1, studentFaculty);
             statement.setString(2, studentBranch);
-            statement.setString(3, studentName);
+            statement.setString(3, studentId);
             statement.executeUpdate();
             return true;
         } catch (SQLException err) {
