@@ -264,7 +264,7 @@ public class BranchStudentManagePanel extends JPanel implements ActionListener {
         findStudent.setToolTipText("");
         findStudent.setActionCommand("<Not Set>");
         findStudent.setAutoscrolls(false);
-        findStudent.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหาผู้เรียน", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Prompt", 0, 12), new java.awt.Color(149, 149, 149))); // NOI18N
+        findStudent.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ค้นหานักศึกษา ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Prompt", 0, 12), new java.awt.Color(149, 149, 149))); // NOI18N
         findStudent.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         findStudent.setMargin(new java.awt.Insets(2, 24, 2, 24));
         findStudent.addActionListener(new java.awt.event.ActionListener() {
