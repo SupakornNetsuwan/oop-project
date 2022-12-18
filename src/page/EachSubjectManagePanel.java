@@ -93,9 +93,11 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
             if (selected == null) {
                 selected = false;
             }
-            String studentFullname = this.getStudentTable().getModel().getValueAt(i, 1).toString();
+            String studentId = this.getStudentTable().getModel().getValueAt(i, 2).toString();
+            
+            
             if (selected) {
-                studentInSubjectModel.deleteStudentFromSubject(subjectId, studentFullname);
+                studentInSubjectModel.deleteStudentFromSubject(subjectId, studentId);
             }
         }
         this.initTable();
@@ -365,8 +367,8 @@ public class EachSubjectManagePanel extends JPanel implements ActionListener {
                     .addComponent(studentAmount)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
