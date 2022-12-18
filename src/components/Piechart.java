@@ -45,7 +45,7 @@ public class Piechart {
 //                return key + " - " + dataset.getValue(key) + " คน";
 //            }
 //        });
-        plot.setToolTipGenerator(new StandardPieToolTipGenerator("{0} - {1} คน ({2})"));
+        plot.setToolTipGenerator(new StandardPieToolTipGenerator("{0} - {1} วิชา ({2})"));
         UIManager.put("ToolTip.background", Color.WHITE);
         UIManager.put("ToolTip.foreground", Color.BLACK);
         UIManager.put("ToolTip.font", new Font("Prompt", Font.PLAIN, 12));
