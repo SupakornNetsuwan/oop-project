@@ -75,7 +75,7 @@ public class FacultyModel {
         }
     }
 
-    public void readFaculty() {
+    public void selectFaculty() {
         sql = "SELECT * FROM faculty";
         try {
             statement = con.prepareStatement(sql);
@@ -100,7 +100,7 @@ public class FacultyModel {
     }
 
     public Object[][] getRecordsForTableContent() {
-        readFaculty();
+        selectFaculty();
         Object[][] recordsForTableContent = new Object[facultyList.size()][4];
         for (int i = 0; i < facultyList.size(); i++) {
             Object[] eachFaculty = {false, facultyList.get(i).getNameFaculty(), facultyList.get(i).getQuantity(), null};

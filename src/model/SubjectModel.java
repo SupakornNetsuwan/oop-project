@@ -56,7 +56,7 @@ public class SubjectModel {
         }
     }
 
-    public void readSubject() {
+    public void selectSubject() {
         sql = "SELECT * FROM subject";
         try {
             statement = con.prepareStatement(sql);
@@ -85,7 +85,7 @@ public class SubjectModel {
     }
 
     public Object[][] getSubjects() {
-        readSubject();
+        selectSubject();
         Object[][] recordsForTableContent = new Object[subjectList.size()][6];
         for (int i = 0; i < subjectList.size(); i++) {
             Object[] eachSubject = {false, subjectList.get(i).getName(), subjectList.get(i).getId(), subjectList.get(i).getProfessorName(), subjectList.get(i).getQuantityStudent(), subjectList.get(i).getIdDB()};

@@ -84,7 +84,7 @@ public class BranchModel {
         }
     }
     
-    public void readBranch(String inFaculty) {
+    public void selectBranch(String inFaculty) {
         try {
             statement = con.prepareStatement("SELECT * FROM branch WHERE in_faculty = ?");
             statement.setString(1, inFaculty);
@@ -110,7 +110,7 @@ public class BranchModel {
             }
 
     public Object[][] getRecordsForTableContent() {
-        readBranch(inFaculty);
+        selectBranch(inFaculty);
         Object[][] recordsForTableContent = new Object[branchList.size()][4];
 
         for (int i = 0; i < branchList.size(); i++) {
