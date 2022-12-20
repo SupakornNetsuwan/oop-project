@@ -12,7 +12,8 @@ public class MainFrame extends JFrame implements ActionListener {
     public MainFrame() {
         initComponents();
     }
-
+    
+    
     public void displayMenuBar() {
         menuBar = new MenuBar();
         this.setJMenuBar(menuBar);
@@ -113,6 +114,7 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     public void config() {
+        setIconImage(new ImageIcon("/icons/WD.png").getImage());
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);

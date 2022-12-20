@@ -155,7 +155,7 @@ public class LoginPage extends javax.swing.JPanel {
 
         paswordField1.setFont(new java.awt.Font("Prompt", 0, 20)); // NOI18N
         paswordField1.setForeground(new java.awt.Color(153, 153, 153));
-        paswordField1.setToolTipText("Password");
+        paswordField1.setToolTipText("password");
         paswordField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Prompt", 1, 18), new java.awt.Color(102, 102, 102))); // NOI18N
         paswordField1.setMargin(new java.awt.Insets(10, 25, 10, 25));
         paswordField1.addActionListener(new java.awt.event.ActionListener() {
