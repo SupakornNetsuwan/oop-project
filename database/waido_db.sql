@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2022 at 03:05 PM
+-- Generation Time: Dec 20, 2022 at 12:09 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -44,7 +44,8 @@ INSERT INTO `branch` (`name`, `in_faculty`) VALUES
 ('Mechanic', 'Engineer'),
 ('BIT', 'Information Technology'),
 ('DSBA', 'Information Technology'),
-('IT', 'Information Technology');
+('IT', 'Information Technology'),
+('Nurse', 'Medical');
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,8 @@ CREATE TABLE `faculty` (
 INSERT INTO `faculty` (`name`) VALUES
 ('Business Management'),
 ('Engineer'),
-('Information Technology');
+('Information Technology'),
+('Medical');
 
 -- --------------------------------------------------------
 
@@ -85,6 +87,8 @@ CREATE TABLE `professor` (
 
 INSERT INTO `professor` (`fullname`, `degree`, `gender`, `age`, `phone`) VALUES
 ('Ajarn\' Bank', 'ปริญญาเอก', 'ชาย', 32, '085920125'),
+('Ajarn\' DoctorX', 'ปริญญาเอก', 'ชาย', 44, '0959525151'),
+('Ajarn\' Get', 'ปริญญาเอก (Oxford)', 'ชาย', 21, '0859591201'),
 ('Ajarn\' Manp', 'ปริญญาโท', 'ชาย', 55, '0859201925'),
 ('Ajarn\' Panwith', 'ปริญญาเอก', 'ชาย', 49, '0859210591');
 
@@ -109,12 +113,19 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`fullname`, `age`, `gender`, `phone`, `faculty`, `branch`, `student_id`) VALUES
+('นายเอกอนทร์ สอนทดเลข', 24, 'ชาย', '0859291951', 'Business Management', 'BBT', '61070101'),
+('นายเอกอนทร์ สอนทดเลข', 23, 'ชาย', '0859291951', 'Engineer', 'Mechanic', '61070102'),
 ('นายเกวลี ดอกท้อ', 22, 'ชาย', '0859201295', 'Engineer', 'Computer', '62064112'),
 ('นายดอกท้อ แสดงดี', 22, 'ชาย', '095819251', 'Engineer', 'Chemistry', '62065107'),
+('นายสวัสดิภาพ แสนทรัพย์', 21, 'ชาย', '0895210512', 'Business Management', 'BBT', '63061210'),
 ('นายกมล เหลี่ยม', 20, 'ชาย', '085910294', 'Information Technology', 'BIT', '64070001'),
 ('นางสาวศศิธร ศรีจันทร์', 20, 'หญิง', '0859102915', 'Information Technology', 'DSBA', '64070106'),
 ('นายศุภกร เนตรสุวรรณ', 20, 'ชาย', '0959259515', 'Information Technology', 'IT', '64070108'),
-('นายเมธาสิน ทรัพย์โสรี', 20, 'ชาย', '0959259515', 'Information Technology', 'IT', '64070112');
+('นายเมธาสิน ทรัพย์โสรี', 20, 'ชาย', '0959259515', 'Information Technology', 'IT', '64070112'),
+('นายเสรีนอน สอนศิรินทร์', 20, 'ชาย', '0859201951', 'Engineer', 'Computer', '64070192'),
+('นายเสรีนอน สอนศิรินทร์', 22, 'ชาย', '0859281951', 'Business Management', 'BMT', '64070193'),
+('นางสาวสุมาศ ชาเนล', 20, 'หญิง', '0857690124', 'Business Management', 'BBT', '64070196'),
+('นางสาว xxx yyyy', 21, 'หญิง', '0959259515', 'Medical', 'Nurse', '64070197');
 
 -- --------------------------------------------------------
 
@@ -134,15 +145,31 @@ CREATE TABLE `student_in_subject` (
 
 INSERT INTO `student_in_subject` (`id`, `subject`, `student`) VALUES
 (46, 41, '64070106'),
-(47, 41, '64070001'),
 (48, 42, '64070108'),
-(49, 42, '64070112'),
-(50, 38, '64070001'),
-(51, 38, '64070106'),
-(52, 38, '64070108'),
-(53, 38, '64070112'),
 (54, 43, '62064112'),
-(57, 41, '62065107');
+(57, 41, '62065107'),
+(58, 44, '64070192'),
+(59, 44, '64070001'),
+(61, 41, '64070112'),
+(62, 41, '64070192'),
+(65, 43, '64070001'),
+(68, 43, '64070193'),
+(70, 41, '64070193'),
+(74, 41, '61070101'),
+(76, 44, '61070101'),
+(80, 38, '61070101'),
+(81, 38, '61070102'),
+(82, 38, '62064112'),
+(83, 38, '62065107'),
+(84, 38, '63061210'),
+(85, 38, '64070001'),
+(86, 38, '64070106'),
+(90, 38, '64070192'),
+(91, 38, '64070112'),
+(92, 38, '64070108'),
+(101, 47, '64070193'),
+(102, 47, '64070196'),
+(103, 41, '64070196');
 
 -- --------------------------------------------------------
 
@@ -166,7 +193,9 @@ INSERT INTO `subject` (`name`, `subject_id`, `professor_fullname`, `details`, `i
 ('Math for IT', '1', 'Ajarn\' Panwith', 'การศึกษาวิชาคณิตศาสตร์', 38),
 ('OOP - sec 1', '2', 'Ajarn\' Bank', 'การศึกษาการเขียนโปรแกรมเชิงวัตถุ', 41),
 ('OOP - sec 2', '2', 'Ajarn\' Bank', 'การศึกษาการเขียนโปรแกรมเชิงวัตถุ', 42),
-('Web Technology', '3', 'Ajarn\' Manp', 'การศึกษาการเขียนเว็บ', 43);
+('Web Technology', '3', 'Ajarn\' Manp', 'การศึกษาการเขียนเว็บ', 43),
+('Design Thinking', '21', 'Ajarn\' Panwith', 'การคิด', 44),
+('World of Sausage', '41', 'Ajarn\' Get', 'การทำไส้กรอกสุดมหัศจรรย์', 47);
 
 -- --------------------------------------------------------
 
@@ -245,13 +274,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `student_in_subject`
 --
 ALTER TABLE `student_in_subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Database', AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Database', AUTO_INCREMENT=56;
 
 --
 -- Constraints for dumped tables
