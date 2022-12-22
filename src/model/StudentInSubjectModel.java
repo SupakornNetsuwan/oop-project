@@ -42,11 +42,6 @@ public class StudentInSubjectModel {
         }
         return false;
     }
-
-//    public static void main(String args[]){
-//        StudentInSubjectModel studentInSubjectModel = new StudentInSubjectModel();
-//        studentInSubjectModel.addStudentToSubject("7","นายศุภกร เนตรสุวรรณ");
-//    }
     public boolean deleteStudentFromSubject(String subjectId, String studentId) {
         try {
             String sql = "DELETE FROM student_in_subject WHERE subject=" + subjectId + " AND student=" + studentId;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2022 at 12:09 PM
+-- Generation Time: Dec 22, 2022 at 04:08 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -42,10 +42,10 @@ INSERT INTO `branch` (`name`, `in_faculty`) VALUES
 ('Chemistry', 'Engineer'),
 ('Computer', 'Engineer'),
 ('Mechanic', 'Engineer'),
+('Nurse', 'Faculty of Medicine'),
 ('BIT', 'Information Technology'),
 ('DSBA', 'Information Technology'),
-('IT', 'Information Technology'),
-('Nurse', 'Medical');
+('IT', 'Information Technology');
 
 -- --------------------------------------------------------
 
@@ -64,8 +64,8 @@ CREATE TABLE `faculty` (
 INSERT INTO `faculty` (`name`) VALUES
 ('Business Management'),
 ('Engineer'),
-('Information Technology'),
-('Medical');
+('Faculty of Medicine'),
+('Information Technology');
 
 -- --------------------------------------------------------
 
@@ -87,10 +87,10 @@ CREATE TABLE `professor` (
 
 INSERT INTO `professor` (`fullname`, `degree`, `gender`, `age`, `phone`) VALUES
 ('Ajarn\' Bank', 'ปริญญาเอก', 'ชาย', 32, '085920125'),
-('Ajarn\' DoctorX', 'ปริญญาเอก', 'ชาย', 44, '0959525151'),
 ('Ajarn\' Get', 'ปริญญาเอก (Oxford)', 'ชาย', 21, '0859591201'),
 ('Ajarn\' Manp', 'ปริญญาโท', 'ชาย', 55, '0859201925'),
-('Ajarn\' Panwith', 'ปริญญาเอก', 'ชาย', 49, '0859210591');
+('Ajarn\' Panwith', 'ปริญญาเอก', 'ชาย', 49, '0859210591'),
+('Doctor\' x', 'ปริญญาเอก', 'ชาย', 40, '0857271212');
 
 -- --------------------------------------------------------
 
@@ -125,7 +125,7 @@ INSERT INTO `student` (`fullname`, `age`, `gender`, `phone`, `faculty`, `branch`
 ('นายเสรีนอน สอนศิรินทร์', 20, 'ชาย', '0859201951', 'Engineer', 'Computer', '64070192'),
 ('นายเสรีนอน สอนศิรินทร์', 22, 'ชาย', '0859281951', 'Business Management', 'BMT', '64070193'),
 ('นางสาวสุมาศ ชาเนล', 20, 'หญิง', '0857690124', 'Business Management', 'BBT', '64070196'),
-('นางสาว xxx yyyy', 21, 'หญิง', '0959259515', 'Medical', 'Nurse', '64070197');
+('นางสาวxxx uuu', 21, 'หญิง', '0959255151', 'Faculty of Medicine', 'Nurse', '64070198');
 
 -- --------------------------------------------------------
 
@@ -169,7 +169,8 @@ INSERT INTO `student_in_subject` (`id`, `subject`, `student`) VALUES
 (92, 38, '64070108'),
 (101, 47, '64070193'),
 (102, 47, '64070196'),
-(103, 41, '64070196');
+(103, 41, '64070196'),
+(107, 56, '64070198');
 
 -- --------------------------------------------------------
 
@@ -195,7 +196,8 @@ INSERT INTO `subject` (`name`, `subject_id`, `professor_fullname`, `details`, `i
 ('OOP - sec 2', '2', 'Ajarn\' Bank', 'การศึกษาการเขียนโปรแกรมเชิงวัตถุ', 42),
 ('Web Technology', '3', 'Ajarn\' Manp', 'การศึกษาการเขียนเว็บ', 43),
 ('Design Thinking', '21', 'Ajarn\' Panwith', 'การคิด', 44),
-('World of Sausage', '41', 'Ajarn\' Get', 'การทำไส้กรอกสุดมหัศจรรย์', 47);
+('World of Sausage', '41', 'Ajarn\' Get', 'การทำไส้กรอกสุดมหัศจรรย์', 47),
+('การทำกายภาพ', '750105', 'Doctor\' x', 'การทำกายภาพพื้นฐาน', 56);
 
 -- --------------------------------------------------------
 
@@ -274,13 +276,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `student_in_subject`
 --
 ALTER TABLE `student_in_subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Database', AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID Database', AUTO_INCREMENT=57;
 
 --
 -- Constraints for dumped tables

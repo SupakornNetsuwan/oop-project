@@ -51,7 +51,6 @@ public class FacultyModel {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-//            e.printStackTrace();
             System.out.println(e.getMessage());
             return false;
         }
@@ -69,7 +68,6 @@ public class FacultyModel {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-//            e.printStackTrace();
             System.out.println(e.getMessage());
             return false;
         }
@@ -155,7 +153,6 @@ public class FacultyModel {
             }
         });
         
-//        System.out.println(faculties);
         return faculties;
     }
 

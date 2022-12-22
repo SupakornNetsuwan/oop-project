@@ -46,7 +46,6 @@ public class BranchModel {
             statement.executeUpdate();
             return true;
         } catch (SQLException e) {
-//            e.printStackTrace();
             System.out.println(e.getMessage());
             return false;
         }
@@ -62,7 +61,6 @@ public class BranchModel {
             statement2.executeUpdate();
             return true;
         } catch (SQLException e) {
-//            e.printStackTrace();
             System.out.println(e.getMessage());
             return false;
         }
@@ -78,7 +76,6 @@ public class BranchModel {
             statement2.executeUpdate();
             return true;
         } catch (SQLException e) {
-//            e.printStackTrace();
             System.out.println(e.getMessage());
             return false;
         }
@@ -104,7 +101,6 @@ public class BranchModel {
             
             }
         } catch (SQLException e) {
-//            e.printStackTrace();
              System.out.println(e.getMessage());
         }
             }
