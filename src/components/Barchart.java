@@ -31,7 +31,7 @@ public class Barchart {
         barChart.getTitle().setFont(new Font("Prompt", Font.BOLD, 24));
 //        barChart.getLegend().setItemFont(new Font("Prompt", Font.PLAIN, 12));
         
-        CategoryPlot plot = (CategoryPlot) barChart.getCategoryPlot();
+        CategoryPlot plot = (CategoryPlot) barChart.getCategoryPlot(); // advabce customization by using plot
         // Y AXIS (Faculty)
         plot.getDomainAxis().setLabelFont(new Font("Prompt", Font.BOLD, 12));
         plot.getDomainAxis().setTickLabelFont(new Font("Prompt", Font.PLAIN, 12));
@@ -87,6 +87,4 @@ public class Barchart {
             return this.colors[col % this.colors.length];
         }
     }
-    
-
 }

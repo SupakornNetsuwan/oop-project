@@ -156,7 +156,7 @@ public class AppController implements ActionListener, MouseListener {
         studentManagePanel.getAddStudentBtn().addActionListener(this);
         studentManagePanel.getDeleteStudentBtn().addActionListener(this);
         studentManagePanel.getFindStudent().addActionListener(this);
-        studentManagePanel.getStudentTable().addMouseListener(this);    
+        studentManagePanel.getStudentTable().addMouseListener(this);
     }
 
     public void switchToEachStudentManagePanel(String student_id) {
@@ -189,11 +189,12 @@ public class AppController implements ActionListener, MouseListener {
         eachSubjectManagePanel = new EachSubjectManagePanel(subjectId);
         switchTo(eachSubjectManagePanel);
         eachSubjectManagePanel.initTable();
-
+        ////////////////////////////////////////
         eachSubjectManagePanel.getAddStudentBtn().addActionListener(this);
         eachSubjectManagePanel.getDeleteStudentBtn().addActionListener(this);
         eachSubjectManagePanel.getFindStudent().addActionListener(this);
         eachSubjectManagePanel.getGoBackLabel().addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
                 switchTo(subjectManagePanel);
                 subjectManagePanel.initTable();
@@ -261,7 +262,6 @@ public class AppController implements ActionListener, MouseListener {
         mainFrame.repaint();
     }
 
-
     /* Action methods */
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -276,7 +276,7 @@ public class AppController implements ActionListener, MouseListener {
             facultyManagePanel.deleteFaculty();
         } else if (facultyManagePanel != null && event.getSource().equals(facultyManagePanel.getFindFacultyTextField())) {
             facultyManagePanel.initTable();
-            
+
         } else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getAddBranchBtn())) {
             /* --------------------   Faculty -> Branch page   -------------------- */
             branchManagePanel.createAddNewBranchFrame();
@@ -284,9 +284,9 @@ public class AppController implements ActionListener, MouseListener {
         } else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getDeleteBranchBtn())) {
             // Delete a branch
             branchManagePanel.deleteBranch();
-        }else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getFindBranch())) {
+        } else if (branchManagePanel != null && event.getSource().equals(branchManagePanel.getFindBranch())) {
             branchManagePanel.initTable();
-            
+
         } else if (branchStudentManagePanel != null && event.getSource().equals(branchStudentManagePanel.getAddStudentBtn())) {
             /* --------------------   Branch -> Add Student   -------------------- */
             branchStudentManagePanel.createAddNewBranchStudentFrame();
@@ -297,7 +297,7 @@ public class AppController implements ActionListener, MouseListener {
             branchStudentManagePanel.deleteStudent();
         } else if (branchStudentManagePanel != null && event.getSource().equals(branchStudentManagePanel.getFindStudent())) {
             branchStudentManagePanel.initTable();
-            
+
         } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getAddSubjectBtn())) {
             /* --------------------   Subject page   -------------------- */
             subjectManagePanel.createAddNewSubjectFrame();
@@ -307,17 +307,17 @@ public class AppController implements ActionListener, MouseListener {
             subjectManagePanel.deleteSubject();
         } else if (subjectManagePanel != null && event.getSource().equals(subjectManagePanel.getFindSubject())) {
             subjectManagePanel.initTable();
-            
+
         } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getAddStudentBtn())) {
             /* --------------------   Subject page   -------------------- */
             studentManagePanel.createAddNewStudentFrame();
             studentManagePanel.configAddNewStudentFrame();
         } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getDeleteStudentBtn())) {
             // Delete a subject
-            studentManagePanel.deleteStudent(); 
+            studentManagePanel.deleteStudent();
         } else if (studentManagePanel != null && event.getSource().equals(studentManagePanel.getFindStudent())) {
             studentManagePanel.initTable();
-            
+
         } else if (professorManagePanel != null && event.getSource().equals(professorManagePanel.getAddProfessorBtn())) {
             /* --------------------   Professor page   -------------------- */
             professorManagePanel.createAddNewProfessorFrame();
@@ -327,7 +327,7 @@ public class AppController implements ActionListener, MouseListener {
             professorManagePanel.deleteProfessor();
         } else if (professorManagePanel != null && event.getSource().equals(professorManagePanel.getFindProfessor())) {
             professorManagePanel.initTable();
-            
+
         } else if (eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getAddStudentBtn())) {
             /* --------------------   Each subjet page   -------------------- */
             eachSubjectManagePanel.createAddNewStudenntFrame();
@@ -336,7 +336,7 @@ public class AppController implements ActionListener, MouseListener {
             eachSubjectManagePanel.deleteStudent();
         } else if (eachSubjectManagePanel != null && event.getSource().equals(eachSubjectManagePanel.getFindStudent())) {
             eachSubjectManagePanel.initTable();
-            
+
         }
     }
 
@@ -346,35 +346,9 @@ public class AppController implements ActionListener, MouseListener {
             // Obtain row and column indexes the user clicked.
             int row = facultyManagePanel.getFacultyTable().rowAtPoint(e.getPoint());
             int col = facultyManagePanel.getFacultyTable().columnAtPoint(e.getPoint());
-
             if (col == 3) {
-                // Check if user clicks the cell that the JButton is located,
-                // then show the data of that row in JOptionPane.
-
-//                            System.out.println("Clicked a button. [" + row + ", " + col + "]");
-//                            String str = "isSelected: " + facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 0) + "\n"
-//                                    + "name: " + facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 1) + "\n"
-//                                    + "amount: " + facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 2);
-//                            JOptionPane.showMessageDialog(null, str);
                 switchToBranchManagePanel((String) facultyManagePanel.getFacultyTable().getModel().getValueAt(row, 1));
-//                    branchManagePanel.setNameFaculty();
                 System.out.println(branchManagePanel.getNameFaculty());
-
-            } else {
-                // When user ticks JCheckBox, print all row names that has
-                // JCheckBox ticked on console.
-                String toShow = "selected:";
-                for (int i = 0; i < facultyManagePanel.getFacultyTable().getRowCount(); i++) {
-                    Boolean selected = (Boolean) facultyManagePanel.getFacultyTable().getModel().getValueAt(i, 0);
-                    if (selected == null) {
-                        selected = false;
-                    }
-                    String name = facultyManagePanel.getFacultyTable().getModel().getValueAt(i, 1).toString();
-                    if (selected) {
-                        toShow += " " + name;
-                    }
-                }
-                System.out.println(toShow);
             }
         } else if (studentManagePanel != null && e.getSource().equals(studentManagePanel.getStudentTable())) {
             int row = studentManagePanel.getStudentTable().rowAtPoint(e.getPoint());

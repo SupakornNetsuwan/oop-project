@@ -3,7 +3,6 @@ package controllers;
 import java.awt.event.*;
 import javax.swing.*;
 import frame.MainFrame;
-import model.UserModel;
 
 public class MainController implements ActionListener {
 
@@ -12,7 +11,6 @@ public class MainController implements ActionListener {
     private AppController appController;
     /* Primary frame */
     public static MainFrame mainFrame;
-    private UserModel user;
 
     public MainController() {
         mainFrame = new MainFrame();

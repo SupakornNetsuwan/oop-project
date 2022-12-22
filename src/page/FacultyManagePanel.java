@@ -23,7 +23,7 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
         //String tableHeader[] = {"การเลือก", "ชื่อคณะ", "จำนวนสาขา", "ดูข้อมูล"};
         this.getFacultyTable().clearTable();
         for (Object[] tableRow : tableRows) {
-            if(String.valueOf(tableRow[1]).contains(this.getFindFacultyTextField().getText())){
+            if (String.valueOf(tableRow[1]).contains(this.getFindFacultyTextField().getText())) {
                 this.getFacultyTable().addRow(tableRow);
             }
         }
@@ -47,7 +47,7 @@ public class FacultyManagePanel extends JPanel implements ActionListener {
 
     public JTextField getFindFacultyTextField() {
         return findFacultyTextField;
-    }    
+    }
 
     public AddNewFacultyFrame getAddNewFacultyFrame() {
         return this.addNewFacultyFrame;

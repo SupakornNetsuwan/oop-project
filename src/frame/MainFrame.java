@@ -114,7 +114,7 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     public void config() {
-        setIconImage(new ImageIcon("/icons/WD.png").getImage());
+//        setIconImage(new ImageIcon("/icons/WD.png").getImage());
         this.setLayout(new BorderLayout());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);

@@ -14,14 +14,14 @@ public class Table extends JTable {
     }
 
     public void setViewDataBtnColumn(int newViewDataBtnColumn) {
-        setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+        setDefaultRenderer(Object.class, new DefaultTableCellRenderer() { // rederer
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 if (column == newViewDataBtnColumn) { // <- buton location
                     ViewDataBtn viewBtn = new ViewDataBtn("ดูข้อมูล");
                     return viewBtn;
                 } else {
-                    Component com = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+                    Component com = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column); // create component so I can return
                     this.setHorizontalAlignment(CENTER);
                     setBorder(noFocusBorder);
                     if (isSelected) {
@@ -38,7 +38,7 @@ public class Table extends JTable {
     }
 
     public void setRows(Object[][] body, String[] header) {
-        this.setModel(new javax.swing.table.DefaultTableModel(
+        this.setModel(new DefaultTableModel( // TableModel
                 body,
                 header
         ) {

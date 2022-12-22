@@ -23,13 +23,15 @@ public class EachProfessorManagePanel extends JPanel {
         this.getAgeLabel().setText(professor.getAge());
         this.getPhoneLabel().setText(professor.getPhone());
         this.getDegree().setText(professor.getDegree());
-        this.getSubjectList().setModel(new javax.swing.AbstractListModel<String>() {
+        this.getSubjectList().setModel(new AbstractListModel<String>() {
             ArrayList<String> subjectList = professorModel.getSubjetList(professor.getFullname());
 
+            @Override
             public int getSize() {
                 return subjectList.size();
             }
 
+            @Override
             public String getElementAt(int i) {
                 return subjectList.get(i);
             }

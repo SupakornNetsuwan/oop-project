@@ -71,7 +71,7 @@ public class LoginController {
                 System.out.println("USERNAME : " + result.getString("Username"));
                 System.out.println("Password : " + result.getString("Password"));
                 System.out.println("LEVEL : " + result.getInt("Level"));
-                user = new UserModel( result.getString("Username"), result.getString("Password"), result.getInt("Level"));
+                user = new UserModel(result.getString("Username"), result.getString("Password"), result.getInt("Level"));
                 return true;
             } else {
                 System.out.println("your username or password are wrong");
